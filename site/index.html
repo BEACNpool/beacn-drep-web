@@ -524,7 +524,8 @@ function renderTable() {
     const aid = x.action_id || '';
     const r = rationaleById[aid] || {};
     const summary = r.summary || 'No rationale summary published yet.';
-    const actionLink = x.anchor_url ? `<a target="_blank" href="${x.anchor_url}" title="Open full proposal source"><span class="mono">${aid.slice(0, 16)}${aid.length > 16 ? '…' : ''}</span> ↗</a>` : `<a target="_blank" href="../data/output/public/actions/${aid}.md" title="Open action detail rationale"><span class="mono">${aid.slice(0, 16)}${aid.length > 16 ? '…' : ''}</span></a>`;
+    const proposalHref = x.proposal_path ? `../data/output/public${x.proposal_path}` : (x.anchor_url || '');
+    const actionLink = proposalHref ? `<a target="_blank" href="${proposalHref}" title="Open full proposal source"><span class="mono">${aid.slice(0, 16)}${aid.length > 16 ? '…' : ''}</span> ↗</a>` : `<a target="_blank" href="../data/output/public/actions/${aid}.md" title="Open action detail rationale"><span class="mono">${aid.slice(0, 16)}${aid.length > 16 ? '…' : ''}</span></a>`;
     tr.innerHTML = `
       <td data-label="Action ID">${actionLink}</td>
       <td data-label="Type">${typeBadge(x.action_type || '')}</td>
@@ -545,7 +546,7 @@ function renderTable() {
           <div style="margin-top:6px;">
             <a target="_blank" href="../data/output/public/actions/${aid}.md">full rationale ↗</a>
             · <a target="_blank" href="../data/output/public/actions/${aid}.json">json ↗</a>
-            ${x.anchor_url ? `· <a target="_blank" href="${x.anchor_url}">full proposal ↗</a>` : ''}
+            ${(x.proposal_path || x.anchor_url) ? `· <a target="_blank" href="${x.proposal_path ? `../data/output/public${x.proposal_path}` : x.anchor_url}">full proposal ↗</a>` : ''}
           </div>
         </details>
       </td>
@@ -584,6 +585,8 @@ function renderTable() {
       action_type: a.type || b.action_type || '',
       status: a.status || b.status || '',
       bot_recommendation: (a.decision || b.bot_recommendation || 'ABSTAIN').toUpperCase(),
+      proposal_path: a.proposal_path || '',
+      proposal_available: !!a.proposal_available,
     };
   });
 
