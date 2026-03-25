@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BEACN DRep Backtest</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; }
+    table { border-collapse: collapse; width: 100%; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 6px; }
+    th { text-align: left; background: #f4f4f4; }
+    code { background: #f6f6f6; padding: 2px 4px; }
+  </style>
+</head>
+<body>
+  <h1>BEACN DRep Backtest (Synthetic/Hypothetical)</h1>
+  <p>Data source: <code>data/output/public/backtest_votes.json</code></p>
+  <p>Method: joins deterministic core rationale artifacts with governance snapshots.</p>
+  <table id="t"><thead><tr>
+    <th>action_id</th><th>type</th><th>status</th><th>bot</th><th>drep_yes</th><th>drep_no</th><th>anchor</th>
+  </tr></thead><tbody></tbody></table>
+<script>
+fetch('../data/output/public/backtest_votes.json').then(r=>r.json()).then(rows=>{
+  const tb=document.querySelector('#t tbody');
+  for(const x of rows){
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${x.action_id||''}</td><td>${x.action_type||''}</td><td>${x.status||''}</td><td>${x.bot_recommendation||''}</td><td>${x.actual_drep_yes_pct||''}</td><td>${x.actual_drep_no_pct||''}</td><td><a href="${x.anchor_url||'#'}" target="_blank">anchor</a></td>`;
+    tb.appendChild(tr);
+  }
+});
+</script>
+</body>
+</html>
