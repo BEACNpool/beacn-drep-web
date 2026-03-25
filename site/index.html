@@ -287,6 +287,27 @@
   </section>
 
   <section class="card">
+    <h2>How to Read These Fields</h2>
+    <div class="viz-grid">
+      <div class="mini-list">
+        <div><b>Score</b><br><span class="muted">Directional signal from the deterministic rules. Positive leans YES, negative leans NO, near zero means weak directional edge.</span></div>
+        <div><b>Confidence</b><br><span class="muted">How strong the model believes its direction is (0–100%). Higher means cleaner evidence and stronger separation, not guaranteed correctness.</span></div>
+        <div><b>Bot Vote</b><br><span class="muted">BEACN’s published recommendation (YES/NO/ABSTAIN).</span></div>
+      </div>
+      <div class="mini-list">
+        <div><b>Network Majority</b><br><span class="muted">Largest vote bucket from observed DRep distribution for that action (YES/NO/ABSTAIN/UNKNOWN).</span></div>
+        <div><b>Agreement</b><br><span class="muted">Whether BEACN’s vote matches the network majority for that action: aligned, diverged, or unknown.</span></div>
+        <div><b>Network Divergence</b><br><span class="muted">Share of actions where BEACN differs from network majority. Divergence can be healthy when rationale is evidence-backed.</span></div>
+      </div>
+      <div class="mini-list">
+        <div><b>Sample Size</b><br><span class="muted">Always read rates with sample size. Small sample counts can make percentages look stronger than they are.</span></div>
+        <div><b>Unknown</b><br><span class="muted">Means data coverage is missing/insufficient for that comparison field, not necessarily that the action is unclear.</span></div>
+        <div><b>Anchor</b><br><span class="muted">Proposal metadata/source link used for context. Missing or weak anchors reduce confidence and can force conservative outputs.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
     <h2>How the Bot Improves Without Silent Drift</h2>
     <div id="weeklyReview" class="muted">Loading weekly review…</div>
     <p class="muted">
