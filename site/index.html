@@ -231,6 +231,27 @@
   </section>
 
   <section class="card">
+    <h2>How to Read These Fields</h2>
+    <div class="viz-grid">
+      <div class="mini-list">
+        <div><b>Score</b><br><span class="muted">Directional signal from the deterministic rules. Positive leans YES, negative leans NO, near zero means weak directional edge.</span></div>
+        <div><b>Confidence</b><br><span class="muted">How strong the model believes its direction is (0–100%). Higher means cleaner evidence and stronger separation, not guaranteed correctness.</span></div>
+        <div><b>Bot Vote</b><br><span class="muted">BEACN’s published recommendation (YES/NO/ABSTAIN).</span></div>
+      </div>
+      <div class="mini-list">
+        <div><b>Network Majority</b><br><span class="muted">Largest vote bucket from observed DRep distribution for that action (YES/NO/ABSTAIN/UNKNOWN).</span></div>
+        <div><b>Agreement</b><br><span class="muted">Whether BEACN’s vote matches the network majority for that action: aligned, diverged, or unknown.</span></div>
+        <div><b>Network Divergence</b><br><span class="muted">Share of actions where BEACN differs from network majority. Divergence can be healthy when rationale is evidence-backed.</span></div>
+      </div>
+      <div class="mini-list">
+        <div><b>Sample Size</b><br><span class="muted">Always read rates with sample size. Small sample counts can make percentages look stronger than they are.</span></div>
+        <div><b>Unknown</b><br><span class="muted">Means data coverage is missing/insufficient for that comparison field, not necessarily that the action is unclear.</span></div>
+        <div><b>Anchor</b><br><span class="muted">Proposal metadata/source link used for context. Missing or weak anchors reduce confidence and can force conservative outputs.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
     <h2>Voting Record — How This Bot Voted vs. the Network</h2>
     <div id="summaryBar" class="muted"></div>
     <div class="stack" id="agreementStack" style="margin:8px 0 12px;"></div>
@@ -261,6 +282,7 @@
           <th data-sort="bot_confidence">Confidence</th>
           <th data-sort="network_majority">Network Majority</th>
           <th data-sort="network_agreement">Agreement</th>
+          <th>Rationale</th>
           <th>Anchor</th>
         </tr>
       </thead>
@@ -282,27 +304,6 @@
       <div>
         <h3>Network Agreement</h3>
         <div class="mini-list" id="agreeDist"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2>How to Read These Fields</h2>
-    <div class="viz-grid">
-      <div class="mini-list">
-        <div><b>Score</b><br><span class="muted">Directional signal from the deterministic rules. Positive leans YES, negative leans NO, near zero means weak directional edge.</span></div>
-        <div><b>Confidence</b><br><span class="muted">How strong the model believes its direction is (0–100%). Higher means cleaner evidence and stronger separation, not guaranteed correctness.</span></div>
-        <div><b>Bot Vote</b><br><span class="muted">BEACN’s published recommendation (YES/NO/ABSTAIN).</span></div>
-      </div>
-      <div class="mini-list">
-        <div><b>Network Majority</b><br><span class="muted">Largest vote bucket from observed DRep distribution for that action (YES/NO/ABSTAIN/UNKNOWN).</span></div>
-        <div><b>Agreement</b><br><span class="muted">Whether BEACN’s vote matches the network majority for that action: aligned, diverged, or unknown.</span></div>
-        <div><b>Network Divergence</b><br><span class="muted">Share of actions where BEACN differs from network majority. Divergence can be healthy when rationale is evidence-backed.</span></div>
-      </div>
-      <div class="mini-list">
-        <div><b>Sample Size</b><br><span class="muted">Always read rates with sample size. Small sample counts can make percentages look stronger than they are.</span></div>
-        <div><b>Unknown</b><br><span class="muted">Means data coverage is missing/insufficient for that comparison field, not necessarily that the action is unclear.</span></div>
-        <div><b>Anchor</b><br><span class="muted">Proposal metadata/source link used for context. Missing or weak anchors reduce confidence and can force conservative outputs.</span></div>
       </div>
     </div>
   </section>
@@ -427,6 +428,15 @@ function pct(n, d) {
   return `${((n / d) * 100).toFixed(1)}%`;
 }
 
+function esc(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function voteBadge(v) {
   const t = (v || '').toUpperCase();
   if (t === 'YES') return `<span class="badge yes">YES</span>`;
@@ -453,6 +463,7 @@ function typeBadge(type) {
 }
 
 let allRows = [];
+let rationaleById = {};
 let sortState = { key: 'proposed_epoch', asc: false };
 
 function renderTable() {
@@ -484,6 +495,8 @@ function renderTable() {
     const confPct = Math.max(0, Math.min(100, Number(x.bot_confidence || 0) * 100));
     const tr = document.createElement('tr');
     const aid = x.action_id || '';
+    const r = rationaleById[aid] || {};
+    const summary = r.summary || 'No rationale summary published yet.';
     tr.innerHTML = `
       <td data-label="Action ID"><span class="mono">${aid.slice(0, 16)}${aid.length > 16 ? '…' : ''}</span></td>
       <td data-label="Type">${typeBadge(x.action_type || '')}</td>
@@ -497,6 +510,13 @@ function renderTable() {
       </td>
       <td data-label="Network Majority">${(x.network_majority || '')}</td>
       <td data-label="Agreement">${agreementBadge(x.network_agreement)}</td>
+      <td data-label="Rationale">
+        <details>
+          <summary style="cursor:pointer;">View</summary>
+          <div class="muted" style="margin-top:6px;">${esc(summary)}</div>
+          <div style="margin-top:6px;"><a target="_blank" href="../data/output/public/actions/${aid}.md">full rationale ↗</a> · <a target="_blank" href="../data/output/public/actions/${aid}.json">json ↗</a></div>
+        </details>
+      </td>
       <td data-label="Anchor">${x.anchor_url ? `<a target="_blank" href="${x.anchor_url}">↗</a>` : ''}</td>
     `;
     tb.appendChild(tr);
@@ -520,6 +540,8 @@ function renderTable() {
 
   const backtestRows = Array.isArray(backtest) ? backtest.filter(r => r.action_id && !String(r.action_id).startsWith('ga_')) : [];
   const backtestById = Object.fromEntries(backtestRows.map(r => [r.action_id, r]));
+  const rationaleItems = Array.isArray(rationales?.items) ? rationales.items.filter(r => r.action_id && !String(r.action_id).startsWith('ga_')) : [];
+  rationaleById = Object.fromEntries(rationaleItems.map(r => [r.action_id, r]));
   const actionItems = Array.isArray(actions?.items) ? actions.items.filter(a => a.action_id && !String(a.action_id).startsWith('ga_')) : [];
   allRows = actionItems.map(a => {
     const b = backtestById[a.action_id] || {};
