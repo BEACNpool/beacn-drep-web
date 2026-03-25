@@ -1,19 +1,31 @@
 {
-  "generated_at_utc": "2026-03-25T04:18:37.281987+00:00",
+  "generated_at_utc": "2026-03-25T04:25:02.064979+00:00",
   "inputs": {
     "core_output_dir": "/home/ubuntudesktop/.openclaw/workspace/beacn-drep-core/data/output",
     "resources_governance_dir": "/home/ubuntudesktop/.openclaw/workspace/beacn-drep-resources/data/input/governance",
-    "resources_actions_hash": "09deabdf649dd957d5f97f0fcfce0e99fc4d03944800bdfe2d4434399d78aff6"
+    "resources_drep_dir": "/home/ubuntudesktop/.openclaw/workspace/beacn-drep-resources/data/input/drep",
+    "resources_actions_hash": "09deabdf649dd957d5f97f0fcfce0e99fc4d03944800bdfe2d4434399d78aff6",
+    "resources_top_drep_hash": "2897d2b484a054921e4b738b28f8e47a7190add3c0f18daace9edfcedc7214ab"
   },
-  "row_count": 1,
+  "summary": {
+    "rows": 94,
+    "network_aligned": 15,
+    "network_diverged": 76,
+    "top10_aligned": 0,
+    "top10_diverged": 0
+  },
   "outputs": [
     {
       "path": "data/output/public/backtest_votes.csv",
-      "sha256": "59f72b2289387a4e1fe111fb2d66de2411f5925ef7138860ed8bb43937603b95"
+      "sha256": "eb1e7e2414061c2854e37046938cbb52cda9edfa228a415dbb0a1c109320f44d"
     },
     {
       "path": "data/output/public/backtest_votes.json",
-      "sha256": "36f031e81a46017378186c721e022182171442a1fb4bbee3ef2b0bb346c2e38a"
+      "sha256": "83111d38b9ea288173009c723667500ecae2fbca72cf04e53974ebf56430620b"
+    },
+    {
+      "path": "data/output/public/backtest_summary.json",
+      "sha256": "9e10ee6032ff14c7270fbdcd26ec9c5f9343ff66b4c5f83bd9fdfe23105f62b5"
     }
   ]
 }

@@ -3,28 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BEACN DRep Backtest</title>
+  <title>BEACN DRep Transparency</title>
   <style>
-    body { font-family: system-ui, sans-serif; margin: 2rem; }
-    table { border-collapse: collapse; width: 100%; font-size: 14px; }
-    th, td { border: 1px solid #ddd; padding: 6px; }
+    body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 1300px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    th, td { border: 1px solid #ddd; padding: 6px; vertical-align: top; }
     th { text-align: left; background: #f4f4f4; }
     code { background: #f6f6f6; padding: 2px 4px; }
+    .kpi { display:inline-block; margin-right:1rem; padding:.4rem .6rem; background:#f7f7f7; border:1px solid #ddd; }
   </style>
 </head>
 <body>
-  <h1>BEACN DRep Backtest (Synthetic/Hypothetical)</h1>
-  <p>Data source: <code>data/output/public/backtest_votes.json</code></p>
-  <p>Method: joins deterministic core rationale artifacts with governance snapshots.</p>
+  <h1>BEACN DRep — Deterministic Backtest</h1>
+  <p>
+    This system is open-source and replayable. It uses committed doctrine (<code>beacn-drep-soul</code>), declared public inputs
+    (<code>beacn-drep-resources</code>), and deterministic execution (<code>beacn-drep-core</code>).
+  </p>
+  <p>
+    Comparison views are descriptive, not moral judgments. Human delegates can reasonably differ; this dashboard highlights where
+    outcomes diverge so delegators can inspect evidence and potential bias exposure.
+  </p>
+
+  <div id="kpis"></div>
+
   <table id="t"><thead><tr>
-    <th>action_id</th><th>type</th><th>status</th><th>bot</th><th>drep_yes</th><th>drep_no</th><th>anchor</th>
+    <th>action_id</th><th>type</th><th>status</th><th>bot</th><th>score</th><th>confidence</th>
+    <th>network majority</th><th>net agreement</th><th>top10 majority</th><th>top10 agreement</th><th>anchor</th>
   </tr></thead><tbody></tbody></table>
 <script>
-fetch('../data/output/public/backtest_votes.json').then(r=>r.json()).then(rows=>{
+Promise.all([
+  fetch('../data/output/public/backtest_votes.json').then(r=>r.json()),
+  fetch('../data/output/public/backtest_summary.json').then(r=>r.json())
+]).then(([rows,summary])=>{
+  const k=document.getElementById('kpis');
+  k.innerHTML = `
+    <span class="kpi">rows: <b>${summary.rows}</b></span>
+    <span class="kpi">network aligned: <b>${summary.network_aligned}</b></span>
+    <span class="kpi">network diverged: <b>${summary.network_diverged}</b></span>
+    <span class="kpi">top10 aligned: <b>${summary.top10_aligned}</b></span>
+    <span class="kpi">top10 diverged: <b>${summary.top10_diverged}</b></span>
+  `;
+
   const tb=document.querySelector('#t tbody');
   for(const x of rows){
     const tr=document.createElement('tr');
-    tr.innerHTML=`<td>${x.action_id||''}</td><td>${x.action_type||''}</td><td>${x.status||''}</td><td>${x.bot_recommendation||''}</td><td>${x.actual_drep_yes_pct||''}</td><td>${x.actual_drep_no_pct||''}</td><td><a href="${x.anchor_url||'#'}" target="_blank">anchor</a></td>`;
+    tr.innerHTML=`<td>${x.action_id||''}</td><td>${x.action_type||''}</td><td>${x.status||''}</td><td>${x.bot_recommendation||''}</td><td>${x.bot_score||''}</td><td>${x.bot_confidence||''}</td><td>${x.network_majority||''}</td><td>${x.network_agreement||''}</td><td>${x.top10_majority||''}</td><td>${x.top10_agreement||''}</td><td><a href="${x.anchor_url||'#'}" target="_blank">anchor</a></td>`;
     tb.appendChild(tr);
   }
 });
