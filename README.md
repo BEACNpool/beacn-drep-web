@@ -13,3 +13,4 @@ Rules:
 Expected artifact shape lives in `docs/DATA_SOURCES.md`.
 
 Public decision-boundary contract: `docs/PUBLIC_CONTEXT_AND_LIMITS.md`.
+Public operating model: `docs/OPERATING_MODEL.md`.
