@@ -1,7 +1,7 @@
 {
   "rows": 94,
-  "network_aligned": 89,
-  "network_diverged": 2,
+  "network_aligned": 40,
+  "network_diverged": 51,
   "top10_aligned": 0,
   "top10_diverged": 0
 }

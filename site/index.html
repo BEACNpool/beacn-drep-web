@@ -261,7 +261,7 @@
       </label>
       <label>Bot Vote:
         <select id="filterVote">
-          <option value="all">All</option><option>YES</option><option>NO</option><option>ABSTAIN</option>
+          <option value="all">All</option><option>YES</option><option>NO</option><option>ABSTAIN</option><option>NEEDS_MORE_INFO</option>
         </select>
       </label>
       <label>Agreement:
@@ -441,6 +441,7 @@ function voteBadge(v) {
   const t = (v || '').toUpperCase();
   if (t === 'YES') return `<span class="badge yes">YES</span>`;
   if (t === 'NO') return `<span class="badge no">NO</span>`;
+  if (t === 'NEEDS_MORE_INFO') return `<span class="badge unknown">NEEDS_MORE_INFO</span>`;
   return `<span class="badge abstain">ABSTAIN</span>`;
 }
 
