@@ -11,3 +11,5 @@ th, td { border: 1px solid #ddd; padding: 6px; font-size: 14px; }
 .mt16 { margin-top: 16px; }
 .m0 { margin: 0; }
 .linkrow { display: flex; gap: 16px; flex-wrap: wrap; }
+.trust-ok { border-color: #1f9d55; background: #eefaf3; }
+.trust-warn { border-color: #c0392b; background: #fdeeee; }
