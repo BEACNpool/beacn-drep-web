@@ -1,5 +1,7 @@
 # beacn-drep-web
 
+🌐 **Live site:** https://beacnpool.github.io/beacn-drep-web/
+
 Presentation layer for BEACN DRep outputs.
 
 Rules:
