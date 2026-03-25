@@ -1,54 +1,37 @@
 {
-  "generated_at": "2026-03-25T21:21:43.546163Z",
-  "blocked_count": 40,
+  "generated_at": "2026-03-25T21:25:30.964662Z",
+  "blocked_count": 30,
   "top_missing_sections": [
     {
       "section": "proposal summary",
-      "count": 40
+      "count": 30
     },
     {
       "section": "budget analysis",
-      "count": 40
+      "count": 30
     },
     {
       "section": "execution feasibility",
-      "count": 40
+      "count": 30
     },
     {
       "section": "risk analysis",
-      "count": 40
+      "count": 30
     },
     {
       "section": "alternatives analysis",
-      "count": 40
+      "count": 30
     },
     {
       "section": "failure-mode analysis",
-      "count": 40
+      "count": 30
     },
     {
       "section": "community impact",
-      "count": 40
+      "count": 30
     }
   ],
   "items": [
-    {
-      "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlp5u7pqqr",
-      "action_type": "TreasuryWithdrawals",
-      "status": "ratified",
-      "decision": "NEEDS_MORE_INFO",
-      "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (ratified), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
-      "missing_sections": [
-        "proposal summary",
-        "budget analysis",
-        "execution feasibility",
-        "risk analysis",
-        "alternatives analysis",
-        "failure-mode analysis",
-        "community impact"
-      ],
-      "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
-    },
     {
       "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlp679xfzf",
       "action_type": "TreasuryWithdrawals",
@@ -67,58 +50,7 @@
       "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
     },
     {
-      "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlp730y0dn",
-      "action_type": "TreasuryWithdrawals",
-      "status": "ratified",
-      "decision": "NEEDS_MORE_INFO",
-      "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (ratified), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
-      "missing_sections": [
-        "proposal summary",
-        "budget analysis",
-        "execution feasibility",
-        "risk analysis",
-        "alternatives analysis",
-        "failure-mode analysis",
-        "community impact"
-      ],
-      "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
-    },
-    {
-      "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpcdq823y",
-      "action_type": "TreasuryWithdrawals",
-      "status": "ratified",
-      "decision": "NEEDS_MORE_INFO",
-      "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (ratified), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
-      "missing_sections": [
-        "proposal summary",
-        "budget analysis",
-        "execution feasibility",
-        "risk analysis",
-        "alternatives analysis",
-        "failure-mode analysis",
-        "community impact"
-      ],
-      "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
-    },
-    {
       "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpgcp0jyh",
-      "action_type": "TreasuryWithdrawals",
-      "status": "ratified",
-      "decision": "NEEDS_MORE_INFO",
-      "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (ratified), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
-      "missing_sections": [
-        "proposal summary",
-        "budget analysis",
-        "execution feasibility",
-        "risk analysis",
-        "alternatives analysis",
-        "failure-mode analysis",
-        "community impact"
-      ],
-      "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
-    },
-    {
-      "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpjq3z9u5",
       "action_type": "TreasuryWithdrawals",
       "status": "ratified",
       "decision": "NEEDS_MORE_INFO",
@@ -157,40 +89,6 @@
       "status": "ratified",
       "decision": "NEEDS_MORE_INFO",
       "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (ratified), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
-      "missing_sections": [
-        "proposal summary",
-        "budget analysis",
-        "execution feasibility",
-        "risk analysis",
-        "alternatives analysis",
-        "failure-mode analysis",
-        "community impact"
-      ],
-      "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
-    },
-    {
-      "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpsn5rx0e",
-      "action_type": "TreasuryWithdrawals",
-      "status": "ratified",
-      "decision": "NEEDS_MORE_INFO",
-      "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (ratified), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
-      "missing_sections": [
-        "proposal summary",
-        "budget analysis",
-        "execution feasibility",
-        "risk analysis",
-        "alternatives analysis",
-        "failure-mode analysis",
-        "community impact"
-      ],
-      "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
-    },
-    {
-      "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpuz29v77",
-      "action_type": "TreasuryWithdrawals",
-      "status": "expired",
-      "decision": "NEEDS_MORE_INFO",
-      "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (expired), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
       "missing_sections": [
         "proposal summary",
         "budget analysis",
@@ -390,23 +288,6 @@
       "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
     },
     {
-      "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqkqx0ecg",
-      "action_type": "TreasuryWithdrawals",
-      "status": "ratified",
-      "decision": "NEEDS_MORE_INFO",
-      "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (ratified), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
-      "missing_sections": [
-        "proposal summary",
-        "budget analysis",
-        "execution feasibility",
-        "risk analysis",
-        "alternatives analysis",
-        "failure-mode analysis",
-        "community impact"
-      ],
-      "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
-    },
-    {
       "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqqfgyy3v",
       "action_type": "TreasuryWithdrawals",
       "status": "ratified",
@@ -425,23 +306,6 @@
     },
     {
       "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqsufvuyl",
-      "action_type": "TreasuryWithdrawals",
-      "status": "ratified",
-      "decision": "NEEDS_MORE_INFO",
-      "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (ratified), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
-      "missing_sections": [
-        "proposal summary",
-        "budget analysis",
-        "execution feasibility",
-        "risk analysis",
-        "alternatives analysis",
-        "failure-mode analysis",
-        "community impact"
-      ],
-      "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
-    },
-    {
-      "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqudh2k4c",
       "action_type": "TreasuryWithdrawals",
       "status": "ratified",
       "decision": "NEEDS_MORE_INFO",
@@ -646,40 +510,6 @@
     },
     {
       "action_id": "gov_action1fl6r784t2ffw7q96du2znhprw90r3xvrfugvqelgqewgxex42kdqq9tgrd5",
-      "action_type": "TreasuryWithdrawals",
-      "status": "expired",
-      "decision": "NEEDS_MORE_INFO",
-      "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (expired), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
-      "missing_sections": [
-        "proposal summary",
-        "budget analysis",
-        "execution feasibility",
-        "risk analysis",
-        "alternatives analysis",
-        "failure-mode analysis",
-        "community impact"
-      ],
-      "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
-    },
-    {
-      "action_id": "gov_action1q0m8z7glm9cprucwf44hdjdfra8khnakpm3hu5ueh929hvljw4aqqzuxfxz",
-      "action_type": "TreasuryWithdrawals",
-      "status": "ratified",
-      "decision": "NEEDS_MORE_INFO",
-      "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (ratified), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.",
-      "missing_sections": [
-        "proposal summary",
-        "budget analysis",
-        "execution feasibility",
-        "risk analysis",
-        "alternatives analysis",
-        "failure-mode analysis",
-        "community impact"
-      ],
-      "next_step": "Complete: proposal summary, budget analysis, execution feasibility..."
-    },
-    {
-      "action_id": "gov_action1r44w54hx553mz0sr4cc07f8tlxzj2sa57l2pt3l9pa2ldw42fc7sq5q3rtn",
       "action_type": "TreasuryWithdrawals",
       "status": "expired",
       "decision": "NEEDS_MORE_INFO",

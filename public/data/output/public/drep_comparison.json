@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T21:21:43.503750Z",
+  "generated_at": "2026-03-25T21:25:30.920368Z",
   "actions_compared": 94,
   "dreps_compared": 728,
   "total_latest_votes_compared": 18342,
@@ -7,177 +7,177 @@
     {
       "drep_id": "drep15jspgw8ea9pw3w0fwyqam2lw58ulw7z6qhr8qyuah7j0yj962w7",
       "sample": 91,
-      "agreements": 29,
-      "divergences": 62,
-      "agreement_rate": 0.3187
+      "agreements": 36,
+      "divergences": 55,
+      "agreement_rate": 0.3956
     },
     {
       "drep_id": "drep14l69ewnmc5h6uftda9ghs3mw49hdu7w93e9alhzxckp0v5pczql",
       "sample": 91,
-      "agreements": 32,
-      "divergences": 59,
-      "agreement_rate": 0.3516
-    },
-    {
-      "drep_id": "drep1lhkqu7uhq9532xr5558q7gh5rl54m4ezav8p5yfkgz27yrx735a",
-      "sample": 91,
-      "agreements": 37,
-      "divergences": 54,
-      "agreement_rate": 0.4066
-    },
-    {
-      "drep_id": "drep17rksqsgqx8ej3rtc3x4gjm8a44u6w3qcshfm46yc9tq4zeffuzj",
-      "sample": 91,
-      "agreements": 37,
-      "divergences": 54,
-      "agreement_rate": 0.4066
+      "agreements": 36,
+      "divergences": 55,
+      "agreement_rate": 0.3956
     },
     {
       "drep_id": "drep1km69g7ksf8t5g0h9d9tkrcd2tezxelx0wtr76rv2mrkl5nzd6v3",
       "sample": 91,
-      "agreements": 38,
-      "divergences": 53,
-      "agreement_rate": 0.4176
+      "agreements": 42,
+      "divergences": 49,
+      "agreement_rate": 0.4615
     },
     {
-      "drep_id": "drep1t2vz3lrh2vjxcah2mwdjlcsm9l2kxmqy4lqhnm7tawltsm6rugp",
-      "sample": 91,
-      "agreements": 40,
-      "divergences": 51,
-      "agreement_rate": 0.4396
-    },
-    {
-      "drep_id": "drep17vw9clp7lnv2qjqtnx68vm6yjfslpgewprqa4kxg7rmkznaryj5",
+      "drep_id": "drep1lhkqu7uhq9532xr5558q7gh5rl54m4ezav8p5yfkgz27yrx735a",
       "sample": 91,
       "agreements": 45,
       "divergences": 46,
       "agreement_rate": 0.4945
     },
     {
+      "drep_id": "drep17rksqsgqx8ej3rtc3x4gjm8a44u6w3qcshfm46yc9tq4zeffuzj",
+      "sample": 91,
+      "agreements": 46,
+      "divergences": 45,
+      "agreement_rate": 0.5055
+    },
+    {
+      "drep_id": "drep1t2vz3lrh2vjxcah2mwdjlcsm9l2kxmqy4lqhnm7tawltsm6rugp",
+      "sample": 91,
+      "agreements": 47,
+      "divergences": 44,
+      "agreement_rate": 0.5165
+    },
+    {
+      "drep_id": "drep17vw9clp7lnv2qjqtnx68vm6yjfslpgewprqa4kxg7rmkznaryj5",
+      "sample": 91,
+      "agreements": 51,
+      "divergences": 40,
+      "agreement_rate": 0.5604
+    },
+    {
       "drep_id": "drep1esmla69yhjn3yr8f0wzjyya07942pxveer34szw9uqzygjfq3ap",
       "sample": 90,
-      "agreements": 26,
-      "divergences": 64,
-      "agreement_rate": 0.2889
+      "agreements": 34,
+      "divergences": 56,
+      "agreement_rate": 0.3778
     },
     {
       "drep_id": "drep1uygrv5qxyalmdgu0xdjh8ru6juae6426y6048fugyf97g4srzkn",
       "sample": 90,
-      "agreements": 36,
-      "divergences": 54,
-      "agreement_rate": 0.4
-    },
-    {
-      "drep_id": "drep1nvuyn6ldjenkcnjd005qt76ygmxuv5x2l2ram7eud4uywtrhp7k",
-      "sample": 90,
-      "agreements": 38,
-      "divergences": 52,
-      "agreement_rate": 0.4222
-    },
-    {
-      "drep_id": "drep185r8rr6j9evjs984vnr7haf5cn3qw5w220usk23cxffvwuutaz3",
-      "sample": 90,
-      "agreements": 39,
-      "divergences": 51,
-      "agreement_rate": 0.4333
+      "agreements": 44,
+      "divergences": 46,
+      "agreement_rate": 0.4889
     },
     {
       "drep_id": "drep1k3wde55ta4tzgjwzs3atre39nv0wlpz35manpgjfca7xwu7rnw2",
       "sample": 90,
-      "agreements": 40,
-      "divergences": 50,
-      "agreement_rate": 0.4444
+      "agreements": 44,
+      "divergences": 46,
+      "agreement_rate": 0.4889
     },
     {
-      "drep_id": "drep1nm3mpnnvtxvlmqt7lpnskm0clhtm7ngg4pm7qklv42j5qcvhhnw",
-      "sample": 90,
-      "agreements": 41,
-      "divergences": 49,
-      "agreement_rate": 0.4556
-    },
-    {
-      "drep_id": "drep1lrtg6qx8tend00wuxs0eg5mgwxejrcu8s5w6zyk07745xuzqf7a",
-      "sample": 90,
-      "agreements": 41,
-      "divergences": 49,
-      "agreement_rate": 0.4556
-    },
-    {
-      "drep_id": "drep17h6rggykfz37srj63lkuah5rg9ed8tzwmwd2nqywl6u3yqvsasg",
-      "sample": 90,
-      "agreements": 42,
-      "divergences": 48,
-      "agreement_rate": 0.4667
-    },
-    {
-      "drep_id": "drep1jnmmkfwpta0yuwjchw0gu6csh75vy62088egy9n67d0zc7sn83m",
+      "drep_id": "drep185r8rr6j9evjs984vnr7haf5cn3qw5w220usk23cxffvwuutaz3",
       "sample": 90,
       "agreements": 45,
       "divergences": 45,
       "agreement_rate": 0.5
     },
     {
-      "drep_id": "drep176sktgzd9ggczd9jtqs9xn2ql5ygddayt3c423ckh6kp7rvdm2x",
-      "sample": 89,
-      "agreements": 30,
-      "divergences": 59,
-      "agreement_rate": 0.3371
+      "drep_id": "drep1nm3mpnnvtxvlmqt7lpnskm0clhtm7ngg4pm7qklv42j5qcvhhnw",
+      "sample": 90,
+      "agreements": 47,
+      "divergences": 43,
+      "agreement_rate": 0.5222
+    },
+    {
+      "drep_id": "drep1nvuyn6ldjenkcnjd005qt76ygmxuv5x2l2ram7eud4uywtrhp7k",
+      "sample": 90,
+      "agreements": 47,
+      "divergences": 43,
+      "agreement_rate": 0.5222
+    },
+    {
+      "drep_id": "drep1lrtg6qx8tend00wuxs0eg5mgwxejrcu8s5w6zyk07745xuzqf7a",
+      "sample": 90,
+      "agreements": 50,
+      "divergences": 40,
+      "agreement_rate": 0.5556
+    },
+    {
+      "drep_id": "drep17h6rggykfz37srj63lkuah5rg9ed8tzwmwd2nqywl6u3yqvsasg",
+      "sample": 90,
+      "agreements": 51,
+      "divergences": 39,
+      "agreement_rate": 0.5667
+    },
+    {
+      "drep_id": "drep1jnmmkfwpta0yuwjchw0gu6csh75vy62088egy9n67d0zc7sn83m",
+      "sample": 90,
+      "agreements": 55,
+      "divergences": 35,
+      "agreement_rate": 0.6111
     },
     {
       "drep_id": "drep13yw08r2vm4fek08uz0qvz6le379fsdalt3tmwkntxqlgjcdfekw",
       "sample": 89,
-      "agreements": 30,
-      "divergences": 59,
-      "agreement_rate": 0.3371
+      "agreements": 32,
+      "divergences": 57,
+      "agreement_rate": 0.3596
+    },
+    {
+      "drep_id": "drep176sktgzd9ggczd9jtqs9xn2ql5ygddayt3c423ckh6kp7rvdm2x",
+      "sample": 89,
+      "agreements": 38,
+      "divergences": 51,
+      "agreement_rate": 0.427
     },
     {
       "drep_id": "drep16v76d0z26a2wta75f4lt0mm9t6jq75ua67zqcz58vzk4jh5yuhc",
       "sample": 89,
-      "agreements": 44,
-      "divergences": 45,
-      "agreement_rate": 0.4944
+      "agreements": 53,
+      "divergences": 36,
+      "agreement_rate": 0.5955
     },
     {
       "drep_id": "drep1k5zdh24kmcdfnnl50yng9t7n33kq4mfzdetrh3ps2vx07famecw",
       "sample": 89,
-      "agreements": 46,
-      "divergences": 43,
-      "agreement_rate": 0.5169
+      "agreements": 53,
+      "divergences": 36,
+      "agreement_rate": 0.5955
     },
     {
       "drep_id": "drep1gdgxcfaf24rur87f6rjkayn5slf7k0kspmq30nsfff6w23q8qgc",
       "sample": 88,
-      "agreements": 36,
-      "divergences": 52,
-      "agreement_rate": 0.4091
+      "agreements": 44,
+      "divergences": 44,
+      "agreement_rate": 0.5
     },
     {
       "drep_id": "drep13d6sxkyz6st9h65qqrzd8ukpywhr8swe9f6357qntgjqye0gttd",
       "sample": 88,
-      "agreements": 40,
-      "divergences": 48,
-      "agreement_rate": 0.4545
+      "agreements": 48,
+      "divergences": 40,
+      "agreement_rate": 0.5455
     },
     {
       "drep_id": "drep14fs7kawaj8lk03e7595tkw04l5w7q7fypr9cms45p98vs6grces",
       "sample": 88,
-      "agreements": 41,
-      "divergences": 47,
-      "agreement_rate": 0.4659
+      "agreements": 49,
+      "divergences": 39,
+      "agreement_rate": 0.5568
     },
     {
       "drep_id": "drep1ya6hzdt4kplm2zfnshschz8vweujcxt3f4azyvaplk6xjyw262e",
       "sample": 87,
-      "agreements": 25,
-      "divergences": 62,
-      "agreement_rate": 0.2874
+      "agreements": 30,
+      "divergences": 57,
+      "agreement_rate": 0.3448
     },
     {
       "drep_id": "drep1nz5796lkhg02luejzc3aec3pdv0tz0s0tg94npxxck7qwayutfs",
       "sample": 87,
-      "agreements": 43,
-      "divergences": 44,
-      "agreement_rate": 0.4943
+      "agreements": 52,
+      "divergences": 35,
+      "agreement_rate": 0.5977
     }
   ],
   "latest_disagreements": [
