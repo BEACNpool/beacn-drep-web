@@ -1,0 +1,129 @@
+{
+  "action_id": "gov_action1fvgw27fjpr9c7g582mszzyez0jgkqgjgatzdnyngrg8wwc9kcn3qqxtz8r7",
+  "title": "gov_action1fvgw27fjpr9c7g582mszzyez0jgkqgjgatzdnyngrg8wwc9kcn3qqxtz8r7",
+  "type": "TreasuryWithdrawals",
+  "status": "active",
+  "source": {
+    "origin": "governance fetch pipeline",
+    "raw_input_hash": "sha256:3acc8cc8c07e6bf047722d889d5bb9228331e0a3e6c5324460589de981730467",
+    "detected_at": "2026-02-09T18:50:25.950966+00:00"
+  },
+  "decision": {
+    "vote": "YES",
+    "published_at": "2026-03-25T13:00:02.009603+00:00",
+    "signed": false,
+    "transaction_hash": null
+  },
+  "proof_of_vote": {
+    "vote": "YES",
+    "score": 0.1167,
+    "confidence": 0.6067,
+    "input_hash": "3acc8cc8c07e6bf047722d889d5bb9228331e0a3e6c5324460589de981730467",
+    "snapshot_bundle_hash": "521276588ea8c9410850a483941f3d3848adf14f57e9487b2bc5a32e1e22d058",
+    "soul_commit": "ffdf6a8b929dfcd03eb707690676432e6d843bca",
+    "resources_commit": "c4477be87cf345890cf3a868ef300b600ab9fca4",
+    "core_commit": "5cc5048cf8cb80c1252ecc839a3389030315259c",
+    "rationale_markdown_path": "/data/output/gov_action1fvgw27fjpr9c7g582mszzyez0jgkqgjgatzdnyngrg8wwc9kcn3qqxtz8r7-3acc8cc8c07e/rationale.md"
+  },
+  "rationale": {
+    "summary": "Vote: YES. For this TreasuryWithdrawals (active), available evidence supports proceeding, with risk judged manageable under current context. Why: Treasury withdrawal actions require elevated scrutiny. Additional context: Flag score present (7), reducing confidence. Confidence context: score 0.12; confidence 60.7%.",
+    "summary_raw": "Network DRep distribution used as one signal, not authority.",
+    "markdown_path": "/data/output/gov_action1fvgw27fjpr9c7g582mszzyez0jgkqgjgatzdnyngrg8wwc9kcn3qqxtz8r7-3acc8cc8c07e/rationale.md",
+    "missing_evidence": []
+  },
+  "proposal_evidence": {
+    "available": false,
+    "fetch_status": "http_error",
+    "reason": "HTTP Error 404: Not Found"
+  },
+  "reproducibility": {
+    "soul_repo": "beacn-drep-soul",
+    "soul_commit": "ffdf6a8b929dfcd03eb707690676432e6d843bca",
+    "resources_repo": "beacn-drep-resources",
+    "resources_commit": "c4477be87cf345890cf3a868ef300b600ab9fca4",
+    "core_commit": "5cc5048cf8cb80c1252ecc839a3389030315259c",
+    "resource_ids_used": [
+      "gov_actions_api",
+      "gov_actions_snapshot",
+      "treasury_withdrawals_snapshot",
+      "drep_vote_history_snapshot",
+      "gov_actions_all_snapshot",
+      "gov_actions_active_snapshot",
+      "gov_treasury_recipients_snapshot",
+      "gov_action_flags_snapshot",
+      "gov_poll_runs_snapshot",
+      "top_drep_votes_snapshot",
+      "gov_anchor_documents"
+    ]
+  },
+  "inputs_used": [
+    {
+      "resource_id": "gov_actions_api",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "treasury_withdrawals_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "drep_vote_history_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_all_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_active_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_treasury_recipients_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_action_flags_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_poll_runs_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "top_drep_votes_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_anchor_documents",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    }
+  ],
+  "scoring": {
+    "budget_pressure": 0.0,
+    "conflict_risk": 0.0,
+    "technical_value": 0.1167,
+    "governance_alignment": 0.6067
+  },
+  "freshness": {
+    "snapshot_age_seconds": 7,
+    "max_allowed_seconds": 21600,
+    "is_stale": false,
+    "snapshot_time": "2026-03-25T21:31:49.682301Z",
+    "freshness_source": "deep_research_dossiers.csv"
+  }
+}

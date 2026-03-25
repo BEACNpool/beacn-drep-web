@@ -1,0 +1,125 @@
+{
+  "action_id": "gov_action1aw809r9gpk7eemt02alszw7lceyf0505uvntavm62rakkckr3nxsqd54zm8",
+  "title": "gov_action1aw809r9gpk7eemt02alszw7lceyf0505uvntavm62rakkckr3nxsqd54zm8",
+  "type": "NewCommittee",
+  "status": "expired",
+  "source": {
+    "origin": "governance fetch pipeline",
+    "raw_input_hash": "sha256:4c77ce212255b6caa85ecd6936ced94a3d1ee5a669df8cf08631eb1163709d5e",
+    "detected_at": "2026-02-09T18:50:25.950966+00:00"
+  },
+  "decision": {
+    "vote": "YES",
+    "published_at": "2026-03-25T13:00:02.009603+00:00",
+    "signed": false,
+    "transaction_hash": null
+  },
+  "proof_of_vote": {
+    "vote": "YES",
+    "score": 0.1667,
+    "confidence": 0.6867,
+    "input_hash": "4c77ce212255b6caa85ecd6936ced94a3d1ee5a669df8cf08631eb1163709d5e",
+    "snapshot_bundle_hash": "78a7c543379db4fc4cadf1020732504e5d17de735ef60ccebf41fab257037273",
+    "soul_commit": "ffdf6a8b929dfcd03eb707690676432e6d843bca",
+    "resources_commit": "c4477be87cf345890cf3a868ef300b600ab9fca4",
+    "core_commit": "5cc5048cf8cb80c1252ecc839a3389030315259c",
+    "rationale_markdown_path": "/data/output/gov_action1aw809r9gpk7eemt02alszw7lceyf0505uvntavm62rakkckr3nxsqd54zm8-4c77ce212255/rationale.md"
+  },
+  "rationale": {
+    "summary": "Vote: YES. For this NewCommittee (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (10), reducing confidence. Confidence context: score 0.17; confidence 68.7%.",
+    "summary_raw": "Network DRep distribution used as one signal, not authority.",
+    "markdown_path": "/data/output/gov_action1aw809r9gpk7eemt02alszw7lceyf0505uvntavm62rakkckr3nxsqd54zm8-4c77ce212255/rationale.md",
+    "missing_evidence": []
+  },
+  "proposal_evidence": {
+    "available": true,
+    "fetch_status": "ok",
+    "content_type": "application/json",
+    "http_status": "200",
+    "source_anchor_url": "https://ipfs.io/ipfs/Qme6n18tBndukAbRyvHc6MMj8WrjsBnppYvTAmsm3SHa4y",
+    "anchor_hash": "84e66f959fdecfd86708a5e9cad50b24bcf2da97186182abedd2aa046447a4b2",
+    "file_sha256": "159e3d765c96c7148f73dca604d1337755731736bfff9e0aff614e0c35b4846d",
+    "content_bytes": "8638",
+    "fetched_at_utc": "2026-03-25T16:15:15Z",
+    "download_path": "/proposals/gov_action1aw809r9gpk7eemt02alszw7lceyf0505uvntavm62rakkckr3nxsqd54zm8.json",
+    "preview": "{\n  \"@context\": {\n    \"@context\": {\n      \"@language\": \"en\",\n      \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n      \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n      \"intersectSpec\": \"https://github.com/IntersectMBO/governance-actions/blob/main/schemas/specification.md#\",\n      \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n      \"body\": {\n        \"@id\": \"CIP108:body\",\n        \"@context\": {\n          \"references\": {\n            \"@id\": \"CIP108:references\",\n            \"@container\": \"@set\",\n            \"@context\": {\n              \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n              \"Other\": \"CIP100:OtherReference\",\n              \"label\": \"CIP100:reference-label\",\n              \"uri\": \"CIP100:reference-uri\",\n              \"referenceHash\": {\n                \"@id\": \"CIP108:referenceHash\",\n                \"@context\": {\n                  \"hashDigest\": \"CIP108:hashDigest\",\n                  \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n                }\n              }\n            }\n          },\n          \"title\": \"CIP108:title\",\n          \"abstract\": \"CIP108:abstract\",\n          \"motivation\":"
+  },
+  "reproducibility": {
+    "soul_repo": "beacn-drep-soul",
+    "soul_commit": "ffdf6a8b929dfcd03eb707690676432e6d843bca",
+    "resources_repo": "beacn-drep-resources",
+    "resources_commit": "c4477be87cf345890cf3a868ef300b600ab9fca4",
+    "core_commit": "5cc5048cf8cb80c1252ecc839a3389030315259c",
+    "resource_ids_used": [
+      "gov_actions_api",
+      "gov_actions_snapshot",
+      "drep_vote_history_snapshot",
+      "gov_actions_all_snapshot",
+      "gov_actions_active_snapshot",
+      "gov_action_flags_snapshot",
+      "gov_poll_runs_snapshot",
+      "top_drep_votes_snapshot",
+      "gov_anchor_documents"
+    ]
+  },
+  "inputs_used": [
+    {
+      "resource_id": "gov_actions_api",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "drep_vote_history_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_all_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_active_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_action_flags_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_poll_runs_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "top_drep_votes_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_anchor_documents",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    }
+  ],
+  "scoring": {
+    "budget_pressure": 0.0,
+    "conflict_risk": 0.0,
+    "technical_value": 0.1667,
+    "governance_alignment": 0.6867
+  },
+  "freshness": {
+    "snapshot_age_seconds": 8,
+    "max_allowed_seconds": 21600,
+    "is_stale": false,
+    "snapshot_time": "2026-03-25T21:31:49.682301Z",
+    "freshness_source": "deep_research_dossiers.csv"
+  }
+}

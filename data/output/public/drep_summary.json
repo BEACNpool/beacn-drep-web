@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-03-25T21:31:59Z",
+  "beacn_history_count": 94,
+  "consistency": {
+    "abstain_rate": 0.0,
+    "needs_more_info_rate": 0.0
+  },
+  "top_n_comparison": {
+    "available": false,
+    "reason": "top_drep_votes.csv not populated"
+  }
+}

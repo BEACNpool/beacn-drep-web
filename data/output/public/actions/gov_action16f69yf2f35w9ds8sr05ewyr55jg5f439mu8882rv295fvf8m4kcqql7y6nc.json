@@ -1,0 +1,117 @@
+{
+  "action_id": "gov_action16f69yf2f35w9ds8sr05ewyr55jg5f439mu8882rv295fvf8m4kcqql7y6nc",
+  "title": "gov_action16f69yf2f35w9ds8sr05ewyr55jg5f439mu8882rv295fvf8m4kcqql7y6nc",
+  "type": "InfoAction",
+  "status": "expired",
+  "source": {
+    "origin": "governance fetch pipeline",
+    "raw_input_hash": "sha256:8cbe1a171385cd65664134d46063cce4d4462b3e4958725a9a799d6292a4c23d",
+    "detected_at": "2026-02-09T18:50:25.950966+00:00"
+  },
+  "decision": {
+    "vote": "NO",
+    "published_at": "2026-03-25T13:00:02.009603+00:00",
+    "signed": false,
+    "transaction_hash": null
+  },
+  "proof_of_vote": {
+    "vote": "NO",
+    "score": -0.45,
+    "confidence": 1.0,
+    "input_hash": "8cbe1a171385cd65664134d46063cce4d4462b3e4958725a9a799d6292a4c23d",
+    "snapshot_bundle_hash": "00ce77df8be5df044ca17d23a7087904b83517d895515e39aef28a8cb384847e",
+    "soul_commit": "ffdf6a8b929dfcd03eb707690676432e6d843bca",
+    "resources_commit": "c4477be87cf345890cf3a868ef300b600ab9fca4",
+    "core_commit": "5cc5048cf8cb80c1252ecc839a3389030315259c",
+    "rationale_markdown_path": "/data/output/gov_action16f69yf2f35w9ds8sr05ewyr55jg5f439mu8882rv295fvf8m4kcqql7y6nc-8cbe1a171385/rationale.md"
+  },
+  "rationale": {
+    "summary": "Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Deterministic rule set applied. Additional context: Residual uncertainty: Anchor document is not yet pinned locally for this action. Confidence context: score -0.45; confidence 100.0%.",
+    "summary_raw": "Network DRep distribution used as one signal, not authority.",
+    "markdown_path": "/data/output/gov_action16f69yf2f35w9ds8sr05ewyr55jg5f439mu8882rv295fvf8m4kcqql7y6nc-8cbe1a171385/rationale.md",
+    "missing_evidence": []
+  },
+  "proposal_evidence": {
+    "available": false,
+    "fetch_status": "error",
+    "reason": "The read operation timed out"
+  },
+  "reproducibility": {
+    "soul_repo": "beacn-drep-soul",
+    "soul_commit": "ffdf6a8b929dfcd03eb707690676432e6d843bca",
+    "resources_repo": "beacn-drep-resources",
+    "resources_commit": "c4477be87cf345890cf3a868ef300b600ab9fca4",
+    "core_commit": "5cc5048cf8cb80c1252ecc839a3389030315259c",
+    "resource_ids_used": [
+      "gov_actions_api",
+      "gov_actions_snapshot",
+      "drep_vote_history_snapshot",
+      "gov_actions_all_snapshot",
+      "gov_actions_active_snapshot",
+      "gov_action_flags_snapshot",
+      "gov_poll_runs_snapshot",
+      "top_drep_votes_snapshot",
+      "gov_anchor_documents"
+    ]
+  },
+  "inputs_used": [
+    {
+      "resource_id": "gov_actions_api",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "drep_vote_history_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_all_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_active_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_action_flags_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_poll_runs_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "top_drep_votes_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_anchor_documents",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    }
+  ],
+  "scoring": {
+    "budget_pressure": 0.45,
+    "conflict_risk": 0.0,
+    "technical_value": 0.0,
+    "governance_alignment": 1.0
+  },
+  "freshness": {
+    "snapshot_age_seconds": 8,
+    "max_allowed_seconds": 21600,
+    "is_stale": false,
+    "snapshot_time": "2026-03-25T21:31:49.682301Z",
+    "freshness_source": "deep_research_dossiers.csv"
+  }
+}

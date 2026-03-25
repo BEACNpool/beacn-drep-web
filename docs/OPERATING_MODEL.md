@@ -1,0 +1,44 @@
+# BEACN DRep Operating Model (Public)
+
+This document explains how the BEACN DRep bot operates, with explicit anti-bias and anti-ambiguity controls.
+
+## System roles
+- **beacn-drep-soul**: governance doctrine (values and decision principles)
+- **beacn-drep-resources**: admitted public inputs only
+- **beacn-drep-core**: deterministic execution and rationale generation
+- **beacn-drep-web**: public transparency and audit UI
+
+## End-to-end flow
+1. Governance data snapshot exported from approved source pipeline
+2. Snapshot committed with hashes/manifests
+3. Core evaluates actions using doctrine + admitted resources only
+4. Core emits rationale + reproducibility envelope
+5. Replay verification checks integrity
+6. Public artifacts are published
+7. Web renders those exact artifacts
+
+## Bias and ambiguity controls
+- No hidden/private context allowed in recommendation logic
+- No undeclared resources allowed
+- No manual override scores allowed
+- Weak or stale evidence forces conservative outcomes (`ABSTAIN` / `NEEDS_MORE_INFO`)
+- Facts, inferences, and uncertainty are separated in rationale output
+- Treasury evaluations are pro-stewardship: strategic spending is valid, but financial assumptions and sustainability must be explicit and auditable
+
+## Reproducibility requirements
+Every decision should expose:
+- input hashes
+- snapshot bundle hash
+- soul/resources/core commits
+- resources used
+- replay-verifiable artifacts
+
+## Public trust stance
+This bot is designed to be auditable by third parties.
+If a claim cannot be verified from public artifacts, it should not be treated as decision evidence.
+
+## Self-learning / self-correction governance
+- Change control baseline and policy live in `beacn-drep-core/change-control/`.
+- Fundamental changes are hard-gated by public thresholds (`policy/fundamental_change_policy.json`).
+- Weekly reviews can propose change but cannot silently auto-apply doctrine-level changes.
+- Change-review outputs are intended to be committed and published over time for full public audit.

@@ -1,0 +1,125 @@
+{
+  "action_id": "gov_action1mldvtys6ketjg87wtpvr6cd77kdrd8sp62a8sxgadhmxx2s8lh7sqp2qedq",
+  "title": "gov_action1mldvtys6ketjg87wtpvr6cd77kdrd8sp62a8sxgadhmxx2s8lh7sqp2qedq",
+  "type": "ParameterChange",
+  "status": "active",
+  "source": {
+    "origin": "governance fetch pipeline",
+    "raw_input_hash": "sha256:db6f7cfa7bbc12550144918f7c1bbbb90758656ebcfa359ca6672617dfc90eac",
+    "detected_at": "2026-02-10T06:00:01.815720+00:00"
+  },
+  "decision": {
+    "vote": "NO",
+    "published_at": "2026-03-25T13:00:02.009603+00:00",
+    "signed": false,
+    "transaction_hash": null
+  },
+  "proof_of_vote": {
+    "vote": "NO",
+    "score": -0.17,
+    "confidence": 0.72,
+    "input_hash": "db6f7cfa7bbc12550144918f7c1bbbb90758656ebcfa359ca6672617dfc90eac",
+    "snapshot_bundle_hash": "3e1770a96c16bb3045e11ddac8c4c630258fba5948faaf962004e7bdff81198c",
+    "soul_commit": "ffdf6a8b929dfcd03eb707690676432e6d843bca",
+    "resources_commit": "c4477be87cf345890cf3a868ef300b600ab9fca4",
+    "core_commit": "5cc5048cf8cb80c1252ecc839a3389030315259c",
+    "rationale_markdown_path": "/data/output/gov_action1mldvtys6ketjg87wtpvr6cd77kdrd8sp62a8sxgadhmxx2s8lh7sqp2qedq-db6f7cfa7bbc/rationale.md"
+  },
+  "rationale": {
+    "summary": "Vote: NO. For this ParameterChange (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Protocol parameter changes carry system-wide risk. Confidence context: score -0.17; confidence 72.0%.",
+    "summary_raw": "Network DRep distribution used as one signal, not authority.",
+    "markdown_path": "/data/output/gov_action1mldvtys6ketjg87wtpvr6cd77kdrd8sp62a8sxgadhmxx2s8lh7sqp2qedq-db6f7cfa7bbc/rationale.md",
+    "missing_evidence": []
+  },
+  "proposal_evidence": {
+    "available": true,
+    "fetch_status": "ok",
+    "content_type": "application/json",
+    "http_status": "200",
+    "source_anchor_url": "https://ipfs.io/ipfs/bafkreigmd7xasljkmisbal5pu2xcqolr2fkre4jnlllgqrof4wctadxa7m",
+    "anchor_hash": "8fd434526d3b799ffe1f8ffb4d3373b9445f1e6bf8bcc3a6c4acb9b82f2daacf",
+    "file_sha256": "cc1fee092d2a6224102fafa6ae283971d15512712d5ad66845c5e585300ee0fb",
+    "content_bytes": "5115",
+    "fetched_at_utc": "2026-03-25T16:14:52Z",
+    "download_path": "/proposals/gov_action1mldvtys6ketjg87wtpvr6cd77kdrd8sp62a8sxgadhmxx2s8lh7sqp2qedq.json",
+    "preview": "{\n  \"@context\": {\n    \"@language\": \"en-us\",\n    \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n    \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n    \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n    \"body\": {\n      \"@id\": \"CIP108:body\",\n      \"@context\": {\n        \"references\": {\n          \"@id\": \"CIP108:references\",\n          \"@container\": \"@set\",\n          \"@context\": {\n            \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n            \"Other\": \"CIP100:OtherReference\",\n            \"label\": \"CIP100:reference-label\",\n            \"uri\": \"CIP100:reference-uri\",\n            \"referenceHash\": {\n              \"@id\": \"CIP108:referenceHash\",\n              \"@context\": {\n                \"hashDigest\": \"CIP108:hashDigest\",\n                \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n              }\n            }\n          }\n        },\n        \"title\": \"CIP108:title\",\n        \"abstract\": \"CIP108:abstract\",\n        \"motivation\": \"CIP108:motivation\",\n        \"rationale\": \"CIP108:rationale\"\n      }\n    },\n    \"authors\": {\n      \"@id\": \"CIP100:authors\",\n      \"@container\": \"@set\",\n      \"@context\": {\n        \""
+  },
+  "reproducibility": {
+    "soul_repo": "beacn-drep-soul",
+    "soul_commit": "ffdf6a8b929dfcd03eb707690676432e6d843bca",
+    "resources_repo": "beacn-drep-resources",
+    "resources_commit": "c4477be87cf345890cf3a868ef300b600ab9fca4",
+    "core_commit": "5cc5048cf8cb80c1252ecc839a3389030315259c",
+    "resource_ids_used": [
+      "gov_actions_api",
+      "gov_actions_snapshot",
+      "drep_vote_history_snapshot",
+      "gov_actions_all_snapshot",
+      "gov_actions_active_snapshot",
+      "gov_action_flags_snapshot",
+      "gov_poll_runs_snapshot",
+      "top_drep_votes_snapshot",
+      "gov_anchor_documents"
+    ]
+  },
+  "inputs_used": [
+    {
+      "resource_id": "gov_actions_api",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "drep_vote_history_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_all_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_actions_active_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_action_flags_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_poll_runs_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "top_drep_votes_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_anchor_documents",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    }
+  ],
+  "scoring": {
+    "budget_pressure": 0.17,
+    "conflict_risk": 0.0,
+    "technical_value": 0.0,
+    "governance_alignment": 0.72
+  },
+  "freshness": {
+    "snapshot_age_seconds": 7,
+    "max_allowed_seconds": 21600,
+    "is_stale": false,
+    "snapshot_time": "2026-03-25T21:31:49.682301Z",
+    "freshness_source": "deep_research_dossiers.csv"
+  }
+}
