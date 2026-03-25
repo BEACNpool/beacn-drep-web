@@ -229,6 +229,7 @@
     <div id="summaryBar" class="muted"></div>
     <div class="stack" id="agreementStack" style="margin:8px 0 12px;"></div>
     <div class="filter-row">
+      <label>Proposal Set: <select id="filterLegacy"><option value="active">Active only</option><option value="all">Include legacy</option></select></label>
       <label>Type: <select id="filterType"><option value="all">All</option></select></label>
       <label>Bot Vote: <select id="filterVote"><option value="all">All</option><option>YES</option><option>NO</option><option>ABSTAIN</option><option>NEEDS_MORE_INFO</option></select></label>
       <label>Agreement: <select id="filterAgreement"><option value="all">All</option><option value="aligned">Aligned</option><option value="diverged">Diverged</option><option value="unknown">Unknown</option></select></label>
@@ -341,11 +342,14 @@ function typeBadge(type){const t=(type||'').toLowerCase();let c='#58a6ff';if(t.i
 let allRows=[],rationaleById={},sortState={key:'proposed_epoch',asc:false};
 
 function renderTable(){
+  const legacyF=document.getElementById('filterLegacy').value;
   const typeF=document.getElementById('filterType').value;
   const voteF=document.getElementById('filterVote').value;
   const agF=document.getElementById('filterAgreement').value;
   let rows=allRows.filter(r=>{
-    return(typeF==='all'||(r.action_type||'')===typeF)&&(voteF==='all'||((r.bot_recommendation||'').toUpperCase()===voteF))&&(agF==='all'||((r.network_agreement||'').toLowerCase()===agF));
+    const status=(r.status||'').toLowerCase();
+    const activeOk=(legacyF==='all')||(status==='active');
+    return activeOk&&(typeF==='all'||(r.action_type||'')===typeF)&&(voteF==='all'||((r.bot_recommendation||'').toUpperCase()===voteF))&&(agF==='all'||((r.network_agreement||'').toLowerCase()===agF));
   });
   rows.sort((a,b)=>{const k=sortState.key;const av=a[k]??'',bv=b[k]??'';const na=parseFloat(av),nb=parseFloat(bv);let cmp;if(!Number.isNaN(na)&&!Number.isNaN(nb))cmp=na-nb;else cmp=String(av).localeCompare(String(bv));return sortState.asc?cmp:-cmp});
   const tb=document.querySelector('#votesTable tbody');tb.innerHTML='';
@@ -389,7 +393,7 @@ function renderTable(){
   renderTable();
 
   document.querySelectorAll('#votesTable th[data-sort]').forEach(th=>{th.addEventListener('click',()=>{const key=th.getAttribute('data-sort');if(sortState.key===key)sortState.asc=!sortState.asc;else{sortState.key=key;sortState.asc=true}renderTable()})});
-  ['filterType','filterVote','filterAgreement'].forEach(id=>{document.getElementById(id).addEventListener('change',renderTable)});
+  ['filterLegacy','filterType','filterVote','filterAgreement'].forEach(id=>{document.getElementById(id).addEventListener('change',renderTable)});
 
   const votes=allRows.reduce((acc,r)=>{const v=(r.bot_recommendation||'ABSTAIN').toUpperCase();acc[v]=(acc[v]||0)+1;return acc},{});
   const yes=votes.YES||0,no=votes.NO||0,abst=votes.ABSTAIN||0;const vt=Math.max(1,yes+no+abst);
