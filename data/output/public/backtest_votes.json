@@ -67,11 +67,11 @@
     "actual_drep_no_pct": "112.0",
     "actual_drep_abstain_pct": "14.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "4089e055523f378f79219e394ca01f2c00595225b23a346f72b7db14ee314b8d",
+    "explain_hash": "6eb919099b9ba001c03cd53612db167405a6c9a954a6c466e15f9b7e79cf3950",
     "input_hash": "b678c497af010f273b46d3c50a688b10ebcd65b9e345e334a6ead1b112a3a88b",
-    "snapshot_bundle_hash": "521e344b0ece99654f0d355d80ed512a7c1df8e4ed73b693d2978893d82aa466",
+    "snapshot_bundle_hash": "bf0e7a4afa013936040610966e3dbdb8ac80e984f5e1cf83adc940eb31804a3e",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://raw.githubusercontent.com/blockchainada/ga/refs/heads/main/ga01.jsonld"
   },
   {
@@ -117,11 +117,11 @@
     "actual_drep_no_pct": "9.0",
     "actual_drep_abstain_pct": "21.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "4499b959031dc2d3e8a34e72fd87e22ce10f2f9b38b47c1824aafa2f6265c753",
+    "explain_hash": "e71f6838433b4b8e876b6770e1b547ce933e680f873be9a535768ae8c25b3b92",
     "input_hash": "cb5ae16aaf3656fd4fa558263526a64b16eeff303c6ece39f51b64b39c1e3ffc",
-    "snapshot_bundle_hash": "6544dca4a0ab2ecc54d51a6f1200b7eed1f97217635ccc74ddae355245b295d8",
+    "snapshot_bundle_hash": "d2fbe18d4c4f26418d869a5e848bd0d948f30f19af5cb133facd188b7a63bf05",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreiada4nn5eaezg43esieduks6l57vzkjdo2yfby7yxv6jrat7ilrdq"
   },
   {
@@ -167,11 +167,11 @@
     "actual_drep_no_pct": "94.0",
     "actual_drep_abstain_pct": "33.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "de40cbe083403b2ff776640376466b8d64c9fd59a68f13b5e27c41399b82ec11",
+    "explain_hash": "d17398ac31c91f8c62ab067efd76c108a6ead4c8c93fb83636ce9f4507d0b36f",
     "input_hash": "f725c21f27fc18de8978dbaac169ef2c356a56c00de12c92d0cbff77a50dd28e",
-    "snapshot_bundle_hash": "e25c229edeb936a80c4712baf841839b74eabb256e178aa8f474bf0ceb96595a",
+    "snapshot_bundle_hash": "cb9fe9cdea3ceee172d6b78e7ce4c0350aaff0fa465e654110bfe7b1ee8a1a76",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmTRrewK9MzARcCSYNFwmqizjFpMRK2kZhe9R6NJU4XHwJ"
   },
   {
@@ -192,11 +192,11 @@
     "actual_drep_no_pct": "10.0",
     "actual_drep_abstain_pct": "7.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "a0552e651d63bd47f22a7e59a9a65f7c1e149fdc528e7b07f8d477dad0b1533a",
+    "explain_hash": "bec41c3ed326ce12599b335ac896a54767fd2a9af3d7446ee4105877bc04d55a",
     "input_hash": "a29adca6643f71dd715ca4e2802be6658a1f37a51870922f377f1e0df2ea423f",
-    "snapshot_bundle_hash": "b721c2a27aebcd7ec58c3fda2a55cc941d212a95b9dd78cd1c060ed1445ba4b2",
+    "snapshot_bundle_hash": "4e80a8a2bf2b06ef3d93dcf51c9532d5cc93295327474d75e34c8ff81fed798b",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreicbxui5lbdrgcpjwhlti3rqkxfnd3vveiinkcu2zak5bny435w4yq"
   },
   {
@@ -342,11 +342,11 @@
     "actual_drep_no_pct": "37.0",
     "actual_drep_abstain_pct": "8.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "071eb1e284dbe06be038114c37d63fb08e35cb58340c513bf8660b67a1365809",
+    "explain_hash": "6f71cc97626b11fc5b013ade5e0a4d0572c5a28e3a848041d8fd7da3c4462d7e",
     "input_hash": "ac24225341bf0a9853c2a4bc9d382fb03574b42eb2e662c8fff66b3c2fc70a9a",
-    "snapshot_bundle_hash": "eb6284f46d0a05384cf1eef963c7d8a34ed679bff87f035bbcc24df24b8f76cc",
+    "snapshot_bundle_hash": "0e890645f11cda4ca85cb176d8eb529abef8f9374c17f6d663a80041bd6755c9",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreihki45xehzrcyk6e7onyjc3u4mjg3vbd72oi5wfg2h6blemtr65yq"
   },
   {
@@ -392,11 +392,11 @@
     "actual_drep_no_pct": "13.0",
     "actual_drep_abstain_pct": "9.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "4ba647039dfa8aa611950ebf2ad77839e6892832f791a6c81293f141d397037c",
+    "explain_hash": "a492c341a0bcf1c57ea5e04cbe4d7ff07c5df86d5e493be24fab3107457a1bc5",
     "input_hash": "3bac9a3a91e31479fbc471d1cef98d21469e86029b039b238fef425a4f3fca77",
-    "snapshot_bundle_hash": "d1f2c4ddfe363a71d215c894f84b8a2e1012df3ec446be0f3b91dea6bb0096e6",
+    "snapshot_bundle_hash": "65931c58766bcaf37feee40ee92305c2f809b0628ad61649112827d3a35bd371",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreigivcba5jtrmzvr4ilvokyyzbryry63cz6ctow7tjmmkjxpvgfbsq"
   },
   {
@@ -492,11 +492,11 @@
     "actual_drep_no_pct": "34.0",
     "actual_drep_abstain_pct": "10.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "0129e59500933144b171e5d582fd7672708128dd367b4e48340a2af78c0c9925",
+    "explain_hash": "d727cfa4e65f34102eb7ee07b84c15f2b6ee020967e1609575332cbd30fefb3e",
     "input_hash": "767e5188eeefcb018dcdb320946c9f64f1128560b1ae8da8414e0d5e0cd9a9b1",
-    "snapshot_bundle_hash": "100686581f0ad750a597ead193abd12edb99b27e658c77220e8c7b5e5955328b",
+    "snapshot_bundle_hash": "9ca3ccc3d368e078abc7a1c9ab677d27ef01ba95ead04d8c213fe4e12929b619",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreidcvqu57gic4bigicuk6ssiykrkrfzi7c3jlwgiyxuskggqnyvcim"
   },
   {
@@ -767,11 +767,11 @@
     "actual_drep_no_pct": "20.0",
     "actual_drep_abstain_pct": "6.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "e1fad6bc6681a9d3cccdebc608fd6cb4d1e26826f29789c1217b6accb9aafec7",
+    "explain_hash": "cf764d5e34483bcd3885dc43a093646522feec0de2eb5e4a9373735a439d6f88",
     "input_hash": "f43cb2ed1639b64d67cd6ff94aeafc5e969a2e88a6146ecae01ebc654d355999",
-    "snapshot_bundle_hash": "9a4597f890112cb7daefa9317fe9b5386d27ca83f2510deb60ab29d645a82943",
+    "snapshot_bundle_hash": "52d446cf62f77e01971743df2dfedc890839481a19dd2f4ba4550d458052b7ae",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreig7hi75t33nvu5t6y4hqf26thdpwvwvqcuzo3o3ehccslrwtf6bwe"
   },
   {
@@ -817,11 +817,11 @@
     "actual_drep_no_pct": "19.0",
     "actual_drep_abstain_pct": "5.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "801fd04df6d1be75261fc48d7d9ba9e10874519891908f5bacb96376a372136a",
+    "explain_hash": "45cf404602afced947be8a07064156e249b60c4482a30e71bfc26b6a411452d2",
     "input_hash": "8671db1e97af8e8d9b9e7c31f2e67aa2a63894e34798e55ecad2f23620fadb84",
-    "snapshot_bundle_hash": "6f718cc2cb5dab905c4cfe9ec1ad1c2861c16376636885b42593937b4a9968ac",
+    "snapshot_bundle_hash": "e7a42476f58bc694ec84eda9c9957b01cb11acae8dc4a6674bd3622ba62e3bde",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreibwg74hpx5vyyixzggxdkunrqy6kdkx2mpp57r6fknkqe7z263omm"
   },
   {
@@ -842,11 +842,11 @@
     "actual_drep_no_pct": "23.0",
     "actual_drep_abstain_pct": "5.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "ceab63e4b82856475d41b9d50ee4e7750d3c875ba8e1c799d544dd849dee076b",
+    "explain_hash": "726da384ec8e31ab87c1eeeaeb55603742c63a96e4bf063525bcfe16f5ea5314",
     "input_hash": "d52de5ced756992af9f0a08b68abe5c79d83caee282b626c07a5b2b03315671c",
-    "snapshot_bundle_hash": "58881b66cec3ab55e281fcbdc8b0885240d11131d97b4f793b78dca722b5d530",
+    "snapshot_bundle_hash": "1b47389f1ac31ab76d7f31a05f8360c73be75c8ff1b0b859f2460341926bfedb",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreiedjhlwerulq5qg5tku2qqremf2cf2dguxvktttnjddei3fxct37a"
   },
   {
@@ -867,11 +867,11 @@
     "actual_drep_no_pct": "8.0",
     "actual_drep_abstain_pct": "1.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "969b58482af0e63d69b03113d08bcc5584863a6a988ff37db622aafc1b805806",
+    "explain_hash": "f86bb64c9d5ac4ec074077e896090d4e29fe192805f3bbac266fff6d84218c27",
     "input_hash": "ac369f2056db3f0cfac30a9a42fcefcb645b18159c8c06ff50860ce50bf4cc5f",
-    "snapshot_bundle_hash": "9787162794c168b02d34a7a7b3f41fe16a767a67905b7b375646e327e631f797",
+    "snapshot_bundle_hash": "993769f980d1166ac2ab220a56df59b1df95de4cf00fa3e6518de09ebca3653a",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreidjnukg5c7u5zlkxaciy4hkxfixvtquhx6uzlqpydvrxormfqpdm4"
   },
   {
@@ -892,11 +892,11 @@
     "actual_drep_no_pct": "10.0",
     "actual_drep_abstain_pct": "5.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "061a4e7d373f0f759a9f3b594f98826672273ec2080d7ff32f86d585b65d1765",
+    "explain_hash": "727f9af633252f06a9e2609ff591312917754193323b00d8cdc447d2e27f342f",
     "input_hash": "502c05551bd5bffaef566cb4632b1320e815d658116103ffc65cb03cc9458285",
-    "snapshot_bundle_hash": "0c0ea9bca35301a9f15a701feff1567e79f6ffe3329b91b810c839087b06259b",
+    "snapshot_bundle_hash": "6ba5ba014153fabbc6dcd47dede7bffa26b91c8da321197c1f9d6ca61b2a7c8f",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreihqhuiuwdjyukw4ul5obxz656ndyz5najokjhdw7mbdscskyaalfu"
   },
   {
@@ -917,11 +917,11 @@
     "actual_drep_no_pct": "34.0",
     "actual_drep_abstain_pct": "7.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "6714eb0166a4958a8d364ef254f021f7bd06e1d88c0715dcab4d86a367e3efdb",
+    "explain_hash": "a4574d5528c73878473795aab0bfe9fe678300d7d286aada5846798eb10f4569",
     "input_hash": "c1b3bca1226f30e20560dc890839ad7b077ef1f719ce2db15248117ed6c82753",
-    "snapshot_bundle_hash": "449cb8307034d48cd2ffdd6bce9c415b535e20278489f1c2b86a20a3ae42032a",
+    "snapshot_bundle_hash": "da83aa5325754bc86d36186db867df013e1b280198d38402f4d40dd1ce79a8d1",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreidlgy2mljdxjknsxzpy6im5xkgsw4ticvwqmgedecs53dzdqhgdlu"
   },
   {
@@ -992,11 +992,11 @@
     "actual_drep_no_pct": "15.0",
     "actual_drep_abstain_pct": "3.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "9c73ec7039a330130604197c20c1587ac67be8ae9e4d6b9621bfc744048fb403",
+    "explain_hash": "58e8ad302b88f396b94d9c62ceee5c2553937cb56946b9196f444bdcdd4eff9c",
     "input_hash": "cb852a82e7eaf0a691d994644fc93776d7e131ceccf384a9a2db2cffce06bffa",
-    "snapshot_bundle_hash": "1c4df9e9c7110284ad54deae638720f87b94ef6b1bb9537de81846f75a682dc5",
+    "snapshot_bundle_hash": "7dd2a25e84569b0255c68eb9f41f02b784541762174e8b41edc59c87c5e2a2a0",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreicmz5a6ylplflowjdj7vjzp6glt45k2r6mnhwlmzq7kjkl3fvuzeu"
   },
   {
@@ -1017,11 +1017,11 @@
     "actual_drep_no_pct": "13.0",
     "actual_drep_abstain_pct": "13.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "ff4d85ec381dba3cc5dceb7fdbb8e3dae95d9abac5799b2a877b8e1f67af76ac",
+    "explain_hash": "ed02bcb0ff30684de0baba7a509b410236ee4956205e09f0a6416d8af1dae30a",
     "input_hash": "25587704f3e21ac3278bba063a9d443b89ff0e63fb9766fb0fdebb6c9b602694",
-    "snapshot_bundle_hash": "0c8c3a51305e8d928a559fdaa681004c0bbfe72ee12e34adc1d9e9ef22d8ad70",
+    "snapshot_bundle_hash": "ca1484733c8d4b974d59431feb2b610b731325b4f763207f40342e1323665800",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreidgiirfod3axto3xf3nducsao5w4rp6vqrijeh5m6mqgdxotaafbq"
   },
   {
@@ -1042,11 +1042,11 @@
     "actual_drep_no_pct": "6.0",
     "actual_drep_abstain_pct": "7.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "ae80e0c829a4f1849abc12cb4b777cb83cfc07b0b2fcbe269daeecaf7a6a5613",
+    "explain_hash": "40399e024e19df8cd4bae55c09f2a23e794b0f988634daaf1aff6f289e2b80aa",
     "input_hash": "fb8aa5d54d6c864484ac2e894360d1d40b3951b45fb354f186d6d4f247705e12",
-    "snapshot_bundle_hash": "9721cf6d39b96f6d33269b48d116a43d36bbe7cbfe2eb256d51a7610efb3a6be",
+    "snapshot_bundle_hash": "9521c7832f85131e44ca936e8d16510fda9a244f2c7e119a89374f0bbe025eec",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreigt5xy56qjxd7dl2s7u6jxec2cfxevynppvgnnjifc2wawr7md5ha"
   },
   {
@@ -1117,11 +1117,11 @@
     "actual_drep_no_pct": "47.0",
     "actual_drep_abstain_pct": "13.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "9a3ce9f63164b75fba0f95328b74d4d33318049a5f638f3347e16c04d20f81ae",
+    "explain_hash": "df7d041123ec82b7fd7e7f780177d24e5910a8572e3b165ee072bf0ae1e19289",
     "input_hash": "779519ca4a7bcc9385e27e24990389e3f74351ec479215d09d92777e666f9dd3",
-    "snapshot_bundle_hash": "0b5d8311860ab6c5e61af63db6c05fbeb0133f8e797b272fb9dde3906fa87214",
+    "snapshot_bundle_hash": "b843ab73b27fa5293315ec690b6d17909f786dc0245535467a9a182f282de7b8",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreicjt5d4y7phbqwyhfkmtz75u2nck3is5cuywkcisnmtsuibdrm3li"
   },
   {
@@ -1142,11 +1142,11 @@
     "actual_drep_no_pct": "21.0",
     "actual_drep_abstain_pct": "6.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "050b0d387823e3b1dfb6b3260cdace2e7dc042d705f7dde305416baeb75e1ef5",
+    "explain_hash": "b79d5bb1dd19317a12376f272605d2433fff83dc64cb9de1dde57d1ed15d6495",
     "input_hash": "fa348c83fae1f92694dff9be50ba277c6f650e0e1b07d4441269759a3addb63e",
-    "snapshot_bundle_hash": "9373c0743fa5597859b64d1d8865e14522fdf99b0041ae273ec3849f39774c18",
+    "snapshot_bundle_hash": "0d5d82ec3bad5b056fb776171f714be368e2fa41101a842ecd5bac9cea11e721",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreigrw7v6q2wcnbgjd22ev6eepitgaegtkkmhzwmsccfxmejkc3okbm"
   },
   {
@@ -1167,11 +1167,11 @@
     "actual_drep_no_pct": "15.0",
     "actual_drep_abstain_pct": "6.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "e2045d7bb19be331b3d39ff190a2918220510ef959b617bd5fe2971149ef69ce",
+    "explain_hash": "1c3458a8d19342a01174658a6bad0656edecf91a1122f0a342cd7984904eda23",
     "input_hash": "60e86817c537b6695553a721caf397e36e33c3928e50cb230d8ae98a797c95c3",
-    "snapshot_bundle_hash": "4c4252c51a9e1a063483f59093d10536a7670ec5d3446b19206bf70ca9a4dfe8",
+    "snapshot_bundle_hash": "baf5beec01d67a129eebdcbf761e042ddddd214fd1156ea63238ace7a5770397",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreialtiknfumaxc23xjqxs2r4g5qjca3tikopmottieu5iq2sr77b3i"
   },
   {
@@ -1192,11 +1192,11 @@
     "actual_drep_no_pct": "114.0",
     "actual_drep_abstain_pct": "18.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "a354fb0e12d9647221d35f862f117bf70486770e435926fee56fdf1989b30176",
+    "explain_hash": "76328b723c6607639bce7e09fe33f8cd146e4e94bd9e1a85263abe72f247f4db",
     "input_hash": "5e7c06cbcade7c0593f15f2827b2c1af41cd46dc2bd7d7edbe91cfd3d53d20d0",
-    "snapshot_bundle_hash": "a94b93be0f00d163569e39a096c1b9098f784b176917dad180d6cef424f28914",
+    "snapshot_bundle_hash": "1d7a8a0dabdee0285354e8eba7900ed3ba97cac11bea62ef9684fbefdc4dacec",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://QmP25wNHBBh62eRUBnRbvpXz2DFJ5aQBgbqMq27zpHXNjs"
   },
   {
@@ -1217,11 +1217,11 @@
     "actual_drep_no_pct": "24.0",
     "actual_drep_abstain_pct": "11.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "5e787dbbff077b17e8c7a402120f63fe4b1d81c178d8bf54d770dcbe63416a05",
+    "explain_hash": "672112fe54e8503d9039a942655b8ed44e4744b2986c8a70a6c62e49d80bf201",
     "input_hash": "9a02c00684594a200851fa8ed40bfa6a9143010ef530540ff89b76c305b0bee4",
-    "snapshot_bundle_hash": "6872a56824a8562aeef4568389f474a8beec2936484f1415c386842d097ae934",
+    "snapshot_bundle_hash": "c48ac76d0f58deac59d216246f0834d3203b720e0e369f7f5228d1845e9d20ca",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://ipfs.io/ipfs/QmeMvA4j38n46hye724etsdUoUMzQ3T9bvmHMJUtNRf9ps"
   },
   {
@@ -1267,11 +1267,11 @@
     "actual_drep_no_pct": "105.0",
     "actual_drep_abstain_pct": "27.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "ae7e0bd7aa5425ee6e3489130fc8516ef1eb97e12068ad45e0dc23ff4b60eccd",
+    "explain_hash": "71d49856c66b712bf4378d721c3487b02c73fe223b6eb743386ba5630b4e844f",
     "input_hash": "8cbe1a171385cd65664134d46063cce4d4462b3e4958725a9a799d6292a4c23d",
-    "snapshot_bundle_hash": "0ded920416af5a8cc8100c08d23c0c5d11f0781453bd9d4e42ce4cfb98e67802",
+    "snapshot_bundle_hash": "79d3d76847ace1ee7b8100163089234adf697ea32feb4a4e667482c5c43b5675",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://QmZdZ387ZfcDwQ4YYSPAvWX42gX1w8nGPdhbwk7gxTtNBE"
   },
   {
@@ -1292,11 +1292,11 @@
     "actual_drep_no_pct": "37.0",
     "actual_drep_abstain_pct": "11.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "5938ccc4cad6ad90c17343fc00649ea9806f32657b8ef1f16cb7a3ce8ee2fcac",
+    "explain_hash": "f34d2456c51ac5409a5ca6918b92ee1e5444082de9552a78d4f41cf986f7f31e",
     "input_hash": "9e7658f38ec1d19d95e8ed38e1a6dc4bcf4786cb3df66190fe9407e9890fbeec",
-    "snapshot_bundle_hash": "ed05de39ba42060afa778cf54f81228f986f650c534b4adffca3503625fc0495",
+    "snapshot_bundle_hash": "9dc7a2c6d55ce042258414b4fa2b15083d9febb7401e8592de2f53d1cc526fcb",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreihju7a6zywpv3adaeeg4nnyrkewurng5csavsspmqsgikzg2suhry"
   },
   {
@@ -1492,11 +1492,11 @@
     "actual_drep_no_pct": "4.0",
     "actual_drep_abstain_pct": "6.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "499984aac01e2416db8f65cba64519b28418f726a18adbe87bc194d03e9a5479",
+    "explain_hash": "92f53b7df2e28d09157b1b9f62e80144dea18d02216969b06dbb1cee043f306d",
     "input_hash": "712dc7662bc811d6b3f7d64197ea4a03f8be473210c124da9827dfa1cf0efb74",
-    "snapshot_bundle_hash": "780d3c1f28c870dbf5c1bffeb1b61b23888d8dde7086e296ad08dd130457326d",
+    "snapshot_bundle_hash": "2fa85451fc16065b2284bca9783225c3d8eea3c9651ce09b5c16983487aedd14",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreifwx5z25x6bh5vcwgvzrajy7qlgisukglywjjduwfsrsnp752pqca"
   },
   {
@@ -1517,11 +1517,11 @@
     "actual_drep_no_pct": "29.0",
     "actual_drep_abstain_pct": "10.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "4053d4cd7e583adadc11174944902eb4100ec826e4d26f196adbed775df59c9a",
+    "explain_hash": "3ae9a711a15fdc4bb08bee90a72d73db91658e802c601e1b48ff44775e4efa28",
     "input_hash": "8cf0f9cdf18f3e331f322a6f8d6e6414762ec7e4e842193ad481c8e85a6e4439",
-    "snapshot_bundle_hash": "026247f88a9c2ec5a7bcd9976d2852587c1ff96efb8aa495672eda17a79d40e4",
+    "snapshot_bundle_hash": "15191e06da18085e088143a1fd7517a7798ed0cde0919d5cd91a42cf60ebde02",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreig4ural237c4gczp4srzygsmlaquiibixiskus2lwy4a6vilivgiy"
   },
   {
@@ -1567,11 +1567,11 @@
     "actual_drep_no_pct": "1.0",
     "actual_drep_abstain_pct": "1.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "a652f70f653a8c885865ae74744362e75f08de64c45bf70fb0416f605ac5d09e",
+    "explain_hash": "50a496e300949fe64a7f54898c8be155c7e2af27b2c8dbbe61deffccbc8333ab",
     "input_hash": "21ed813dccbdb5cb503fad4efab2a54e62d240340b1c4c06d133a71ef76b96f2",
-    "snapshot_bundle_hash": "3890dbd23202aa610f901fd06ed2379b009e11d9e50b9ae0aeb569f656ff4529",
+    "snapshot_bundle_hash": "0b06267a688b98d47382b1f9b454ce4888848a9506a43bdc5a1c2c8dd3554afb",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreibqxuceexlhali4nhqo7tvsdzrcndzr775pv7wfsdq2lbxtyk4emu"
   },
   {
@@ -1617,11 +1617,11 @@
     "actual_drep_no_pct": "135.0",
     "actual_drep_abstain_pct": "28.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "edf167153d8016b85d5236f4423e353acedebb3382d07df8a8b9c990db96fa46",
+    "explain_hash": "a5fda74b05297603a9e8258624cfa840a326a86cc7b65f5b22577227a47e8d18",
     "input_hash": "46c089dd5dc4c6ba70cb18244a267fdaec99a3beb2e1d172f193e4395d88904f",
-    "snapshot_bundle_hash": "444c5e8d5fb874ffec7b7146c21ab5d1fff1b80416d562d8e3f63850eb5f2b6c",
+    "snapshot_bundle_hash": "16a3277462fdae4779442531b1105186c9724323bc318cab5d1c5d16c30653a0",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://raw.githubusercontent.com/theeldermillenial/2025-liquidity-budget/df0b26d8796b19b566008ea9eaa8f17fef2cb6d4/info.jsonld"
   },
   {
@@ -1667,11 +1667,11 @@
     "actual_drep_no_pct": "5.0",
     "actual_drep_abstain_pct": "10.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "0b75fb64dda4e75d4b31de7ee83950b290b248d476d0411795ce6fb87c175308",
+    "explain_hash": "c6b6372438ef9c0f77a7256bdff16e96c4073369f8c00cc13100ed0b3b4c8262",
     "input_hash": "e2c05a81876520209e87aded277d3edab25c367a28d9e8cf40a8c775e8db091b",
-    "snapshot_bundle_hash": "6fd0b696d07cce47a0817429b55d1e435cb2cb31e9bdd96c8b9cb23efae562ef",
+    "snapshot_bundle_hash": "24f8480d9be74f9469276546165687fa50530300670100885dc0ba27fec98bc4",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreicw6kinbtfwxygoj4jf7khextfq6a3yirlhkldhd7zizdq4xu2ghm"
   },
   {
@@ -1717,11 +1717,11 @@
     "actual_drep_no_pct": "64.0",
     "actual_drep_abstain_pct": "17.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "dd51535b283e10618e156e29dcea792ebcbca505a25100ee7f47faf14aa3c287",
+    "explain_hash": "7be495f9c5355dc1dafec988b97feb9bafd31e99e22bcbb7d88bc1b6a307bbf9",
     "input_hash": "7e4ceaa06f5e58552cc034b41d28680007a7c25e70cc735f0066bbcd2cdf58a7",
-    "snapshot_bundle_hash": "38cfde17f90b72401c438c71b0b8d29eab60c9b138eadedff1d546b803d9b0e8",
+    "snapshot_bundle_hash": "55792834c31b077b01804ef54654d71810211db05557ffd9a571216fbe1642d1",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreiegpigegytetkwrqhftqphcqjkammmjipwq2d57s6xkfbtxiq3tei"
   },
   {
@@ -1781,7 +1781,7 @@
     "status": "ratified",
     "proposed_epoch": "519",
     "expiration_epoch": "526",
-    "bot_recommendation": "ABSTAIN",
+    "bot_recommendation": "YES",
     "bot_score": 0.0,
     "bot_confidence": 0.55,
     "network_majority": "UNKNOWN",
@@ -1792,11 +1792,11 @@
     "actual_drep_no_pct": "0.0",
     "actual_drep_abstain_pct": "0.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "046004f6ce95f2a3c7e53c201337aa5cf3ffb47be0b286ef5bededc45711e412",
+    "explain_hash": "6faebbf247a3a8a867554976f83dd5a712cc53129dab32a00fb5e47bec5c6d3c",
     "input_hash": "e0b6ba40c1b121551d8b217dc16df3e4eb6ccd07fb1a4c1f0680fbe647ac2c33",
-    "snapshot_bundle_hash": "6e276a7cffa2374c560fb6f502035bf9a3dcbbf17052e5c0a4134fa6ef524076",
+    "snapshot_bundle_hash": "89cbbf6bdf43a41e459bbbc1228b0fa7294891bf97a73e512c37f77f25399a7c",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://raw.githubusercontent.com/IntersectMBO/governance-actions/refs/heads/main/mainnet/2024-11-04-ppu/metadata.jsonld"
   },
   {
@@ -1817,11 +1817,11 @@
     "actual_drep_no_pct": "3.0",
     "actual_drep_abstain_pct": "2.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "b7ab08ad9dc59cc36959753cc93848484987a3c7cb9c0e2ac21ce5445cfeb6e6",
+    "explain_hash": "225bae871f8a2614184492d2ce86960a2836c0facf29c7814d092df27f92edb2",
     "input_hash": "d2c13acf104ad37692be56cdc95ec8a625f3799d1514140a3a76f9f544736bf7",
-    "snapshot_bundle_hash": "a9ec003db1ebae699a8fe6b476065729f5741688ede6449dd638c9bf9e151ac5",
+    "snapshot_bundle_hash": "82bbc53c57ec6cf049b695b77d52f0f30325e11c10f466f29d3556aac430bef1",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://QmV9raiDbx8cs5wspNT8EiX5ReusETusVerwQBSrmhrX8N"
   },
   {
@@ -1867,11 +1867,11 @@
     "actual_drep_no_pct": "10.0",
     "actual_drep_abstain_pct": "5.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "e21accd2e534d3ffae006adedd8c272002291ac2eb8e6641c9fff1f12c08e4f9",
+    "explain_hash": "20c8d586d46e63b6a306703235b7c5715c371fec3aa12e48a0a525bd562e69aa",
     "input_hash": "bfd343427082e3cab7246156d63199503f91ad2d65763b27227fbf7f5bdc25e6",
-    "snapshot_bundle_hash": "cdb8d7acbcc489b23a148a34d7b5ed9c9a0e1b736802dc543874efc60396cada",
+    "snapshot_bundle_hash": "d0753fff0725fdad942110973d48128efabf863380c96e4db38baa47656a8f26",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreiecqskxkmakkrzrs2xs2olh5jcwbuz5qr5gesp6merwcaydcaojiq"
   },
   {
@@ -1892,11 +1892,11 @@
     "actual_drep_no_pct": "31.0",
     "actual_drep_abstain_pct": "10.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "27d92886818fce055e014ea3a41540851ecbbb06c1b2df146aa8b799365f99f2",
+    "explain_hash": "7c99c9356290b356262f577a4b45f709223e01b8ebf44cc69802fa48314b47f1",
     "input_hash": "a0aeb5be339154ac6a64891865090f4a5aeebfdb3563a80ceb2d030f8a09b061",
-    "snapshot_bundle_hash": "9d7950da496d7d2f7218589ce8f406367008594314d8cda47ddbb5cf9a834aac",
+    "snapshot_bundle_hash": "a6896a5a10485074cbfe0f987b43b7be4016c6cb771ee3a1db83175943ad47bc",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreidpcmogdet4beysyxq4u7l2qywplbfnahudyevqjcu2yxiceurn3u"
   },
   {
@@ -1917,11 +1917,11 @@
     "actual_drep_no_pct": "55.0",
     "actual_drep_abstain_pct": "6.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "dd4cf2d0a7cae0f40fc4f0a3ff463a82618f0523a8b6e43e68c1815f2f1b2297",
+    "explain_hash": "f2674367425dc5741d158ff1d6eab9fe9c791292629e928b6ce1da71e63f1933",
     "input_hash": "db6f7cfa7bbc12550144918f7c1bbbb90758656ebcfa359ca6672617dfc90eac",
-    "snapshot_bundle_hash": "23d09a3a411b644995ac6939c9dccdb3ca08a309fb1af1bf08e636b826edec20",
+    "snapshot_bundle_hash": "d9023e7d99d917bdb6c8c11a0f57a5760a34ae6e8074effd63a413225c1fa88d",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreigmd7xasljkmisbal5pu2xcqolr2fkre4jnlllgqrof4wctadxa7m"
   },
   {
@@ -1942,11 +1942,11 @@
     "actual_drep_no_pct": "66.0",
     "actual_drep_abstain_pct": "25.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "921ff11b876fb691e5d2de27103d795343a279b87b455d60a8283ca53cddc99b",
+    "explain_hash": "c6502f9db65927815cf803a5e9e6fed463ce45973420892b9a11a3e0ad3dc40c",
     "input_hash": "2830704d0cf33f0dc42c5a754be62bf28916b83624eb70cd5fbf8447dc7b4e73",
-    "snapshot_bundle_hash": "1e18a15902f483c7e8a8f7639024d8526e2aa55c5da5489f3cf98ea97ac96dad",
+    "snapshot_bundle_hash": "faf606a2e134bb574fd856a5b663be9668f0e707aace832d4e409285646d124c",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmaWrgqcQS7jYyLYFpvBiamZ4mCoeasL78qaPASDaJ6dT3"
   },
   {
@@ -1967,11 +1967,11 @@
     "actual_drep_no_pct": "53.0",
     "actual_drep_abstain_pct": "11.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "2293e0fc221a123b8494374ba667f14bf39806f33e5e1be9fc24c2d77836d42a",
+    "explain_hash": "e917ad4cfc9e0265cc7f50ccfca86b26fd341556451fa3c1934a6770e6416817",
     "input_hash": "c9c81166a5a996054cb80c07706caa68201c11ce7e406cb77c1800c1c8c1995d",
-    "snapshot_bundle_hash": "2b708ceb82f8b9da59d05d648a8f49d542ec69aa68c08c38c048da160d93cf77",
+    "snapshot_bundle_hash": "b13b97bd82e1520a48d9e7252ab4afc67da8736f6feb4c1742723df35e0267a5",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://QmP9iDuML2VmoFigTJifBj87LxZ3DNnREyU27DE1MrpZDg"
   },
   {
@@ -1992,11 +1992,11 @@
     "actual_drep_no_pct": "39.0",
     "actual_drep_abstain_pct": "43.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "e104373786591174da0c338e3e97a741743fa0074504c651f3b3c2fedc5d7ce2",
+    "explain_hash": "65a99ec9e631fe28032323c42f07174006f5748dcbfd543ec11c6938a36eb0da",
     "input_hash": "84eca82df594ed6dadd68015988146db7661cd17095aa925eda429ba4470c057",
-    "snapshot_bundle_hash": "d7529ec9df6b31111962b1e6f612efa100a13cb9f6db51b9d2a0a51def48923e",
+    "snapshot_bundle_hash": "6d0fc2ebe53493bc71a46129ecfc77824f9f6ea982b872f86c62a717dfde779b",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreigc2vumhgcgfuouuk5ndom4dg3yxncuhdcsyirbkybggd5bv47sve"
   },
   {
@@ -2042,11 +2042,11 @@
     "actual_drep_no_pct": "0.0",
     "actual_drep_abstain_pct": "0.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "25f46d1bfe10796aa1481c4ff7b1c0e6a3b9b7c813e7dfdbd0014d4774e8dba8",
+    "explain_hash": "1fbd569e0ec2ff7d45541be341172a05e23e7cb92c05c7658634b3dc2c758cdc",
     "input_hash": "db0f1699b3a86db4c0d0a880edcda99fba3634f2d7718041ce39e8b2bc25ffca",
-    "snapshot_bundle_hash": "61976d3ea5f65211f57ccec8099f9d9e641b3f56d240b022e0eeda8791dab567",
+    "snapshot_bundle_hash": "a5ad50fb3b7f22db0b695e9843b4f72c511181dc20596a2ef8aaf8fbdc510d25",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://raw.githubusercontent.com/IntersectMBO/governance-actions/refs/heads/main/mainnet/2024-10-30-hf10/metadata.jsonld"
   },
   {
@@ -2092,11 +2092,11 @@
     "actual_drep_no_pct": "154.0",
     "actual_drep_abstain_pct": "23.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "62b9c9b846c90f620ce68e2672686c37ffaa1bf76da9b83edf6c138569d34f45",
+    "explain_hash": "54ce6f6e3bd9e0e9f287120f80dda18d30fa4dde72e2c6a21f3a6a7a88f15420",
     "input_hash": "6be3c39f4882a053e4e73e13f9bf35979486ef6401e9e983087b26cc6497d708",
-    "snapshot_bundle_hash": "02eb486793a78b72a46d9a5ed81b1c6e9cfb0744292a8b471f38b662b7285dc5",
+    "snapshot_bundle_hash": "08b0bce074605338ae27d53ba3e5e6a78e948e7224ebe0968f03ae927c3b2b66",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://raw.githubusercontent.com/snekadmin/Public/refs/heads/main/data_final.jsonld"
   },
   {
@@ -2117,11 +2117,11 @@
     "actual_drep_no_pct": "3.0",
     "actual_drep_abstain_pct": "16.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "a3e9e628386d69a20d9654af3082821f33affaeaa295f09035c85590a0d848ea",
+    "explain_hash": "a7dd8f62419ee2ae1a358bee36bdbc103a12641aff9c680453ca36905c9cd6b8",
     "input_hash": "ffe5711d1353db06114fd7363e8045691ddf1d1778d29ba80e9ba52e7c6d386f",
-    "snapshot_bundle_hash": "488fb0ab53de71ac33314400785f64d42086f29c146488c289423f7cdc424b29",
+    "snapshot_bundle_hash": "b3720e4469838f0bfd5a0c9dd5d4929f47f825848b6baf2ef1f6fcc52f4e659b",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://c-ipfs-gw.nmkr.io/ipfs/QmXdfDSSkR8TYBntMT4nuTL9sE9E44FJnpWVpaY8ZTfwjj"
   },
   {
@@ -2167,11 +2167,11 @@
     "actual_drep_no_pct": "63.0",
     "actual_drep_abstain_pct": "13.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "8301900da8e063e909cae8ce90b4c1dca4ff5f3318fc6651a59af9a3b798df42",
+    "explain_hash": "bb20f5cd3c846f725465f86e1402843b767debbd706f150e85e8961bf3c4109e",
     "input_hash": "d6436b02b3f8cf5e01b88bdf74760244ae8827c83d24d6fa3765b86a6b903f33",
-    "snapshot_bundle_hash": "984e3095cb06ddb5ad65056380b844895beaa8322a9eb6ca4584ffb5a5dd1244",
+    "snapshot_bundle_hash": "4a834807c20b4ac67775238a0e03f9d69c3cc237fb97a397dd400ea8dbab705c",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreibeajhkes7bxjlkghkingcgltqcwazz2ya5oknveqwt5nont7tg6u"
   },
   {
@@ -2217,11 +2217,11 @@
     "actual_drep_no_pct": "87.0",
     "actual_drep_abstain_pct": "19.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "d3110392a0e96a51256bd0ffa688503cf0c2776396d5304af0bbc85172ac61a4",
+    "explain_hash": "027d77f3bf4ad9b34eca4869f77626a430a330c8e18143c934ba038c1c171084",
     "input_hash": "e42d3747717f61169245de48d5ef833bbc63e274bbb162046df9f79db5e388c7",
-    "snapshot_bundle_hash": "a3bb6ad042621a63cd37a7d448424343d5bafba735f221cb6b678c03e4076071",
+    "snapshot_bundle_hash": "b817b05eb89db2579b643f71ac0268e2c46c3adc90fb018c167c41ba3dca4578",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://ipfs.io/ipfs/bafkreieu47jw2qoxmqz67qyhhj4pi7fssuth5s4mm42qleqtw5tuzs3pgu"
   },
   {
@@ -2292,11 +2292,11 @@
     "actual_drep_no_pct": "13.0",
     "actual_drep_abstain_pct": "12.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "63c7df4d1240ce34a7a9f8e12ff75cb82fe91ec3cc6dc8252846e03768c1b858",
+    "explain_hash": "62c9646f695c01b96da0e6c6bbc8dd496f0195203f53939446d6d859a2168c07",
     "input_hash": "d7f973148dac888dd219bc21c6938a601618a588c94ebaec74b60cc26468cc43",
-    "snapshot_bundle_hash": "9eca7d0c91b9e313f1d519b42f6a2dd6f9c22b78e7d94ea9589f43c0df2689df",
+    "snapshot_bundle_hash": "08a0517e96ba42ad10b67e16f0066ed711d2cdb29003fca98bd39b58a51842b8",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmR7khTUdWyQFdNvyXDsuyZLUNsdfm7Ejo9wKfKdRE3ReG"
   },
   {
@@ -2317,11 +2317,11 @@
     "actual_drep_no_pct": "53.0",
     "actual_drep_abstain_pct": "25.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "97ac5845a9be6cfe5effb5a54d18f0c0f499b1b9e6146d095e37046561351c0d",
+    "explain_hash": "e907f7ed4bce7a1e4f2e02e93b0529f61ce5601559c5196fb057e9e6e82325f6",
     "input_hash": "ca302668b3d0fbd0ec2cf73ee69c362fe7a86c8a879be75f81172fc812db80ee",
-    "snapshot_bundle_hash": "ee31714fde40b50707bf5f262aa8285e5cf6c2ebae31220f229e5072fb4ee213",
+    "snapshot_bundle_hash": "f0c324ccb050fe989828a08d783c5dd8dc9a90b137e4c642b82a42bd9187ba6f",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://bafkreig4vjv636y7yhc3va6u4u6euluzs7wxwas5ntwqrvyzafjnnbcsgu"
   },
   {
@@ -2342,11 +2342,11 @@
     "actual_drep_no_pct": "93.0",
     "actual_drep_abstain_pct": "21.0",
     "top10_vote_counts_json": "{}",
-    "explain_hash": "3b7fd32c736f4fd6b20b09149ff15e1a6f21f777010226dd7381178d7e0e7674",
+    "explain_hash": "6b4df9f81f43c0507138c377faead2285aa843c938f37e54c7708edd33ad9f11",
     "input_hash": "fe8e39ad73736de2e1ec13ec7e97c3b93abbf39b60013bdd4578e1478ffc4097",
-    "snapshot_bundle_hash": "cce3c24b73505e70420a3daff2f0bd8b92d9f4892e9d51b91c280efd85a7b75f",
+    "snapshot_bundle_hash": "fab639d009eb47546fba9ec3c6ee7dd15d320def31a4f2af19ea9f379611ebbe",
     "soul_commit": "9b9c687c5dd41c44a420f095526229f1732c52ca",
-    "resource_registry_commit": "69d5f23a15176fd44a38da60cd2e64f10fed71ec",
+    "resource_registry_commit": "48891fb4d7bed3422933fd79220769c28acb3e61",
     "anchor_url": "ipfs://QmWjcHsrq9kKHZZ7aPPFjqN6wLuxH9d8bcqssmrE7H4cvb"
   }
 ]
