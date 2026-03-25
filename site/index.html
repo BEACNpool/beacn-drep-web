@@ -480,7 +480,19 @@ function renderTable() {
     fetchJson(PATHS.weeklyReview),
   ]);
 
-  allRows = Array.isArray(backtest) ? backtest.filter(r => r.action_id && !String(r.action_id).startsWith('ga_')) : [];
+  const backtestRows = Array.isArray(backtest) ? backtest.filter(r => r.action_id && !String(r.action_id).startsWith('ga_')) : [];
+  const backtestById = Object.fromEntries(backtestRows.map(r => [r.action_id, r]));
+  const actionItems = Array.isArray(actions?.items) ? actions.items.filter(a => a.action_id && !String(a.action_id).startsWith('ga_')) : [];
+  allRows = actionItems.map(a => {
+    const b = backtestById[a.action_id] || {};
+    return {
+      ...b,
+      action_id: a.action_id,
+      action_type: a.type || b.action_type || '',
+      status: a.status || b.status || '',
+      bot_recommendation: (a.decision || b.bot_recommendation || 'ABSTAIN').toUpperCase(),
+    };
+  });
 
   const integrity = (audit && audit.integrity) || {};
   const pass = ![
@@ -530,11 +542,11 @@ function renderTable() {
     </div>
   `).join('');
 
-  const actionsSeen = Number(index?.stats?.actions_seen || 0);
-  const votesCast = Number(index?.stats?.votes_cast || 0);
-  const abstentions = Number(index?.stats?.abstentions || 0);
-  const abstainRate = Number(drep?.consistency?.abstain_rate || 0) * 100;
-  const rows = Number(backtestSummary?.rows || allRows.length || 0);
+  const rows = Number(allRows.length || 0);
+  const actionsSeen = rows;
+  const votesCast = rows;
+  const abstentions = allRows.filter(r => String(r.bot_recommendation || '').toUpperCase() === 'ABSTAIN').length;
+  const abstainRate = rows ? (abstentions / rows) * 100 : 0;
   const networkDiv = Number(backtestSummary?.network_diverged || 0);
   const networkDivRate = rows ? (networkDiv / rows) * 100 : 0;
 
