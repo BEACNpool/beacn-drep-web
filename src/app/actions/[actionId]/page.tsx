@@ -2,8 +2,9 @@ import HashBadge from "@/components/HashBadge";
 import ResourceList from "@/components/ResourceList";
 import { getActionDetail } from "@/lib/data";
 
-export default async function ActionPage({ params }: { params: { actionId: string } }) {
-  const d = await getActionDetail(params.actionId);
+export default async function ActionPage({ params }: { params: Promise<{ actionId: string }> }) {
+  const { actionId } = await params;
+  const d = await getActionDetail(actionId);
   return (
     <>
       <h1>Action {d.action_id}</h1>
