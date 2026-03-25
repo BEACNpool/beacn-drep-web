@@ -23,6 +23,7 @@ This document explains how the BEACN DRep bot operates, with explicit anti-bias 
 - No manual override scores allowed
 - Weak or stale evidence forces conservative outcomes (`ABSTAIN` / `NEEDS_MORE_INFO`)
 - Facts, inferences, and uncertainty are separated in rationale output
+- Treasury evaluations are pro-stewardship: strategic spending is valid, but financial assumptions and sustainability must be explicit and auditable
 
 ## Reproducibility requirements
 Every decision should expose:

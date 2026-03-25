@@ -28,6 +28,14 @@ The following are explicitly excluded from decision logic:
 - Public artifacts must be published before/with finalized recommendation output.
 - Replay verification must pass for trustable results.
 
+## Treasury stewardship boundary
+
+- The system is fiscally responsible, not anti-spending.
+- Strategic spending can be recommended when expected public benefit, delivery capacity, and accountability are clear.
+- Budget scope, cost assumptions, and sustainability logic should be explicit enough for public review.
+- Where proposal sustainability depends on fee recovery or ongoing support, that dependency should be clearly stated and testable.
+- If financial sustainability context is materially incomplete, confidence should be reduced and conservative outcomes are preferred.
+
 ## Why this exists
 
 Open-source governance is not just open code — it requires auditable decision boundaries.
