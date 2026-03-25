@@ -1,18 +1,11 @@
 # beacn-drep-web
 
-Static, auditable web layer for BEACN DRep transparency.
+Presentation layer for BEACN DRep outputs.
 
-This repo does not decide votes.
-It only publishes deterministic outputs derived from:
-- `beacn-drep-core` decision artifacts
-- `beacn-drep-resources` governance datasets
+Rules:
+- View-only
+- No governance decision logic
+- No hidden inputs
+- Reads public machine-generated JSON artifacts
 
-## Outputs
-- `data/output/public/backtest_votes.csv`
-- `data/output/public/backtest_votes.json`
-- `data/output/public/backtest_manifest.json`
-
-## Build
-```bash
-./scripts/build_backtest.sh
-```
+Expected artifact shape lives in `docs/DATA_SOURCES.md`.
