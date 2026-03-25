@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-03-25T17:17:25.536124+00:00",
+  "generated_at_utc": "2026-03-25T17:24:18.927857+00:00",
   "inputs": {
     "core_output_dir": "/home/ubuntudesktop/.openclaw/workspace/beacn-drep-core/data/output",
     "resources_governance_dir": "/home/ubuntudesktop/.openclaw/workspace/beacn-drep-resources/data/input/governance",
@@ -9,23 +9,23 @@
   },
   "summary": {
     "rows": 94,
-    "network_aligned": 42,
-    "network_diverged": 49,
+    "network_aligned": 89,
+    "network_diverged": 2,
     "top10_aligned": 0,
     "top10_diverged": 0
   },
   "outputs": [
     {
       "path": "data/output/public/backtest_votes.csv",
-      "sha256": "de0cf81e66c05855f71e9d5317153dcfba2aa2d3f7f1626472ba9ce0d4cb7439"
+      "sha256": "c22e91a41ce3a726403f0d707447ee88bb96bf0d0bf8ec1bb4e13276a2ad73e4"
     },
     {
       "path": "data/output/public/backtest_votes.json",
-      "sha256": "67fa70cf3c264c9b0d11353177c8b1e81900de8fc75556b04d12777da01adb9b"
+      "sha256": "ba8364b6d043fbdd0f3e95571645eeb66f17427906c4f7b6820a081f8dfb3b66"
     },
     {
       "path": "data/output/public/backtest_summary.json",
-      "sha256": "41f22e63cc2c58a71dc3fd63670d4603047e85d2e3ff9860ceb384f40f550bba"
+      "sha256": "b862bf4bdf09d7e64e5ef15b33a9c014cc268779ceb72734d1179ee102ef654a"
     }
   ]
 }
