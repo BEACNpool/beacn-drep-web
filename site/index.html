@@ -345,6 +345,31 @@
   </section>
 
   <section class="card">
+    <h2>What Humans Need to Review Next</h2>
+    <p class="muted">These proposals are intentionally paused at <span class="mono">NEEDS_MORE_INFO</span> until deep-research sections are complete. This is the "slow down and do it right" queue.</p>
+    <div id="humanQueueSummary" class="chip-row"></div>
+    <div class="viz-grid" style="margin-top:10px;">
+      <div>
+        <h3>Most-missing sections</h3>
+        <div id="humanQueueMissing" class="mini-list"></div>
+      </div>
+      <div>
+        <h3>Action review queue</h3>
+        <div id="humanQueueItems" class="mini-list"></div>
+      </div>
+      <div>
+        <h3>How to use this queue</h3>
+        <div class="muted">
+          <p>1) Read the action summary first.</p>
+          <p>2) Complete missing sections in deep-research dossier.</p>
+          <p>3) Re-run decisions so recommendation can move to YES/NO.</p>
+        </div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:8px;"><a target="_blank" href="../data/output/public/human_queue.json">Raw review queue (json)</a></p>
+  </section>
+
+  <section class="card">
     <h2>BEACN vs Other DReps</h2>
     <p class="muted">Comparison uses latest on-chain DRep votes from relay db-sync and current BEACN published decisions. Percentages are shown with sample sizes.</p>
     <div id="drepCompareSummary" class="chip-row"></div>
@@ -389,6 +414,7 @@ const PATHS = {
   treasury: 'data/output/public/treasury_summary.json',
   weeklyReview: 'docs/change-reviews/latest-weekly-review.json',
   drepComparison: 'data/output/public/drep_comparison.json',
+  humanQueue: 'data/output/public/human_queue.json',
 };
 
 function candidates(path) {
@@ -525,7 +551,7 @@ function renderTable() {
 }
 
 (async function main(){
-  const [backtest, backtestSummary, backtestManifest, audit, index, actions, rationales, drep, treasury, weekly, drepComparison] = await Promise.all([
+  const [backtest, backtestSummary, backtestManifest, audit, index, actions, rationales, drep, treasury, weekly, drepComparison, humanQueue] = await Promise.all([
     fetchJson(PATHS.backtest),
     fetchJson(PATHS.backtestSummary),
     fetchJson(PATHS.backtestManifest),
@@ -537,6 +563,7 @@ function renderTable() {
     fetchJson(PATHS.treasury),
     fetchJson(PATHS.weeklyReview),
     fetchJson(PATHS.drepComparison),
+    fetchJson(PATHS.humanQueue),
   ]);
 
   const backtestRows = Array.isArray(backtest) ? backtest.filter(r => r.action_id && !String(r.action_id).startsWith('ga_')) : [];
@@ -731,6 +758,25 @@ function renderTable() {
       ${a.detail_path ? `· <a target="_blank" href="../data/output/public/actions/${a.action_id}.json">detail json</a>` : ''}
     </div>
   `).join('');
+
+  // Human review queue
+  const hq = humanQueue || {};
+  const hqMissing = Array.isArray(hq.top_missing_sections) ? hq.top_missing_sections : [];
+  const hqItems = Array.isArray(hq.items) ? hq.items : [];
+  document.getElementById('humanQueueSummary').innerHTML = `
+    <span class="chip">blocked proposals: ${hq.blocked_count ?? 'n/a'}</span>
+    <span class="chip">dataset: ${hq.generated_at || 'unknown'}</span>
+  `;
+  document.getElementById('humanQueueMissing').innerHTML = hqMissing.slice(0, 10).map(x => `
+    <div><div>${x.section}: <b>${x.count}</b></div><div class="bar"><span style="width:${Math.min(100, (x.count / Math.max(1, (hq.blocked_count || 1))) * 100)}%; background: var(--vote-abstain)"></span></div></div>
+  `).join('') || '<div class="muted">No missing-section data.</div>';
+  document.getElementById('humanQueueItems').innerHTML = hqItems.slice(0, 12).map(x => `
+    <div style="padding:6px;border:1px solid var(--border-default);border-radius:8px;">
+      <div><span class="mono">${x.action_id}</span> · ${typeBadge(x.action_type || '')}</div>
+      <div class="muted" style="margin-top:4px;">${esc(x.summary || '')}</div>
+      <div style="margin-top:4px;"><b>Next step:</b> ${esc(x.next_step || '')}</div>
+    </div>
+  `).join('') || '<div class="muted">No blocked items in queue.</div>';
 
   // DRep comparison
   const dc = drepComparison || {};
