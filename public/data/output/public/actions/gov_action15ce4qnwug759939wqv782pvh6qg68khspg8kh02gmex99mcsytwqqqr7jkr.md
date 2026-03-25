@@ -1,6 +1,6 @@
 # Rationale: gov_action15ce4qnwug759939wqv782pvh6qg68khspg8kh02gmex99mcsytwqqqr7jkr
 Recommendation: **NO**
-Score: `-0.4` | Confidence: `0.92`
+Score: `-0.55` | Confidence: `1.0`
 
 ## Facts
 - Flag score present (3), reducing confidence.
@@ -9,12 +9,17 @@ Score: `-0.4` | Confidence: `0.92`
 - Network DRep distribution used as one signal, not authority.
 
 ## Uncertainty
-- Rule-based system; does not infer unstated intent.
+- Anchor document is not yet pinned locally for this action.
 
 ## Reproducibility
-- input_hash: `5519b19da8acbd2e5bf6a401ab0a2c8d33fbeb51ec821a9c42c780342859bb84`
-- snapshot_bundle_hash: `edf3f8d27744f2510de14c7302cfbcb043f03fa682d605e3a9ce9e68874bd34c`
-- soul_commit: `a91654ea13913abad9f40d096b3766e7a40b098d`
-- soul_text_hash: `381ad1a3901c1d82dba3c8fd7de622d15cfed3e71f587c5e8db0551077d1a0a5`
-- resource_registry_commit: `e0a51631722271611c498277b71008985770ffba`
-- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot`
+- input_hash: `5e7c06cbcade7c0593f15f2827b2c1af41cd46dc2bd7d7edbe91cfd3d53d20d0`
+- snapshot_bundle_hash: `02987414b9a1ea2377cf74e8a1ee75680201c6bffbc1a4f99abd74b7449cf8c6`
+- soul_commit: `f9f8fbe5a6ecfe866593cbd98f9ac10c63cd4c45`
+- soul_text_hash: `541cad5062dabf96804991a5bc1d49c208e646d20eda4289878faea09cedba16`
+- resource_registry_commit: `1b763701345e0cf335d389cef8dcd8dbea7cc5db`
+- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot, top_drep_votes_snapshot, gov_anchor_documents`
+- snapshot_age_seconds: `10008`
+- uncertainty_band: `HIGH`
+- evidence_depth_score: `3`
+- decision_probs: `{"ABSTAIN": 0.0, "NO": 1.0, "YES": 0.0}`
+

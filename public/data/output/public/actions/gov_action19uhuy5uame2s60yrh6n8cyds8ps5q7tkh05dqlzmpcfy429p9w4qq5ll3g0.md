@@ -1,8 +1,9 @@
 # Rationale: gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0
-Recommendation: **NO**
-Score: `-0.3` | Confidence: `0.79`
+Recommendation: **YES**
+Score: `0.1667` | Confidence: `0.6567`
 
 ## Facts
+- Pinned anchor document is available for this action.
 - Treasury withdrawal actions require elevated scrutiny.
 - Flag score present (7), reducing confidence.
 
@@ -13,9 +14,14 @@ Score: `-0.3` | Confidence: `0.79`
 - Rule-based system; does not infer unstated intent.
 
 ## Reproducibility
-- input_hash: `5c7414b4e3aff3058dea5d15844de9c632924ad2f828359c11a10cdb0f7aeb2d`
-- snapshot_bundle_hash: `4ebfd9adeb927689db5c88130322375c838388d47232697749a4fde5a8eb1a62`
-- soul_commit: `a91654ea13913abad9f40d096b3766e7a40b098d`
-- soul_text_hash: `381ad1a3901c1d82dba3c8fd7de622d15cfed3e71f587c5e8db0551077d1a0a5`
-- resource_registry_commit: `e0a51631722271611c498277b71008985770ffba`
-- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot`
+- input_hash: `2f148a6d8c23c1c15c98f2b2f743d3d9e5f45304fa4c5ffebb87a4860c624f4e`
+- snapshot_bundle_hash: `b17684adbfad12416070da5f48bd76aa46e18cbf7bfb846f40a0625ae1d93028`
+- soul_commit: `f9f8fbe5a6ecfe866593cbd98f9ac10c63cd4c45`
+- soul_text_hash: `541cad5062dabf96804991a5bc1d49c208e646d20eda4289878faea09cedba16`
+- resource_registry_commit: `1b763701345e0cf335d389cef8dcd8dbea7cc5db`
+- resources_used: `gov_actions_api, gov_actions_snapshot, treasury_withdrawals_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_treasury_recipients_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot, top_drep_votes_snapshot, gov_anchor_documents`
+- snapshot_age_seconds: `10008`
+- uncertainty_band: `MEDIUM`
+- evidence_depth_score: `4`
+- decision_probs: `{"ABSTAIN": 0.25, "NO": 0.25, "YES": 0.5}`
+

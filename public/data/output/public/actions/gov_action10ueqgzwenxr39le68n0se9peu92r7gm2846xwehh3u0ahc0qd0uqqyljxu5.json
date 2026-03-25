@@ -5,25 +5,26 @@
   "status": "expired",
   "source": {
     "origin": "governance fetch pipeline",
-    "raw_input_hash": "sha256:5d51bccea883a5aea7ad2814d4691618ae61f119a06b9a0020623428e150f104",
+    "raw_input_hash": "sha256:b678c497af010f273b46d3c50a688b10ebcd65b9e345e334a6ead1b112a3a88b",
     "detected_at": "2026-02-09T18:50:25.950966+00:00"
   },
   "decision": {
     "vote": "ABSTAIN",
-    "published_at": "2026-03-25T01:00:01.957828+00:00",
+    "published_at": "2026-03-25T13:00:02.009603+00:00",
     "signed": false,
     "transaction_hash": null
   },
   "rationale": {
     "summary": "Network DRep distribution used as one signal, not authority.",
-    "markdown_path": "/data/output/gov_action10ueqgzwenxr39le68n0se9peu92r7gm2846xwehh3u0ahc0qd0uqqyljxu5-5d51bccea883/rationale.md"
+    "markdown_path": "/data/output/gov_action10ueqgzwenxr39le68n0se9peu92r7gm2846xwehh3u0ahc0qd0uqqyljxu5-b678c497af01/rationale.md",
+    "missing_evidence": []
   },
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
-    "soul_commit": "a91654ea13913abad9f40d096b3766e7a40b098d",
+    "soul_commit": "f9f8fbe5a6ecfe866593cbd98f9ac10c63cd4c45",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "7a082343e172b537535d1fb8fd912bf688372917",
-    "core_commit": "ec5fd1493121fbaae2b82dfbe0f46af3a0f81b63",
+    "resources_commit": "1b763701345e0cf335d389cef8dcd8dbea7cc5db",
+    "core_commit": "7929e9be3c3c0a6cae0e9e0b10224a940fa74cf8",
     "resource_ids_used": [
       "gov_actions_api",
       "gov_actions_snapshot",
@@ -31,7 +32,9 @@
       "gov_actions_all_snapshot",
       "gov_actions_active_snapshot",
       "gov_action_flags_snapshot",
-      "gov_poll_runs_snapshot"
+      "gov_poll_runs_snapshot",
+      "top_drep_votes_snapshot",
+      "gov_anchor_documents"
     ]
   },
   "inputs_used": [
@@ -69,12 +72,28 @@
       "resource_id": "gov_poll_runs_snapshot",
       "type": "csv",
       "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "top_drep_votes_snapshot",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
+    },
+    {
+      "resource_id": "gov_anchor_documents",
+      "type": "csv",
+      "path": "registries/resource_registry.csv"
     }
   ],
   "scoring": {
-    "budget_pressure": 0.25,
+    "budget_pressure": 0.0233,
     "conflict_risk": 0.0,
     "technical_value": 0.0,
-    "governance_alignment": 0.77
+    "governance_alignment": 0.5433
+  },
+  "freshness": {
+    "snapshot_age_seconds": 10010,
+    "max_allowed_seconds": 21600,
+    "is_stale": false,
+    "snapshot_time": "2026-03-25T13:31:10.615500+00:00"
   }
 }

@@ -1,9 +1,9 @@
 # Rationale: gov_action18fd7jwa06fksmwumlcvlft8v4guvaa672qsp6xgenekvs4kmvcqsq8cqks4
 Recommendation: **YES**
-Score: `0.25` | Confidence: `0.8`
+Score: `0.5` | Confidence: `1.0`
 
 ## Facts
-- Deterministic rule set applied.
+- Pinned anchor document is available for this action.
 
 ## Inferences
 - Network DRep distribution used as one signal, not authority.
@@ -12,9 +12,14 @@ Score: `0.25` | Confidence: `0.8`
 - Rule-based system; does not infer unstated intent.
 
 ## Reproducibility
-- input_hash: `7399ed10fce96398bf511e97e350fafb4ae1c6c7b0540e6c91c7e630ac1e2d1c`
-- snapshot_bundle_hash: `6c2be22276be9478825a0b30aef21d26db4a6ed471c7e3f5edce014614424c3c`
-- soul_commit: `a91654ea13913abad9f40d096b3766e7a40b098d`
-- soul_text_hash: `381ad1a3901c1d82dba3c8fd7de622d15cfed3e71f587c5e8db0551077d1a0a5`
-- resource_registry_commit: `e0a51631722271611c498277b71008985770ffba`
-- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot`
+- input_hash: `0b2bcfe2eb32481cca46ae86a29a22eb8e0bcf28e322de4813c33bd9ae926f5c`
+- snapshot_bundle_hash: `2fe9c863d900d9bbbeec7d38f17cc40f827b84509c38b82f9399d484e9c0db00`
+- soul_commit: `f9f8fbe5a6ecfe866593cbd98f9ac10c63cd4c45`
+- soul_text_hash: `541cad5062dabf96804991a5bc1d49c208e646d20eda4289878faea09cedba16`
+- resource_registry_commit: `1b763701345e0cf335d389cef8dcd8dbea7cc5db`
+- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot, top_drep_votes_snapshot, gov_anchor_documents`
+- snapshot_age_seconds: `10008`
+- uncertainty_band: `HIGH`
+- evidence_depth_score: `3`
+- decision_probs: `{"ABSTAIN": 0.0, "NO": 0.0, "YES": 1.0}`
+

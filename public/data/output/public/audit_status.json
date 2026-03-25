@@ -1,18 +1,21 @@
 {
-  "generated_at": "2026-03-25T04:27:51Z",
+  "generated_at": "2026-03-25T16:18:05Z",
   "current_versions": {
-    "soul_commit": "a91654ea13913abad9f40d096b3766e7a40b098d",
-    "resources_commit": "7a082343e172b537535d1fb8fd912bf688372917",
-    "core_commit": "ec5fd1493121fbaae2b82dfbe0f46af3a0f81b63"
+    "soul_commit": "f9f8fbe5a6ecfe866593cbd98f9ac10c63cd4c45",
+    "resources_commit": "1b763701345e0cf335d389cef8dcd8dbea7cc5db",
+    "core_commit": "7929e9be3c3c0a6cae0e9e0b10224a940fa74cf8"
   },
   "pipeline": {
-    "last_scan_at": "2026-03-25T04:27:51Z",
-    "last_decision_at": "2026-03-25T04:27:51Z",
-    "last_publish_at": "2026-03-25T04:27:51Z"
+    "last_scan_at": "2026-03-25T16:18:05Z",
+    "last_decision_at": "2026-03-25T16:18:05Z",
+    "last_publish_at": "2026-03-25T16:18:05Z"
   },
   "integrity": {
     "hidden_inputs_allowed": false,
     "undeclared_resources_allowed": false,
-    "manual_override_enabled": false
+    "manual_override_enabled": false,
+    "private_assistant_context_allowed": false,
+    "private_memory_allowed": false,
+    "policy_doc": "docs/PUBLIC_CONTEXT_AND_LIMITS.md"
   }
 }

@@ -1,8 +1,9 @@
 # Rationale: gov_action1k2jertppnnndejjcglszfqq4yzw8evzrd2nt66rr6rqlz54xp0zsq05ecsn
 Recommendation: **ABSTAIN**
-Score: `-0.1` | Confidence: `0.65`
+Score: `0.0` | Confidence: `0.55`
 
 ## Facts
+- Pinned anchor document is available for this action.
 - Protocol parameter changes carry system-wide risk.
 
 ## Inferences
@@ -12,9 +13,14 @@ Score: `-0.1` | Confidence: `0.65`
 - No DRep distribution available.
 
 ## Reproducibility
-- input_hash: `4928ce2c359390f0211a103d0a3bc72b8c177754ae00991eaf21f5586434e9b9`
-- snapshot_bundle_hash: `a47bd9ea4cbeec41219bdde3dfd32c009f1c5a9d95f195d41f281a20ec0f57e5`
-- soul_commit: `a91654ea13913abad9f40d096b3766e7a40b098d`
-- soul_text_hash: `381ad1a3901c1d82dba3c8fd7de622d15cfed3e71f587c5e8db0551077d1a0a5`
-- resource_registry_commit: `e0a51631722271611c498277b71008985770ffba`
-- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot`
+- input_hash: `e0b6ba40c1b121551d8b217dc16df3e4eb6ccd07fb1a4c1f0680fbe647ac2c33`
+- snapshot_bundle_hash: `7afb50264ed7550519057041d236981448bb71d5b1ed114f46c9644214304592`
+- soul_commit: `f9f8fbe5a6ecfe866593cbd98f9ac10c63cd4c45`
+- soul_text_hash: `541cad5062dabf96804991a5bc1d49c208e646d20eda4289878faea09cedba16`
+- resource_registry_commit: `1b763701345e0cf335d389cef8dcd8dbea7cc5db`
+- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot, top_drep_votes_snapshot, gov_anchor_documents`
+- snapshot_age_seconds: `10010`
+- uncertainty_band: `MEDIUM`
+- evidence_depth_score: `3`
+- decision_probs: `{"ABSTAIN": 0.3939, "NO": 0.303, "YES": 0.303}`
+

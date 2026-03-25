@@ -1,8 +1,9 @@
 # Rationale: gov_action10ueqgzwenxr39le68n0se9peu92r7gm2846xwehh3u0ahc0qd0uqqyljxu5
 Recommendation: **ABSTAIN**
-Score: `-0.25` | Confidence: `0.77`
+Score: `-0.0233` | Confidence: `0.5433`
 
 ## Facts
+- Pinned anchor document is available for this action.
 - Flag score present (10), reducing confidence.
 
 ## Inferences
@@ -12,9 +13,14 @@ Score: `-0.25` | Confidence: `0.77`
 - High risk flags triggered conservative abstain.
 
 ## Reproducibility
-- input_hash: `5d51bccea883a5aea7ad2814d4691618ae61f119a06b9a0020623428e150f104`
-- snapshot_bundle_hash: `4b6f05e44760e4b5e2cb06a366cca72552412af1c4c148f59da1a283916a1d4e`
-- soul_commit: `a91654ea13913abad9f40d096b3766e7a40b098d`
-- soul_text_hash: `381ad1a3901c1d82dba3c8fd7de622d15cfed3e71f587c5e8db0551077d1a0a5`
-- resource_registry_commit: `e0a51631722271611c498277b71008985770ffba`
-- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot`
+- input_hash: `b678c497af010f273b46d3c50a688b10ebcd65b9e345e334a6ead1b112a3a88b`
+- snapshot_bundle_hash: `075742cd2cf783fa859a74da8cf39c4417d411281d09533629101367325e01a1`
+- soul_commit: `f9f8fbe5a6ecfe866593cbd98f9ac10c63cd4c45`
+- soul_text_hash: `541cad5062dabf96804991a5bc1d49c208e646d20eda4289878faea09cedba16`
+- resource_registry_commit: `1b763701345e0cf335d389cef8dcd8dbea7cc5db`
+- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot, top_drep_votes_snapshot, gov_anchor_documents`
+- snapshot_age_seconds: `10010`
+- uncertainty_band: `LOW`
+- evidence_depth_score: `3`
+- decision_probs: `{"ABSTAIN": 0.3939, "NO": 0.3172, "YES": 0.2889}`
+

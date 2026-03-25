@@ -1,8 +1,9 @@
 # Rationale: gov_action1h4ygjv0hjfj3lmafcm76rpdzcm8vsvj9k5wejn3npyxwxm3fesnqqw9kxxz
-Recommendation: **ABSTAIN**
-Score: `0.1` | Confidence: `0.62`
+Recommendation: **YES**
+Score: `0.4` | Confidence: `0.92`
 
 ## Facts
+- Pinned anchor document is available for this action.
 - Flag score present (3), reducing confidence.
 
 ## Inferences
@@ -12,9 +13,14 @@ Score: `0.1` | Confidence: `0.62`
 - Rule-based system; does not infer unstated intent.
 
 ## Reproducibility
-- input_hash: `6fbb6963f1aab64a619f273d32ca26a4e3e2f651117512fba28d85ee96325962`
-- snapshot_bundle_hash: `0ae55e5d2aaf678182c62a3db26a2f516a719a1bb491e796d59f2b0fdde4e6ec`
-- soul_commit: `a91654ea13913abad9f40d096b3766e7a40b098d`
-- soul_text_hash: `381ad1a3901c1d82dba3c8fd7de622d15cfed3e71f587c5e8db0551077d1a0a5`
-- resource_registry_commit: `e0a51631722271611c498277b71008985770ffba`
-- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot`
+- input_hash: `46728d669f6802f1554c25313c61c12ec4df7f04a500d2bfd96968133c005219`
+- snapshot_bundle_hash: `6e6480242fb33121d920e4f9ec6a6bd4d4360bd44504a6dd4f2bcea4ccdd6d4b`
+- soul_commit: `f9f8fbe5a6ecfe866593cbd98f9ac10c63cd4c45`
+- soul_text_hash: `541cad5062dabf96804991a5bc1d49c208e646d20eda4289878faea09cedba16`
+- resource_registry_commit: `1b763701345e0cf335d389cef8dcd8dbea7cc5db`
+- resources_used: `gov_actions_api, gov_actions_snapshot, drep_vote_history_snapshot, gov_actions_all_snapshot, gov_actions_active_snapshot, gov_action_flags_snapshot, gov_poll_runs_snapshot, top_drep_votes_snapshot, gov_anchor_documents`
+- snapshot_age_seconds: `10010`
+- uncertainty_band: `HIGH`
+- evidence_depth_score: `3`
+- decision_probs: `{"ABSTAIN": 0.0909, "NO": 0.0909, "YES": 0.8182}`
+
