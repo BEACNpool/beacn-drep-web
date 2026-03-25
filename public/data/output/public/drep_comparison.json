@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T19:11:47.021827Z",
+  "generated_at": "2026-03-25T21:21:43.503750Z",
   "actions_compared": 94,
   "dreps_compared": 728,
   "total_latest_votes_compared": 18342,
@@ -7,254 +7,212 @@
     {
       "drep_id": "drep15jspgw8ea9pw3w0fwyqam2lw58ulw7z6qhr8qyuah7j0yj962w7",
       "sample": 91,
-      "agreements": 21,
-      "divergences": 70,
-      "agreement_rate": 0.2308
-    },
-    {
-      "drep_id": "drep14l69ewnmc5h6uftda9ghs3mw49hdu7w93e9alhzxckp0v5pczql",
-      "sample": 91,
-      "agreements": 27,
-      "divergences": 64,
-      "agreement_rate": 0.2967
-    },
-    {
-      "drep_id": "drep1lhkqu7uhq9532xr5558q7gh5rl54m4ezav8p5yfkgz27yrx735a",
-      "sample": 91,
-      "agreements": 28,
-      "divergences": 63,
-      "agreement_rate": 0.3077
-    },
-    {
-      "drep_id": "drep17rksqsgqx8ej3rtc3x4gjm8a44u6w3qcshfm46yc9tq4zeffuzj",
-      "sample": 91,
       "agreements": 29,
       "divergences": 62,
       "agreement_rate": 0.3187
     },
     {
-      "drep_id": "drep1t2vz3lrh2vjxcah2mwdjlcsm9l2kxmqy4lqhnm7tawltsm6rugp",
-      "sample": 91,
-      "agreements": 31,
-      "divergences": 60,
-      "agreement_rate": 0.3407
-    },
-    {
-      "drep_id": "drep1km69g7ksf8t5g0h9d9tkrcd2tezxelx0wtr76rv2mrkl5nzd6v3",
+      "drep_id": "drep14l69ewnmc5h6uftda9ghs3mw49hdu7w93e9alhzxckp0v5pczql",
       "sample": 91,
       "agreements": 32,
       "divergences": 59,
       "agreement_rate": 0.3516
     },
     {
+      "drep_id": "drep1lhkqu7uhq9532xr5558q7gh5rl54m4ezav8p5yfkgz27yrx735a",
+      "sample": 91,
+      "agreements": 37,
+      "divergences": 54,
+      "agreement_rate": 0.4066
+    },
+    {
+      "drep_id": "drep17rksqsgqx8ej3rtc3x4gjm8a44u6w3qcshfm46yc9tq4zeffuzj",
+      "sample": 91,
+      "agreements": 37,
+      "divergences": 54,
+      "agreement_rate": 0.4066
+    },
+    {
+      "drep_id": "drep1km69g7ksf8t5g0h9d9tkrcd2tezxelx0wtr76rv2mrkl5nzd6v3",
+      "sample": 91,
+      "agreements": 38,
+      "divergences": 53,
+      "agreement_rate": 0.4176
+    },
+    {
+      "drep_id": "drep1t2vz3lrh2vjxcah2mwdjlcsm9l2kxmqy4lqhnm7tawltsm6rugp",
+      "sample": 91,
+      "agreements": 40,
+      "divergences": 51,
+      "agreement_rate": 0.4396
+    },
+    {
       "drep_id": "drep17vw9clp7lnv2qjqtnx68vm6yjfslpgewprqa4kxg7rmkznaryj5",
       "sample": 91,
-      "agreements": 36,
-      "divergences": 55,
-      "agreement_rate": 0.3956
+      "agreements": 45,
+      "divergences": 46,
+      "agreement_rate": 0.4945
     },
     {
       "drep_id": "drep1esmla69yhjn3yr8f0wzjyya07942pxveer34szw9uqzygjfq3ap",
       "sample": 90,
-      "agreements": 21,
-      "divergences": 69,
-      "agreement_rate": 0.2333
+      "agreements": 26,
+      "divergences": 64,
+      "agreement_rate": 0.2889
     },
     {
       "drep_id": "drep1uygrv5qxyalmdgu0xdjh8ru6juae6426y6048fugyf97g4srzkn",
       "sample": 90,
-      "agreements": 29,
-      "divergences": 61,
-      "agreement_rate": 0.3222
+      "agreements": 36,
+      "divergences": 54,
+      "agreement_rate": 0.4
     },
     {
       "drep_id": "drep1nvuyn6ldjenkcnjd005qt76ygmxuv5x2l2ram7eud4uywtrhp7k",
       "sample": 90,
-      "agreements": 29,
-      "divergences": 61,
-      "agreement_rate": 0.3222
-    },
-    {
-      "drep_id": "drep1nm3mpnnvtxvlmqt7lpnskm0clhtm7ngg4pm7qklv42j5qcvhhnw",
-      "sample": 90,
-      "agreements": 31,
-      "divergences": 59,
-      "agreement_rate": 0.3444
+      "agreements": 38,
+      "divergences": 52,
+      "agreement_rate": 0.4222
     },
     {
       "drep_id": "drep185r8rr6j9evjs984vnr7haf5cn3qw5w220usk23cxffvwuutaz3",
       "sample": 90,
-      "agreements": 31,
-      "divergences": 59,
-      "agreement_rate": 0.3444
-    },
-    {
-      "drep_id": "drep1lrtg6qx8tend00wuxs0eg5mgwxejrcu8s5w6zyk07745xuzqf7a",
-      "sample": 90,
-      "agreements": 32,
-      "divergences": 58,
-      "agreement_rate": 0.3556
-    },
-    {
-      "drep_id": "drep17h6rggykfz37srj63lkuah5rg9ed8tzwmwd2nqywl6u3yqvsasg",
-      "sample": 90,
-      "agreements": 33,
-      "divergences": 57,
-      "agreement_rate": 0.3667
+      "agreements": 39,
+      "divergences": 51,
+      "agreement_rate": 0.4333
     },
     {
       "drep_id": "drep1k3wde55ta4tzgjwzs3atre39nv0wlpz35manpgjfca7xwu7rnw2",
       "sample": 90,
-      "agreements": 33,
-      "divergences": 57,
-      "agreement_rate": 0.3667
+      "agreements": 40,
+      "divergences": 50,
+      "agreement_rate": 0.4444
+    },
+    {
+      "drep_id": "drep1nm3mpnnvtxvlmqt7lpnskm0clhtm7ngg4pm7qklv42j5qcvhhnw",
+      "sample": 90,
+      "agreements": 41,
+      "divergences": 49,
+      "agreement_rate": 0.4556
+    },
+    {
+      "drep_id": "drep1lrtg6qx8tend00wuxs0eg5mgwxejrcu8s5w6zyk07745xuzqf7a",
+      "sample": 90,
+      "agreements": 41,
+      "divergences": 49,
+      "agreement_rate": 0.4556
+    },
+    {
+      "drep_id": "drep17h6rggykfz37srj63lkuah5rg9ed8tzwmwd2nqywl6u3yqvsasg",
+      "sample": 90,
+      "agreements": 42,
+      "divergences": 48,
+      "agreement_rate": 0.4667
     },
     {
       "drep_id": "drep1jnmmkfwpta0yuwjchw0gu6csh75vy62088egy9n67d0zc7sn83m",
       "sample": 90,
-      "agreements": 37,
-      "divergences": 53,
-      "agreement_rate": 0.4111
+      "agreements": 45,
+      "divergences": 45,
+      "agreement_rate": 0.5
     },
     {
       "drep_id": "drep176sktgzd9ggczd9jtqs9xn2ql5ygddayt3c423ckh6kp7rvdm2x",
       "sample": 89,
-      "agreements": 23,
-      "divergences": 66,
-      "agreement_rate": 0.2584
+      "agreements": 30,
+      "divergences": 59,
+      "agreement_rate": 0.3371
     },
     {
       "drep_id": "drep13yw08r2vm4fek08uz0qvz6le379fsdalt3tmwkntxqlgjcdfekw",
       "sample": 89,
-      "agreements": 24,
-      "divergences": 65,
-      "agreement_rate": 0.2697
+      "agreements": 30,
+      "divergences": 59,
+      "agreement_rate": 0.3371
     },
     {
       "drep_id": "drep16v76d0z26a2wta75f4lt0mm9t6jq75ua67zqcz58vzk4jh5yuhc",
       "sample": 89,
-      "agreements": 34,
-      "divergences": 55,
-      "agreement_rate": 0.382
+      "agreements": 44,
+      "divergences": 45,
+      "agreement_rate": 0.4944
     },
     {
       "drep_id": "drep1k5zdh24kmcdfnnl50yng9t7n33kq4mfzdetrh3ps2vx07famecw",
       "sample": 89,
-      "agreements": 37,
-      "divergences": 52,
-      "agreement_rate": 0.4157
+      "agreements": 46,
+      "divergences": 43,
+      "agreement_rate": 0.5169
     },
     {
       "drep_id": "drep1gdgxcfaf24rur87f6rjkayn5slf7k0kspmq30nsfff6w23q8qgc",
       "sample": 88,
-      "agreements": 27,
-      "divergences": 61,
-      "agreement_rate": 0.3068
+      "agreements": 36,
+      "divergences": 52,
+      "agreement_rate": 0.4091
     },
     {
       "drep_id": "drep13d6sxkyz6st9h65qqrzd8ukpywhr8swe9f6357qntgjqye0gttd",
       "sample": 88,
-      "agreements": 31,
-      "divergences": 57,
-      "agreement_rate": 0.3523
+      "agreements": 40,
+      "divergences": 48,
+      "agreement_rate": 0.4545
     },
     {
       "drep_id": "drep14fs7kawaj8lk03e7595tkw04l5w7q7fypr9cms45p98vs6grces",
       "sample": 88,
-      "agreements": 32,
-      "divergences": 56,
-      "agreement_rate": 0.3636
+      "agreements": 41,
+      "divergences": 47,
+      "agreement_rate": 0.4659
     },
     {
       "drep_id": "drep1ya6hzdt4kplm2zfnshschz8vweujcxt3f4azyvaplk6xjyw262e",
       "sample": 87,
-      "agreements": 21,
-      "divergences": 66,
-      "agreement_rate": 0.2414
+      "agreements": 25,
+      "divergences": 62,
+      "agreement_rate": 0.2874
     },
     {
       "drep_id": "drep1nz5796lkhg02luejzc3aec3pdv0tz0s0tg94npxxck7qwayutfs",
       "sample": 87,
-      "agreements": 34,
-      "divergences": 53,
-      "agreement_rate": 0.3908
+      "agreements": 43,
+      "divergences": 44,
+      "agreement_rate": 0.4943
     }
   ],
   "latest_disagreements": [
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1j9lhu5vjeetyx5g6caty4z908e47c0jmmd4747x0et7lu4506zv",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-25 14:26:02"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1k0p2sr3pl4ylu86y0dlamae9r9csdsuhfpec2mrgtckkqxph6e8",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-25 13:09:32"
     },
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1k0p2sr3pl4ylu86y0dlamae9r9csdsuhfpec2mrgtckkqxph6e8",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-25 13:08:21"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1k0p2sr3pl4ylu86y0dlamae9r9csdsuhfpec2mrgtckkqxph6e8",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-25 13:07:50"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
       "drep_id": "drep1qev0wwxdu7edrslhzgt2k75396k7pmyclhjtm5v2plqfx9nyu2c",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-25 09:44:31"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1qev0wwxdu7edrslhzgt2k75396k7pmyclhjtm5v2plqfx9nyu2c",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-25 09:44:31"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1qev0wwxdu7edrslhzgt2k75396k7pmyclhjtm5v2plqfx9nyu2c",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-25 09:44:31"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1qev0wwxdu7edrslhzgt2k75396k7pmyclhjtm5v2plqfx9nyu2c",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-25 09:44:31"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1jnmmkfwpta0yuwjchw0gu6csh75vy62088egy9n67d0zc7sn83m",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-25 04:51:17"
     },
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1yeqgjtznp6w6w06aldmymccp9a9vzwsjh0dxljv2d5jqqjfhahy",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-24 10:09:02"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1yeqgjtznp6w6w06aldmymccp9a9vzwsjh0dxljv2d5jqqjfhahy",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-24 10:01:12"
     },
@@ -268,37 +226,16 @@
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1km69g7ksf8t5g0h9d9tkrcd2tezxelx0wtr76rv2mrkl5nzd6v3",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-24 08:44:21"
     },
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1xhmp3acuyjxfhj2sdrhg49cxm3s5lhpehu588vz6l5ygx5qlfvk",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-24 02:59:13"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1xhmp3acuyjxfhj2sdrhg49cxm3s5lhpehu588vz6l5ygx5qlfvk",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-24 02:59:13"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1xhmp3acuyjxfhj2sdrhg49cxm3s5lhpehu588vz6l5ygx5qlfvk",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-24 02:59:13"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep15tv59ngt58zm9ps5dtg4v7a4mqztf57l8slkzfxdw2kfk8qdtdz",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-24 02:47:25"
     },
     {
       "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
@@ -310,21 +247,7 @@
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1zzuasedw4v7ctfdfvrsmr6surqxh78fuakxvdnztu0y4xnc8cmk",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-23 11:25:19"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1zzuasedw4v7ctfdfvrsmr6surqxh78fuakxvdnztu0y4xnc8cmk",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-23 11:25:19"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1zzuasedw4v7ctfdfvrsmr6surqxh78fuakxvdnztu0y4xnc8cmk",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-23 11:25:19"
     },
@@ -336,46 +259,11 @@
       "vote_time_utc": "2026-03-23 10:18:17"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1u05yg5ttgkchzpwly339xrc026x27unxjd6vd7dv7umzj2xns0e",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-23 09:44:19"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep19ryvtdugtzffk0l0prd8egy8vfrwh7gjd084kxqvfsr550e3u0c",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-23 03:50:39"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep19ryvtdugtzffk0l0prd8egy8vfrwh7gjd084kxqvfsr550e3u0c",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-23 03:50:39"
-    },
-    {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep19ryvtdugtzffk0l0prd8egy8vfrwh7gjd084kxqvfsr550e3u0c",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-23 03:50:39"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1ya6hzdt4kplm2zfnshschz8vweujcxt3f4azyvaplk6xjyw262e",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-23 01:21:12"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1c604nf9akj2u2gqsqq8vqhw7jz6j0usvrr4ny68weqm95h8v2vk",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-22 23:26:43"
     },
     {
       "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
@@ -394,21 +282,14 @@
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1g2q57dx43zf7wd3wdnur6t7q632k5t29nrl84cd7d2tp53qzfyz",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-22 18:58:15"
     },
     {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1yn6hlm88yyacdm9lej0n2kp4u9y2m55mnha82ugn46afkspmyfv",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-22 18:31:04"
-    },
-    {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1yn6hlm88yyacdm9lej0n2kp4u9y2m55mnha82ugn46afkspmyfv",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-22 18:31:04"
     },
@@ -422,168 +303,77 @@
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1yn6hlm88yyacdm9lej0n2kp4u9y2m55mnha82ugn46afkspmyfv",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-22 18:31:04"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep15t44tkj2h0x7p2n8ewufh4fsk754adlftngrefzgz587sgm4k45",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-22 12:22:47"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep15t44tkj2h0x7p2n8ewufh4fsk754adlftngrefzgz587sgm4k45",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-22 12:19:27"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep15t44tkj2h0x7p2n8ewufh4fsk754adlftngrefzgz587sgm4k45",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-22 12:18:26"
-    },
-    {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep14fs7kawaj8lk03e7595tkw04l5w7q7fypr9cms45p98vs6grces",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-22 07:42:55"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep14fs7kawaj8lk03e7595tkw04l5w7q7fypr9cms45p98vs6grces",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-22 07:39:52"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep14fs7kawaj8lk03e7595tkw04l5w7q7fypr9cms45p98vs6grces",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-22 07:37:07"
-    },
-    {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1m2k6dp66gr83chkff2fr6y76wgta5xx8umstphsrrsw9ylhcfha",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-22 02:38:05"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1m2k6dp66gr83chkff2fr6y76wgta5xx8umstphsrrsw9ylhcfha",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-22 02:35:37"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1m2k6dp66gr83chkff2fr6y76wgta5xx8umstphsrrsw9ylhcfha",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-22 02:29:58"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep16v76d0z26a2wta75f4lt0mm9t6jq75ua67zqcz58vzk4jh5yuhc",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-22 00:50:49"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep16v76d0z26a2wta75f4lt0mm9t6jq75ua67zqcz58vzk4jh5yuhc",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-22 00:50:49"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep16v76d0z26a2wta75f4lt0mm9t6jq75ua67zqcz58vzk4jh5yuhc",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-22 00:50:49"
-    },
-    {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep12wy5ruujw0tef4uxhqd23gae8dqfn0sqh4mxmsxnqpz578tn3m0",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-21 22:47:05"
     },
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep12wy5ruujw0tef4uxhqd23gae8dqfn0sqh4mxmsxnqpz578tn3m0",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-21 22:45:13"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep13hw8d4m6pc9wfj2xmpr3xjhvl4wyhkvkqwq6qxn9atw9ssqheer",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-21 19:37:50"
     },
     {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep13d6sxkyz6st9h65qqrzd8ukpywhr8swe9f6357qntgjqye0gttd",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-21 15:50:51"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep13d6sxkyz6st9h65qqrzd8ukpywhr8swe9f6357qntgjqye0gttd",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-21 15:30:02"
-    },
-    {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1lrtg6qx8tend00wuxs0eg5mgwxejrcu8s5w6zyk07745xuzqf7a",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-21 14:50:20"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1lrtg6qx8tend00wuxs0eg5mgwxejrcu8s5w6zyk07745xuzqf7a",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-21 12:51:00"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1lrtg6qx8tend00wuxs0eg5mgwxejrcu8s5w6zyk07745xuzqf7a",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-21 12:39:23"
-    },
-    {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1k3wde55ta4tzgjwzs3atre39nv0wlpz35manpgjfca7xwu7rnw2",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-21 10:32:51"
     },
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep17pxh60vrch90fhqnj578064jka7hpuq6axx52g2qygjp7l0cyjd",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-21 09:56:33"
     },
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep17pxh60vrch90fhqnj578064jka7hpuq6axx52g2qygjp7l0cyjd",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-21 09:56:33"
     },
@@ -597,100 +387,51 @@
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep17pxh60vrch90fhqnj578064jka7hpuq6axx52g2qygjp7l0cyjd",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-21 09:56:33"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1l46t0lcnllnlhya4e2zjvpwvdr07nfd2my3yuaa2azrkj2cw4jl",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-21 07:36:26"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1l46t0lcnllnlhya4e2zjvpwvdr07nfd2my3yuaa2azrkj2cw4jl",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-21 07:16:24"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1l46t0lcnllnlhya4e2zjvpwvdr07nfd2my3yuaa2azrkj2cw4jl",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-21 07:14:59"
-    },
-    {
       "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
       "drep_id": "drep1wfwvaduzxyg75a67m5k0u4m746ymzefqs4nsxz2mrv5dwm22ntt",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-20 20:04:01"
     },
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1wfwvaduzxyg75a67m5k0u4m746ymzefqs4nsxz2mrv5dwm22ntt",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-20 20:04:01"
     },
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1wfwvaduzxyg75a67m5k0u4m746ymzefqs4nsxz2mrv5dwm22ntt",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-20 20:04:01"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1wfwvaduzxyg75a67m5k0u4m746ymzefqs4nsxz2mrv5dwm22ntt",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-20 20:04:01"
     },
     {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1wwmwukesapdkwzqycnfmtlva4hxdgmvuudxpczv88ujewk5tgkt",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 17:34:22"
-    },
-    {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1wwmwukesapdkwzqycnfmtlva4hxdgmvuudxpczv88ujewk5tgkt",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-20 17:34:22"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1wwmwukesapdkwzqycnfmtlva4hxdgmvuudxpczv88ujewk5tgkt",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 17:34:22"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1wwmwukesapdkwzqycnfmtlva4hxdgmvuudxpczv88ujewk5tgkt",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-20 17:34:22"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep16yrdjg5my5mnfscnzfekjuawz609sqqdu8w7c4jth26yqkxf5l4",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 16:52:04"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep16yrdjg5my5mnfscnzfekjuawz609sqqdu8w7c4jth26yqkxf5l4",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-20 16:52:04"
     },
     {
       "action_id": "gov_action1k5vwlfrxtyusd2ec37tckd54gjvqn2kd72xj4t6wkkapdv7zfg0qq468n2r",
@@ -702,154 +443,84 @@
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1h3wz72hly530mwd07cnln59h9ztqlw3d6cl7fp30dc7n7f6zcj8",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-20 15:20:03"
     },
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1h3wz72hly530mwd07cnln59h9ztqlw3d6cl7fp30dc7n7f6zcj8",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-20 15:15:43"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1h3wz72hly530mwd07cnln59h9ztqlw3d6cl7fp30dc7n7f6zcj8",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-20 15:13:59"
     },
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep13yw08r2vm4fek08uz0qvz6le379fsdalt3tmwkntxqlgjcdfekw",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-20 14:44:09"
     },
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep13yw08r2vm4fek08uz0qvz6le379fsdalt3tmwkntxqlgjcdfekw",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-20 14:39:52"
     },
     {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep106asgfntqf5snyw7glg3tk9a2gh7epcps7kf98j9ma4czh2r0f3",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 14:34:07"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep106asgfntqf5snyw7glg3tk9a2gh7epcps7kf98j9ma4czh2r0f3",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 14:34:07"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep106asgfntqf5snyw7glg3tk9a2gh7epcps7kf98j9ma4czh2r0f3",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 14:34:07"
-    },
-    {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep106asgfntqf5snyw7glg3tk9a2gh7epcps7kf98j9ma4czh2r0f3",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-20 14:34:07"
     },
     {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1jdxaxuafcx4p4nk4qz4jt2jahds50aea9y0zx7yqrlduulw68zx",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 13:54:15"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep15dhxmqgz80u27n92lwmscgu38ddygvtvhwm7gzx50yxevakp3qh",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 12:06:10"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep15dhxmqgz80u27n92lwmscgu38ddygvtvhwm7gzx50yxevakp3qh",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 12:06:10"
-    },
-    {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep15dhxmqgz80u27n92lwmscgu38ddygvtvhwm7gzx50yxevakp3qh",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-20 12:06:10"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep15dhxmqgz80u27n92lwmscgu38ddygvtvhwm7gzx50yxevakp3qh",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-20 12:06:10"
     },
     {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1nz5796lkhg02luejzc3aec3pdv0tz0s0tg94npxxck7qwayutfs",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 07:35:19"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1nz5796lkhg02luejzc3aec3pdv0tz0s0tg94npxxck7qwayutfs",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-20 07:35:19"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1nz5796lkhg02luejzc3aec3pdv0tz0s0tg94npxxck7qwayutfs",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 07:35:19"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1lhkqu7uhq9532xr5558q7gh5rl54m4ezav8p5yfkgz27yrx735a",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-20 01:48:51"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1lhkqu7uhq9532xr5558q7gh5rl54m4ezav8p5yfkgz27yrx735a",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-20 01:46:38"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep17ruta75sml90s48hazp7f2phsw0m4nl8s3mvffe0ylvfs9jkk4a",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-19 19:39:07"
     },
     {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep17ruta75sml90s48hazp7f2phsw0m4nl8s3mvffe0ylvfs9jkk4a",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-19 19:35:21"
-    },
-    {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1esmla69yhjn3yr8f0wzjyya07942pxveer34szw9uqzygjfq3ap",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-19 18:08:33"
     },
@@ -863,7 +534,7 @@
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1esmla69yhjn3yr8f0wzjyya07942pxveer34szw9uqzygjfq3ap",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-19 18:08:33"
     },
@@ -877,210 +548,84 @@
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1esmla69yhjn3yr8f0wzjyya07942pxveer34szw9uqzygjfq3ap",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-19 18:08:33"
     },
     {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1nm3mpnnvtxvlmqt7lpnskm0clhtm7ngg4pm7qklv42j5qcvhhnw",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-19 16:26:12"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep185yt5r9avk7m9zfyx4cuycak9eeksj0w6rfua6t9c4q6k23mz02",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-19 16:20:30"
-    },
-    {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep185yt5r9avk7m9zfyx4cuycak9eeksj0w6rfua6t9c4q6k23mz02",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-19 16:18:08"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep185yt5r9avk7m9zfyx4cuycak9eeksj0w6rfua6t9c4q6k23mz02",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-19 16:17:41"
-    },
-    {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep185yt5r9avk7m9zfyx4cuycak9eeksj0w6rfua6t9c4q6k23mz02",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-19 16:16:27"
     },
     {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1vhzjtaezsrc3f3llde8nyt9gcx6s3akmrl5hxg7xaqs9c379mvw",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-19 13:58:51"
-    },
-    {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1asj4l0kevmyqegyezfrjky0jdjdkee0sruxxu2cj5c0uvmucfcj",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-19 13:00:12"
     },
     {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1asj4l0kevmyqegyezfrjky0jdjdkee0sruxxu2cj5c0uvmucfcj",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-19 12:47:11"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1asj4l0kevmyqegyezfrjky0jdjdkee0sruxxu2cj5c0uvmucfcj",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-19 12:46:25"
-    },
-    {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1asj4l0kevmyqegyezfrjky0jdjdkee0sruxxu2cj5c0uvmucfcj",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-19 12:40:03"
     },
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1km69g7ksf8t5g0h9d9tkrcd2tezxelx0wtr76rv2mrkl5nzd6v3",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-19 10:39:10"
     },
     {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1uygrv5qxyalmdgu0xdjh8ru6juae6426y6048fugyf97g4srzkn",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-19 09:47:28"
-    },
-    {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1uygrv5qxyalmdgu0xdjh8ru6juae6426y6048fugyf97g4srzkn",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-19 09:47:28"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1uygrv5qxyalmdgu0xdjh8ru6juae6426y6048fugyf97g4srzkn",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-19 09:47:28"
     },
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1jde8rt3uh9yw23wkyf8zr8874u2g0qaue4d860fwdx7gzlktygq",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
-      "vote_time_utc": "2026-03-19 04:01:41"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1jde8rt3uh9yw23wkyf8zr8874u2g0qaue4d860fwdx7gzlktygq",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
       "vote_time_utc": "2026-03-19 04:01:41"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep13u452z2d7xwzdmh205v6w2fuvgp6msyam3al57nak0ehyeyxrvx",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-18 21:32:33"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1jdxaxuafcx4p4nk4qz4jt2jahds50aea9y0zx7yqrlduulw68zx",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 18:57:21"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1phvyckc7tqqlftyxqvp9fjdgczac4swsc7ssj26h785uxhwx0tt",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 16:58:50"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1phvyckc7tqqlftyxqvp9fjdgczac4swsc7ssj26h785uxhwx0tt",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 16:55:09"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1xyw2mnsg6fkr5wpp2et93m7ny2hk0css9cjptguqsnrn2ujk252",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 14:24:07"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1xyw2mnsg6fkr5wpp2et93m7ny2hk0css9cjptguqsnrn2ujk252",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 14:04:10"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1t2vz3lrh2vjxcah2mwdjlcsm9l2kxmqy4lqhnm7tawltsm6rugp",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 12:07:24"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep155cz0w692c98wgf46zq4cz8sg9z8ycdat3qd39egygz6k2yawm6",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 11:47:29"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1f8dqtkx6snn7wn7ygdsyxqx5q2x0kmak5je4jvpxmx36y5qvcup",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 08:45:08"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1lhkqu7uhq9532xr5558q7gh5rl54m4ezav8p5yfkgz27yrx735a",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 06:01:23"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1uygrv5qxyalmdgu0xdjh8ru6juae6426y6048fugyf97g4srzkn",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 05:12:10"
-    },
-    {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1fcwj52pvrep5luusk0068v3pha84h5758w0tx8hgjr7q7k9e55q",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-18 01:52:45"
     },
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1fcwj52pvrep5luusk0068v3pha84h5758w0tx8hgjr7q7k9e55q",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-18 01:52:45"
     },
@@ -1094,7 +639,7 @@
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1fcwj52pvrep5luusk0068v3pha84h5758w0tx8hgjr7q7k9e55q",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-18 01:52:45"
     },
@@ -1108,58 +653,9 @@
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1lzv2vk9u0l9qahz6zgnmkyv6y5qs8lzaukhstwfrqdf0ywhsfd3",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-18 00:32:39"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1lzv2vk9u0l9qahz6zgnmkyv6y5qs8lzaukhstwfrqdf0ywhsfd3",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 00:31:47"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1lzv2vk9u0l9qahz6zgnmkyv6y5qs8lzaukhstwfrqdf0ywhsfd3",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-18 00:29:58"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1lzv2vk9u0l9qahz6zgnmkyv6y5qs8lzaukhstwfrqdf0ywhsfd3",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-18 00:28:07"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1s66dp7mlmpvqwqp4xltvzn6q2086whe0n48kwrfrmmyngmuvvhr",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 21:40:27"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1ju2udpph53uuaut4sy6ss46rs9595yeaqnxjsvsms5htkyup4cn",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 21:20:40"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1ju2udpph53uuaut4sy6ss46rs9595yeaqnxjsvsms5htkyup4cn",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 21:20:40"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1ju2udpph53uuaut4sy6ss46rs9595yeaqnxjsvsms5htkyup4cn",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 21:20:40"
     },
     {
       "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
@@ -1171,7 +667,7 @@
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1ju2udpph53uuaut4sy6ss46rs9595yeaqnxjsvsms5htkyup4cn",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-17 21:20:40"
     },
@@ -1183,23 +679,9 @@
       "vote_time_utc": "2026-03-17 20:44:46"
     },
     {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep185r8rr6j9evjs984vnr7haf5cn3qw5w220usk23cxffvwuutaz3",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-17 20:39:31"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep185r8rr6j9evjs984vnr7haf5cn3qw5w220usk23cxffvwuutaz3",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 20:31:35"
-    },
-    {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep185r8rr6j9evjs984vnr7haf5cn3qw5w220usk23cxffvwuutaz3",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-17 20:24:09"
     },
@@ -1213,350 +695,105 @@
     {
       "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
       "drep_id": "drep1kxetjk2yxfzxv3r26rttvur3gngwxhfpzfe4a8vxzg92cwyeu2q",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-17 19:39:36"
     },
     {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1g204cphavzgc4fkz0wmwywsfqvf2wxvvc6ayt9euj220xy7zhfp",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 19:16:00"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1g204cphavzgc4fkz0wmwywsfqvf2wxvvc6ayt9euj220xy7zhfp",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 19:13:05"
-    },
-    {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1g204cphavzgc4fkz0wmwywsfqvf2wxvvc6ayt9euj220xy7zhfp",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-17 19:10:02"
     },
     {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1hz3af6wgav29ue9e8tdlgr2kd4gpfned63rupkt9z9h7zueerle",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 16:14:20"
-    },
-    {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1hz3af6wgav29ue9e8tdlgr2kd4gpfned63rupkt9z9h7zueerle",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-17 16:12:03"
     },
     {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1hz3af6wgav29ue9e8tdlgr2kd4gpfned63rupkt9z9h7zueerle",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 15:30:48"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1xfzdeu7mutvla824en2mreg08h97gf0m7q2rcsg7nuspy6k0ysx",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-17 15:15:41"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1xfzdeu7mutvla824en2mreg08h97gf0m7q2rcsg7nuspy6k0ysx",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 15:03:52"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1xfzdeu7mutvla824en2mreg08h97gf0m7q2rcsg7nuspy6k0ysx",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 15:03:52"
-    },
-    {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1yk4lqv8va8hyhmxhmmr3vlfsja84y09cw03vllpxcqh7qlxdlh4",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-17 14:07:58"
     },
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep15jspgw8ea9pw3w0fwyqam2lw58ulw7z6qhr8qyuah7j0yj962w7",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-17 13:39:28"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep15jspgw8ea9pw3w0fwyqam2lw58ulw7z6qhr8qyuah7j0yj962w7",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 13:37:30"
-    },
-    {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep15jspgw8ea9pw3w0fwyqam2lw58ulw7z6qhr8qyuah7j0yj962w7",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-17 13:36:54"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep197uw8vcnn85whye0yqqes2tps773a3dcncgtqek05lh623md0ta",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-17 11:46:47"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep197uw8vcnn85whye0yqqes2tps773a3dcncgtqek05lh623md0ta",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 11:46:03"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep197uw8vcnn85whye0yqqes2tps773a3dcncgtqek05lh623md0ta",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 11:44:47"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep17h6rggykfz37srj63lkuah5rg9ed8tzwmwd2nqywl6u3yqvsasg",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 11:25:41"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep17h6rggykfz37srj63lkuah5rg9ed8tzwmwd2nqywl6u3yqvsasg",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-17 11:25:41"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep17h6rggykfz37srj63lkuah5rg9ed8tzwmwd2nqywl6u3yqvsasg",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 11:25:41"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep13d6sxkyz6st9h65qqrzd8ukpywhr8swe9f6357qntgjqye0gttd",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 06:41:59"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1jnmmkfwpta0yuwjchw0gu6csh75vy62088egy9n67d0zc7sn83m",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 06:21:44"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1t8hsjjvqh5lxp9p0ejsdh20wl2a6fc83u0l0asug8yhr6lgc03l",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-17 01:01:11"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1wrgh82x40ktxp27caqlts0a2uf4gphl2pp9zlvkh0lnnsmd5m40",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 17:52:13"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1w34scjn42tdn5n30pflygwc4hk8htlwcpd9ldkyk4ftvu2dvfw8",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 08:24:11"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1w34scjn42tdn5n30pflygwc4hk8htlwcpd9ldkyk4ftvu2dvfw8",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 08:24:11"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
       "drep_id": "drep1slvssvt0tuxzfm4c5dx0zr6ql6v63a2d90m0m5e330jvjh4vvdt",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-16 05:36:46"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1slvssvt0tuxzfm4c5dx0zr6ql6v63a2d90m0m5e330jvjh4vvdt",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 05:36:46"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1slvssvt0tuxzfm4c5dx0zr6ql6v63a2d90m0m5e330jvjh4vvdt",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 05:36:46"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1slvssvt0tuxzfm4c5dx0zr6ql6v63a2d90m0m5e330jvjh4vvdt",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 05:36:46"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1zekyxrq5auz5c8gf0p6zehtmfnl7s9q4uqq8m4wkvm4e764u3yw",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 05:08:32"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1assw7l953xsy73ndy9sxmeqwy4yhr3gentgax7lcjynz7qkg5zx",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 01:12:55"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1t8hsjjvqh5lxp9p0ejsdh20wl2a6fc83u0l0asug8yhr6lgc03l",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 00:56:34"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1npqc9m60dg9a27e852jn8wse9h3l975qsgwgh22mmh2eqzrlsfc",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 00:43:51"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1h95f0wrxasn0fwfajwe8jtjfdw5nd880d073wh2llvxk54rvnus",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-16 00:16:17"
     },
     {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep13lrngcjhwpqdv4hdzgq2j0vdctahcw7fmhzy2dq239dq5xgtv28",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-15 23:19:35"
     },
     {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep13lrngcjhwpqdv4hdzgq2j0vdctahcw7fmhzy2dq239dq5xgtv28",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-15 23:18:39"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1gzytparheacgne639a99cgfy9qk3muwc8qzrr2th3czpg87cn35",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-15 23:15:04"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1k4h4cd5jknvcfeq5uuzqthpl7sdjxrwf9gn25tdk49qxyfhusgm",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-15 21:18:10"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1yzzd7prdl628lwac455e0sc5wtw2fldg3f2th6jg7r5c7pvf3mk",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-15 20:58:28"
-    },
-    {
-      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
-      "drep_id": "drep1u632p38chcackajaw84rhsx7vpsxz4fcetee2tct8pyrgeftpr7",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-15 20:43:25"
-    },
-    {
-      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
-      "drep_id": "drep1u632p38chcackajaw84rhsx7vpsxz4fcetee2tct8pyrgeftpr7",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-15 20:42:27"
-    },
-    {
       "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
       "drep_id": "drep1u632p38chcackajaw84rhsx7vpsxz4fcetee2tct8pyrgeftpr7",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
       "vote_time_utc": "2026-03-15 20:40:55"
     },
     {
       "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1u632p38chcackajaw84rhsx7vpsxz4fcetee2tct8pyrgeftpr7",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-15 20:38:47"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1wrgh82x40ktxp27caqlts0a2uf4gphl2pp9zlvkh0lnnsmd5m40",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "YES",
-      "vote_time_utc": "2026-03-15 19:15:38"
-    },
-    {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
       "drep_id": "drep1etgpm75kxaxns4umz3q6wjxpq84a28gf6pktjf94nm26vuxrmnn",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-15 17:53:18"
     },
     {
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "drep_id": "drep1etgpm75kxaxns4umz3q6wjxpq84a28gf6pktjf94nm26vuxrmnn",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-15 17:53:18"
     },
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1etgpm75kxaxns4umz3q6wjxpq84a28gf6pktjf94nm26vuxrmnn",
-      "beacn_vote": "NEEDS_MORE_INFO",
-      "drep_vote": "NO",
-      "vote_time_utc": "2026-03-15 17:53:18"
-    },
-    {
-      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
-      "drep_id": "drep1etgpm75kxaxns4umz3q6wjxpq84a28gf6pktjf94nm26vuxrmnn",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-15 17:53:18"
     },
     {
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "drep_id": "drep1h40trnskdt3pcpkn0sp34sped5yls3tumu6ntx27wtuf2ha9wyx",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "NO",
       "vote_time_utc": "2026-03-15 17:24:28"
     },
@@ -1570,16 +807,779 @@
     {
       "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
       "drep_id": "drep155e6dn7y7nnwk2uwtye9k0t68amhj6ne5am5y9f35h7qs9gl4vf",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "beacn_vote": "YES",
       "drep_vote": "ABSTAIN",
       "vote_time_utc": "2026-03-15 14:41:42"
     },
     {
-      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
-      "drep_id": "drep1e6cuc37dxye87epzzmcfqs6t32s6ev924jp6aga77jmmvf9va2t",
-      "beacn_vote": "NEEDS_MORE_INFO",
+      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
+      "drep_id": "drep1fddctek2mflkdyzlens6lcr5sxs9cpksjt0pdtngar202gakhds",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-15 13:20:05"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1ed3wny76rl4d6e3yh3sxu7yk75mzlcahukppfvcezljmkgqx478",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-15 10:23:56"
+    },
+    {
+      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
+      "drep_id": "drep1ed3wny76rl4d6e3yh3sxu7yk75mzlcahukppfvcezljmkgqx478",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-15 10:22:51"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1czz325trwzwfzpy7vwt2xh4hlv8enlfssd7j4mtl7x3ckyktpsd",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-15 00:51:58"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep153cev8lvy5gfppq0s62h5wdnxz4pcwcc80amr0t0l04qcfq2ww8",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-14 21:29:24"
+    },
+    {
+      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
+      "drep_id": "drep1gsnseus5um6kckgtyx3pvav23wv9ss2pzyndawtj3uqsw5dr4q5",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-14 20:33:57"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1000002hneyj7jl9y95m0zxdsg6dp9n9y59lvlm7xjqp4qh2jx7h",
+      "beacn_vote": "NO",
       "drep_vote": "YES",
-      "vote_time_utc": "2026-03-15 14:36:48"
+      "vote_time_utc": "2026-03-14 16:22:58"
+    },
+    {
+      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
+      "drep_id": "drep1wf9d9vl7fea4qn23sjpxrg89gzq7fysef4pv76h0qtffq7j2ryr",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-14 15:43:22"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1t2vz3lrh2vjxcah2mwdjlcsm9l2kxmqy4lqhnm7tawltsm6rugp",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-14 12:39:41"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1jjx7efq77a0gtx49h9vvtraq9prsp45u5q3qrah6vw7p5t2sx66",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-14 08:10:39"
+    },
+    {
+      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
+      "drep_id": "drep176sktgzd9ggczd9jtqs9xn2ql5ygddayt3c423ckh6kp7rvdm2x",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-14 02:48:07"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep176sktgzd9ggczd9jtqs9xn2ql5ygddayt3c423ckh6kp7rvdm2x",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-14 02:48:07"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep18c6dw0e6z9lx65f22zrzgl0z49j48k39ttxqk4q6h953utzepy5",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-13 20:34:31"
+    },
+    {
+      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
+      "drep_id": "drep1knfjmx50fh4vsyznaefn4xl49pg9wdy2a463sr457mj5u92jrel",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-13 18:47:41"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1knfjmx50fh4vsyznaefn4xl49pg9wdy2a463sr457mj5u92jrel",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-13 18:44:24"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1knfjmx50fh4vsyznaefn4xl49pg9wdy2a463sr457mj5u92jrel",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-13 18:34:17"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1gcw8ua25n6wswssjap75f5ecg4d4jzdnyrhcfeahep90w240qj5",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-13 17:10:01"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep12wy5ruujw0tef4uxhqd23gae8dqfn0sqh4mxmsxnqpz578tn3m0",
+      "beacn_vote": "NO",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-13 13:01:55"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep10fcecuw3h3na96627x0s9l2guaycss7n8g3pdqg3x39rgj4l209",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-13 10:48:34"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1xet3sscmgq2ma7d495h3yxj7uxpmfxq0ja5nspsqaus7k9ugq3t",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-13 09:16:34"
+    },
+    {
+      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
+      "drep_id": "drep1mh6673rn092zlph2qnurmhrtj7ud945c24q37qwmn5lcwtcpnmz",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-13 07:52:35"
+    },
+    {
+      "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
+      "drep_id": "drep14l69ewnmc5h6uftda9ghs3mw49hdu7w93e9alhzxckp0v5pczql",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-13 01:55:50"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1g2q57dx43zf7wd3wdnur6t7q632k5t29nrl84cd7d2tp53qzfyz",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-12 20:47:36"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1k0p2sr3pl4ylu86y0dlamae9r9csdsuhfpec2mrgtckkqxph6e8",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-12 13:34:13"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1a7vhjmrqr6682u0ljxws9tl8gun6sx7laq0qsjqmmurt6nzwctt",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-12 02:03:34"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep105mh7rrg8a9sr8grxc3y48gsxx9y9f9tk65xmu6yvc44j485h4w",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-11 21:36:23"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep105mh7rrg8a9sr8grxc3y48gsxx9y9f9tk65xmu6yvc44j485h4w",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 21:31:33"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1t2ngdtxfxdj33nvnqercfmaf7ycg3fvarus2ckrhmpzq6l3dtd5",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-11 17:58:53"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1t2ngdtxfxdj33nvnqercfmaf7ycg3fvarus2ckrhmpzq6l3dtd5",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 17:55:18"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1mh6673rn092zlph2qnurmhrtj7ud945c24q37qwmn5lcwtcpnmz",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 15:55:46"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1526vywz49jweqq39rvvw429vxcdpwvrwc33ycrdymv5jqeavazh",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 15:52:50"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1526vywz49jweqq39rvvw429vxcdpwvrwc33ycrdymv5jqeavazh",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 15:47:18"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1526vywz49jweqq39rvvw429vxcdpwvrwc33ycrdymv5jqeavazh",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 15:43:57"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1mh6673rn092zlph2qnurmhrtj7ud945c24q37qwmn5lcwtcpnmz",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 15:41:13"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1mvn7l9djdckd533eql2rxx42wr93sdvdzwp3zmz4j8h6ss7vkfl",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 14:37:16"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1m4zmrfswvf0e2xu29f28mm4mn2n289w7zdxlaq5gj095v2cq4qr",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 12:44:41"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep17pq0e6f8rx6kgd5sjkatsj24fzkny3ffm54wr885uc2pzftd2ry",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 11:22:55"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1km69g7ksf8t5g0h9d9tkrcd2tezxelx0wtr76rv2mrkl5nzd6v3",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 11:10:39"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1j9lhu5vjeetyx5g6caty4z908e47c0jmmd4747x0et7lu4506zv",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-11 10:25:24"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep17pq0e6f8rx6kgd5sjkatsj24fzkny3ffm54wr885uc2pzftd2ry",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-11 08:57:35"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1z8x6rfng02n2qeax2ld5dy9trmanlnrdmyapyf3n5vf8whhk3eh",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-11 06:49:05"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep17rksqsgqx8ej3rtc3x4gjm8a44u6w3qcshfm46yc9tq4zeffuzj",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-11 03:59:24"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep14l69ewnmc5h6uftda9ghs3mw49hdu7w93e9alhzxckp0v5pczql",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-10 23:10:56"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1fj40ksfux7pmf8rzqnlajrjqnf888t323vv7yur3p7z0w4pwtrk",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 22:58:45"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1fj40ksfux7pmf8rzqnlajrjqnf888t323vv7yur3p7z0w4pwtrk",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 22:56:47"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1fj40ksfux7pmf8rzqnlajrjqnf888t323vv7yur3p7z0w4pwtrk",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 22:53:55"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep13d6sxkyz6st9h65qqrzd8ukpywhr8swe9f6357qntgjqye0gttd",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 21:18:37"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1cm6mupj0lszffgnfe3t0we7r7c9kwc6lxd4ad7dstf6gggtdqc3",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-10 21:17:36"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1k3wde55ta4tzgjwzs3atre39nv0wlpz35manpgjfca7xwu7rnw2",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 17:56:18"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1n6gwr6wsyhawt2lewpssmqqnfu4ss75h0stc25lkpsl2q72gycy",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 17:03:34"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1n6gwr6wsyhawt2lewpssmqqnfu4ss75h0stc25lkpsl2q72gycy",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 17:01:11"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep16tsw66jtrver8ur3y3zzq2fl0m4swl4lwk88fvu8d4z4ydukrj0",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-10 13:36:15"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep10n5ehrl443sfx087kc9r2nl8r9kkl5g62zu02uzz6z9d6eq73xk",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 12:17:16"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep10n5ehrl443sfx087kc9r2nl8r9kkl5g62zu02uzz6z9d6eq73xk",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 12:11:46"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep10n5ehrl443sfx087kc9r2nl8r9kkl5g62zu02uzz6z9d6eq73xk",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 12:10:28"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep19qg34ctllr7lh48nnj4akfc978qzqzuwzkgsdu6r3zc42e5y854",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-10 11:37:24"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep19qg34ctllr7lh48nnj4akfc978qzqzuwzkgsdu6r3zc42e5y854",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 11:37:24"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep19qg34ctllr7lh48nnj4akfc978qzqzuwzkgsdu6r3zc42e5y854",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 11:37:24"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep19qg34ctllr7lh48nnj4akfc978qzqzuwzkgsdu6r3zc42e5y854",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 11:37:24"
+    },
+    {
+      "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
+      "drep_id": "drep1f8dqtkx6snn7wn7ygdsyxqx5q2x0kmak5je4jvpxmx36y5qvcup",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-10 08:56:04"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1c6vahku876gmjqxtwhazf8qd3jjs4pwp4g8mkcmrfy5x67th9gu",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-10 06:56:25"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1hhdxjp3tx739uket5rrqfa0k6mmt9wpp3vtqjsaqu3zuuwvjw3w",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-10 06:04:21"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1nvuyn6ldjenkcnjd005qt76ygmxuv5x2l2ram7eud4uywtrhp7k",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-09 23:19:56"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1ksgfshrd46ld4f84kzsl2pwgs85q5k03lw2ejxvg29rhsspedpm",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-09 19:15:35"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1h40trnskdt3pcpkn0sp34sped5yls3tumu6ntx27wtuf2ha9wyx",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-09 14:31:23"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1etgpm75kxaxns4umz3q6wjxpq84a28gf6pktjf94nm26vuxrmnn",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-09 13:59:49"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep17vw9clp7lnv2qjqtnx68vm6yjfslpgewprqa4kxg7rmkznaryj5",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-09 11:07:10"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1w34scjn42tdn5n30pflygwc4hk8htlwcpd9ldkyk4ftvu2dvfw8",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-09 08:46:29"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1k5zdh24kmcdfnnl50yng9t7n33kq4mfzdetrh3ps2vx07famecw",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-09 08:27:14"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1usknc6r4asjdcm99anyetfkxgcthtgz44cr9cdzgr5ydsf46axf",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-09 07:56:53"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1wp585ps5n2hu8jy5j2cxuap6zzs9zvnnw8g5lru4u0rq2tzhg0p",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-09 07:05:25"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1ccxqz9g9udymkt23vch2akfukwupx0e9mwv7rw9de4prczd7hhn",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-09 05:28:11"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1ccxqz9g9udymkt23vch2akfukwupx0e9mwv7rw9de4prczd7hhn",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-09 05:28:11"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1t8hsjjvqh5lxp9p0ejsdh20wl2a6fc83u0l0asug8yhr6lgc03l",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-09 01:00:08"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1gdgxcfaf24rur87f6rjkayn5slf7k0kspmq30nsfff6w23q8qgc",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-09 00:37:00"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep14l69ewnmc5h6uftda9ghs3mw49hdu7w93e9alhzxckp0v5pczql",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-08 23:55:34"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1jdxaxuafcx4p4nk4qz4jt2jahds50aea9y0zx7yqrlduulw68zx",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-08 23:05:45"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep104534qle8pq34satg3xxr2vp67v9630wc67qfq0ly0vycfrx5l3",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-08 22:00:29"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1m56h8sqf90ql45fsr0kwd62u2z3ysfjdwslzrskumd3xv78pujj",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-08 20:43:18"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1m56h8sqf90ql45fsr0kwd62u2z3ysfjdwslzrskumd3xv78pujj",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-08 20:41:40"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1m56h8sqf90ql45fsr0kwd62u2z3ysfjdwslzrskumd3xv78pujj",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-08 20:40:00"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1sh842zeupjceky6qyxculqdss67lcy97mx7aqzl9e3k3sr6xlga",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-08 17:56:30"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1sh842zeupjceky6qyxculqdss67lcy97mx7aqzl9e3k3sr6xlga",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-08 17:56:30"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1hz77guw64qrxzg768lmfee8xgpvxvtfacy5ujnm44gr7zrfzy8l",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-08 01:26:56"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1hz77guw64qrxzg768lmfee8xgpvxvtfacy5ujnm44gr7zrfzy8l",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-08 01:19:26"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1yqmr09530yuehxdz2wca5setx03ps5tnxxrvzlgwmk3wswugxwh",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-07 22:18:22"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1yqmr09530yuehxdz2wca5setx03ps5tnxxrvzlgwmk3wswugxwh",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-07 22:15:11"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep153cev8lvy5gfppq0s62h5wdnxz4pcwcc80amr0t0l04qcfq2ww8",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-07 20:50:27"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1pmy58hz70shnprfexg4z6ykfxnavtv5jdemvvl5yktydzml6wlq",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-07 16:31:01"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1g0g4ntlgxfnanvtqaa405y3ruszqyfhx46snptktzwg8xvtce0u",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-07 15:28:09"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep14l69ewnmc5h6uftda9ghs3mw49hdu7w93e9alhzxckp0v5pczql",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-07 14:02:54"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep17rksqsgqx8ej3rtc3x4gjm8a44u6w3qcshfm46yc9tq4zeffuzj",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-07 03:39:03"
+    },
+    {
+      "action_id": "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u",
+      "drep_id": "drep1fddctek2mflkdyzlens6lcr5sxs9cpksjt0pdtngar202gakhds",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-07 01:04:18"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep1fddctek2mflkdyzlens6lcr5sxs9cpksjt0pdtngar202gakhds",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-07 01:00:22"
+    },
+    {
+      "action_id": "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe",
+      "drep_id": "drep10fcecuw3h3na96627x0s9l2guaycss7n8g3pdqg3x39rgj4l209",
+      "beacn_vote": "NO",
+      "drep_vote": "YES",
+      "vote_time_utc": "2026-03-07 00:04:44"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1assw7l953xsy73ndy9sxmeqwy4yhr3gentgax7lcjynz7qkg5zx",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-06 22:30:30"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1etgpm75kxaxns4umz3q6wjxpq84a28gf6pktjf94nm26vuxrmnn",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-06 15:09:47"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1kwquh5nf00lfhxmxafd6y6pgc25fvm0d8xx2rtaymtpjgyjagzn",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-05 21:39:43"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1fddctek2mflkdyzlens6lcr5sxs9cpksjt0pdtngar202gakhds",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-03-05 08:05:59"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1ya6hzdt4kplm2zfnshschz8vweujcxt3f4azyvaplk6xjyw262e",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-05 02:50:52"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep16yrdjg5my5mnfscnzfekjuawz609sqqdu8w7c4jth26yqkxf5l4",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-02 17:47:13"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep176sktgzd9ggczd9jtqs9xn2ql5ygddayt3c423ckh6kp7rvdm2x",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-02 03:54:13"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1h3wz72hly530mwd07cnln59h9ztqlw3d6cl7fp30dc7n7f6zcj8",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-01 17:18:10"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1f8dqtkx6snn7wn7ygdsyxqx5q2x0kmak5je4jvpxmx36y5qvcup",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-03-01 12:02:04"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep153cev8lvy5gfppq0s62h5wdnxz4pcwcc80amr0t0l04qcfq2ww8",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-02-28 17:34:19"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1aqr3j77yyu92kyjuln30n59tpnp5z3aceaq6d5ljr0jx6ket027",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-02-27 22:07:59"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep185r8rr6j9evjs984vnr7haf5cn3qw5w220usk23cxffvwuutaz3",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-02-27 20:44:55"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1m2k6dp66gr83chkff2fr6y76wgta5xx8umstphsrrsw9ylhcfha",
+      "beacn_vote": "YES",
+      "drep_vote": "NO",
+      "vote_time_utc": "2026-02-27 12:27:19"
+    },
+    {
+      "action_id": "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0",
+      "drep_id": "drep1kycm43zxnjur3vku2eh4u5fv7uam57620qwnz58yusr8y022xl8",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-02-26 13:45:35"
+    },
+    {
+      "action_id": "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp",
+      "drep_id": "drep1kycm43zxnjur3vku2eh4u5fv7uam57620qwnz58yusr8y022xl8",
+      "beacn_vote": "YES",
+      "drep_vote": "ABSTAIN",
+      "vote_time_utc": "2026-02-26 13:41:23"
     }
   ]
 }
