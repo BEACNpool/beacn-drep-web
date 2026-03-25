@@ -35,3 +35,9 @@ Every decision should expose:
 ## Public trust stance
 This bot is designed to be auditable by third parties.
 If a claim cannot be verified from public artifacts, it should not be treated as decision evidence.
+
+## Self-learning / self-correction governance
+- Change control baseline and policy live in `beacn-drep-core/change-control/`.
+- Fundamental changes are hard-gated by public thresholds (`policy/fundamental_change_policy.json`).
+- Weekly reviews can propose change but cannot silently auto-apply doctrine-level changes.
+- Change-review outputs are intended to be committed and published over time for full public audit.
