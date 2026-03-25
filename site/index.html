@@ -3,38 +3,124 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BEACN DRep Transparency</title>
+  <title>BEACN DRep Trust Dashboard</title>
   <style>
-    body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 1300px; }
+    body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 1300px; color:#111; }
+    h1,h2 { margin-bottom:.4rem; }
+    .muted { color:#666; }
+    .card { border:1px solid #ddd; border-radius:10px; padding:12px; margin:12px 0; background:#fff; }
+    .pass { border-color:#1f9d55; background:#eefaf3; }
+    .warn { border-color:#c0392b; background:#fdeeee; }
+    .kpi { display:inline-block; margin:.25rem .5rem .25rem 0; padding:.4rem .6rem; background:#f7f7f7; border:1px solid #ddd; border-radius:8px; }
+    .links a { margin-right:12px; }
     table { border-collapse: collapse; width: 100%; font-size: 13px; }
     th, td { border: 1px solid #ddd; padding: 6px; vertical-align: top; }
     th { text-align: left; background: #f4f4f4; }
     code { background: #f6f6f6; padding: 2px 4px; }
-    .kpi { display:inline-block; margin-right:1rem; padding:.4rem .6rem; background:#f7f7f7; border:1px solid #ddd; }
   </style>
 </head>
 <body>
-  <h1>BEACN DRep — Deterministic Backtest</h1>
-  <p>
-    This system is open-source and replayable. It uses committed doctrine (<code>beacn-drep-soul</code>), declared public inputs
-    (<code>beacn-drep-resources</code>), and deterministic execution (<code>beacn-drep-core</code>).
-  </p>
-  <p>
-    Comparison views are descriptive, not moral judgments. Human delegates can reasonably differ; this dashboard highlights where
-    outcomes diverge so delegators can inspect evidence and potential bias exposure.
+  <h1>BEACN DRep — Open Governance, Verifiable by Design</h1>
+  <p class="muted">
+    This page exists to earn trust the hard way: by making influence boundaries, policy constraints, and self-correction behavior public and inspectable.
   </p>
 
-  <div id="kpis"></div>
+  <div id="trustStatus" class="card">Loading trust status…</div>
 
+  <div class="card">
+    <h2>How decisions are made</h2>
+    <ol>
+      <li>Governance snapshots are exported from declared source pipelines.</li>
+      <li>Only admitted resources from a public registry can be used.</li>
+      <li>Public doctrine is applied through deterministic execution logic.</li>
+      <li>Rationale + hashes + manifests are generated for replay.</li>
+      <li>Artifacts are published for external audit.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>What is explicitly disallowed</h2>
+    <ul>
+      <li>Private assistant memory or local journals</li>
+      <li>Private chats/DMs/unpublished notes</li>
+      <li>Hidden prompts or undeclared datasets</li>
+      <li>Manual score overrides outside public code and policy</li>
+    </ul>
+    <div class="links">
+      <a href="https://github.com/BEACNpool/beacn-drep-web/blob/main/docs/PUBLIC_CONTEXT_AND_LIMITS.md" target="_blank">Public Context & Limits</a>
+      <a href="https://github.com/BEACNpool/beacn-drep-web/blob/main/docs/OPERATING_MODEL.md" target="_blank">Operating Model</a>
+      <a href="https://github.com/BEACNpool/beacn-drep-resources/blob/main/RESOURCE_ADMISSION_POLICY.md" target="_blank">Resource Admission Policy</a>
+      <a href="https://github.com/BEACNpool/beacn-drep-core/tree/main/change-control" target="_blank">Change Control</a>
+      <a href="https://github.com/BEACNpool/beacn-drep-web/blob/main/docs/change-reviews/latest-weekly-review.json" target="_blank">Latest Weekly Review</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Self-learning and self-correction policy</h2>
+    <p>
+      The system runs a policy-gated weekly review with hard-coded thresholds and only three outcomes:
+      <b>STAY_COURSE</b>, <b>TUNE_NON_FUNDAMENTAL</b>, or <b>PROPOSE_FUNDAMENTAL_CHANGE</b>.
+      Fundamental changes are never auto-applied.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Backtest KPIs</h2>
+    <div id="kpis"></div>
+  </div>
+
+  <h2>Latest Action Comparison</h2>
   <table id="t"><thead><tr>
     <th>action_id</th><th>type</th><th>status</th><th>bot</th><th>score</th><th>confidence</th>
     <th>network majority</th><th>net agreement</th><th>top10 majority</th><th>top10 agreement</th><th>anchor</th>
   </tr></thead><tbody></tbody></table>
+
 <script>
-Promise.all([
-  fetch('../data/output/public/backtest_votes.json').then(r=>r.json()),
-  fetch('../data/output/public/backtest_summary.json').then(r=>r.json())
-]).then(([rows,summary])=>{
+async function fetchJson(paths){
+  for (const p of paths){
+    try {
+      const r = await fetch(p, {cache: 'no-store'});
+      if (r.ok) return await r.json();
+    } catch (e) {}
+  }
+  return null;
+}
+
+(async () => {
+  const backtest = await fetchJson([
+    '../data/output/public/backtest_votes.json',
+    '/beacn-drep-web/data/output/public/backtest_votes.json',
+    '/data/output/public/backtest_votes.json'
+  ]) || [];
+
+  const summary = await fetchJson([
+    '../data/output/public/backtest_summary.json',
+    '/beacn-drep-web/data/output/public/backtest_summary.json',
+    '/data/output/public/backtest_summary.json'
+  ]) || {rows:0,network_aligned:0,network_diverged:0,top10_aligned:0,top10_diverged:0};
+
+  const audit = await fetchJson([
+    '../data/output/public/audit_status.json',
+    '/beacn-drep-web/data/output/public/audit_status.json',
+    '/data/output/public/audit_status.json'
+  ]) || { integrity: {} };
+
+  const i = audit.integrity || {};
+  const pass = ![i.hidden_inputs_allowed, i.undeclared_resources_allowed, i.manual_override_enabled, i.private_assistant_context_allowed, i.private_memory_allowed].some(Boolean);
+  const trust = document.getElementById('trustStatus');
+  trust.className = 'card ' + (pass ? 'pass' : 'warn');
+  trust.innerHTML = `
+    <h2 style="margin:0;">Trust Status: ${pass ? 'PASS' : 'ALERT'}</h2>
+    <p>${pass ? 'No hidden/private influence flags are enabled.' : 'One or more integrity flags are unsafe. Review immediately.'}</p>
+    <ul>
+      <li>hidden_inputs_allowed: <b>${String(i.hidden_inputs_allowed)}</b></li>
+      <li>undeclared_resources_allowed: <b>${String(i.undeclared_resources_allowed)}</b></li>
+      <li>manual_override_enabled: <b>${String(i.manual_override_enabled)}</b></li>
+      <li>private_assistant_context_allowed: <b>${String(i.private_assistant_context_allowed)}</b></li>
+      <li>private_memory_allowed: <b>${String(i.private_memory_allowed)}</b></li>
+    </ul>
+  `;
+
   const k=document.getElementById('kpis');
   k.innerHTML = `
     <span class="kpi">rows: <b>${summary.rows}</b></span>
@@ -45,12 +131,12 @@ Promise.all([
   `;
 
   const tb=document.querySelector('#t tbody');
-  for(const x of rows){
+  for(const x of backtest){
     const tr=document.createElement('tr');
     tr.innerHTML=`<td>${x.action_id||''}</td><td>${x.action_type||''}</td><td>${x.status||''}</td><td>${x.bot_recommendation||''}</td><td>${x.bot_score||''}</td><td>${x.bot_confidence||''}</td><td>${x.network_majority||''}</td><td>${x.network_agreement||''}</td><td>${x.top10_majority||''}</td><td>${x.top10_agreement||''}</td><td><a href="${x.anchor_url||'#'}" target="_blank">anchor</a></td>`;
     tb.appendChild(tr);
   }
-});
+})();
 </script>
 </body>
 </html>
