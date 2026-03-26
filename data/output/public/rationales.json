@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T23:44:51Z",
+  "generated_at": "2026-03-26T18:39:52Z",
   "items": [
     {
       "action_id": "gov_action18fd7jwa06fksmwumlcvlft8v4guvaa672qsp6xgenekvs4kmvcqsq8cqks4",
@@ -7,6 +7,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score 0.50; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -15,6 +20,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -23,6 +33,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score 0.50; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -31,6 +46,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this ParameterChange (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Protocol parameter changes carry system-wide risk. Confidence context: score 0.00; confidence 55.0%.",
       "summary_raw": "Directional vote forced by completed readiness packet (treasury-aware).",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Include SPO/operator impact envelope (CPU/RAM/network/storage) with measurable assumptions.",
+        "Add rollback/containment plan and explicit halt criteria."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -39,6 +59,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -47,6 +72,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -55,6 +85,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Flag score present (10), reducing confidence. Confidence context: score -0.73; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -63,6 +98,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this NewCommittee (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -71,6 +111,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.15; confidence 66.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -79,6 +124,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (active), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score 0.50; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -87,6 +137,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -95,6 +150,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -103,6 +163,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -111,6 +176,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -119,6 +189,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -127,6 +202,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -135,6 +215,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -143,6 +228,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -151,6 +241,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this ParameterChange (active), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Protocol parameter changes carry system-wide risk. Confidence context: score 0.35; confidence 87.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Include SPO/operator impact envelope (CPU/RAM/network/storage) with measurable assumptions.",
+        "Add rollback/containment plan and explicit halt criteria."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -159,6 +254,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.32; confidence 84.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -167,6 +267,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score 0.50; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -175,6 +280,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Deterministic rule set applied. Additional context: Residual uncertainty: Anchor document is not yet pinned locally for this action. Confidence context: score -0.45; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -183,6 +293,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -191,6 +306,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this NewCommittee (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (10), reducing confidence. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -199,6 +319,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.39; confidence 91.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -207,6 +332,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -215,6 +345,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -223,6 +358,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -231,6 +371,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this TreasuryWithdrawals (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score -0.83; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -239,6 +384,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -247,6 +397,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -255,6 +410,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -263,6 +423,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this TreasuryWithdrawals (ratified), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score -0.09; confidence 61.3%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -271,6 +436,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -279,6 +449,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -287,6 +462,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this TreasuryWithdrawals (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score -0.00; confidence 49.3%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -295,6 +475,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (active), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.07; confidence 55.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -303,6 +488,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this NewCommittee (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -311,6 +501,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.11; confidence 63.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -319,6 +514,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this ParameterChange (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Protocol parameter changes carry system-wide risk. Additional context: Flag score present (10), reducing confidence. Confidence context: score -0.38; confidence 90.3%.",
       "summary_raw": "No additional inference.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Include SPO/operator impact envelope (CPU/RAM/network/storage) with measurable assumptions.",
+        "Add rollback/containment plan and explicit halt criteria."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -327,6 +527,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -335,6 +540,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -343,6 +553,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Flag score present (3), reducing confidence. Additional context: Residual uncertainty: Anchor document is not yet pinned locally for this action. Confidence context: score -0.55; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -351,6 +566,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -359,6 +579,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this TreasuryWithdrawals (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score -0.83; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -367,6 +592,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -375,6 +605,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (active), available evidence supports proceeding, with risk judged manageable under current context. Why: Treasury withdrawal actions require elevated scrutiny. Additional context: Flag score present (7), reducing confidence. Confidence context: score 0.02; confidence 50.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -383,6 +618,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -391,6 +631,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this NewConstitution (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -399,6 +644,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.07; confidence 55.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -407,6 +657,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.29; confidence 81.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -415,6 +670,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -423,6 +683,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -431,6 +696,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -439,6 +709,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (active), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score 0.50; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -447,6 +722,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Flag score present (10), reducing confidence. Confidence context: score -0.02; confidence 54.3%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -455,6 +735,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -463,6 +748,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -471,6 +761,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this NewConstitution (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -479,6 +774,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Flag score present (10), reducing confidence. Additional context: Residual uncertainty: Anchor document is not yet pinned locally for this action. Confidence context: score 0.12; confidence 63.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -487,6 +787,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this TreasuryWithdrawals (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score -0.48; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -495,6 +800,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -503,6 +813,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score -0.40; confidence 95.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -511,6 +826,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Flag score present (10), reducing confidence. Additional context: Residual uncertainty: Anchor document is not yet pinned locally for this action. Confidence context: score 0.12; confidence 63.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -519,6 +839,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -527,6 +852,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score 0.50; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -535,6 +865,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this NewConstitution (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -543,6 +878,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -551,6 +891,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -559,6 +904,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score 0.50; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -567,6 +917,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.07; confidence 55.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -575,6 +930,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -583,6 +943,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -591,6 +956,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -599,6 +969,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -607,6 +982,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -615,6 +995,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -623,6 +1008,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -631,6 +1021,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this HardForkInitiation (ratified), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Hard fork actions require strongest evidence quality. Confidence context: score -0.40; confidence 92.3%.",
       "summary_raw": "No additional inference.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Provide migration readiness evidence across tooling/wallet/exchange dependencies.",
+        "Publish rollback/contingency plan and incident response playbook."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -639,6 +1034,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -647,6 +1047,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this ParameterChange (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Protocol parameter changes carry system-wide risk. Confidence context: score -0.17; confidence 72.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Include SPO/operator impact envelope (CPU/RAM/network/storage) with measurable assumptions.",
+        "Add rollback/containment plan and explicit halt criteria."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -655,6 +1060,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -663,6 +1073,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this TreasuryWithdrawals (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score -0.28; confidence 80.3%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -671,6 +1086,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -679,6 +1099,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this NewConstitution (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -687,6 +1112,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this TreasuryWithdrawals (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score -0.07; confidence 59.3%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -695,6 +1125,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -703,6 +1138,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Flag score present (17), reducing confidence. Confidence context: score -0.75; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -711,6 +1151,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+        "Document downside risks, mitigations, and what gets cut first if delivery slips."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -719,6 +1164,11 @@
       "decision": "NO",
       "summary": "Vote: NO. For this ParameterChange (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Protocol parameter changes carry system-wide risk. Confidence context: score -0.45; confidence 100.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Include SPO/operator impact envelope (CPU/RAM/network/storage) with measurable assumptions.",
+        "Add rollback/containment plan and explicit halt criteria."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -727,6 +1177,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.17; confidence 69.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T13:00:02.009603+00:00"
     },
     {
@@ -735,6 +1190,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T09:00:01.426203+00:00"
     },
     {
@@ -743,6 +1203,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (active), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T09:00:01.426203+00:00"
     },
     {
@@ -751,6 +1216,11 @@
       "decision": "YES",
       "summary": "Vote: YES. For this InfoAction (active), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
       "summary_raw": "Network DRep distribution used as one signal, not authority.",
+      "top_fixes": [
+        "Use stable, reproducible anchor links (commit-pinned when possible).",
+        "Clarify governance intent and expected measurable outcome.",
+        "Map each major claim to primary receipts and stable source links."
+      ],
       "published_at": "2026-03-25T09:00:01.426203+00:00"
     }
   ]

@@ -20,14 +20,19 @@
     "confidence": 0.95,
     "input_hash": "f725c21f27fc18de8978dbaac169ef2c356a56c00de12c92d0cbff77a50dd28e",
     "snapshot_bundle_hash": "ce0bb86519578035d46b35a9c808b21599c91f725811ff7cf5170a6fff2ed5f6",
-    "soul_commit": "76499340e18af2c68ca97c1226fee68c8d6f3830",
-    "resources_commit": "53fb52dfa1cd3bdd590f3cdba10aff12404c9499",
-    "core_commit": "77f9909ecbc39938c0e43664f96d028207d7d29b",
+    "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
+    "resources_commit": "97b2121993721d9825398517f9b2b7d50ab1004f",
+    "core_commit": "83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db",
     "rationale_markdown_path": "/data/output/gov_action13836fuy3yttxn4hkeqka398q9qnwsjtmul4sxc3nht7qae8uvejsqm7ukh8-f725c21f27fc/rationale.md"
   },
   "rationale": {
     "summary": "Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score -0.40; confidence 95.0%.",
     "summary_raw": "Network DRep distribution used as one signal, not authority.",
+    "top_fixes": [
+      "Use stable, reproducible anchor links (commit-pinned when possible).",
+      "Clarify governance intent and expected measurable outcome.",
+      "Map each major claim to primary receipts and stable source links."
+    ],
     "markdown_path": "/data/output/gov_action13836fuy3yttxn4hkeqka398q9qnwsjtmul4sxc3nht7qae8uvejsqm7ukh8-f725c21f27fc/rationale.md",
     "missing_evidence": []
   },
@@ -40,16 +45,16 @@
     "anchor_hash": "103ff312c9aa10e80ac8c2b572e1c0a33975f22441b0a14d09bcbbb2310b11eb",
     "file_sha256": "c8c7c680a6d4dbadfc2b68c8b1e9ef8a7a39cd1b694a21f62a236d1f5179a175",
     "content_bytes": "13099",
-    "fetched_at_utc": "2026-03-25T16:16:03Z",
+    "fetched_at_utc": "2026-03-26T17:52:30Z",
     "download_path": "/proposals/gov_action13836fuy3yttxn4hkeqka398q9qnwsjtmul4sxc3nht7qae8uvejsqm7ukh8.json",
     "preview": "{\"@context\":{\"CIP100\":\"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\"CIP108\":\"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\"authors\":{\"@container\":\"@set\",\"@context\":{\"name\":\"http://xmlns.com/foaf/0.1/name\",\"witness\":{\"@context\":{\"publicKey\":\"CIP100:publicKey\",\"signature\":\"CIP100:signature\",\"witnessAlgorithm\":\"CIP100:witnessAlgorithm\"},\"@id\":\"CIP100:witness\"}},\"@id\":\"CIP100:authors\"},\"body\":{\"@context\":{\"abstract\":\"CIP108:abstract\",\"motivation\":\"CIP108:motivation\",\"rationale\":\"CIP108:rationale\",\"references\":{\"@container\":\"@set\",\"@context\":{\"GovernanceMetadata\":\"CIP100:GovernanceMetadataReference\",\"Other\":\"CIP100:OtherReference\",\"label\":\"CIP100:reference-label\",\"referenceHash\":{\"@context\":{\"hashAlgorithm\":\"CIP100:hashAlgorithm\",\"hashDigest\":\"CIP108:hashDigest\"},\"@id\":\"CIP108:referenceHash\"},\"uri\":\"CIP100:reference-uri\"},\"@id\":\"CIP108:references\"},\"title\":\"CIP108:title\"},\"@id\":\"CIP108:body\"},\"hashAlgorithm\":\"CIP100:hashAlgorithm\"},\"authors\":[],\"hashAlgorithm\":\"blake2b-256\",\"body\":{\"abstract\":\"The Cardano in Oceania 2025\u20132026 strategy and budget is a comprehensive plan designed to ignite Cardano\u2019s growth in a strategically i"
   },
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
-    "soul_commit": "76499340e18af2c68ca97c1226fee68c8d6f3830",
+    "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "53fb52dfa1cd3bdd590f3cdba10aff12404c9499",
-    "core_commit": "77f9909ecbc39938c0e43664f96d028207d7d29b",
+    "resources_commit": "97b2121993721d9825398517f9b2b7d50ab1004f",
+    "core_commit": "83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db",
     "resource_ids_used": [
       "gov_actions_api",
       "gov_actions_snapshot",

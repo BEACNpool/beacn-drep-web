@@ -20,14 +20,19 @@
     "confidence": 0.92,
     "input_hash": "5fca6f5e100497853dd47bf4e0296a2461a592b13f111d918482d4b749e2c0f0",
     "snapshot_bundle_hash": "7b596c34b547757f7e21140c10b4cd80602d0d5aac38b80e3bf08727b8c293e6",
-    "soul_commit": "76499340e18af2c68ca97c1226fee68c8d6f3830",
-    "resources_commit": "53fb52dfa1cd3bdd590f3cdba10aff12404c9499",
-    "core_commit": "77f9909ecbc39938c0e43664f96d028207d7d29b",
+    "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
+    "resources_commit": "97b2121993721d9825398517f9b2b7d50ab1004f",
+    "core_commit": "83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db",
     "rationale_markdown_path": "/data/output/gov_action10k0unljvaej0kd89w7pn0zkgdx59c7xkl0x5q78dzvdtd73u0kmqq5xl5y5-5fca6f5e1004/rationale.md"
   },
   "rationale": {
     "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
     "summary_raw": "Network DRep distribution used as one signal, not authority.",
+    "top_fixes": [
+      "Use stable, reproducible anchor links (commit-pinned when possible).",
+      "Clarify governance intent and expected measurable outcome.",
+      "Map each major claim to primary receipts and stable source links."
+    ],
     "markdown_path": "/data/output/gov_action10k0unljvaej0kd89w7pn0zkgdx59c7xkl0x5q78dzvdtd73u0kmqq5xl5y5-5fca6f5e1004/rationale.md",
     "missing_evidence": []
   },
@@ -40,16 +45,16 @@
     "anchor_hash": "30f03001e623d61ae782efe922b21ef79c4a1d06b258fd773d9c762d1a42d9b9",
     "file_sha256": "53343f70f194f2cb2ba0952275d66898987c0e5be09cf117b05aca743be3e70d",
     "content_bytes": "5360",
-    "fetched_at_utc": "2026-03-25T16:16:33Z",
+    "fetched_at_utc": "2026-03-26T17:52:36Z",
     "download_path": "/proposals/gov_action10k0unljvaej0kd89w7pn0zkgdx59c7xkl0x5q78dzvdtd73u0kmqq5xl5y5.json",
     "preview": "{\"@context\":{\"CIP100\":\"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\"CIP108\":\"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\"authors\":{\"@container\":\"@set\",\"@context\":{\"name\":\"http://xmlns.com/foaf/0.1/name\",\"witness\":{\"@context\":{\"publicKey\":\"CIP100:publicKey\",\"signature\":\"CIP100:signature\",\"witnessAlgorithm\":\"CIP100:witnessAlgorithm\"},\"@id\":\"CIP100:witness\"}},\"@id\":\"CIP100:authors\"},\"body\":{\"@context\":{\"abstract\":\"CIP108:abstract\",\"motivation\":\"CIP108:motivation\",\"rationale\":\"CIP108:rationale\",\"references\":{\"@container\":\"@set\",\"@context\":{\"GovernanceMetadata\":\"CIP100:GovernanceMetadataReference\",\"Other\":\"CIP100:OtherReference\",\"label\":\"CIP100:reference-label\",\"referenceHash\":{\"@context\":{\"hashAlgorithm\":\"CIP100:hashAlgorithm\",\"hashDigest\":\"CIP108:hashDigest\"},\"@id\":\"CIP108:referenceHash\"},\"uri\":\"CIP100:reference-uri\"},\"@id\":\"CIP108:references\"},\"title\":\"CIP108:title\"},\"@id\":\"CIP108:body\"},\"hashAlgorithm\":\"CIP100:hashAlgorithm\"},\"authors\":[],\"hashAlgorithm\":\"blake2b-256\",\"body\":{\"abstract\":\"The Cardano Constitution, at Article IV, Section 3, requires that before withdrawal of Treasury funds, the community must have establ"
   },
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
-    "soul_commit": "76499340e18af2c68ca97c1226fee68c8d6f3830",
+    "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "53fb52dfa1cd3bdd590f3cdba10aff12404c9499",
-    "core_commit": "77f9909ecbc39938c0e43664f96d028207d7d29b",
+    "resources_commit": "97b2121993721d9825398517f9b2b7d50ab1004f",
+    "core_commit": "83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db",
     "resource_ids_used": [
       "gov_actions_api",
       "gov_actions_snapshot",

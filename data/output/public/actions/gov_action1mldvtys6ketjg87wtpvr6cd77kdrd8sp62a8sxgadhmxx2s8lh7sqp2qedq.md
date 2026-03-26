@@ -16,12 +16,17 @@ Vote: NO. For this ParameterChange (active), downside risk and/or weak safeguard
 ## Remaining uncertainty
 - Rule-based system; does not infer unstated intent.
 
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Include SPO/operator impact envelope (CPU/RAM/network/storage) with measurable assumptions.
+- Add rollback/containment plan and explicit halt criteria.
+
 ## Proof of vote
 - input_hash: `db6f7cfa7bbc12550144918f7c1bbbb90758656ebcfa359ca6672617dfc90eac`
 - snapshot_bundle_hash: `8125a7ba5efb10ce5dc7b9b0d004ba48a60ed46d7681187cce236745792741e5`
-- soul_commit: `76499340e18af2c68ca97c1226fee68c8d6f3830`
-- resources_commit: `53fb52dfa1cd3bdd590f3cdba10aff12404c9499`
-- core_commit: `77f9909ecbc39938c0e43664f96d028207d7d29b`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
 - score: `-0.17`
 - confidence: `0.72`
 

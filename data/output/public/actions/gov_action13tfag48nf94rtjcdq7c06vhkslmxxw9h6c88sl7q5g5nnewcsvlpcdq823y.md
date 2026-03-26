@@ -17,12 +17,17 @@ Vote: NO. For this TreasuryWithdrawals (ratified), downside risk and/or weak saf
 ## Remaining uncertainty
 - Treasury fee-flow signal is in unsustainable regime (advisory penalty applied).
 
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Add line-item budget with milestone-gated disbursement and objective completion checks.
+- Document downside risks, mitigations, and what gets cut first if delivery slips.
+
 ## Proof of vote
 - input_hash: `39ab926a77e5fee7b8fc9ce2bbc46579d3dfc49c290b5db32dfe97f57bcc70f9`
 - snapshot_bundle_hash: `10551f67ef900f8f23d390d4337c7ce7530328680d58ae705c62f730aaaaea2c`
-- soul_commit: `76499340e18af2c68ca97c1226fee68c8d6f3830`
-- resources_commit: `53fb52dfa1cd3bdd590f3cdba10aff12404c9499`
-- core_commit: `77f9909ecbc39938c0e43664f96d028207d7d29b`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
 - score: `-0.0933`
 - confidence: `0.6133`
 

@@ -15,12 +15,17 @@ Vote: YES. For this InfoAction (active), available evidence supports proceeding,
 ## Remaining uncertainty
 - Rule-based system; does not infer unstated intent.
 
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Clarify governance intent and expected measurable outcome.
+- Map each major claim to primary receipts and stable source links.
+
 ## Proof of vote
 - input_hash: `2b419a32ffe69d131739d6d60150f684e38b92f5d648865829bf6b5a62968d3b`
 - snapshot_bundle_hash: `28550c22c878fc1fd50b1c48173255cf31da92b507398436f8315b9c63d39c58`
-- soul_commit: `76499340e18af2c68ca97c1226fee68c8d6f3830`
-- resources_commit: `53fb52dfa1cd3bdd590f3cdba10aff12404c9499`
-- core_commit: `77f9909ecbc39938c0e43664f96d028207d7d29b`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
 - score: `0.5`
 - confidence: `1.0`
 
