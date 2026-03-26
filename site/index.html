@@ -225,6 +225,11 @@
   </section>
 
   <section class="card">
+    <h2>Anchor Fetch Health</h2>
+    <div id="anchorFetchHealth" class="muted">Loading anchor fetch health…</div>
+  </section>
+
+  <section class="card">
     <h2>Voting Record</h2>
     <div id="summaryBar" class="muted"></div>
     <div class="stack" id="agreementStack" style="margin:8px 0 12px;"></div>
@@ -397,7 +402,9 @@ function renderTable(){
   const abstainRate=rows?(abstentions/rows)*100:0;
   const networkDiv=Number(backtestSummary?.network_diverged||0);
   const networkDivRate=rows?(networkDiv/rows)*100:0;
-  document.getElementById('kpiRow').innerHTML=`<div class="kpi"><div class="label">Actions Seen</div><div class="value">${rows}</div></div><div class="kpi"><div class="label">Votes Cast</div><div class="value">${rows}</div></div><div class="kpi"><div class="label">Abstentions</div><div class="value" style="color:var(--vote-abstain)">${abstentions}</div></div><div class="kpi"><div class="label">Abstain Rate</div><div class="value" style="color:var(--vote-abstain)">${abstainRate.toFixed(1)}%</div></div><div class="kpi"><div class="label">Network Divergence</div><div class="value" style="color:var(--accent)">${networkDivRate.toFixed(1)}%</div></div>`;
+  const anchorCoverage=Number(index?.stats?.anchor_fetch_coverage_pct||0);
+  const anchorFailed=Number(index?.stats?.anchor_fetch_failed||0);
+  document.getElementById('kpiRow').innerHTML=`<div class="kpi"><div class="label">Actions Seen</div><div class="value">${rows}</div></div><div class="kpi"><div class="label">Votes Cast</div><div class="value">${rows}</div></div><div class="kpi"><div class="label">Abstentions</div><div class="value" style="color:var(--vote-abstain)">${abstentions}</div></div><div class="kpi"><div class="label">Abstain Rate</div><div class="value" style="color:var(--vote-abstain)">${abstainRate.toFixed(1)}%</div></div><div class="kpi"><div class="label">Network Divergence</div><div class="value" style="color:var(--accent)">${networkDivRate.toFixed(1)}%</div></div><div class="kpi"><div class="label">Anchor Coverage</div><div class="value" style="color:var(--trust-pass)">${anchorCoverage.toFixed(1)}%</div></div><div class="kpi"><div class="label">Anchor Failures</div><div class="value" style="color:${anchorFailed>0?'var(--vote-no)':'var(--trust-pass)'}">${anchorFailed}</div></div>`;
 
   const types=[...new Set(allRows.map(r=>r.action_type).filter(Boolean))].sort();
   document.getElementById('filterType').innerHTML+=types.map(t=>`<option value="${t}">${t}</option>`).join('');
@@ -438,6 +445,11 @@ function renderTable(){
   document.getElementById('drepTopList').innerHTML=top.slice(0,12).map(r=>`<div><div><span class="mono">${r.drep_id}</span></div><div class="muted">sample: <b>${r.sample}</b> · agreement: <b>${pct(r.agreements,r.sample)}</b> (${r.agreements}/${r.sample})</div><div class="bar"><span style="width:${r.sample&&r.agreements?(r.agreements/r.sample)*100:0}%;background:var(--vote-yes)"></span></div></div>`).join('')||'<div class="muted">No comparison data yet.</div>';
   document.getElementById('drepDisagreements').innerHTML=latestDis.slice(0,12).map(d=>`<div style="padding:6px;border:1px solid var(--border-default);border-radius:8px;"><div><span class="mono">${d.action_id}</span></div><div class="muted"><span class="mono">${d.drep_id}</span></div><div>BEACN: ${voteBadge(d.beacn_vote)} · DRep: ${voteBadge(d.drep_vote)}</div></div>`).join('')||'<div class="muted">No recent disagreements in dataset.</div>';
   document.getElementById('drepCoverage').innerHTML=`<p>Agreement rates include sample size and are based on each DRep's latest vote per action.</p><p>Dataset: <span class="mono">${dc.generated_at||'unknown'}</span></p><p>Note: analytical comparison, not a ranking by delegation power.</p>`;
+
+  const af=audit?.pipeline?.anchor_fetch||{};
+  const buckets=af.failure_buckets||{};
+  const bucketRows=Object.entries(buckets).map(([k,v])=>`<div><span class="mono">${k}</span>: <b>${v}</b></div>`).join('') || '<div class="muted">No failure buckets reported.</div>';
+  document.getElementById('anchorFetchHealth').innerHTML=`<div class="chip-row"><span class="chip">total: ${af.total??'n/a'}</span><span class="chip">ok: ${af.ok??'n/a'}</span><span class="chip">ok_cached: ${af.ok_cached??'n/a'}</span><span class="chip">failed: ${af.failed??'n/a'}</span><span class="chip">coverage: ${af.coverage_pct??'n/a'}%</span></div><div style="margin-top:10px;">${bucketRows}</div>`;
 
   document.getElementById('lastScan').textContent=`Last scan: ${audit?.pipeline?.last_scan_at||'unknown'}`;
   document.querySelectorAll('.copy-btn').forEach(btn=>{btn.addEventListener('click',()=>copy(btn.getAttribute('data-copy'),btn))});
