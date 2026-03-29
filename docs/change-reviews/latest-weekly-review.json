@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-03-25T12:37:49Z",
-  "decision": "TUNE_NON_FUNDAMENTAL",
+  "generated_at": "2026-03-29T15:00:27Z",
+  "decision": "STAY_COURSE",
   "reasons": [
-    "abstain_rate threshold met"
+    "no policy thresholds met"
   ],
   "metrics": {
-    "rows_seen": 96,
-    "abstain_rate": 0.7579,
+    "rows_seen": 1000,
+    "abstain_rate": 0.0,
     "needs_more_info_rate": 0.0,
     "network_divergence_rate": 0.0,
     "replay_failures_7d": 0,
@@ -15,8 +15,11 @@
   "integrity": {
     "hidden_inputs_allowed": false,
     "undeclared_resources_allowed": false,
-    "manual_override_enabled": false
+    "manual_override_enabled": false,
+    "private_assistant_context_allowed": false,
+    "private_memory_allowed": false,
+    "policy_doc": "docs/PUBLIC_CONTEXT_AND_LIMITS.md"
   },
   "policy_version": "1.0.0",
-  "next_action": "Open a small tuning proposal with receipts. No doctrine rewrite."
+  "next_action": "No change required. Document status."
 }
