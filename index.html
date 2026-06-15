@@ -95,8 +95,29 @@
     @media (max-width:680px) {
       .epoch-row { align-items:flex-start; } .epoch-countdown { font-size:1.08rem; }
       .epoch-meta { text-align:left; }
-      .grid, .steps, .cards { grid-template-columns:1fr; }
+      .grid, .steps, .cards, .pillars { grid-template-columns:1fr; }
     }
+    /* why delegate */
+    .why { margin:30px 0 8px; }
+    .why .pitch { font-size:1.05rem; color:#dbe4ee; max-width:76ch; }
+    .pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:13px; margin:18px 0; }
+    .pillar { background:var(--card); border:1px solid var(--line); border-radius:11px; padding:14px 15px; }
+    .pillar h3 { margin:0 0 5px; font-size:.95rem; }
+    .pillar p { margin:0; font-size:.85rem; color:#c2ccd6; }
+    .represents { background:linear-gradient(135deg,#1a1430,#16121f); border:1px solid #3a2d5c;
+                  border-radius:12px; padding:16px 18px; margin:18px 0; font-size:1.02rem; color:#e7ddff; }
+    .represents b { color:#caa9ff; }
+    .who { margin:16px 0; }
+    .who ul { margin:8px 0 0; padding-left:20px; color:#c2ccd6; font-size:.92rem; }
+    .who li { margin:4px 0; }
+    .cta { background:var(--card); border:1px solid #1f4a30; border-radius:12px; padding:18px 20px; margin:20px 0 4px; }
+    .cta h3 { margin:0 0 6px; font-size:1.1rem; }
+    .cta .id { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.84rem; background:#0e141b;
+               border:1px solid var(--line); border-radius:8px; padding:8px 11px; margin:8px 0; word-break:break-all;
+               display:flex; gap:10px; align-items:center; justify-content:space-between; }
+    .cta button { background:#1f6feb; color:#fff; border:0; border-radius:7px; padding:5px 12px;
+                  font-size:.82rem; cursor:pointer; font-weight:600; white-space:nowrap; }
+    .cta .fine { color:var(--mut); font-size:.84rem; margin-top:6px; }
   </style>
 </head>
 <body>
@@ -160,6 +181,57 @@
         <a href="https://github.com/BEACNpool/beacn-drep-web" target="_blank" rel="noopener">this&nbsp;site&nbsp;(web)</a>
       </div>
     </div>
+
+    <section class="why">
+      <h2 class="sec">Why delegate to BEACN</h2>
+      <p class="pitch">BEACN DRep is governance you can <strong>verify</strong> instead of governance you have
+        to <strong>trust</strong>. The same inputs always produce the same vote, every decision shows its work
+        and can be independently replayed, and there is no channel for lobbying, money, hype, or fatigue to
+        change the outcome. It treats your stake's voice like a fiduciary — conservative when the evidence is
+        thin, honest about what it doesn't know, and disciplined with the treasury.</p>
+
+      <div class="pillars">
+        <div class="pillar"><h3>🛡️ Incorruptible by design</h3><p>No private lobbying, no backroom overrides,
+          no delegation-size politics. The rules are public and identical for everyone.</p></div>
+        <div class="pillar"><h3>🔎 Public evidence only</h3><p>Decisions use only declared, citable,
+          independently fetchable sources — never private chats, hidden prompts, or undeclared data.</p></div>
+        <div class="pillar"><h3>♻️ Reproducible receipts</h3><p>Every vote cites the exact doctrine version and
+          input hashes, so anyone can re-run it and reach the same result.</p></div>
+        <div class="pillar"><h3>⚖️ Conservative fiduciary</h3><p>When the evidence is weak it abstains rather
+          than guesses. Saying "not enough evidence yet" is discipline, not failure.</p></div>
+        <div class="pillar"><h3>🏛️ Constitution first</h3><p>Protocol safety and constitutional integrity rank
+          above everything else — ahead of speed or social momentum.</p></div>
+        <div class="pillar"><h3>💰 Treasury stewardship</h3><p>Treats the Net Change Limit as a ceiling, not a
+          target, and favors spending near sustainable fee inflows. Pro-accountability, not anti-spending.</p></div>
+      </div>
+
+      <div class="represents">This is a move from <b>"trust me"</b> governance — personalities, politics, and
+        persuasion — to <b>"verify me"</b> governance: rules-based, evidence-based, and accountable by
+        construction rather than by promise.</div>
+
+      <div class="who">
+        <h3 style="margin:0 0 2px;font-size:1.05rem;">Who it's for</h3>
+        <ul>
+          <li>ADA holders who value process integrity over personality.</li>
+          <li>Delegators who can't track every governance action but want a principled, predictable proxy.</li>
+          <li>Anyone who wants protocol safety and treasury sustainability prioritized over hype.</li>
+          <li>Small holders especially — a rule that can't be lobbied or bought gives every delegator an equal voice.</li>
+        </ul>
+      </div>
+
+      <div class="cta">
+        <h3>Delegate your voting power to BEACN</h3>
+        <p style="margin:0;font-size:.9rem;color:#c2ccd6;">In your wallet's governance section, set your DRep delegation to:</p>
+        <div class="id"><span id="cta-drep">drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg</span>
+          <button type="button" onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText(document.getElementById('cta-drep').textContent)">Copy</button></div>
+        <p class="fine">Your ADA never moves and never leaves your wallet — delegation only assigns how your
+          voting power is used, and you can change it anytime.
+          <a id="cta-cs" href="https://cardanoscan.io/" target="_blank" rel="noopener">View on Cardanoscan ↗</a> ·
+          <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/GOVERNANCE_PHILOSOPHY.md" target="_blank" rel="noopener">Read the full philosophy</a> ·
+          <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/WHY_DELEGATE.md" target="_blank" rel="noopener">…and our honest limits</a>
+        </p>
+      </div>
+    </section>
 
     <h2 class="sec">Latest verdicts</h2>
     <p class="sec-note">The most recent governance actions and how BEACN DRep responded.
@@ -278,7 +350,12 @@
       const mode = (d.mode || 'shadow');
       document.getElementById('mode-wrap').innerHTML = '<span class="badge ' + mode + '">' + esc(mode) + '</span>';
       document.getElementById('drep').textContent = d.drep_id || '';
-      if (d.drep_id) document.getElementById('cs-drep').href = 'https://cardanoscan.io/drep/' + encodeURIComponent(d.drep_id);
+      if (d.drep_id) {
+        const csUrl = 'https://cardanoscan.io/drep/' + encodeURIComponent(d.drep_id);
+        document.getElementById('cs-drep').href = csUrl;
+        document.getElementById('cta-cs').href = csUrl;
+        document.getElementById('cta-drep').textContent = d.drep_id;
+      }
       const lc = d.last_check || {};
       document.getElementById('summary').textContent =
         'Daily governance check complete. ' + (lc.summary || '');
