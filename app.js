@@ -332,50 +332,55 @@ function bindProposalFilters(render = renderProposals) {
   });
 }
 
-function renderDecides() {
+function renderMethod() {
+  const drep = state.status?.drep_id || DREP_FALLBACK;
   app.innerHTML = `<section class="view">
-    ${viewHeader("The public rulebook", "How it decides", "The readable explanation is useful. The deterministic engine, doctrine version, admitted inputs, and hashes remain the binding record.")}
-    <div class="card gate-card"><h2>Conservative gates run first</h2><p class="verify-copy">Stale data, missing baseline evidence, an unknown action type, or an incomplete treasury dossier blocks a confident directional vote. Speed never outranks protocol safety or evidence quality.</p></div>
-    <div class="rule-grid">
-      <article class="card rule-card yes"><h2 class="v-yes">Yes</h2><p>Evidence is complete, safeguards are credible, public benefit is demonstrated, and the weighted score clears the positive threshold.</p><ul><li>Stable, reproducible source material</li><li>Risks are low or concretely mitigated</li><li>Treasury asks include budgets and milestones</li></ul></article>
-      <article class="card rule-card no"><h2 class="v-no">No</h2><p>Demonstrated downside, weak safeguards, constitutional conflict, or unsustainable cost outweighs the claimed benefit.</p><ul><li>High unmitigated risk</li><li>Broken treasury discipline</li><li>Negative score clears the rejection threshold</li></ul></article>
-      <article class="card rule-card abstain"><h2 class="v-abstain">Abstain</h2><p>A directional vote cannot be justified from the admitted evidence. This is a deliberate safety result, not indecision.</p><ul><li>Evidence is stale, ambiguous, or too thin</li><li>Action type or context is unresolved</li><li>Score is too close to neutral</li></ul></article>
-      <article class="card rule-card info"><h2 class="v-info">Needs more info</h2><p>A high-impact request is reviewable, but specific evidence required by doctrine is missing.</p><ul><li>Lists the missing evidence</li><li>Publishes what would change the vote</li><li>Can move to Yes or No when the record improves</li></ul></article>
+    ${viewHeader("Method and trust", "How BEACN earns a vote", "A good DRep page has one job here: show the path from public evidence to a public vote, then make each decision easy to verify.")}
+
+    <article class="card method-hero">
+      <div class="method-kicker">First principles</div>
+      <h2>The site should answer three questions.</h2>
+      <div class="method-question-grid">
+        <div><strong>What is live?</strong><span>Handled by Live: current proposals, epoch timing, and urgent evidence holds.</span></div>
+        <div><strong>What happened?</strong><span>Handled by Archive: expired and enacted decisions with preserved reasoning.</span></div>
+        <div><strong>Why trust it?</strong><span>Handled here: rules, input boundaries, replay path, and delegation safety.</span></div>
+      </div>
+    </article>
+
+    <article class="card pipeline-card">
+      <h2>Decision pipeline</h2>
+      <p class="verify-copy">Each vote moves through the same public chain. The website renders the result; it does not decide anything.</p>
+      <div class="pipeline-steps">
+        <div><b>1</b><strong>Proposal</strong><span>Governance action and anchor material are fetched from declared public sources.</span></div>
+        <div><b>2</b><strong>Admitted evidence</strong><span>Only resource-registry inputs can influence a rationale.</span></div>
+        <div><b>3</b><strong>Doctrine</strong><span>Public soul rules set values, gates, and scoring boundaries.</span></div>
+        <div><b>4</b><strong>Engine</strong><span>Core applies deterministic checks and produces the verdict.</span></div>
+        <div><b>5</b><strong>Proof</strong><span>Hashes, commits, rationale anchors, and transactions are published per action.</span></div>
+      </div>
+    </article>
+
+    <div class="method-grid">
+      <article class="card gate-card"><h2>Safety gates run first</h2><p class="verify-copy">Stale data, missing baseline evidence, an unknown action type, constitutional risk, or an incomplete treasury dossier blocks a confident directional vote. Speed never outranks protocol safety or evidence quality.</p></article>
+      <article class="card gate-card"><h2>Verification lives on each action</h2><p class="verify-copy">Hashes and receipts only matter when attached to the decision they prove. Open any proposal from Live or Archive to inspect source snapshots, rationale markdown, commits, and on-chain vote transactions.</p></article>
     </div>
+
+    <div class="section-title"><h2>Verdict meanings</h2></div>
+    <div class="rule-grid compact-rules">
+      <article class="card rule-card yes"><h2 class="v-yes">Yes</h2><p>Evidence is complete, safeguards are credible, public benefit is demonstrated, and the weighted score clears the positive threshold.</p></article>
+      <article class="card rule-card no"><h2 class="v-no">No</h2><p>Demonstrated downside, weak safeguards, constitutional conflict, or unsustainable cost outweighs the claimed benefit.</p></article>
+      <article class="card rule-card abstain"><h2 class="v-abstain">Abstain</h2><p>A directional vote cannot be justified from admitted evidence. This records participation without pretending confidence.</p></article>
+      <article class="card rule-card info"><h2 class="v-info">Needs more info</h2><p>A proposal is reviewable, but required evidence is missing. The detail page names what would change the vote.</p></article>
+    </div>
+
     <article class="card hierarchy">
       <h2>Values hierarchy</h2>
       <p class="subtitle">When values conflict, the higher public value wins in this fixed order.</p>
       <ol><li>Constitutional integrity and protocol safety</li><li>Treasury stewardship</li><li>Evidence quality</li><li>Public benefit</li><li>Speed</li></ol>
     </article>
-  </section>`;
-}
 
-const doctrineLinks = [
-  ["Governance philosophy", "The constitutional and evidence-first foundation", "GOVERNANCE_PHILOSOPHY.md"],
-  ["Why delegate", "The case for BEACN and its honest limits", "WHY_DELEGATE.md"],
-  ["Values hierarchy", "How conflicts between priorities are resolved", "values_hierarchy.md"],
-  ["Scoring weights", "The public deterministic weighting contract", "scoring_weights.json"],
-  ["Treasury spending", "Budget, milestones, concentration, and sustainability", "treasury_spending_doctrine.md"],
-  ["Parameter changes", "Safety rules for protocol parameter proposals", "parameter_change_doctrine.md"],
-  ["Hard forks", "Readiness and protocol upgrade requirements", "hardfork_doctrine.md"],
-  ["Committee updates", "Constitutional committee evaluation rules", "committee_update_doctrine.md"],
-  ["Info actions", "How non-binding governance signals are assessed", "info_action_doctrine.md"],
-  ["Constitutional amendments", "Requirements for changing the constitution", "constitutional_amendment_doctrine.md"]
-];
-
-function renderVerify() {
-  const drep = state.status?.drep_id || DREP_FALLBACK;
-  app.innerHTML = `<section class="view">
-    ${viewHeader("About and verify", "Don't trust the interface.", "Use it to find the public inputs, deterministic record, hashes, and on-chain receipts. Then verify them yourself.")}
     <article class="card verify-hero">
-      <h2>Verify this yourself, with your own AI</h2>
-      <p class="verify-copy">Every admitted input, rule, engine version, and result is public. A generated statement is only a labeled plain-language layer over that record.</p>
-      <ol class="verify-steps">
-        <li>Clone the doctrine, resources, core, and web repositories.</li>
-        <li>Point your own AI or tooling at the doctrine and deterministic engine.</li>
-        <li>Re-run a published decision from the same resource snapshot.</li>
-        <li>Confirm the verdict, rationale, commits, and input hashes match this site.</li>
-      </ol>
+      <h2>Verify the system</h2>
+      <p class="verify-copy">Clone the repos, inspect the public doctrine and admitted resources, then replay a published decision from the action detail receipts. Generated plain-English statements are convenience text; the deterministic record is binding.</p>
       <div class="repo-row">
         <a href="https://github.com/BEACNpool/beacn-drep-core" target="_blank" rel="noopener">Core<small>Deterministic engine</small></a>
         <a href="https://github.com/BEACNpool/beacn-drep-soul" target="_blank" rel="noopener">Soul<small>Doctrine and values</small></a>
@@ -383,6 +388,7 @@ function renderVerify() {
         <a href="https://github.com/BEACNpool/beacn-drep-web" target="_blank" rel="noopener">Web<small>Published record</small></a>
       </div>
     </article>
+
     <div class="section-title"><h2>Philosophy and doctrine</h2></div>
     <div class="link-grid">
       ${doctrineLinks.map(([title, note, file]) => `<a class="card link-card" href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/${file}" target="_blank" rel="noopener"><span><strong>${esc(title)}</strong><small>${esc(note)}</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>`).join("")}
@@ -400,6 +406,19 @@ function renderVerify() {
   </section>`;
   document.getElementById("copy-drep")?.addEventListener("click", () => copyText(drep));
 }
+
+const doctrineLinks = [
+  ["Governance philosophy", "The constitutional and evidence-first foundation", "GOVERNANCE_PHILOSOPHY.md"],
+  ["Why delegate", "The case for BEACN and its honest limits", "WHY_DELEGATE.md"],
+  ["Values hierarchy", "How conflicts between priorities are resolved", "values_hierarchy.md"],
+  ["Scoring weights", "The public deterministic weighting contract", "scoring_weights.json"],
+  ["Treasury spending", "Budget, milestones, concentration, and sustainability", "treasury_spending_doctrine.md"],
+  ["Parameter changes", "Safety rules for protocol parameter proposals", "parameter_change_doctrine.md"],
+  ["Hard forks", "Readiness and protocol upgrade requirements", "hardfork_doctrine.md"],
+  ["Committee updates", "Constitutional committee evaluation rules", "committee_update_doctrine.md"],
+  ["Info actions", "How non-binding governance signals are assessed", "info_action_doctrine.md"],
+  ["Constitutional amendments", "Requirements for changing the constitution", "constitutional_amendment_doctrine.md"]
+];
 
 function detailSkeleton(backRoute) {
   app.innerHTML = `<section class="view"><div class="detail-head"><a class="icon-button back-button" href="${backRoute}" aria-label="Back"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>Loading decision record…</span></div><div class="skeleton hero-skeleton"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div></section>`;
@@ -523,7 +542,8 @@ function parseRoute() {
   const raw = location.hash.replace(/^#\/?/, "");
   const [view = "home", encodedId] = raw.split("/");
   if (view === "action" && encodedId) return { view, id: decodeURIComponent(encodedId) };
-  return { view: ["home", "proposals", "decides", "verify"].includes(view) ? view : "home" };
+  if (view === "decides" || view === "verify") return { view: "method" };
+  return { view: ["home", "proposals", "method"].includes(view) ? view : "home" };
 }
 
 function updateNavigation(view) {
@@ -544,8 +564,7 @@ async function renderRoute() {
     await loadFeeds();
     if (route.view === "home") renderHome();
     if (route.view === "proposals") renderProposals();
-    if (route.view === "decides") renderDecides();
-    if (route.view === "verify") renderVerify();
+    if (route.view === "method") renderMethod();
     if (route.view === "action") await renderDetail(route.id);
     app.focus({ preventScroll: true });
   } catch (error) {
