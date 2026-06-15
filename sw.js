@@ -1,4 +1,4 @@
-const CACHE = "beacn-drep-v2";
+const CACHE = "beacn-drep-v3";
 const SHELL = [
   "./",
   "./index.html",
