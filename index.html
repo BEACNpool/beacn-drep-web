@@ -165,6 +165,30 @@
     .integrity { display:flex; flex-wrap:wrap; gap:8px 16px; margin:10px 0; }
     .integrity span { font-size:.8rem; color:#c2ccd6; }
     .integrity b { color:var(--accent2); }
+    /* verdict filter chips + full record */
+    .dist { display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 12px; }
+    .chipf { cursor:pointer; border:1px solid var(--line); border-radius:999px; padding:4px 13px; font-size:.83rem;
+             color:#c2ccd6; background:var(--card); user-select:none; }
+    .chipf:hover { border-color:#3a4a63; }
+    .chipf.active { color:#fff; }
+    .chipf.f-all.active { border-color:var(--accent); background:#15304f; }
+    .chipf.f-yes.active { border-color:var(--ok); background:#0c2c16; }
+    .chipf.f-no.active { border-color:var(--no); background:#3a1413; }
+    .chipf.f-abst.active { border-color:var(--abst); background:#23282e; }
+    .chipf.f-info.active { border-color:var(--warn); background:#3a2d0a; }
+    .chipf b { font-weight:700; }
+    .hrow { border:1px solid var(--line); border-radius:9px; margin-bottom:7px; background:var(--card); }
+    .hrow > summary { list-style:none; cursor:pointer; padding:10px 13px; display:flex; align-items:center;
+                      gap:11px; flex-wrap:wrap; }
+    .hrow > summary::-webkit-details-marker { display:none; }
+    .hrow > summary:hover { background:#1a212b; border-radius:9px; }
+    .hrow .hv { font-weight:700; font-size:.82rem; white-space:nowrap; min-width:78px; }
+    .hrow .ht { flex:1 1 220px; min-width:160px; }
+    .hrow .htype { color:var(--mut); font-size:.78rem; white-space:nowrap; }
+    .hrow .hchain { font-size:.78rem; white-space:nowrap; }
+    .hrow .hbody { padding:2px 13px 13px; font-size:.87rem; color:#cdd6e0; line-height:1.55; }
+    .hrow[open] { border-color:#33405a; }
+    .hrow[open] > summary { color:#fff; }
   </style>
 </head>
 <body>
@@ -363,14 +387,13 @@
       Each card links to the full rationale and, where a vote was cast, to the on-chain transaction as proof.</p>
     <div class="cards" id="cards"><div class="sub">Loading latest verdicts…</div></div>
 
-    <h2 class="sec">Look up past votes</h2>
-    <p class="sec-note">Search every action BEACN DRep has reviewed. Full archive in the
-      <a href="https://github.com/BEACNpool/beacn-drep-core/tree/main/data/output" target="_blank" rel="noopener">core repository</a>.</p>
-    <input id="search" class="search" type="search" placeholder="Search by title, type, or verdict (e.g. treasury, Hydra, NO)…" />
-    <table>
-      <thead><tr><th>Action</th><th>Type</th><th>Verdict</th><th>On-chain</th></tr></thead>
-      <tbody id="hist"><tr><td colspan="4" class="sub">Loading…</td></tr></tbody>
-    </table>
+    <h2 class="sec">Every verdict on record</h2>
+    <p class="sec-note">BEACN's determination on <strong>every</strong> governance action it has reviewed —
+      including older, now-closed actions whose verdict is recorded here for transparency even though no live
+      vote could be cast on chain. Filter by verdict, or expand any row to read the reasoning.</p>
+    <div id="dist" class="dist"></div>
+    <input id="search" class="search" type="search" placeholder="Search by title or type (e.g. treasury, Hydra, hard fork)…" />
+    <div id="hist"><div class="sub">Loading the full record…</div></div>
 
     <div class="links">
       <b>More:</b>
@@ -470,23 +493,50 @@
           '<div style="margin-top:6px;">' + esc(rest) + '</div></details>' : '') + '</div>';
     };
 
-    let ALL = [];
+    let ALL = [];      // recent on-chain actions (status feed) — drives the cards
+    let HIST = [];     // full verdict record — every action BEACN has reviewed
+    let curFilter = 'ALL';
+
+    const DEC = {
+      YES: { cls:'v-yes', label:'Yes' }, NO: { cls:'v-no', label:'No' },
+      ABSTAIN: { cls:'v-abst', label:'Abstain' }, NEEDS_MORE_INFO: { cls:'v-info', label:'Needs info' },
+    };
+    const decOf = dec => DEC[(dec || '').toUpperCase()] || { cls:'v-pending', label:(dec || '—') };
+    const govUrl = gid => 'https://cardanoscan.io/govAction/' + encodeURIComponent(gid || '');
+
+    const buildDist = () => {
+      const c = { ALL: HIST.length, YES:0, NO:0, ABSTAIN:0, NEEDS_MORE_INFO:0 };
+      HIST.forEach(h => { c[h.decision] = (c[h.decision] || 0) + 1; });
+      const defs = [['ALL','f-all','All'],['YES','f-yes','Yes'],['NO','f-no','No'],
+                    ['ABSTAIN','f-abst','Abstain'],['NEEDS_MORE_INFO','f-info','Needs info']];
+      document.getElementById('dist').innerHTML = defs
+        .filter(([k]) => k === 'ALL' || c[k])
+        .map(([k,cl,lbl]) => '<span class="chipf ' + cl + (k === curFilter ? ' active' : '') +
+          '" data-f="' + k + '">' + lbl + ' <b>' + (c[k] || 0) + '</b></span>').join('');
+      document.querySelectorAll('.chipf').forEach(el => el.addEventListener('click', () => {
+        curFilter = el.getAttribute('data-f'); buildDist();
+        renderHist(document.getElementById('search').value);
+      }));
+    };
+
     const renderHist = q => {
       q = (q || '').trim().toLowerCase();
-      const rows = ALL.filter(a => !q ||
-        [a.title, a.type, a.our_vote, a.recommendation].join(' ').toLowerCase().includes(q)
-      ).map(a => {
-        const vd = verdictOf(a);
-        return '<tr><td class="t"><a href="' + actionUrl(a) + '" target="_blank" rel="noopener">' +
-          esc(a.title || a.action_id) + '</a></td>' +
-          '<td>' + esc(a.type || '—') + '</td>' +
-          '<td class="tag ' + vd.cls + '">' + esc(vd.label) + '</td>' +
-          '<td>' + (a.transaction_hash
-            ? '<a href="https://cardanoscan.io/transaction/' + esc(a.transaction_hash) + '" target="_blank" rel="noopener">' + shortTx(a.transaction_hash) + '</a>'
-            : '<span class="proof none">—</span>') + '</td></tr>';
+      const rows = HIST.filter(h =>
+        (curFilter === 'ALL' || h.decision === curFilter) &&
+        (!q || (h.title + ' ' + h.type).toLowerCase().includes(q))
+      ).map(h => {
+        const vd = decOf(h.decision);
+        const chain = h.transaction_hash
+          ? '<span class="hchain"><a class="proof" href="https://cardanoscan.io/transaction/' + esc(h.transaction_hash) +
+            '" target="_blank" rel="noopener">✓ on-chain ↗</a></span>'
+          : '<span class="hchain proof none">recorded · not on-chain</span>';
+        return '<details class="hrow"><summary>' +
+          '<span class="hv ' + vd.cls + '">' + esc(vd.label) + '</span>' +
+          '<span class="ht"><a href="' + govUrl(h.action_id) + '" target="_blank" rel="noopener">' + esc(h.title) + '</a></span>' +
+          '<span class="htype">' + esc(h.type || '—') + '</span>' + chain +
+          '</summary><div class="hbody">' + (h.prose || 'No published explanation for this action.') + '</div></details>';
       }).join('');
-      document.getElementById('hist').innerHTML = rows ||
-        '<tr><td colspan="4" class="sub">No matching actions.</td></tr>';
+      document.getElementById('hist').innerHTML = rows || '<div class="sub">No matching verdicts.</div>';
     };
 
     Promise.all([
@@ -496,7 +546,9 @@
       }),
       fetch('./data/output/public/rationales.json?t=' + Date.now())
         .then(r => r.ok ? r.json() : { items: [] }).catch(() => ({ items: [] })),
-    ]).then(([d, rj]) => {
+      fetch('./data/output/public/actions.json?t=' + Date.now())
+        .then(r => r.ok ? r.json() : { items: [] }).catch(() => ({ items: [] })),
+    ]).then(([d, rj, aj]) => {
       (rj.items || []).forEach(it => { if (it.action_id) RAT[it.action_id] = it; });
       const mode = (d.mode || 'shadow');
       document.getElementById('mode-wrap').innerHTML = '<span class="badge ' + mode + '">' + esc(mode) + '</span>';
@@ -540,13 +592,29 @@
           '</div></div>';
       }).join('') || '<div class="sub">No actions in the latest check.</div>';
 
+      // Full verdict record: every action reviewed (actions.json) + prose (rationales.json)
+      // + on-chain proof from the live status feed where a vote was actually cast.
+      const stByGid = {};
+      (d.actions || []).forEach(a => { if (a.cip129_action_id) stByGid[a.cip129_action_id] = a; });
+      HIST = (aj.items || []).map(it => {
+        const r = RAT[it.action_id];
+        const prose = (r && r.summary)
+          ? esc(String(r.summary).trim().replace(/^Vote:\s*[A-Z_]+\.\s*/, '')) : '';
+        const st = stByGid[it.action_id] || {};
+        return {
+          action_id: it.action_id, title: it.title || it.action_id, type: it.type || '',
+          decision: (it.decision || '').toUpperCase(),
+          transaction_hash: st.transaction_hash || null, prose,
+        };
+      });
+      buildDist();
       renderHist('');
       document.getElementById('search').addEventListener('input', e => renderHist(e.target.value));
     }).catch(e => {
       document.getElementById('summary').innerHTML =
         '<span class="err">Could not load the status feed — ' + esc(e.message) + '</span>';
       document.getElementById('cards').innerHTML = '<div class="err">no feed yet</div>';
-      document.getElementById('hist').innerHTML = '<tr><td colspan="4" class="err">no feed yet</td></tr>';
+      document.getElementById('hist').innerHTML = '<div class="err">no feed yet</div>';
     });
   </script>
 </body>
