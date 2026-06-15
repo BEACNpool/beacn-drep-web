@@ -546,10 +546,12 @@
       ? '<a class="proof" href="https://cardanoscan.io/transaction/'+esc(a.transaction_hash)+'" target="_blank" rel="noopener">✓ Verify on-chain ↗</a>'
       : '<span class="proof none">No vote cast'+(((a.recommendation||'')==='NEEDS_MORE_INFO')?' — awaiting evidence':'')+'</span>';
 
-    let RAT = {};
+    let RAT = {}, STMT = {};
     const cleanSummary = r => (r && r.summary) ? String(r.summary).trim().replace(/^Vote:\s*[A-Z_]+\.\s*/,'') : '';
+    // Prefer the generated plain-language statement; fall back to the deterministic summary.
+    const explainFor = gid => STMT[gid] || cleanSummary(RAT[gid]);
     const proseFor = a => {
-      const full = cleanSummary(RAT[a.cip129_action_id] || RAT[a.action_id]);
+      const full = explainFor(a.cip129_action_id || a.action_id);
       if(!full) return '';
       const i = full.indexOf('. '), head = i>0?full.slice(0,i+1):full, rest = i>0?full.slice(i+1).trim():'';
       return '<div class="why-vote"><span class="lab">Why BEACN voted this way</span>'+esc(head)+
@@ -592,8 +594,10 @@
       fetch('./status.json?t='+Date.now()).then(r=>{if(!r.ok)throw new Error('status.json HTTP '+r.status);return r.json();}),
       fetch('./data/output/public/rationales.json?t='+Date.now()).then(r=>r.ok?r.json():{items:[]}).catch(()=>({items:[]})),
       fetch('./data/output/public/actions.json?t='+Date.now()).then(r=>r.ok?r.json():{items:[]}).catch(()=>({items:[]})),
-    ]).then(([d,rj,aj])=>{
+      fetch('./data/output/public/statements.json?t='+Date.now()).then(r=>r.ok?r.json():{}).catch(()=>({})),
+    ]).then(([d,rj,aj,sj])=>{
       (rj.items||[]).forEach(it=>{if(it.action_id)RAT[it.action_id]=it;});
+      Object.keys(sj||{}).forEach(k=>{const s=sj[k]; if(s&&s.statement)STMT[k]=s.statement;});
       const mode=(d.mode||'shadow');
       document.getElementById('mode-wrap').innerHTML='<span class="badge '+mode+'">'+esc(mode)+' mode</span>';
       document.getElementById('drep').textContent=d.drep_id||'';
@@ -622,7 +626,7 @@
       const stByGid={}; ALL.forEach(a=>{if(a.cip129_action_id)stByGid[a.cip129_action_id]=a;});
       HIST=(aj.items||[]).map(it=>({action_id:it.action_id,title:it.title||it.action_id,type:it.type||'',
         decision:(it.decision||'').toUpperCase(),transaction_hash:(stByGid[it.action_id]||{}).transaction_hash||null,
-        prose:esc(cleanSummary(RAT[it.action_id]))}));
+        prose:esc(explainFor(it.action_id))}));
       buildDistBar(); buildDist(); renderHist('');
       document.getElementById('search').addEventListener('input',e=>renderHist(e.target.value));
     }).catch(e=>{
