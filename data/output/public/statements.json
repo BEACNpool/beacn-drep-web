@@ -1,0 +1,620 @@
+{
+ "gov_action1fah9m7dxu99af8jqdc4mkrgs3va790nyh9tfhycq2wsvrm47p4rsqtcm6ry": {
+  "statement": "BEACN returned Needs more info on the IO: Hydra treasury withdrawal. Because treasury spending is high-impact, BEACN's rules require a completed deep-research dossier — budget, feasibility, risks, alternatives and failure modes — before it will commit to a direction, and that evidence was not confirmed complete. This is a conservative hold rather than a rejection: a complete dossier would let BEACN move to a Yes or No.",
+  "decision": "NEEDS_MORE_INFO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action18fd7jwa06fksmwumlcvlft8v4guvaa672qsp6xgenekvs4kmvcqsq8cqks4": {
+  "statement": "BEACN voted Yes on Cardano 2030: Vision, Mission, Strategy Framework and KPIs. A pinned context document was available and the deterministic scoring judged the action well-evidenced with manageable risk, clearing the positive threshold. As an informational action it releases no funds on its own, so the Yes registers support for the stated direction on the evidence presented.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13a2dqgwxum7d6kjfprcs57cf9733ek2dkt5qnuhqd4ll5ntcwu7sqluwkxd": {
+  "statement": "BEACN voted Yes on the Cardano Critical Integrations Budget. With supporting context available and risk judged manageable, the action cleared BEACN's positive scoring threshold for an informational signal. The vote backs the stated intent on the evidence presented; it does not by itself release treasury funds.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1llcd7ezdx299xeep9azm4dvsvz7783qfrhykcu3sv2ykl4sewv2qq4myfpk": {
+  "statement": "BEACN voted Yes on renaming the Chang 2 hard fork to the Plomin hard fork. This is a naming and informational action with a pinned context document and no protocol or treasury risk to weigh, so it cleared the positive threshold comfortably.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1k2jertppnnndejjcglszfqq4yzw8evzrd2nt66rr6rqlz54xp0zsq05ecsn": {
+  "statement": "BEACN voted Yes on the Plutus V3 cost model parameter changes prior to Chang#2. Protocol parameter changes carry system-wide risk, so they face elevated scrutiny; here the supporting evidence was sufficient and the assessed risk manageable, letting the score clear the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlzqhm6e8q": {
+  "statement": "BEACN voted Yes on the ₳26,840,000 withdrawal for Input Output Research (IOR): Cardano Vision work. Under the elevated scrutiny BEACN applies to every treasury withdrawal, the deterministic scoring found the evidence sufficient and the risk manageable, clearing the positive threshold. The verdict reflects the published evidence at the time and is not an endorsement beyond it.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlq77jt4x4": {
+  "statement": "BEACN voted Yes on the ₳700,000 withdrawal for the ZK Bridge administered by Intersect. With a verifiable anchor and risk judged manageable under treasury scrutiny, the action cleared BEACN's positive threshold on the evidence available.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1fpqwxp2kxvnntr8hpkh9q9djm78ccdww7qlhg5safugh4stmcwzqql5lauu": {
+  "statement": "BEACN voted No on this informational governance action (no published title was attached). Elevated risk flags reduced confidence and the deterministic scoring found the downside and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1fk4nx9zhkcdcyjaudwjtnkd7gagwyhqtth2zypawkc78gvdxkuzqqtvqdkv": {
+  "statement": "BEACN voted Yes on adding a Constitutional Committee member. Committee actions are weighed against BEACN's protocol-safety priorities; here the evidence supported proceeding and the assessed risk was manageable, so the score cleared the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpk0mqrnw": {
+  "statement": "BEACN voted Yes on the ₳1,500,000 withdrawal for Complement Catalyst: Extended Quadratic Funding. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence at the time.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13pzmlsmmktmfareqpl3gzj9nm63ugwvmp3y7urkjhd8rf89tn6msq95mp3f": {
+  "statement": "BEACN voted Yes on naming the protocol version 11 hard fork after van Rossem. This is an informational naming action with a pinned context document and no protocol or treasury risk to weigh, so it cleared the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpx66gmxa": {
+  "statement": "BEACN voted Yes on the ₳605,000 withdrawal for a free Native Asset CDN for Cardano developers. With a verifiable anchor and manageable assessed risk under treasury scrutiny, the action cleared BEACN's positive threshold on the evidence available.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqj0vdlhj": {
+  "statement": "BEACN voted Yes on the ₳300,000 withdrawal for the Ledger App Rewrite administered by Intersect. The deterministic scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpvhtd5td": {
+  "statement": "BEACN voted Yes on the ₳592,780 withdrawal for Beyond Minimum Viable Governance. Under elevated treasury scrutiny the evidence was judged sufficient and the risk manageable, letting the score clear the positive threshold at the time of review.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqz6d98zp": {
+  "statement": "BEACN voted Yes on the ₳96,817,080 withdrawal for the 2025 Input Output Engineering Core Development Proposal. Despite the large size, the deterministic scoring found the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold on the published evidence; the verdict is bounded by that evidence and is not a broader endorsement.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1t87n2vjnavthuggyarerafxx8c7n9mu4c7r96qlfp5uggsjdc8dsqymg588": {
+  "statement": "BEACN voted Yes on Cardanoの生きがい (Ikigai). A pinned context document was available and the informational action was judged low-risk and sufficiently evidenced, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1cadmygtqv6r64pvwezw859wg36wpwp209cz94cc7ej9fdp7dyphqq58n5ur": {
+  "statement": "BEACN voted No on reducing the committeeMinSize parameter from 7 to 5. Protocol parameter changes carry system-wide risk, and the deterministic scoring found the demonstrated benefit did not outweigh that risk in the available evidence, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action193leqzml768nz7nmpepzx822a5mzyanqhtewaxjtul5gp6uhwvfsqgl2qg0": {
+  "statement": "BEACN voted Yes on the ₳99,600 withdrawal for BloxBean Java Tools maintenance and enhancement. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlzzy7m65d": {
+  "statement": "BEACN voted Yes on the ₳199,911 withdrawal for OpShin — Python smart contracts for Cardano. The deterministic scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqghuqg03": {
+  "statement": "BEACN voted Yes on the ₳220,914 withdrawal for Pallas, sustaining critical Rust tooling for Cardano. With a verifiable anchor and manageable assessed risk under treasury scrutiny, the action cleared BEACN's positive threshold on the evidence available.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1cgdsp7g0rr7wgqp7maptpvx525fxuqwfgm5qe3f5r20ew5x2772sq0m5y83": {
+  "statement": "BEACN voted Yes on increasing transaction and block memory units (Part 1 of 2). Parameter changes carry system-wide risk and face elevated scrutiny; here the supporting evidence was sufficient and the assessed risk manageable, so the score cleared the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1mmalzkcxpyn33t05hml2hxpwq0ffv6uu4mhe8sv7guz5nmm4afysqlmepzl": {
+  "statement": "BEACN voted Yes on the 2025 Cardano Blockchain Ecosystem Budget informational action (7.5M ₳ for community builders). A pinned context document was available and the action was judged sufficiently evidenced with manageable risk, clearing the positive threshold; as an informational signal it does not itself release funds.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action12meeq4r43udremwpm6fzt4nt7fctvt0ah7798x036m2r4nhlccmqqhmr9wx": {
+  "statement": "BEACN voted Yes on Defining the Cardano Vision and Roadmap for 2025 and beyond. This informational action had supporting context and low assessed risk, clearing the positive threshold as a direction-setting signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action16f69yf2f35w9ds8sr05ewyr55jg5f439mu8882rv295fvf8m4kcqql7y6nc": {
+  "statement": "BEACN voted No on Constitutional Committee Compensation for epochs 581–653. Elevated risk flags reduced confidence and the deterministic scoring found the downside and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqyxzxz7k": {
+  "statement": "BEACN voted Yes on the ₳1,300,000 withdrawal for the Blockfrost Platform community budget proposal. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1aw809r9gpk7eemt02alszw7lceyf0505uvntavm62rakkckr3nxsqd54zm8": {
+  "statement": "BEACN voted Yes on adding Christina as a Constitutional Committee member. Committee actions are weighed against BEACN's protocol-safety priorities; the evidence supported proceeding with manageable risk, so the score cleared the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1f9da8n2yaf4updxzmwc7fnw8ug2gwnpvqays5n3yw6nz0mu3z2qqq6ggge9": {
+  "statement": "BEACN voted Yes on the Tempo for Cardano Governance maintenance and development budget for 2025. This informational action had supporting context and manageable assessed risk, clearing the positive threshold on the evidence presented.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action18nefry4qacd80xzs2srjahxm2e4vz3c8wvrr03rrtk8mdqfuknysq66459t": {
+  "statement": "BEACN voted Yes on the ₳45,217 withdrawal for MLabs core tool maintenance and enhancement (Cardano.nix). The deterministic scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action10k0unljvaej0kd89w7pn0zkgdx59c7xkl0x5q78dzvdtd73u0kmqq5xl5y5": {
+  "statement": "BEACN voted Yes on the 2025 Cardano NCL informational action. With supporting context and low assessed risk, the action cleared BEACN's positive threshold as a net-change-limit signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1nd3t833j7v5sz65k3tp9yyvztw60sjcjgcgjr37682s3m7frwrusqmd2k80": {
+  "statement": "BEACN voted Yes on the 2025 Net Change Limit informational action. A pinned context document was available and the action was judged low-risk, clearing the positive threshold; BEACN treats the NCL as a ceiling rather than a target.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1fl6r784t2ffw7q96du2znhprw90r3xvrfugvqelgqewgxex42kdqq9tgrd5": {
+  "statement": "BEACN voted No on the Cardano Global Listing Expansion (Powered by Snek) treasury withdrawal. Under elevated treasury scrutiny the deterministic scoring found downside risk and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold; a stronger budget, milestones or sustainability case could change that.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpyflfc4s": {
+  "statement": "BEACN voted Yes on the ₳266,667 withdrawal for Cexplorer.io, a developer-focused blockchain explorer. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlzyc3clg6": {
+  "statement": "BEACN voted Yes on the ₳314,800 withdrawal for PyCardano administered by Intersect. The deterministic scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1x2zm0lgd59kjrc9clzgscdlh0ct62l8llr638h6t4a5jj4yqzzyqq2dgc7q": {
+  "statement": "BEACN voted Yes on reimbursing the Ikigai informational governance action deposit. This informational action had supporting context and low assessed risk, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1cp0w6zwgwpj98jtu3r2q838lgwmhs6j49l58zx4q05lx220lmzaqqztnljz": {
+  "statement": "BEACN returned Needs more info on Cardano Critical Integrations V2. As a high-impact treasury withdrawal it requires a completed deep-research dossier — budget, feasibility, risks, alternatives and failure modes — before BEACN will cast a directional vote, and that evidence was not confirmed complete. This is a conservative hold; a complete dossier would unblock a Yes or No.",
+  "decision": "NEEDS_MORE_INFO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlp2tyw3h6": {
+  "statement": "BEACN voted Yes on the ₳15,750,000 withdrawal for an MBO for the Cardano ecosystem (Intersect). Despite the size, the deterministic scoring found the evidence sufficient and the risk manageable under elevated treasury scrutiny, clearing the positive threshold on the published evidence; the verdict is bounded by that evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpcdq823y": {
+  "statement": "BEACN voted No on the ₳3,126,000 withdrawal for ecosystem exchange listing and market-making services. Under elevated treasury scrutiny the scoring found downside risk and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold; clearer outcomes and risk controls could change that.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpsn5rx0e": {
+  "statement": "BEACN voted Yes on the ₳6,000,000 withdrawal for Cardano Summit 2025 and regional tech events. The deterministic scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpwywvhcq": {
+  "statement": "BEACN voted Yes on the ₳69,459,000 Catalyst 2025 proposal by Input Output. Despite the large size, the scoring found the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold; the verdict reflects the published evidence and is not a broader endorsement.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg": {
+  "statement": "BEACN voted No on the Cardano DeFi Liquidity Budget - Withdrawal 1. Under elevated treasury scrutiny the scoring found the downside risk and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action19uhuy5uame2s60yrh6n8cyds8ps5q7tkh05dqlzmpcfy429p9w4qq5ll3g0": {
+  "statement": "BEACN voted Yes on the Amaru Treasury Withdrawal 2026. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence at the time of review.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1g7sw0f8e8qa34lppj2erksvzf4j6e9udwaq6efslc8apdqeazygsq2spyyt": {
+  "statement": "BEACN voted Yes on replacing the interim Constitutional Committee. Committee actions are weighed against BEACN's protocol-safety priorities; the evidence supported proceeding with manageable risk, so the score cleared the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1n9hdlcmshrj3hee4g8n4fxdgrprpxp0r03l6psd3j0evtpck0nrsqm57age": {
+  "statement": "BEACN voted Yes on Defining the Cardano 2030 Vision and Strategy. This informational action had supporting context and low assessed risk, clearing the positive threshold as a direction-setting signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1286ft23r7jem825s4l0y5rn8sgam0tz2ce04l7a38qmnhp3l9a6qqn850dw": {
+  "statement": "BEACN voted No on this parameter-change governance action (no published title was attached). Protocol parameter changes carry system-wide risk, and the scoring found the demonstrated benefit did not outweigh that risk in the available evidence, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlp5u7pqqr": {
+  "statement": "BEACN voted Yes on the ₳12,000,000 withdrawal for the Cardano Builder DAO administered by Intersect. The deterministic scoring found the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlq2yeptuu": {
+  "statement": "BEACN voted Yes on the ₳220,914 withdrawal for UTxO RPC, sustaining Cardano blockchain integration. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action15ce4qnwug759939wqv782pvh6qg68khspg8kh02gmex99mcsytwqqqr7jkr": {
+  "statement": "BEACN voted No on the DeltaDeFi: Hydra Trading Infrastructure Budget informational action. Elevated risk flags reduced confidence and the scoring found the downside and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1jr84r96lnsvu9yd6c0jhxe9gj5r7vnd2pgkntc6klplxdpyzz4tqqc9uldx": {
+  "statement": "BEACN voted Yes on the informational action for a ₳5M loan for Cardano's Global Listing Expansion (Powered by Snek). As an informational signal with supporting context and manageable assessed risk, it cleared the positive threshold; note BEACN reached a different verdict on the matching treasury withdrawal, which is judged under stricter spending rules.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1r44w54hx553mz0sr4cc07f8tlxzj2sa57l2pt3l9pa2ldw42fc7sq5q3rtn": {
+  "statement": "BEACN voted No on the ₳5M treasury withdrawal for Cardano's Global Listing Expansion (Powered by Snek). Under elevated treasury scrutiny the scoring found downside risk and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold even though the related informational signal scored positively.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqvckzwqt": {
+  "statement": "BEACN voted Yes on the ₳130,903 withdrawal for Lucid Evolution maintenance administered by Intersect. The scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1fvgw27fjpr9c7g582mszzyez0jgkqgjgatzdnyngrg8wwc9kcn3qqxtz8r7": {
+  "statement": "BEACN voted Yes on the Cardano DeFi Liquidity Budget - Withdrawal 1 (this instance). Under treasury scrutiny the evidence available was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence at review.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlzgf074ea": {
+  "statement": "BEACN voted Yes on the ₳104,347 withdrawal for MLabs research toward tooling for elliptical curves. The scoring found the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1jxne7hynfd7frcczwumd2eggps4kvy0msjztz9t0mutpy870ksgqqp6vp3p": {
+  "statement": "BEACN voted Yes on the Cardano Blockchain Ecosystem Constitution v2.4. Constitutional actions are weighed against BEACN's highest priority, constitutional integrity and protocol safety; here the evidence supported proceeding with manageable risk, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1vrkk4dpuss8l3z9g4uc2rmf8ks0f7j534zvz9v4k85dlc54wa3zsqq68rx0": {
+  "statement": "BEACN voted Yes on the Amaru Treasury Withdrawal 2025. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action10lty9xka3unprtvdfrqvcjgsz33sjwhv9p06afqzar8au782trtsq7dhd95": {
+  "statement": "BEACN voted Yes on the informational action asking whether K should be increased. With supporting context and low assessed risk, the action cleared BEACN's positive threshold as a non-binding signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlzxt5eumh": {
+  "statement": "BEACN voted Yes on the ₳750,000 withdrawal for the Cardano Product Committee (community-driven 2030 work). The scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpz4s2af8": {
+  "statement": "BEACN voted Yes on the ₳657,692 withdrawal for Scalus, a dApps development platform. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlq5nrw6t9": {
+  "statement": "BEACN voted Yes on the ₳600,000 withdrawal for a complete Web3 developer stack for Cardano. The scoring found the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1a95na44kgedjk3k64ajpfp4p9d9jj3sgzc6tt9nmnkvgj7c9nraqq7g4d2u": {
+  "statement": "BEACN voted Yes on the Cardano Budget Process Framework facilitated by Intersect. This informational action had supporting context and low assessed risk, clearing the positive threshold as a process-setting signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action10ueqgzwenxr39le68n0se9peu92r7gm2846xwehh3u0ahc0qd0uqqyljxu5": {
+  "statement": "BEACN voted No on the informational action to set a 2025 Net Change Limit of 300M ADA and a 2026 limit of 250M ADA. Elevated flags reduced confidence and the scoring found the downside and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold; BEACN treats the NCL as a ceiling to protect treasury durability, not a target.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1lqun78lcznfa2gek49m3ydslakfnm8heargfp8sax9fk54yl6ghsqp042zv": {
+  "statement": "BEACN voted Yes on the ₳70,000,000 withdrawal for the Cardano Critical Integrations Budget. Despite the size, the scoring found the evidence sufficient and the risk manageable under elevated treasury scrutiny, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1h4ygjv0hjfj3lmafcm76rpdzcm8vsvj9k5wejn3npyxwxm3fesnqqw9kxxz": {
+  "statement": "BEACN voted Yes on the Cardano Blockchain Ecosystem Budget informational action for Amaru node development 2025. With supporting context and manageable assessed risk, it cleared the positive threshold as a non-binding signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1ypajyms3pcfmkx93r87dxy6jpc8u6pst90ylhxj7t0rwjj43puasq0x9jrw": {
+  "statement": "BEACN voted Yes on the Cardano Blockchain Ecosystem Constitution v2.0. Weighed against BEACN's constitutional-integrity priority, the evidence supported proceeding with manageable risk, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1n5sn54mgf47a7men2ryq6ppx88kta4wvenz2qkl4f9v6ppje8easqxwm88m": {
+  "statement": "BEACN voted Yes on the Cardano GovTool budget for 12 months of active maintenance and development. This informational action had supporting context and manageable assessed risk, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpuz29v77": {
+  "statement": "BEACN voted No on the ₳3,000,000 withdrawal for a high-yield RWA asset (tokenized real estate). Under elevated treasury scrutiny the scoring found downside risk and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlp730y0dn": {
+  "statement": "BEACN voted Yes on the ₳4,000,000 withdrawal for expanding stablecoin and Cardano native-asset support. The scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13836fuy3yttxn4hkeqka398q9qnwsjtmul4sxc3nht7qae8uvejsqm7ukh8": {
+  "statement": "BEACN voted No on the Cardano in Oceania informational action. Elevated flags reduced confidence and the scoring found the downside and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action169kllwhfmp488je5x5rwvufd08p8sztdcf0ghf5sp6ey2gnjdwaqql47xry": {
+  "statement": "BEACN voted Yes on the 2025 Net Change Limit Extension informational action. With supporting context and low assessed risk, the action cleared BEACN's positive threshold as a non-binding NCL signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpgcp0jyh": {
+  "statement": "BEACN voted Yes on the ₳212,000 withdrawal for the AdaStat.net Cardano blockchain explorer. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action15dh2lt4qskmhl97vat8s0l552ruvddrlasa0jndg7lg43g0uju3qq78hvja": {
+  "statement": "BEACN voted Yes on Securing Generic Top-Level Domains for the Cardano ecosystem. This informational action had supporting context and low assessed risk, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action142ndnn9hycuuwld5ddemash2l709ln06qjgfeudq77z45nf3fpdqqn7pwux": {
+  "statement": "BEACN returned Needs more info on the 5am.earth Trust Layer treasury withdrawal targeting Vision 2030 KPIs. As a high-impact treasury action it requires a completed deep-research dossier — budget, feasibility, risks, alternatives and failure modes — before BEACN will cast a directional vote, and that evidence was not confirmed complete. This is a conservative hold; a complete dossier would unblock a Yes or No.",
+  "decision": "NEEDS_MORE_INFO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1ezp0r9rgf4njx93p9uq7l3kjs9m739jm0ntf26vplcmucec4jc0qqxjlfrc": {
+  "statement": "BEACN voted Yes on the Cardano Blockchain Ecosystem Constitution v2.3. Weighed against BEACN's constitutional-integrity priority, the evidence supported proceeding with manageable risk, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqqfgyy3v": {
+  "statement": "BEACN voted Yes on the ₳2,162,096 withdrawal for Midgard optimistic rollups administered by Intersect. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlp679xfzf": {
+  "statement": "BEACN voted Yes on the ₳889,500 withdrawal for Cardano ecosystem pavilions at exhibitions. The scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1u9x73kwufaxa70lfy59g4ynwyrcsaxdcd0gxzzmh67s9fxq4j8hqqk2phgh": {
+  "statement": "BEACN voted Yes on the Cardano Blockchain Ecosystem Budget informational action (275M ADA administered by Intersect). With supporting context and manageable assessed risk, it cleared the positive threshold as a non-binding signal; it does not itself release funds.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1q0m8z7glm9cprucwf44hdjdfra8khnakpm3hu5ueh929hvljw4aqqzuxfxz": {
+  "statement": "BEACN voted Yes on the ₳5,000,000 loan to expand Cardano's global listings. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence at review.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqudh2k4c": {
+  "statement": "BEACN voted Yes on the ₳11,070,323 withdrawal for TWEAG's multiple core budget projects. Despite the size, the scoring found the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpqx4t762": {
+  "statement": "BEACN voted Yes on the ₳583,000 withdrawal for Eternl maintenance administered by Intersect. The scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action16tdkp3fs0j6303e4utgp8rftdug0ckezr4sslgv8wxdaeq40ngpsq5sr06h": {
+  "statement": "BEACN voted Yes on the ₳1,150,000 withdrawal for GovTool, 12 months of active maintenance and development. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqczags6z": {
+  "statement": "BEACN voted Yes on the ₳578,571 withdrawal for Gerolamo, a Cardano node in TypeScript. The scoring found the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1u4jrcvlkppjzuv5j9z5ksacwtvv77h6glu0knpcjut8gvjjfu0cqqt3alsy": {
+  "statement": "BEACN voted Yes on the Stablecoin DeFi Liquidity Budget informational action. With supporting context and manageable assessed risk, it cleared the positive threshold as a non-binding signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1k5vwlfrxtyusd2ec37tckd54gjvqn2kd72xj4t6wkkapdv7zfg0qq468n2r": {
+  "statement": "BEACN voted Yes on approving the Cardano Foundation as the new managing entity of Project Catalyst. This informational action had supporting context and low assessed risk, clearing the positive threshold as a direction-setting signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqkqx0ecg": {
+  "statement": "BEACN voted Yes on the ₳5,885,000 OSC budget proposal for a paid open-source model. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqsufvuyl": {
+  "statement": "BEACN voted Yes on the ₳220,914 withdrawal for Dolos, sustaining a lightweight Cardano data node. The scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1pvv5wmjqhwa4u85vu9f4ydmzu2mgt8n7et967ph2urhx53r70xusqnmm525": {
+  "statement": "BEACN voted No on the hard fork to protocol version 10 (the Plomin hard fork). Hard-fork initiations demand the strongest evidence quality of any action type, and in the evidence set available the deterministic scoring found the safeguards-to-benefit balance fell short of the threshold, registering a No.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1ngpqafax5rvp8lcgey4asvqtycrh4e56fwp8cn2r9trx2ysryhtsqdm3w3z": {
+  "statement": "BEACN returned Needs more info on Eternl: Path to Sustainability (2026–2027). As a high-impact treasury withdrawal it requires a completed deep-research dossier before BEACN will cast a directional vote, and that evidence was not confirmed complete. This is a conservative hold; a complete dossier would unblock a Yes or No.",
+  "decision": "NEEDS_MORE_INFO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpjq3z9u5": {
+  "statement": "BEACN voted Yes on the ₳6,000,000 withdrawal for a unified global events marketing service. The scoring found the evidence sufficient and the risk manageable under elevated treasury scrutiny, clearing the positive threshold on the published evidence.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1mldvtys6ketjg87wtpvr6cd77kdrd8sp62a8sxgadhmxx2s8lh7sqp2qedq": {
+  "statement": "BEACN voted No on reducing the minimum Constitutional Committee size (committeeMinSize) from 7 to 5. Protocol parameter changes carry system-wide risk, and the scoring found the demonstrated benefit did not outweigh that risk in the available evidence, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqx488pdm": {
+  "statement": "BEACN voted Yes on the ₳424,800 withdrawal for hardware wallets maintenance administered by Intersect. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action17dfgtkeufcy945e3ssanqpmn09ft3gezhvepvvg7msmlmaz260dqqjtsmpe": {
+  "statement": "BEACN voted No on the Dingo production-grade block producer in Go treasury withdrawal. Under elevated treasury scrutiny the scoring found the downside risk and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold; stronger safeguards and a clearer case could change that.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlq63cfnf0": {
+  "statement": "BEACN voted Yes on the ₳243,478 withdrawal for MLabs core tool maintenance and enhancement (Plutarch). The scoring judged the evidence sufficient and the risk manageable under treasury scrutiny, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action133jnaewfsq8x6v08ndd87l2yqryp63r30t2dkceacxx5cply5n7sqzlcyqf": {
+  "statement": "BEACN voted Yes on the Cardano Constitution to replace the interim constitution. As a foundational constitutional action weighed against BEACN's highest priority — constitutional integrity and protocol safety — the evidence supported proceeding with manageable risk, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action18a9sytyez02jl8ee4ryz5xu7heg587m5tu6nr7fkd3ex30umnnjqq27e7ey": {
+  "statement": "BEACN returned Needs more info on the Rare Evo and Dev Gov Day 2026 Cardano title sponsorship. As a high-impact treasury withdrawal it requires a completed deep-research dossier before BEACN will cast a directional vote, and that evidence was not confirmed complete. This is a conservative hold; a complete dossier would unblock a Yes or No.",
+  "decision": "NEEDS_MORE_INFO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x": {
+  "statement": "BEACN voted No on the Cardano x Draper Dragon: Orion Fund treasury withdrawal. Under elevated treasury scrutiny the scoring found downside risk and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1m3xx08yv788vfxqh6nfvrjtvmqpwezsy0ggaczctkyjmttc2wmxsq4jsr7q": {
+  "statement": "BEACN voted Yes on the Net Change Limit informational action for epochs 613 to 713. With supporting context and low assessed risk, it cleared BEACN's positive threshold as a non-binding NCL signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1zhuz5djmmmjg8f9s8pe6grfc98xg3szglums8cgm6qwancp4eytqqmpu0pr": {
+  "statement": "BEACN voted No on naming the next hard fork the HOSKY Hard Fork. Although a naming action, elevated risk flags reduced confidence and the deterministic scoring found the downside and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1wwjwkg2g0qwr0mehey9r8gwn6qz3r28wl6wdl2s75kfmpy8j87tqqtft9tp": {
+  "statement": "BEACN voted Yes on the informational action setting a Net Change Limit of 300 million ADA for epochs 613–713. With supporting context and low assessed risk, it cleared the positive threshold; BEACN treats the NCL as a ceiling that protects treasury durability.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqwtnrdnx": {
+  "statement": "BEACN voted Yes on the ₳1,161,000 withdrawal for the zkFold ZK Rollup administered by Intersect. Under treasury scrutiny the evidence was judged sufficient and the risk manageable, clearing the positive threshold.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1js2s9v92zpxg2rge0y3jt9zy626he2m67x9kx9phw4r942kvsn6sqfym0d7": {
+  "statement": "BEACN voted No on decreasing the treasury tax from 20% to 10%. This parameter change would reduce future treasury inflows, and against BEACN's priority of treasury durability — plus the system-wide risk parameter changes carry — the scoring found the case did not outweigh that risk, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1t5ap7etluvct2x69nj5mfqhurgakuvekyflcsrv2qkrhrs378n3qq3z2c22": {
+  "statement": "BEACN voted No on the Reforming Treasury Governance informational action. Elevated risk flags reduced confidence and the scoring found the downside and weak safeguards outweighed the demonstrated benefit, pushing the score past the negative threshold.",
+  "decision": "NO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1vdlrcftd48qn2zz8egepr6xyfcmxpfz8r69k769gc5mhg662adesq9yy8pl": {
+  "statement": "BEACN voted Yes on the informational action setting a 300 million ADA Net Change Limit for epochs 563–635. With supporting context and low assessed risk, it cleared the positive threshold as a non-binding NCL signal.",
+  "decision": "YES",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1zljrlljt9cxlz7ra2nep43nxg0r54wcnrgexyuhuam9ah0ws607qq2vcg4x": {
+  "statement": "BEACN returned Needs more info on Tweag Core Cardano Infrastructure: Treasury Withdrawal 2026–2027. As a high-impact treasury withdrawal it requires a completed deep-research dossier before BEACN will cast a directional vote, and that evidence was not confirmed complete. This is a conservative hold; a complete dossier would unblock a Yes or No.",
+  "decision": "NEEDS_MORE_INFO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ },
+ "gov_action1654yj97lf7guxsh27phtknq2tsc4dajp95fh7vrucaltjy0502csq7qtkhq": {
+  "statement": "BEACN returned Needs more info on reimbursing the Ikigai governance action deposit (treasury withdrawal). As a treasury action it requires a completed deep-research dossier before BEACN will cast a directional vote, and that evidence was not confirmed complete. This is a conservative hold; a complete dossier would unblock a Yes or No.",
+  "decision": "NEEDS_MORE_INFO",
+  "model": "Claude (BEACN subscription) — plain-language explanation of the deterministic verdict",
+  "generated_at": "2026-06-15T17:44:28+00:00"
+ }
+}
