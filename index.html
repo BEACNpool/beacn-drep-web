@@ -5,11 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BEACN DRep — Transparent Autonomous Governance on Cardano</title>
   <meta name="description" content="BEACN DRep votes on every Cardano governance action autonomously, from public evidence, with no human choosing the outcome — and publishes the rationale and on-chain proof here, daily." />
+  <meta name="theme-color" content="#020617" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+  <link rel="canonical" href="https://beacnpool.github.io/beacn-drep-web/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="BEACN DRep" />
+  <meta property="og:title" content="BEACN DRep — Transparent Autonomous Governance on Cardano" />
+  <meta property="og:description" content="Every Cardano governance vote, decided by open deterministic rules with no human in the loop, published with its rationale and on-chain proof — daily." />
+  <meta property="og:url" content="https://beacnpool.github.io/beacn-drep-web/" />
+  <meta property="og:image" content="https://beacnpool.github.io/beacn-drep-web/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BEACN DRep — Transparent Autonomous Governance on Cardano" />
+  <meta name="twitter:description" content="Every Cardano governance vote, decided by open deterministic rules with no human in the loop — published with rationale and on-chain proof." />
+  <meta name="twitter:image" content="https://beacnpool.github.io/beacn-drep-web/og.png" />
   <style>
     :root{
       --bg:#06080d; --surface:#0e1320; --surface2:#121a2b; --line:#1b2333; --line2:#2a3650;
       --fg:#e9eef7; --mut:#8b97a9; --dim:#5c6677;
-      --cyan:#2ee6cf; --blue:#5b8cff; --violet:#9b8cff;
+      --cyan:#22d3ee; --blue:#5b8cff; --violet:#9b8cff;
       --yes:#2fd07a; --no:#ff5f5f; --abst:#9aa6b5; --info:#f5b94a;
       --mono:ui-monospace,SFMono-Regular,Menlo,"Cascadia Code",monospace;
     }
@@ -213,14 +230,44 @@
     .integrity span{font-size:.82rem;color:#c4cdda} .integrity b{color:var(--yes)}
     .links{margin-top:14px;line-height:2}
     .err{color:var(--no)}
+    /* sticky section nav */
+    .topnav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+      margin:0 -20px 16px;padding:9px 20px;background:rgba(6,8,13,.82);
+      backdrop-filter:saturate(140%) blur(12px);-webkit-backdrop-filter:saturate(140%) blur(12px);
+      border-bottom:1px solid var(--line)}
+    .navbrand{display:inline-flex;align-items:center;gap:8px;color:var(--fg);font-weight:700;font-size:.92rem}
+    .navbrand img{border-radius:6px}
+    .navbrand:hover{text-decoration:none}
+    .navlinks{display:flex;gap:3px;margin-left:auto;flex-wrap:wrap}
+    .navlinks a{color:var(--mut);font-size:.86rem;padding:5px 11px;border-radius:8px}
+    .navlinks a:hover{color:var(--fg);background:rgba(255,255,255,.05);text-decoration:none}
+    .navlinks a.active{color:var(--cyan);background:rgba(34,211,238,.1)}
+    .seal img{display:block;width:100%;height:100%;border-radius:13px}
+    .copied{color:var(--yes)!important}
     @media (max-width:720px){
       .stats,.steps,.cards,.dcards,.pillars{grid-template-columns:1fr}
       h1{font-size:2.1rem}
+      .navlinks{font-size:.82rem} .navlinks a{padding:4px 8px}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+      html{scroll-behavior:auto}
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="wrap" id="top">
+
+    <nav class="topnav">
+      <a class="navbrand" href="#top"><img src="assets/logo.png" alt="" width="24" height="24" />BEACN DRep</a>
+      <div class="navlinks">
+        <a href="#live">Live</a>
+        <a href="#latest">Verdicts</a>
+        <a href="#record">Record</a>
+        <a href="#decides">Rules</a>
+        <a href="#delegate">Delegate</a>
+      </div>
+    </nav>
 
     <!-- telemetry / epoch clock -->
     <div class="telemetry">
@@ -235,7 +282,7 @@
     <!-- hero -->
     <header>
       <div class="brandbar">
-        <div class="seal">B</div>
+        <div class="seal"><img src="assets/logo.png" alt="BEACN logo" /></div>
         <div>
           <div class="brandname">BEACN DRep</div>
           <div class="brandsub">Official autonomous Delegated Representative · Cardano</div>
@@ -404,7 +451,7 @@
         <h3>Delegate your voting power to BEACN</h3>
         <p style="margin:0;font-size:.9rem;color:#c0cad6">In your wallet's governance section, set your DRep delegation to:</p>
         <div class="id"><span id="cta-drep">drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg</span>
-          <button type="button" onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText(document.getElementById('cta-drep').textContent)">Copy</button></div>
+          <button type="button" onclick="copyDrep(this)">Copy</button></div>
         <p class="fine">Your ADA never moves and never leaves your wallet — delegation only assigns how your
           voting power is used, and you can change it anytime.
           <a id="cta-cs" href="https://cardanoscan.io/" target="_blank" rel="noopener">View on Cardanoscan ↗</a> ·
@@ -455,6 +502,23 @@
       document.querySelector('.epoch-progress').setAttribute('aria-valuenow', Math.round(p));
     };
     updateEpochClock(); setInterval(updateEpochClock, 1000);
+
+    // --- copy-to-clipboard with feedback ---
+    function copyDrep(btn){
+      const t = document.getElementById('cta-drep').textContent;
+      const done = () => { const o = btn.textContent; btn.textContent = 'Copied ✓'; btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = o; btn.classList.remove('copied'); }, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done).catch(done);
+      else done();
+    }
+
+    // --- scroll-spy: highlight the active section in the sticky nav ---
+    const navlinks = [...document.querySelectorAll('.navlinks a')];
+    const spy = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) {
+      const id = '#' + e.target.id;
+      navlinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+    }}), { rootMargin: '-45% 0px -50% 0px' });
+    ['live','latest','record','decides','delegate'].forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
 
     // --- helpers ---
     const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -566,6 +630,19 @@
       document.getElementById('cards').innerHTML='<div class="err">no feed yet</div>';
       document.getElementById('hist').innerHTML='<div class="err">no feed yet</div>';
     });
+
+    // --- keep the live status fresh without a reload ---
+    function refreshStatus(){
+      fetch('./status.json?t='+Date.now()).then(r=>r.ok?r.json():null).then(d=>{
+        if(!d) return; const lc=d.last_check||{};
+        document.getElementById('summary').textContent='Daily governance check complete. '+(lc.summary||'');
+        document.getElementById('stamp').textContent=d.generated_at?'last run '+ago(d.generated_at)+' · '+d.generated_at:'';
+        document.getElementById('s-epoch').textContent=lc.epoch??'—';
+        document.getElementById('s-open').textContent=lc.open_actions??'—';
+        document.getElementById('s-voted').textContent=lc.actions_with_our_vote??'—';
+      }).catch(()=>{});
+    }
+    setInterval(refreshStatus, 180000);
   </script>
 </body>
 </html>
