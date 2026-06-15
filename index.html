@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BEACN DRep — Status</title>
+  <title>BEACN DRep — Autonomous Cardano Governance</title>
+  <meta name="description" content="BEACN DRep is an autonomous Cardano delegated representative. It checks every governance action, decides its vote with open deterministic rules and no human interference, and publishes the rationale and on-chain proof here." />
   <style>
     :root { --bg:#0e1116; --card:#161b22; --line:#283040; --fg:#e6edf3; --mut:#8b949e;
-            --ok:#2ea043; --warn:#d29922; --no:#f85149; --abst:#8b949e; --accent:#58a6ff; }
+            --ok:#2ea043; --warn:#d29922; --no:#f85149; --abst:#9aa4af; --accent:#58a6ff;
+            --accent2:#7ee787; }
     * { box-sizing:border-box; }
-    body { margin:0; background:var(--bg); color:var(--fg);
+    body { margin:0; background:var(--bg); color:var(--fg); line-height:1.5;
            font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
-    .wrap { max-width:980px; margin:0 auto; padding:24px 18px 60px; }
+    .wrap { max-width:1000px; margin:0 auto; padding:24px 18px 70px; }
+    a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+    /* epoch clock (preserved) */
     .epoch-clock { background:linear-gradient(135deg,#101b29,#161b22); border:1px solid #29415e;
                    border-radius:14px; padding:14px 16px; margin-bottom:20px; }
     .epoch-row { display:flex; align-items:baseline; justify-content:space-between; gap:18px; }
@@ -20,42 +24,78 @@
     .epoch-countdown { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:1.35rem;
                        font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
     .epoch-meta { color:var(--mut); font-size:.76rem; margin-top:5px; text-align:right; }
-    .epoch-progress { height:4px; background:#0e141b; border-radius:999px; overflow:hidden;
-                      margin-top:11px; }
+    .epoch-progress { height:4px; background:#0e141b; border-radius:999px; overflow:hidden; margin-top:11px; }
     .epoch-progress span { display:block; height:100%; width:0; background:var(--accent);
                            border-radius:inherit; transition:width 1s linear; }
-    h1 { font-size:1.5rem; margin:0 0 2px; }
-    .sub { color:var(--mut); font-size:.85rem; word-break:break-all; }
-    .badge { display:inline-block; padding:2px 10px; border-radius:999px; font-size:.72rem;
-             font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+    /* header */
+    h1 { font-size:1.7rem; margin:0 0 4px; letter-spacing:-.01em; }
+    .tagline { color:var(--fg); font-size:1.02rem; max-width:70ch; }
+    .sub { color:var(--mut); font-size:.82rem; word-break:break-all; margin-top:8px; }
+    .badge { display:inline-block; padding:2px 10px; border-radius:999px; font-size:.7rem;
+             font-weight:700; letter-spacing:.04em; text-transform:uppercase; vertical-align:middle; }
     .badge.shadow { background:#3a2d0a; color:var(--warn); border:1px solid #5c470f; }
-    .badge.live { background:#0c2c16; color:var(--ok); border:1px solid #15532a; }
-    .hero { background:var(--card); border:1px solid var(--line); border-radius:14px;
-            padding:20px 22px; margin:18px 0 22px; }
-    .hero .when { font-size:1.05rem; }
-    .hero .stamp { color:var(--mut); font-size:.85rem; margin-top:6px; }
-    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
-    .stat { background:#0e141b; border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+    .badge.live { background:#0c2c16; color:var(--accent2); border:1px solid #15532a; }
+    /* daily-check banner */
+    .check { display:flex; gap:12px; align-items:flex-start; background:var(--card);
+             border:1px solid var(--line); border-left:3px solid var(--ok); border-radius:12px;
+             padding:15px 18px; margin:20px 0; }
+    .check .tick { color:var(--ok); font-size:1.3rem; line-height:1.2; }
+    .check .summary { font-size:1.02rem; }
+    .check .stamp { color:var(--mut); font-size:.8rem; margin-top:3px; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:14px 0 8px; }
+    .stat { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
     .stat .n { font-size:1.7rem; font-weight:700; }
-    .stat .l { color:var(--mut); font-size:.78rem; }
-    table { width:100%; border-collapse:collapse; font-size:.9rem; }
-    th,td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); }
-    th { color:var(--mut); font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.03em; }
-    td.id { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.82rem; }
-    .pill { padding:1px 8px; border-radius:999px; font-size:.74rem; font-weight:600; }
-    .pill.open { background:#0c2c16; color:var(--ok); }
-    .pill.closed { background:#21262d; color:var(--mut); }
-    .v-yes { color:var(--ok); font-weight:600; } .v-no { color:var(--no); font-weight:600; }
-    .v-abst { color:var(--abst); font-weight:600; } .v-none { color:var(--mut); }
-    a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
-    .links { margin-top:26px; color:var(--mut); font-size:.9rem; }
+    .stat .l { color:var(--mut); font-size:.76rem; }
+    /* explainer */
+    .how { background:linear-gradient(135deg,#0f1b14,#13181f); border:1px solid #1f4a30;
+           border-radius:14px; padding:20px 22px; margin:26px 0; }
+    .how h2 { margin:0 0 4px; font-size:1.15rem; }
+    .how .lead { color:#cdd9e5; margin:0 0 14px; max-width:74ch; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .step { background:#0e141b; border:1px solid var(--line); border-radius:10px; padding:13px 14px; }
+    .step .k { color:var(--accent2); font-weight:700; font-size:.78rem; letter-spacing:.04em;
+               text-transform:uppercase; }
+    .step p { margin:6px 0 0; font-size:.9rem; color:#c7d0da; }
+    .how .audit { margin-top:14px; font-size:.88rem; color:var(--mut); }
+    .how .audit a { font-weight:600; }
+    /* section heads */
+    h2.sec { font-size:1.2rem; margin:30px 0 4px; }
+    .sec-note { color:var(--mut); font-size:.85rem; margin:0 0 14px; }
+    /* vote cards */
+    .cards { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    .vcard { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 17px;
+             display:flex; flex-direction:column; gap:9px; }
+    .vcard .top { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+    .vcard .title { font-size:1.04rem; font-weight:650; }
+    .chip { font-size:.7rem; color:var(--mut); border:1px solid var(--line); border-radius:999px;
+            padding:1px 8px; white-space:nowrap; }
+    .verdict { display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:1.05rem; }
+    .verdict .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+    .v-yes { color:var(--ok); } .v-yes .dot { background:var(--ok); }
+    .v-no { color:var(--no); } .v-no .dot { background:var(--no); }
+    .v-abst { color:var(--abst); } .v-abst .dot { background:var(--abst); }
+    .v-info { color:var(--warn); } .v-info .dot { background:var(--warn); }
+    .v-pending { color:var(--mut); } .v-pending .dot { background:var(--mut); }
+    .vcard .meta { color:var(--mut); font-size:.82rem; }
+    .vcard .actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:2px; font-size:.86rem; }
+    .proof { color:var(--accent2); font-weight:600; }
+    .proof.none { color:var(--mut); font-weight:400; }
+    /* history */
+    .search { width:100%; padding:10px 13px; background:#0e141b; border:1px solid var(--line);
+              border-radius:10px; color:var(--fg); font-size:.95rem; margin-bottom:12px; }
+    table { width:100%; border-collapse:collapse; font-size:.88rem; }
+    th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+    th { color:var(--mut); font-weight:600; font-size:.74rem; text-transform:uppercase; letter-spacing:.03em; }
+    td.t { max-width:340px; }
+    .tag { font-size:.78rem; font-weight:700; }
+    .links { margin-top:30px; color:var(--mut); font-size:.88rem; line-height:2; }
     .err { color:var(--no); }
-    footer { margin-top:30px; color:var(--mut); font-size:.78rem; }
-    @media (max-width:600px) {
-      .epoch-row { align-items:flex-start; }
-      .epoch-countdown { font-size:1.08rem; }
+    footer { margin-top:26px; color:var(--mut); font-size:.78rem; border-top:1px solid var(--line);
+             padding-top:16px; }
+    @media (max-width:680px) {
+      .epoch-row { align-items:flex-start; } .epoch-countdown { font-size:1.08rem; }
       .epoch-meta { text-align:left; }
-      .grid { grid-template-columns:1fr; }
+      .grid, .steps, .cards { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -78,23 +118,61 @@
       </div>
     </div>
 
-    <h1>BEACN DRep — Automated Voting Status</h1>
-    <div class="sub">DRep <span id="drep">…</span> · <span id="mode-wrap"></span></div>
+    <h1>BEACN DRep <span id="mode-wrap"></span></h1>
+    <p class="tagline">An autonomous delegated representative on Cardano. It checks every
+      governance action, decides how to vote using open, deterministic rules — with
+      <strong>no human choosing the outcome</strong> — and publishes its reasoning and the
+      on-chain proof right here.</p>
+    <div class="sub">DRep <span id="drep">…</span></div>
 
-    <div class="hero">
-      <div class="when" id="summary">Loading the latest check-in…</div>
-      <div class="stamp" id="stamp"></div>
-      <div class="grid">
-        <div class="stat"><div class="n" id="s-epoch">—</div><div class="l">Epoch at last check</div></div>
-        <div class="stat"><div class="n" id="s-open">—</div><div class="l">Open actions</div></div>
-        <div class="stat"><div class="n" id="s-voted">—</div><div class="l">Actions this DRep voted on</div></div>
+    <div class="check">
+      <div class="tick">✓</div>
+      <div>
+        <div class="summary" id="summary">Loading the latest governance check…</div>
+        <div class="stamp" id="stamp"></div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="stat"><div class="n" id="s-epoch">—</div><div class="l">Epoch at last check</div></div>
+      <div class="stat"><div class="n" id="s-open">—</div><div class="l">Open governance actions</div></div>
+      <div class="stat"><div class="n" id="s-voted">—</div><div class="l">Actions voted on-chain</div></div>
+    </div>
+
+    <div class="how">
+      <h2>How these votes are made — with zero human interference</h2>
+      <p class="lead">No person picks how BEACN DRep votes. A program does the whole job and
+        shows its work. Every input, rule, and result is public and reproducible, so anyone
+        can check that the vote on chain matches the rules.</p>
+      <div class="steps">
+        <div class="step"><div class="k">1 · Read</div>
+          <p>It reads every live governance action directly from the Cardano chain.</p></div>
+        <div class="step"><div class="k">2 · Decide</div>
+          <p>A deterministic, open-source engine scores each action against published doctrine —
+            the same inputs always produce the same verdict.</p></div>
+        <div class="step"><div class="k">3 · Vote &amp; prove</div>
+          <p>It signs and submits the vote on chain and publishes the rationale, with hashes you
+            can re-check. No human in the loop.</p></div>
+      </div>
+      <div class="audit">Audit it yourself — everything is open source:
+        <a href="https://github.com/BEACNpool/beacn-drep-core" target="_blank" rel="noopener">engine&nbsp;(core)</a> ·
+        <a href="https://github.com/BEACNpool/beacn-drep-soul" target="_blank" rel="noopener">doctrine&nbsp;(soul)</a> ·
+        <a href="https://github.com/BEACNpool/beacn-drep-resources" target="_blank" rel="noopener">data&nbsp;(resources)</a> ·
+        <a href="https://github.com/BEACNpool/beacn-drep-web" target="_blank" rel="noopener">this&nbsp;site&nbsp;(web)</a>
       </div>
     </div>
 
-    <h2 style="font-size:1.05rem;margin:0 0 8px;">Recent governance actions</h2>
+    <h2 class="sec">Latest verdicts</h2>
+    <p class="sec-note">The most recent governance actions and how BEACN DRep responded.
+      Each card links to the full rationale and, where a vote was cast, to the on-chain transaction as proof.</p>
+    <div class="cards" id="cards"><div class="sub">Loading latest verdicts…</div></div>
+
+    <h2 class="sec">Look up past votes</h2>
+    <p class="sec-note">Search every action BEACN DRep has reviewed. Full archive in the
+      <a href="https://github.com/BEACNpool/beacn-drep-core/tree/main/data/output" target="_blank" rel="noopener">core repository</a>.</p>
+    <input id="search" class="search" type="search" placeholder="Search by title, type, or verdict (e.g. treasury, Hydra, NO)…" />
     <table>
-      <thead><tr><th>Action</th><th>Type</th><th>Status</th><th>Our vote</th><th>Expires (epoch)</th></tr></thead>
-      <tbody id="rows"><tr><td colspan="5" class="sub">Loading…</td></tr></tbody>
+      <thead><tr><th>Action</th><th>Type</th><th>Verdict</th><th>On-chain</th></tr></thead>
+      <tbody id="hist"><tr><td colspan="4" class="sub">Loading…</td></tr></tbody>
     </table>
 
     <div class="links">
@@ -103,12 +181,18 @@
       <a href="./docs/PUBLIC_CONTEXT_AND_LIMITS.md">Context &amp; limits</a> ·
       <a href="./docs/OPERATING_MODEL.md">Operating model</a> ·
       <a href="./status.json">Raw status feed (JSON)</a> ·
-      <a href="./BEACNpool.jsonld">DRep metadata</a>
+      <a href="./BEACNpool.jsonld">DRep metadata</a> ·
+      <a id="cs-drep" href="https://cardanoscan.io/" target="_blank" rel="noopener">DRep on Cardanoscan</a>
     </div>
-    <footer id="note"></footer>
+    <footer>
+      <div id="note"></div>
+      <p>BEACN DRep is operated as a public good by the BEACN stake pool. Every verdict is
+        produced by software and independently verifiable on chain.</p>
+    </footer>
   </div>
 
   <script>
+    // --- epoch clock (preserved) ---
     const CARDANO_START_MS = Date.parse('2017-09-23T21:44:51Z');
     const EPOCH_MS = 5 * 24 * 60 * 60 * 1000;
     const pad2 = n => String(n).padStart(2, '0');
@@ -125,7 +209,6 @@
       const seconds = totalSeconds % 60;
       const nextEpoch = new Date(CARDANO_START_MS + (epoch + 1) * EPOCH_MS);
       const progress = Math.min(100, Math.max(0, epochElapsed / EPOCH_MS * 100));
-
       document.getElementById('clock-epoch').textContent = epoch;
       document.getElementById('epoch-countdown').textContent =
         days + 'd ' + pad2(hours) + 'h ' + pad2(minutes) + 'm ' + pad2(seconds) + 's';
@@ -137,14 +220,9 @@
     updateEpochClock();
     setInterval(updateEpochClock, 1000);
 
-    const fmtVote = v => {
-      if (v == null) return '<span class="v-none">— not yet</span>';
-      const s = String(v).toLowerCase();
-      if (s.includes('yes')) return '<span class="v-yes">Yes</span>';
-      if (s.includes('no')) return '<span class="v-no">No</span>';
-      if (s.includes('abst')) return '<span class="v-abst">Abstain</span>';
-      return '<span class="v-none">' + v + '</span>';
-    };
+    // --- helpers ---
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c =>
+      ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     const ago = iso => {
       const s = Math.max(0, (Date.now() - new Date(iso).getTime())/1000);
       if (s < 90) return Math.round(s) + 's ago';
@@ -152,39 +230,93 @@
       if (s < 172800) return Math.round(s/3600) + ' h ago';
       return Math.round(s/86400) + ' d ago';
     };
-    const shortId = id => id.length > 22 ? id.slice(0,10) + '…' + id.slice(-7) : id;
+    const shortTx = h => h ? h.slice(0,8) + '…' + h.slice(-6) : '';
+    const actionUrl = a => a.cip129_action_id
+      ? 'https://cardanoscan.io/govAction/' + a.cip129_action_id
+      : 'https://cardanoscan.io/govAction/' + (a.action_id || '').replace('#','');
+    // Map an action to its public verdict: prefer the on-chain vote, else the recommendation.
+    const verdictOf = a => {
+      const v = (a.our_vote || '').toLowerCase();
+      if (v.includes('yes')) return { cls:'v-yes', label:'Voted Yes' };
+      if (v.includes('no')) return { cls:'v-no', label:'Voted No' };
+      if (v.includes('abst')) return { cls:'v-abst', label:'Voted Abstain' };
+      const r = (a.recommendation || '').toUpperCase();
+      if (r === 'YES') return { cls:'v-yes', label:'Recommends Yes' };
+      if (r === 'NO') return { cls:'v-no', label:'Recommends No' };
+      if (r === 'ABSTAIN') return { cls:'v-abst', label:'Abstains' };
+      if (r === 'NEEDS_MORE_INFO') return { cls:'v-info', label:'Needs more info' };
+      return { cls:'v-pending', label:'Evaluating' };
+    };
+    const proofHtml = a => a.transaction_hash
+      ? '<a class="proof" href="https://cardanoscan.io/transaction/' + esc(a.transaction_hash) +
+        '" target="_blank" rel="noopener">✓ Verify on-chain vote ↗</a>'
+      : '<span class="proof none">No vote cast' + (((a.recommendation||'')==='NEEDS_MORE_INFO') ? ' — awaiting evidence' : '') + '</span>';
+
+    let ALL = [];
+    const renderHist = q => {
+      q = (q || '').trim().toLowerCase();
+      const rows = ALL.filter(a => !q ||
+        [a.title, a.type, a.our_vote, a.recommendation].join(' ').toLowerCase().includes(q)
+      ).map(a => {
+        const vd = verdictOf(a);
+        return '<tr><td class="t"><a href="' + actionUrl(a) + '" target="_blank" rel="noopener">' +
+          esc(a.title || a.action_id) + '</a></td>' +
+          '<td>' + esc(a.type || '—') + '</td>' +
+          '<td class="tag ' + vd.cls + '">' + esc(vd.label) + '</td>' +
+          '<td>' + (a.transaction_hash
+            ? '<a href="https://cardanoscan.io/transaction/' + esc(a.transaction_hash) + '" target="_blank" rel="noopener">' + shortTx(a.transaction_hash) + '</a>'
+            : '<span class="proof none">—</span>') + '</td></tr>';
+      }).join('');
+      document.getElementById('hist').innerHTML = rows ||
+        '<tr><td colspan="4" class="sub">No matching actions.</td></tr>';
+    };
 
     fetch('./status.json?t=' + Date.now()).then(r => {
       if (!r.ok) throw new Error('status.json HTTP ' + r.status);
       return r.json();
     }).then(d => {
-      document.getElementById('drep').textContent = d.drep_id || '';
       const mode = (d.mode || 'shadow');
-      document.getElementById('mode-wrap').innerHTML =
-        '<span class="badge ' + mode + '">' + mode + ' mode</span>';
+      document.getElementById('mode-wrap').innerHTML = '<span class="badge ' + mode + '">' + esc(mode) + '</span>';
+      document.getElementById('drep').textContent = d.drep_id || '';
+      if (d.drep_id) document.getElementById('cs-drep').href = 'https://cardanoscan.io/drep/' + encodeURIComponent(d.drep_id);
       const lc = d.last_check || {};
-      document.getElementById('summary').textContent = lc.summary || 'No check-in recorded yet.';
+      document.getElementById('summary').textContent =
+        'Daily governance check complete. ' + (lc.summary || '');
       document.getElementById('stamp').textContent =
-        'Generated ' + (d.generated_at ? ago(d.generated_at) + ' (' + d.generated_at + ')' : 'unknown');
+        d.generated_at ? 'Last run ' + ago(d.generated_at) + ' · ' + d.generated_at : '';
       document.getElementById('s-epoch').textContent = lc.epoch ?? '—';
       document.getElementById('s-open').textContent = lc.open_actions ?? '—';
       document.getElementById('s-voted').textContent = lc.actions_with_our_vote ?? '—';
-      const rows = (d.actions || []).map(a =>
-        '<tr><td class="id"><a href="https://cardanoscan.io/govAction/' + a.action_id.replace('#','') +
-        '" title="' + a.action_id + '">' + shortId(a.action_id) + '</a></td>' +
-        '<td>' + (a.type || '—') + '</td>' +
-        '<td><span class="pill ' + a.status + '">' + a.status + '</span></td>' +
-        '<td>' + fmtVote(a.our_vote) + '</td>' +
-        '<td>' + (a.expires_after_epoch ?? '—') + '</td></tr>'
-      ).join('');
-      document.getElementById('rows').innerHTML = rows ||
-        '<tr><td colspan="5" class="sub">No actions in the latest check.</td></tr>';
       document.getElementById('note').textContent = d.note || '';
+
+      ALL = d.actions || [];
+      // Latest verdicts: prefer actions we acted on, newest first; fall back to feed order.
+      const latest = ALL.slice().sort((a,b) =>
+        (b.submitted_at || '').localeCompare(a.submitted_at || '') ||
+        (b.proposed_in_epoch || 0) - (a.proposed_in_epoch || 0)
+      ).slice(0, 6);
+      document.getElementById('cards').innerHTML = latest.map(a => {
+        const vd = verdictOf(a);
+        return '<div class="vcard">' +
+          '<div class="top"><div class="title">' + esc(a.title || 'Governance action') + '</div>' +
+          '<span class="chip">' + esc(a.type || '—') + '</span></div>' +
+          '<div class="verdict ' + vd.cls + '"><span class="dot"></span>' + esc(vd.label) + '</div>' +
+          '<div class="meta">Status: ' + esc(a.status || '—') +
+            (a.expires_after_epoch ? ' · expires epoch ' + esc(a.expires_after_epoch) : '') + '</div>' +
+          '<div class="actions">' +
+            (a.rationale_url ? '<a href="' + esc(a.rationale_url) + '" target="_blank" rel="noopener">Read BEACN\'s rationale ↗</a>' : '') +
+            '<a href="' + actionUrl(a) + '" target="_blank" rel="noopener">What it asked for ↗</a>' +
+            proofHtml(a) +
+          '</div></div>';
+      }).join('') || '<div class="sub">No actions in the latest check.</div>';
+
+      renderHist('');
+      document.getElementById('search').addEventListener('input', e => renderHist(e.target.value));
     }).catch(e => {
       document.getElementById('summary').innerHTML =
-        '<span class="err">Could not load status.json — ' + e.message + '</span>';
-      document.getElementById('rows').innerHTML =
-        '<tr><td colspan="5" class="err">no status feed yet</td></tr>';
+        '<span class="err">Could not load the status feed — ' + esc(e.message) + '</span>';
+      document.getElementById('cards').innerHTML = '<div class="err">no feed yet</div>';
+      document.getElementById('hist').innerHTML = '<tr><td colspan="4" class="err">no feed yet</td></tr>';
     });
   </script>
 </body>
