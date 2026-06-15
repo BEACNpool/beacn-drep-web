@@ -118,6 +118,27 @@
     .cta button { background:#1f6feb; color:#fff; border:0; border-radius:7px; padding:5px 12px;
                   font-size:.82rem; cursor:pointer; font-weight:600; white-space:nowrap; }
     .cta .fine { color:var(--mut); font-size:.84rem; margin-top:6px; }
+    /* how it decides */
+    .decide { margin:30px 0 8px; }
+    .gatenote { background:#1b1410; border:1px solid #5c470f; border-left:3px solid var(--warn);
+                border-radius:10px; padding:12px 15px; margin:12px 0 16px; font-size:.9rem; color:#e7dcc6; }
+    .dcards { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    .dcard { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:15px 16px;
+             border-top:3px solid var(--line); }
+    .dcard.yes { border-top-color:var(--ok); } .dcard.no { border-top-color:var(--no); }
+    .dcard.abst { border-top-color:var(--abst); } .dcard.info { border-top-color:var(--warn); }
+    .dcard .vh { display:flex; align-items:baseline; gap:9px; margin-bottom:5px; }
+    .dcard .vh .lbl { font-weight:700; font-size:1.05rem; }
+    .dcard.yes .lbl { color:var(--ok); } .dcard.no .lbl { color:var(--no); }
+    .dcard.abst .lbl { color:var(--abst); } .dcard.info .lbl { color:var(--warn); }
+    .dcard .gloss { color:var(--mut); font-size:.78rem; }
+    .dcard .d1 { margin:0; font-size:.88rem; color:#cdd6e0; }
+    .dcard ul { margin:8px 0 0; padding-left:18px; font-size:.85rem; color:#c2ccd6; }
+    .dcard li { margin:4px 0; }
+    .tiebreak { font-size:.9rem; color:#c2ccd6; margin:16px 0 0; }
+    .tiebreak b { color:var(--fg); }
+    .verify-row { margin-top:12px; font-size:.85rem; color:var(--mut); }
+    @media (max-width:680px) { .dcards { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -231,6 +252,73 @@
           <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/WHY_DELEGATE.md" target="_blank" rel="noopener">…and our honest limits</a>
         </p>
       </div>
+    </section>
+
+    <section class="decide">
+      <h2 class="sec">How BEACN decides — what earns each verdict</h2>
+      <p class="sec-note">A verdict is never a vibe. It is the output of a public, versioned rule set: first a
+        few hard gates can force a conservative outcome, then a weighted score routes the action. Here is what
+        pushes an action toward each result.</p>
+
+      <div class="gatenote"><strong>Conservative gates come first.</strong> Before any scoring, BEACN
+        automatically <span style="color:var(--abst);font-weight:600;">abstains</span> when the data is stale,
+        baseline evidence is missing, or the action type has no rubric — and returns
+        <span style="color:var(--warn);font-weight:600;">needs more info</span> when a treasury ask arrives
+        without a completed research dossier. Speed never overrides safety.</div>
+
+      <div class="dcards">
+        <div class="dcard yes">
+          <div class="vh"><span class="lbl">✓ Yes</span><span class="gloss">approve</span></div>
+          <p class="d1">Well-evidenced and scores clearly positive.</p>
+          <ul>
+            <li>Has a verifiable, pinned anchor / context document.</li>
+            <li>Risk flags are low or carry mitigation evidence.</li>
+            <li>For treasury: a complete research dossier, spending within sustainable fee inflow and the rolling-window budget, with clear milestones.</li>
+            <li>Net score clears the positive threshold.</li>
+          </ul>
+        </div>
+        <div class="dcard no">
+          <div class="vh"><span class="lbl">✕ No</span><span class="gloss">reject</span></div>
+          <p class="d1">Carries identifiable harm, excess cost, or breaks treasury discipline.</p>
+          <ul>
+            <li>High unmitigated risk, or strong negative flags.</li>
+            <li>For treasury: unsustainable outflow, severe recipient concentration, or no milestones.</li>
+            <li>A forced No when the rolling-window treasury capacity is already depleted.</li>
+            <li>Net score crosses the negative threshold.</li>
+          </ul>
+        </div>
+        <div class="dcard abst">
+          <div class="vh"><span class="lbl">— Abstain</span><span class="gloss">no directional vote, on purpose</span></div>
+          <p class="d1">BEACN can't responsibly take a side — discipline, not indecision.</p>
+          <ul>
+            <li>Evidence is too thin or stale, or the context/anchor is unpinned.</li>
+            <li>A hard blocker or high unmitigated risk is present.</li>
+            <li>The score is too close to neutral to justify a direction.</li>
+          </ul>
+        </div>
+        <div class="dcard info">
+          <div class="vh"><span class="lbl">? Needs more info</span><span class="gloss">a request, not a refusal</span></div>
+          <p class="d1">A high-impact ask that lacks the evidence needed to decide.</p>
+          <ul>
+            <li>Treasury action missing its deep-research dossier: budget, feasibility, risks, alternatives, failure modes.</li>
+            <li>Always lists exactly what is missing — and what would change the vote.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="tiebreak">When values conflict, BEACN applies a fixed order:
+        <b>constitutional integrity &amp; protocol safety → treasury stewardship → evidence quality →
+        public benefit → speed.</b> The higher value always wins.</p>
+
+      <p class="verify-row">Verify the rules yourself — the weights are public and versioned
+        (<a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/scoring_weights.json" target="_blank" rel="noopener">scoring_weights.json</a>),
+        the thresholds live in auditable source
+        (<a href="https://github.com/BEACNpool/beacn-drep-core" target="_blank" rel="noopener">engine</a>),
+        and every action type has its own doctrine
+        (<a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/treasury_spending_doctrine.md" target="_blank" rel="noopener">treasury</a>,
+        <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/parameter_change_doctrine.md" target="_blank" rel="noopener">parameters</a>,
+        <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/hardfork_doctrine.md" target="_blank" rel="noopener">hard forks</a>,
+        <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/values_hierarchy.md" target="_blank" rel="noopener">values hierarchy</a>).</p>
     </section>
 
     <h2 class="sec">Latest verdicts</h2>
