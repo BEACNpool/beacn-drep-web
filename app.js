@@ -177,29 +177,91 @@ function renderHome() {
   const check = status.last_check || {};
   const records = state.actions.map(recordFor);
   const liveIds = new Set((status.actions || []).map(a => a.cip129_action_id));
-  const latest = records.filter(r => liveIds.has(r.action_id)).sort((a, b) =>
+  const current = records.filter(r => liveIds.has(r.action_id));
+  const featured = current.sort((a, b) =>
+    Number(Boolean(b.transaction_hash)) - Number(Boolean(a.transaction_hash)) ||
     String(b.published_at || "").localeCompare(String(a.published_at || ""))
-  ).slice(0, 6);
+  )[0];
+  const drep = status.drep_id || DREP_FALLBACK;
+  const openCount = Number(check.open_actions || current.length || 0);
+  const coverage = openCount ? `${current.length}/${openCount}` : "—";
   app.innerHTML = `<section class="view">
-    ${viewHeader("Cardano mainnet", 'Governance you can <span class="gradient-text">verify.</span>',
-      "BEACN applies public deterministic rules to public evidence, then publishes the readable explanation and the binding reproducibility record.")}
-    <div class="card hero-card">
-      <div class="live-line"><span class="live-pill"><i></i> Live check</span><span class="mode-pill">${esc(status.mode || "unknown")} mode</span></div>
-      <p class="hero-summary">${esc(check.summary || "Loading the latest governance snapshot.")}</p>
-      <div class="timestamp">${status.generated_at ? `Updated ${esc(relative(status.generated_at))} · ${esc(dateText(status.generated_at))}` : ""}</div>
+    <div class="landing-hero">
+      <div class="eyebrow">Cardano governance, done with discipline</div>
+      <h1>Delegate with confidence.<br><span class="gradient-text">Verify every decision.</span></h1>
+      <p class="landing-lede">BEACN is an always-on Cardano DRep that evaluates governance proposals against public rules and evidence. Every decision is published with its reasoning and receipts, while your ADA stays safely in your wallet.</p>
+      <div class="hero-actions">
+        <button class="button hero-primary" id="home-copy-drep" type="button">Delegate to BEACN</button>
+        <a class="button secondary" href="#/proposals">Explore decisions</a>
+      </div>
+      <div class="registered-line">
+        <span class="live-pill"><i></i> Registered and live</span>
+        <a href="${cardanoscan.drep(drep)}" target="_blank" rel="noopener">View DRep on Cardanoscan ↗</a>
+      </div>
+    </div>
+
+    <div class="confidence-grid">
+      <div class="confidence-stat"><strong>${state.actions.length}</strong><span>Public decision records</span></div>
+      <div class="confidence-stat"><strong>${esc(coverage)}</strong><span>Active actions evaluated</span></div>
+      <div class="confidence-stat"><strong>Daily</strong><span>Governance monitoring</span></div>
+      <div class="confidence-stat"><strong>100%</strong><span>Public rules and inputs</span></div>
+    </div>
+
+    <div class="trust-intro">
+      <div class="eyebrow">Why delegate to BEACN</div>
+      <h2>A dependable governance voice, built in the open.</h2>
+      <p class="subtitle">You should not need to follow every proposal, trust a personality, or wonder what your representative will do next.</p>
+    </div>
+    <div class="benefit-grid">
+      <article class="benefit-card">
+        <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V7zM8.5 12l2.2 2.2 4.8-5"/></svg></span>
+        <h3>Predictable, not political</h3>
+        <p>The same public evidence and rules produce the same result. No lobbying, private pressure, or personality-driven reversals.</p>
+      </article>
+      <article class="benefit-card">
+        <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 6h14M5 6l-3 6h6zM19 6l-3 6h6zM8 21h8"/></svg></span>
+        <h3>Conservative with your voice</h3>
+        <p>Protocol safety, constitutional integrity, and treasury stewardship come before speed, popularity, or hype.</p>
+      </article>
+      <article class="benefit-card">
+        <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5zM8 8h8M8 12h8M8 16h5"/></svg></span>
+        <h3>Receipts, every time</h3>
+        <p>Inspect the request, verdict, structured rationale, source hashes, code commits, and on-chain transaction.</p>
+      </article>
+    </div>
+
+    <div class="section-title"><h2>Live accountability</h2><a href="#/verify">Verify the system →</a></div>
+    <div class="card operations-card">
+      <div class="live-line"><span class="live-pill"><i></i> System operational</span><span class="mode-pill">${esc(status.mode || "unknown")} mode</span></div>
+      <p class="operations-summary">${esc(check.summary || "Loading the latest governance snapshot.")}</p>
+      <div class="integrity-row">
+        <span>Public inputs</span><span>Deterministic engine</span><span>Replayable results</span><span>On-chain proof</span>
+      </div>
+      <div class="timestamp">${status.generated_at ? `Last successful check ${esc(relative(status.generated_at))} · ${esc(dateText(status.generated_at))}` : ""}</div>
       <div class="epoch-clock">
         <div class="epoch-top"><span>Epoch <b id="epoch-number">—</b></span><span id="epoch-countdown">calculating…</span></div>
         <div class="progress"><span id="epoch-progress"></span></div>
       </div>
     </div>
-    <div class="stat-grid">
-      <div class="stat"><strong>${esc(check.epoch ?? "—")}</strong><span>Epoch checked</span></div>
-      <div class="stat"><strong>${esc(check.open_actions ?? "—")}</strong><span>Open actions</span></div>
-      <div class="stat"><strong>${esc(check.actions_with_our_vote ?? "—")}</strong><span>Votes on-chain</span></div>
-    </div>
-    <div class="section-title"><h2>Recent verdicts</h2><a href="#/proposals">View all ${state.actions.length} →</a></div>
-    <div class="card-list">${latest.map(proposalCard).join("") || '<div class="card empty">No current proposals in this snapshot.</div>'}</div>
+
+    ${featured ? `<div class="section-title"><h2>See the proof in action</h2><a href="#/proposals">All decisions →</a></div>
+      <div class="featured-decision">${proposalCard(featured)}</div>` : ""}
+
+    <article class="card home-delegate-card">
+      <div>
+        <div class="eyebrow">Your governance delegation</div>
+        <h2>Choose representation you can independently verify.</h2>
+        <p>Your ADA never moves and never leaves your wallet. Delegation only assigns how your governance voice is represented, and you can change it at any time.</p>
+      </div>
+      <div class="home-drep-id">${esc(drep)}</div>
+      <div class="button-row">
+        <button class="button" id="home-copy-drep-bottom" type="button">Copy DRep ID</button>
+        <a class="button secondary" href="${cardanoscan.drep(drep)}" target="_blank" rel="noopener">Cardanoscan profile</a>
+      </div>
+    </article>
   </section>`;
+  document.getElementById("home-copy-drep")?.addEventListener("click", () => copyText(drep));
+  document.getElementById("home-copy-drep-bottom")?.addEventListener("click", () => copyText(drep));
   updateEpochClock();
 }
 
