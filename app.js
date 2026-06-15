@@ -12,7 +12,7 @@ const EPOCH_MS = 5 * 24 * 60 * 60 * 1000;
 const DREP_FALLBACK = "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg";
 const state = {
   status: null, actions: [], rationale: new Map(), statements: new Map(), details: new Map(),
-  scope: "current", verdict: "ALL", query: "", loading: false
+  verdict: "ALL", query: "", archiveStatus: "ALL", loading: false
 };
 const app = document.getElementById("app");
 const refreshButton = document.getElementById("refresh-button");
@@ -20,6 +20,7 @@ const refreshProgress = document.getElementById("refresh-progress");
 const connectionDot = document.getElementById("connection-dot");
 let pullStart = 0;
 let pullDistance = 0;
+let activeListView = "";
 
 const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
@@ -81,6 +82,10 @@ const summaryFor = id => {
   return compact(rationale?.summary || "").replace(/^Vote:\s*[A-Z_]+\.\s*/i, "");
 };
 const currentMap = () => new Map((state.status?.actions || []).filter(a => a.cip129_action_id).map(a => [a.cip129_action_id, a]));
+const epochSnapshot = () => {
+  const elapsed = Math.max(0, Date.now() - CARDANO_START);
+  return { epoch: Math.floor(elapsed / EPOCH_MS), within: elapsed % EPOCH_MS };
+};
 const recordFor = item => {
   const live = currentMap().get(item.action_id) || {};
   return {
@@ -92,6 +97,27 @@ const recordFor = item => {
     proposed_in_epoch: live.proposed_in_epoch,
     summary: summaryFor(item.action_id)
   };
+};
+const currentRecords = () => {
+  const byId = new Map(state.actions.map(item => [item.action_id, item]));
+  return (state.status?.actions || []).filter(item => item.cip129_action_id).map(live => {
+    const record = byId.get(live.cip129_action_id) || {};
+    return {
+      ...record,
+      ...live,
+      action_id: live.cip129_action_id,
+      cip129_action_id: live.cip129_action_id,
+      decision: verdictKey(live.recommendation || live.our_vote || record.decision),
+      summary: summaryFor(live.cip129_action_id)
+    };
+  });
+};
+const expiryText = expiry => {
+  if (expiry === null || expiry === undefined || expiry === "") return "";
+  const remaining = Number(expiry) - epochSnapshot().epoch;
+  if (remaining < 0) return `expired ${Math.abs(remaining)} epoch${Math.abs(remaining) === 1 ? "" : "s"} ago`;
+  if (remaining === 0) return "expires this epoch";
+  return `${remaining} epoch${remaining === 1 ? "" : "s"} remaining`;
 };
 const showToast = message => {
   const el = document.getElementById("toast");
@@ -162,7 +188,7 @@ function proposalCard(item) {
     <span class="reason-link">Full reasoning <span aria-hidden="true">→</span></span>
     <div class="proposal-meta">
       <span>${esc(item.status || "recorded")}</span>
-      ${item.expires_after_epoch ? `<span>expires epoch ${esc(item.expires_after_epoch)}</span>` : ""}
+      ${item.expires_after_epoch ? `<span class="${Number(item.expires_after_epoch) - epochSnapshot().epoch <= 1 ? "urgent" : ""}">${esc(expiryText(item.expires_after_epoch))} · epoch ${esc(item.expires_after_epoch)}</span>` : ""}
       ${item.transaction_hash ? "<span>on-chain vote</span>" : "<span>decision record</span>"}
     </div>
   </a>`;
@@ -175,93 +201,63 @@ function viewHeader(eyebrow, title, subtitle) {
 function renderHome() {
   const status = state.status || {};
   const check = status.last_check || {};
-  const records = state.actions.map(recordFor);
-  const liveIds = new Set((status.actions || []).map(a => a.cip129_action_id));
-  const current = records.filter(r => liveIds.has(r.action_id));
-  const featured = current.sort((a, b) =>
-    Number(Boolean(b.transaction_hash)) - Number(Boolean(a.transaction_hash)) ||
-    String(b.published_at || "").localeCompare(String(a.published_at || ""))
-  )[0];
-  const drep = status.drep_id || DREP_FALLBACK;
-  const openCount = Number(check.open_actions || current.length || 0);
-  const coverage = openCount ? `${current.length}/${openCount}` : "—";
+  const current = currentRecords().sort((a, b) =>
+    Number(a.expires_after_epoch || Infinity) - Number(b.expires_after_epoch || Infinity) ||
+    String(a.title || "").localeCompare(String(b.title || ""))
+  );
+  const counts = { ALL: current.length, YES: 0, NO: 0, ABSTAIN: 0, NEEDS_MORE_INFO: 0 };
+  current.forEach(r => { counts[verdictKey(r.decision)] = (counts[verdictKey(r.decision)] || 0) + 1; });
+  const q = state.query.trim().toLowerCase();
+  const visible = current.filter(r =>
+    (state.verdict === "ALL" || verdictKey(r.decision) === state.verdict) &&
+    (!q || `${r.title} ${r.type} ${r.action_id}`.toLowerCase().includes(q))
+  );
+  const { epoch, within } = epochSnapshot();
+  const nextExpiry = current.reduce((soonest, item) =>
+    Math.min(soonest, Number(item.expires_after_epoch || Infinity)), Infinity);
+  const expiringThisEpoch = current.filter(item => Number(item.expires_after_epoch) === epoch).length;
+  const held = current.filter(item => verdictKey(item.decision) === "NEEDS_MORE_INFO").length;
   app.innerHTML = `<section class="view">
-    <div class="landing-hero">
-      <div class="eyebrow">Cardano governance, done with discipline</div>
-      <h1>Delegate with confidence.<br><span class="gradient-text">Verify every decision.</span></h1>
-      <p class="landing-lede">BEACN is an always-on Cardano DRep that evaluates governance proposals against public rules and evidence. Every decision is published with its reasoning and receipts, while your ADA stays safely in your wallet.</p>
-      <div class="hero-actions">
-        <button class="button hero-primary" id="home-copy-drep" type="button">Delegate to BEACN</button>
-        <a class="button secondary" href="#/proposals">Explore decisions</a>
+    ${viewHeader("Active governance", "Live proposals", "The actions currently open for DRep voting, ordered by the nearest expiry. Open any proposal to inspect the request, BEACN verdict, rationale, and proof.")}
+    <article class="card epoch-dashboard">
+      <div class="epoch-dashboard-top">
+        <div>
+          <span class="live-pill"><i></i> Epoch in progress</span>
+          <div class="epoch-number">Epoch <strong id="epoch-number">${epoch}</strong></div>
+        </div>
+        <div class="epoch-remaining"><span>Time until next epoch</span><strong id="epoch-countdown">calculating…</strong></div>
       </div>
-      <div class="registered-line">
-        <span class="live-pill"><i></i> Registered and live</span>
-        <a href="${cardanoscan.drep(drep)}" target="_blank" rel="noopener">View DRep on Cardanoscan ↗</a>
-      </div>
-    </div>
-
-    <div class="confidence-grid">
-      <div class="confidence-stat"><strong>${state.actions.length}</strong><span>Public decision records</span></div>
-      <div class="confidence-stat"><strong>${esc(coverage)}</strong><span>Active actions evaluated</span></div>
-      <div class="confidence-stat"><strong>Daily</strong><span>Governance monitoring</span></div>
-      <div class="confidence-stat"><strong>100%</strong><span>Public rules and inputs</span></div>
-    </div>
-
-    <div class="trust-intro">
-      <div class="eyebrow">Why delegate to BEACN</div>
-      <h2>A dependable governance voice, built in the open.</h2>
-      <p class="subtitle">You should not need to follow every proposal, trust a personality, or wonder what your representative will do next.</p>
-    </div>
-    <div class="benefit-grid">
-      <article class="benefit-card">
-        <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V7zM8.5 12l2.2 2.2 4.8-5"/></svg></span>
-        <h3>Predictable, not political</h3>
-        <p>The same public evidence and rules produce the same result. No lobbying, private pressure, or personality-driven reversals.</p>
-      </article>
-      <article class="benefit-card">
-        <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 6h14M5 6l-3 6h6zM19 6l-3 6h6zM8 21h8"/></svg></span>
-        <h3>Conservative with your voice</h3>
-        <p>Protocol safety, constitutional integrity, and treasury stewardship come before speed, popularity, or hype.</p>
-      </article>
-      <article class="benefit-card">
-        <span class="benefit-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5zM8 8h8M8 12h8M8 16h5"/></svg></span>
-        <h3>Receipts, every time</h3>
-        <p>Inspect the request, verdict, structured rationale, source hashes, code commits, and on-chain transaction.</p>
-      </article>
-    </div>
-
-    <div class="section-title"><h2>Live accountability</h2><a href="#/verify">Verify the system →</a></div>
-    <div class="card operations-card">
-      <div class="live-line"><span class="live-pill"><i></i> System operational</span><span class="mode-pill">${esc(status.mode || "unknown")} mode</span></div>
-      <p class="operations-summary">${esc(check.summary || "Loading the latest governance snapshot.")}</p>
-      <div class="integrity-row">
-        <span>Public inputs</span><span>Deterministic engine</span><span>Replayable results</span><span>On-chain proof</span>
-      </div>
-      <div class="timestamp">${status.generated_at ? `Last successful check ${esc(relative(status.generated_at))} · ${esc(dateText(status.generated_at))}` : ""}</div>
-      <div class="epoch-clock">
-        <div class="epoch-top"><span>Epoch <b id="epoch-number">—</b></span><span id="epoch-countdown">calculating…</span></div>
-        <div class="progress"><span id="epoch-progress"></span></div>
-      </div>
-    </div>
-
-    ${featured ? `<div class="section-title"><h2>See the proof in action</h2><a href="#/proposals">All decisions →</a></div>
-      <div class="featured-decision">${proposalCard(featured)}</div>` : ""}
-
-    <article class="card home-delegate-card">
-      <div>
-        <div class="eyebrow">Your governance delegation</div>
-        <h2>Choose representation you can independently verify.</h2>
-        <p>Your ADA never moves and never leaves your wallet. Delegation only assigns how your governance voice is represented, and you can change it at any time.</p>
-      </div>
-      <div class="home-drep-id">${esc(drep)}</div>
-      <div class="button-row">
-        <button class="button" id="home-copy-drep-bottom" type="button">Copy DRep ID</button>
-        <a class="button secondary" href="${cardanoscan.drep(drep)}" target="_blank" rel="noopener">Cardanoscan profile</a>
+      <div class="progress epoch-progress"><span id="epoch-progress" style="width:${within / EPOCH_MS * 100}%"></span></div>
+      <div class="epoch-scale"><span>Epoch ${epoch} began</span><span>Epoch ${epoch + 1} begins</span></div>
+      <div class="epoch-stats">
+        <div><strong>${current.length}</strong><span>Active proposals</span></div>
+        <div><strong>${held}</strong><span>Awaiting evidence</span></div>
+        <div><strong>${expiringThisEpoch}</strong><span>Expire this epoch</span></div>
+        <div><strong>${Number.isFinite(nextExpiry) ? `E${nextExpiry}` : "—"}</strong><span>Nearest expiry</span></div>
       </div>
     </article>
+
+    <div class="live-status-line">
+      <span>${esc(check.summary || "Loading the latest governance snapshot.")}</span>
+      <small>${status.generated_at ? `Checked ${esc(relative(status.generated_at))}` : ""}</small>
+    </div>
+
+    <div class="filters live-filters">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input class="search" id="proposal-search" type="search" value="${attr(state.query)}" placeholder="Search current proposals" aria-label="Search current proposals" />
+      </div>
+      <div class="chips">
+        ${[
+          ["ALL", "All"], ["YES", "Yes"], ["NO", "No"], ["ABSTAIN", "Abstain"], ["NEEDS_MORE_INFO", "Needs info"]
+        ].map(([key, label]) => `<button class="chip ${state.verdict === key ? "active" : ""}" type="button" data-verdict="${key}">${label} ${counts[key] || 0}</button>`).join("")}
+      </div>
+    </div>
+    ${distribution(current)}
+    <div class="result-count">Showing ${visible.length} of ${current.length} active proposals · soonest expiry first</div>
+    <div class="card-list">${visible.map(proposalCard).join("") || '<div class="card empty">No current proposals match these filters.</div>'}</div>
   </section>`;
-  document.getElementById("home-copy-drep")?.addEventListener("click", () => copyText(drep));
-  document.getElementById("home-copy-drep-bottom")?.addEventListener("click", () => copyText(drep));
+  bindProposalFilters(renderHome);
   updateEpochClock();
 }
 
@@ -279,7 +275,10 @@ function distribution(records) {
 function renderProposals() {
   const all = state.actions.map(recordFor);
   const currentIds = new Set((state.status?.actions || []).map(a => a.cip129_action_id));
-  const scoped = state.scope === "current" ? all.filter(r => currentIds.has(r.action_id)) : all.filter(r => !currentIds.has(r.action_id));
+  const archived = all.filter(r => !currentIds.has(r.action_id));
+  const scoped = state.archiveStatus === "ALL"
+    ? archived
+    : archived.filter(r => String(r.status || "").toUpperCase() === state.archiveStatus);
   const counts = { ALL: scoped.length, YES: 0, NO: 0, ABSTAIN: 0, NEEDS_MORE_INFO: 0 };
   scoped.forEach(r => { counts[verdictKey(r.decision)] = (counts[verdictKey(r.decision)] || 0) + 1; });
   const q = state.query.trim().toLowerCase();
@@ -288,11 +287,14 @@ function renderProposals() {
     (!q || `${r.title} ${r.type} ${r.action_id}`.toLowerCase().includes(q))
   );
   app.innerHTML = `<section class="view">
-    ${viewHeader("Public decision record", "Proposals", `Browse all ${all.length} reviewed governance actions. Every row opens the request, verdict, structured reasons, and proof.`)}
+    ${viewHeader("Concluded governance", "Proposal archive", `Browse ${archived.length} expired and enacted governance actions. Every record preserves the request, verdict, structured reasons, and proof.`)}
     <div class="filters">
-      <div class="segmented" role="group" aria-label="Proposal status">
-        <button type="button" data-scope="current" class="${state.scope === "current" ? "active" : ""}">Current (${currentIds.size})</button>
-        <button type="button" data-scope="old" class="${state.scope === "old" ? "active" : ""}">Expired / old (${all.length - currentIds.size})</button>
+      <div class="segmented archive-segmented" role="group" aria-label="Archive status">
+        ${[
+          ["ALL", `All (${archived.length})`],
+          ["EXPIRED", `Expired (${archived.filter(r => String(r.status).toLowerCase() === "expired").length})`],
+          ["ENACTED", `Enacted (${archived.filter(r => String(r.status).toLowerCase() === "enacted").length})`]
+        ].map(([key, label]) => `<button type="button" data-archive-status="${key}" class="${state.archiveStatus === key ? "active" : ""}">${label}</button>`).join("")}
       </div>
       <div class="search-wrap">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
@@ -311,19 +313,19 @@ function renderProposals() {
   bindProposalFilters();
 }
 
-function bindProposalFilters() {
-  document.querySelectorAll("[data-scope]").forEach(button => button.addEventListener("click", () => {
-    state.scope = button.dataset.scope;
+function bindProposalFilters(render = renderProposals) {
+  document.querySelectorAll("[data-archive-status]").forEach(button => button.addEventListener("click", () => {
+    state.archiveStatus = button.dataset.archiveStatus;
     state.verdict = "ALL";
-    renderProposals();
+    render();
   }));
   document.querySelectorAll("[data-verdict]").forEach(button => button.addEventListener("click", () => {
     state.verdict = button.dataset.verdict;
-    renderProposals();
+    render();
   }));
   document.getElementById("proposal-search")?.addEventListener("input", event => {
     state.query = event.target.value;
-    renderProposals();
+    render();
     const input = document.getElementById("proposal-search");
     input?.focus();
     input?.setSelectionRange(input.value.length, input.value.length);
@@ -399,8 +401,8 @@ function renderVerify() {
   document.getElementById("copy-drep")?.addEventListener("click", () => copyText(drep));
 }
 
-function detailSkeleton() {
-  app.innerHTML = `<section class="view"><div class="detail-head"><a class="icon-button back-button" href="#/proposals" aria-label="Back"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>Loading decision record…</span></div><div class="skeleton hero-skeleton"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div></section>`;
+function detailSkeleton(backRoute) {
+  app.innerHTML = `<section class="view"><div class="detail-head"><a class="icon-button back-button" href="${backRoute}" aria-label="Back"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>Loading decision record…</span></div><div class="skeleton hero-skeleton"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div></section>`;
 }
 
 function proofRow(label, value, link = "") {
@@ -418,14 +420,15 @@ function extractedAmount(detail) {
 
 async function renderDetail(id) {
   document.body.classList.add("detail-open");
-  detailSkeleton();
+  const backRoute = currentMap().has(id) ? "#/home" : "#/proposals";
+  detailSkeleton(backRoute);
   let detail = state.details.get(id);
   if (!detail) {
     try {
       detail = await fetchJSON(PATHS.detail(id), true);
       state.details.set(id, detail);
     } catch (error) {
-      app.innerHTML = `<section class="view"><div class="detail-head"><a class="icon-button back-button" href="#/proposals" aria-label="Back"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>Decision record</span></div><div class="card empty"><h2>Detail unavailable</h2><p>${esc(error.message)}</p><a href="${cardanoscan.action(id)}" target="_blank" rel="noopener">Open action on Cardanoscan</a></div></section>`;
+      app.innerHTML = `<section class="view"><div class="detail-head"><a class="icon-button back-button" href="${backRoute}" aria-label="Back"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>Decision record</span></div><div class="card empty"><h2>Detail unavailable</h2><p>${esc(error.message)}</p><a href="${cardanoscan.action(id)}" target="_blank" rel="noopener">Open action on Cardanoscan</a></div></section>`;
       return;
     }
   }
@@ -449,7 +452,7 @@ async function renderDetail(id) {
   const reasonCode = detail.reason_code || rationale.reason_code || rationale.summary_raw || "Published deterministic rationale";
   const missing = rationale.missing_evidence || [];
   app.innerHTML = `<section class="view">
-    <div class="detail-head"><a class="icon-button back-button" href="#/proposals" aria-label="Back to proposals"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>${esc(id)}</span></div>
+    <div class="detail-head"><a class="icon-button back-button" href="${backRoute}" aria-label="Back to proposals"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>${esc(id)}</span></div>
     <article class="card detail-hero">
       <div class="detail-meta"><span class="status-pill">${esc(detail.status || listRecord.status || "recorded")}</span><span class="type-pill">${esc(detail.type || listRecord.type || "Unknown type")}</span></div>
       <h1>${esc(detail.title || listRecord.title || "Governance action")}</h1>
@@ -530,6 +533,11 @@ function updateNavigation(view) {
 
 async function renderRoute() {
   const route = parseRoute();
+  if (["home", "proposals"].includes(route.view) && route.view !== activeListView) {
+    state.verdict = "ALL";
+    state.query = "";
+    activeListView = route.view;
+  }
   updateNavigation(route.view);
   window.scrollTo({ top: 0, behavior: "instant" });
   try {
