@@ -35,27 +35,31 @@ def main() -> None:
     missing_counter = Counter()
     queue = []
 
+    deep_rows = {}
     if DEEP.exists():
         with DEEP.open(newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f):
                 aid = r.get("action_id", "")
                 if not aid:
                     continue
-                act = by_action.get(aid, {})
-                if (act.get("decision") or "").upper() != "NEEDS_MORE_INFO":
-                    continue
-                missing = [label for key, label in FIELDS if not is_yes(r.get(key, ""))]
-                for m in missing:
-                    missing_counter[m] += 1
-                queue.append({
-                    "action_id": aid,
-                    "action_type": act.get("type", ""),
-                    "status": act.get("status", ""),
-                    "decision": act.get("decision", ""),
-                    "summary": (rationales.get(aid, {}) or {}).get("summary", ""),
-                    "missing_sections": missing,
-                    "next_step": f"Complete: {', '.join(missing[:3])}" + ("..." if len(missing) > 3 else ""),
-                })
+                deep_rows[aid] = r
+
+    for aid, act in by_action.items():
+        if (act.get("decision") or "").upper() != "NEEDS_MORE_INFO":
+            continue
+        dossier = deep_rows.get(aid, {})
+        missing = [label for key, label in FIELDS if not is_yes(dossier.get(key, ""))]
+        for section in missing:
+            missing_counter[section] += 1
+        queue.append({
+            "action_id": aid,
+            "action_type": act.get("type", ""),
+            "status": act.get("status", ""),
+            "decision": act.get("decision", ""),
+            "summary": (rationales.get(aid, {}) or {}).get("summary", ""),
+            "missing_sections": missing,
+            "next_step": f"Complete: {', '.join(missing[:3])}" + ("..." if len(missing) > 3 else ""),
+        })
 
     queue.sort(key=lambda x: (len(x.get("missing_sections", [])), x.get("action_id", "")))
 

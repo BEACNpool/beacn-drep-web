@@ -1,8 +1,8 @@
 {
   "action_id": "gov_action1fk4nx9zhkcdcyjaudwjtnkd7gagwyhqtth2zypawkc78gvdxkuzqqtvqdkv",
-  "title": "gov_action1fk4nx9zhkcdcyjaudwjtnkd7gagwyhqtth2zypawkc78gvdxkuzqqtvqdkv",
+  "title": "Add Constitutional Committee Member",
   "type": "NewCommittee",
-  "status": "ratified",
+  "status": "enacted",
   "source": {
     "origin": "governance fetch pipeline",
     "raw_input_hash": "sha256:21ed813dccbdb5cb503fad4efab2a54e62d240340b1c4c06d133a71ef76b96f2",
@@ -10,9 +10,11 @@
   },
   "decision": {
     "vote": "YES",
-    "published_at": "2026-03-25T13:00:02.009603+00:00",
+    "published_at": "2026-06-15T15:21:58.675624+00:00",
     "signed": false,
-    "transaction_hash": null
+    "submitted": false,
+    "transaction_hash": null,
+    "submitted_at": null
   },
   "proof_of_vote": {
     "vote": "YES",
@@ -21,31 +23,33 @@
     "input_hash": "21ed813dccbdb5cb503fad4efab2a54e62d240340b1c4c06d133a71ef76b96f2",
     "snapshot_bundle_hash": "2207aceef4a1ee631a968040b00837760c6b982c4710f1341868a974294056a6",
     "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
-    "resources_commit": "97b2121993721d9825398517f9b2b7d50ab1004f",
-    "core_commit": "83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db",
-    "rationale_markdown_path": "/data/output/gov_action1fk4nx9zhkcdcyjaudwjtnkd7gagwyhqtth2zypawkc78gvdxkuzqqtvqdkv-21ed813dccbd/rationale.md"
+    "resources_commit": "7da435ff32d6151125006e6138bc2da8eb0bcfc4",
+    "core_commit": "f1c4e3d688a4244d20c4f0440e1f21da03b75dfb",
+    "rationale_markdown_path": "/data/output/public/rationales/gov_action1fk4nx9zhkcdcyjaudwjtnkd7gagwyhqtth2zypawkc78gvdxkuzqqtvqdkv-21ed813dccbd.md",
+    "rationale_anchor_url": null,
+    "rationale_anchor_hash": null
   },
   "rationale": {
-    "summary": "Vote: YES. For this NewCommittee (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
+    "summary": "Vote: YES. For this NewCommittee (enacted), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
     "summary_raw": "Network DRep distribution used as one signal, not authority.",
     "top_fixes": [
       "Use stable, reproducible anchor links (commit-pinned when possible).",
       "Clarify governance intent and expected measurable outcome.",
       "Map each major claim to primary receipts and stable source links."
     ],
-    "markdown_path": "/data/output/gov_action1fk4nx9zhkcdcyjaudwjtnkd7gagwyhqtth2zypawkc78gvdxkuzqqtvqdkv-21ed813dccbd/rationale.md",
+    "markdown_path": "/data/output/public/rationales/gov_action1fk4nx9zhkcdcyjaudwjtnkd7gagwyhqtth2zypawkc78gvdxkuzqqtvqdkv-21ed813dccbd.md",
     "missing_evidence": []
   },
   "proposal_evidence": {
     "available": true,
-    "fetch_status": "ok",
+    "fetch_status": "ok_cached",
     "content_type": "application/json",
     "http_status": "200",
     "source_anchor_url": "https://ipfs.io/ipfs/bafkreibqxuceexlhali4nhqo7tvsdzrcndzr775pv7wfsdq2lbxtyk4emu",
     "anchor_hash": "7580221cf917c3ec6c1fe0ddf7a518f7e9fd357bbe1528b6a24e91b1bba90797",
     "file_sha256": "30bd04425d6702d1c69e0efceb21e62268f31fffafafec590e1a586f3c2b8465",
     "content_bytes": "10099",
-    "fetched_at_utc": "2026-03-26T17:52:08Z",
+    "fetched_at_utc": "2026-06-15T15:28:20Z",
     "download_path": "/proposals/gov_action1fk4nx9zhkcdcyjaudwjtnkd7gagwyhqtth2zypawkc78gvdxkuzqqtvqdkv.json",
     "preview": "{\n  \"@context\": {\n    \"@context\": {\n      \"@language\": \"en\",\n      \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n      \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n      \"intersectSpec\": \"https://github.com/IntersectMBO/governance-actions/blob/main/schemas/specification.md#\",\n      \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n      \"body\": {\n        \"@id\": \"CIP108:body\",\n        \"@context\": {\n          \"references\": {\n            \"@id\": \"CIP108:references\",\n            \"@container\": \"@set\",\n            \"@context\": {\n              \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n              \"Other\": \"CIP100:OtherReference\",\n              \"label\": \"CIP100:reference-label\",\n              \"uri\": \"CIP100:reference-uri\",\n              \"referenceHash\": {\n                \"@id\": \"CIP108:referenceHash\",\n                \"@context\": {\n                  \"hashDigest\": \"CIP108:hashDigest\",\n                  \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n                }\n              }\n            }\n          },\n          \"title\": \"CIP108:title\",\n          \"abstract\": \"CIP108:abstract\",\n          \"motivation\":"
   },
@@ -53,8 +57,8 @@
     "soul_repo": "beacn-drep-soul",
     "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "97b2121993721d9825398517f9b2b7d50ab1004f",
-    "core_commit": "83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db",
+    "resources_commit": "7da435ff32d6151125006e6138bc2da8eb0bcfc4",
+    "core_commit": "f1c4e3d688a4244d20c4f0440e1f21da03b75dfb",
     "resource_ids_used": [
       "gov_actions_api",
       "gov_actions_snapshot",

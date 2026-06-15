@@ -1,6 +1,6 @@
 {
   "action_id": "gov_action1t87n2vjnavthuggyarerafxx8c7n9mu4c7r96qlfp5uggsjdc8dsqymg588",
-  "title": "gov_action1t87n2vjnavthuggyarerafxx8c7n9mu4c7r96qlfp5uggsjdc8dsqymg588",
+  "title": "Cardano\u306e\u751f\u304d\u304c\u3044 - Ikigai -",
   "type": "InfoAction",
   "status": "expired",
   "source": {
@@ -10,9 +10,11 @@
   },
   "decision": {
     "vote": "YES",
-    "published_at": "2026-03-25T13:00:02.009603+00:00",
+    "published_at": "2026-06-15T15:21:58.675624+00:00",
     "signed": false,
-    "transaction_hash": null
+    "submitted": false,
+    "transaction_hash": null,
+    "submitted_at": null
   },
   "proof_of_vote": {
     "vote": "YES",
@@ -21,9 +23,11 @@
     "input_hash": "ffe5711d1353db06114fd7363e8045691ddf1d1778d29ba80e9ba52e7c6d386f",
     "snapshot_bundle_hash": "6988cf93472052b5995250fe7e151762e0b2f48569d4cec225814772d35ab2e9",
     "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
-    "resources_commit": "97b2121993721d9825398517f9b2b7d50ab1004f",
-    "core_commit": "83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db",
-    "rationale_markdown_path": "/data/output/gov_action1t87n2vjnavthuggyarerafxx8c7n9mu4c7r96qlfp5uggsjdc8dsqymg588-ffe5711d1353/rationale.md"
+    "resources_commit": "7da435ff32d6151125006e6138bc2da8eb0bcfc4",
+    "core_commit": "f1c4e3d688a4244d20c4f0440e1f21da03b75dfb",
+    "rationale_markdown_path": "/data/output/public/rationales/gov_action1t87n2vjnavthuggyarerafxx8c7n9mu4c7r96qlfp5uggsjdc8dsqymg588-ffe5711d1353.md",
+    "rationale_anchor_url": null,
+    "rationale_anchor_hash": null
   },
   "rationale": {
     "summary": "Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.40; confidence 92.0%.",
@@ -33,19 +37,19 @@
       "Clarify governance intent and expected measurable outcome.",
       "Map each major claim to primary receipts and stable source links."
     ],
-    "markdown_path": "/data/output/gov_action1t87n2vjnavthuggyarerafxx8c7n9mu4c7r96qlfp5uggsjdc8dsqymg588-ffe5711d1353/rationale.md",
+    "markdown_path": "/data/output/public/rationales/gov_action1t87n2vjnavthuggyarerafxx8c7n9mu4c7r96qlfp5uggsjdc8dsqymg588-ffe5711d1353.md",
     "missing_evidence": []
   },
   "proposal_evidence": {
     "available": true,
-    "fetch_status": "ok",
+    "fetch_status": "ok_cached",
     "content_type": "application/json",
     "http_status": "200",
     "source_anchor_url": "https://c-ipfs-gw.nmkr.io/ipfs/QmXdfDSSkR8TYBntMT4nuTL9sE9E44FJnpWVpaY8ZTfwjj",
     "anchor_hash": "d4efa9e0c3d80f5be35def08551eaf5aef17eae832fdb835e5f4b208d98f3dff",
     "file_sha256": "eb4db4d54e2d8651a3d70c0cc191d7732aed9b99e7e312346cb711f570526257",
     "content_bytes": "7759",
-    "fetched_at_utc": "2026-03-26T17:52:38Z",
+    "fetched_at_utc": "2026-06-15T15:28:20Z",
     "download_path": "/proposals/gov_action1t87n2vjnavthuggyarerafxx8c7n9mu4c7r96qlfp5uggsjdc8dsqymg588.json",
     "preview": "{\n  \"@context\": {\n    \"@language\": \"ja\",\n    \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n    \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n    \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n    \"body\": {\n      \"@id\": \"CIP108:body\",\n      \"@context\": {\n        \"references\": {\n          \"@id\": \"CIP108:references\",\n          \"@container\": \"@set\",\n          \"@context\": {\n            \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n            \"Other\": \"CIP100:OtherReference\",\n            \"label\": \"CIP100:reference-label\",\n            \"uri\": \"CIP100:reference-uri\",\n            \"referenceHash\": {\n              \"@id\": \"CIP108:referenceHash\",\n              \"@context\": {\n                \"hashDigest\": \"CIP108:hashDigest\",\n                \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n              }\n            }\n          }\n        },\n        \"title\": \"CIP108:title\",\n        \"abstract\": \"CIP108:abstract\",\n        \"motivation\": \"CIP108:motivation\",\n        \"rationale\": \"CIP108:rationale\"\n      }\n    },\n    \"authors\": {\n      \"@id\": \"CIP100:authors\",\n      \"@container\": \"@set\",\n      \"@context\": {\n        \"nam"
   },
@@ -53,8 +57,8 @@
     "soul_repo": "beacn-drep-soul",
     "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "97b2121993721d9825398517f9b2b7d50ab1004f",
-    "core_commit": "83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db",
+    "resources_commit": "7da435ff32d6151125006e6138bc2da8eb0bcfc4",
+    "core_commit": "f1c4e3d688a4244d20c4f0440e1f21da03b75dfb",
     "resource_ids_used": [
       "gov_actions_api",
       "gov_actions_snapshot",

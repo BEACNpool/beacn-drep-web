@@ -4,7 +4,7 @@
 - Decision: **YES**
 - Action type: `InfoAction`
 - Status: `expired`
-- Published at: `2026-03-25T13:00:02.009603+00:00`
+- Published at: `2026-06-15T15:21:58.675624+00:00`
 
 ## Human-readable rationale
 Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Flag score present (10), reducing confidence. Additional context: Residual uncertainty: Anchor document is not yet pinned locally for this action. Confidence context: score 0.12; confidence 63.7%.
@@ -24,8 +24,8 @@ Vote: YES. For this InfoAction (expired), available evidence supports proceeding
 - input_hash: `dceb74cd833641b0a72d636e9c04714259292d6ea5873445adb7440aa3898d75`
 - snapshot_bundle_hash: `b50e9a58225a0205d1a89529fab3dd05741f1ea170d05555521e7ca7950ce79d`
 - soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
-- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
-- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
+- resources_commit: `7da435ff32d6151125006e6138bc2da8eb0bcfc4`
+- core_commit: `f1c4e3d688a4244d20c4f0440e1f21da03b75dfb`
 - score: `0.1167`
 - confidence: `0.6367`
 

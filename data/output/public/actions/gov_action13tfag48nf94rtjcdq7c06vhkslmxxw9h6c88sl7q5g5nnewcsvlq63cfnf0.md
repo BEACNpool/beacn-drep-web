@@ -3,11 +3,11 @@
 ## Vote
 - Decision: **YES**
 - Action type: `TreasuryWithdrawals`
-- Status: `ratified`
-- Published at: `2026-03-25T13:00:02.009603+00:00`
+- Status: `enacted`
+- Published at: `2026-06-15T15:21:58.675624+00:00`
 
 ## Human-readable rationale
-Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.
+Vote: YES. For this TreasuryWithdrawals (enacted), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.
 
 ## What influenced this vote
 - Pinned anchor document is available for this action.
@@ -26,8 +26,8 @@ Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports 
 - input_hash: `00917b3ccbb4cfe5fb365219a85aa75644410956333f66c7c7b417233d0a8a3c`
 - snapshot_bundle_hash: `fe63abf7b1b0b6ff9effc4a51c64fc75c9bc88939e0474cf527d0100a31ab888`
 - soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
-- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
-- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
+- resources_commit: `7da435ff32d6151125006e6138bc2da8eb0bcfc4`
+- core_commit: `f1c4e3d688a4244d20c4f0440e1f21da03b75dfb`
 - score: `0.1667`
 - confidence: `0.6867`
 

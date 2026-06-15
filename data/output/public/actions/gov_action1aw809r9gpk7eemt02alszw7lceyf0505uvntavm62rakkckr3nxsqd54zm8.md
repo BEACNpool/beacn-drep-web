@@ -4,7 +4,7 @@
 - Decision: **YES**
 - Action type: `NewCommittee`
 - Status: `expired`
-- Published at: `2026-03-25T13:00:02.009603+00:00`
+- Published at: `2026-06-15T15:21:58.675624+00:00`
 
 ## Human-readable rationale
 Vote: YES. For this NewCommittee (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (10), reducing confidence. Confidence context: score 0.17; confidence 68.7%.
@@ -25,8 +25,8 @@ Vote: YES. For this NewCommittee (expired), available evidence supports proceedi
 - input_hash: `4c77ce212255b6caa85ecd6936ced94a3d1ee5a669df8cf08631eb1163709d5e`
 - snapshot_bundle_hash: `52fda6a0a5b928875c2cb5a90dd20cb46fb2321820619f8034e90eb316c4eb67`
 - soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
-- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
-- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
+- resources_commit: `7da435ff32d6151125006e6138bc2da8eb0bcfc4`
+- core_commit: `f1c4e3d688a4244d20c4f0440e1f21da03b75dfb`
 - score: `0.1667`
 - confidence: `0.6867`
 
