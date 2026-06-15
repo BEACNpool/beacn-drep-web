@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T21:31:59Z",
+  "generated_at": "2026-03-25T23:44:51Z",
   "count": 94,
   "items": [
     {
@@ -177,17 +177,17 @@
       "action_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x",
       "run_id": "gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x-68d5fc53b7f3",
       "action_type": "TreasuryWithdrawals",
-      "vote": "YES",
+      "vote": "NO",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.0267,
-      "confidence": 0.5467,
-      "uncertainty_band": "LOW",
+      "score": -0.0733,
+      "confidence": 0.5933,
+      "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.5034,
-        "NO": 0.245,
-        "ABSTAIN": 0.2517
+        "YES": 0.1925,
+        "NO": 0.5616,
+        "ABSTAIN": 0.2458
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -199,14 +199,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -218,14 +218,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -237,14 +237,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -256,14 +256,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -272,17 +272,17 @@
       "action_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpcdq823y",
       "run_id": "gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpcdq823y-39ab926a77e5",
       "action_type": "TreasuryWithdrawals",
-      "vote": "YES",
+      "vote": "NO",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.0067,
-      "confidence": 0.5267,
-      "uncertainty_band": "LOW",
+      "score": -0.0933,
+      "confidence": 0.6133,
+      "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.4784,
-        "NO": 0.2675,
-        "ABSTAIN": 0.2542
+        "YES": 0.17,
+        "NO": 0.5866,
+        "ABSTAIN": 0.2433
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -294,14 +294,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -313,14 +313,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -332,14 +332,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2467,
-      "confidence": 0.7667,
+      "score": 0.1467,
+      "confidence": 0.6667,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7395,
-        "NO": 0.0475,
-        "ABSTAIN": 0.213
+        "YES": 0.6534,
+        "NO": 0.11,
+        "ABSTAIN": 0.2367
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -351,14 +351,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -370,14 +370,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -389,14 +389,14 @@
       "vote": "NO",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": -0.3833,
-      "confidence": 0.9033,
+      "score": -0.4833,
+      "confidence": 1.0,
       "uncertainty_band": "HIGH",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.0415,
-        "NO": 0.7869,
-        "ABSTAIN": 0.1717
+        "YES": 0.0389,
+        "NO": 0.8093,
+        "ABSTAIN": 0.1518
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -408,14 +408,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -427,14 +427,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -446,14 +446,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -465,14 +465,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -484,14 +484,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -503,14 +503,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -522,14 +522,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -541,14 +541,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -560,14 +560,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -579,14 +579,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -598,14 +598,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -617,14 +617,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -636,14 +636,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -655,14 +655,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -674,14 +674,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -693,14 +693,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -712,14 +712,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -731,14 +731,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -750,14 +750,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -769,14 +769,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -788,14 +788,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -807,14 +807,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -826,14 +826,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -845,14 +845,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -864,14 +864,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -883,14 +883,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -978,14 +978,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -997,14 +997,14 @@
       "vote": "NO",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": -0.1833,
-      "confidence": 0.7033,
-      "uncertainty_band": "MEDIUM",
+      "score": -0.2833,
+      "confidence": 0.8033,
+      "uncertainty_band": "HIGH",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.0688,
-        "NO": 0.6991,
-        "ABSTAIN": 0.2321
+        "YES": 0.0457,
+        "NO": 0.7535,
+        "ABSTAIN": 0.2008
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -1035,14 +1035,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -1054,14 +1054,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -1073,14 +1073,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.1667,
-      "confidence": 0.6567,
+      "score": 0.0667,
+      "confidence": 0.5567,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.6709,
-        "NO": 0.0912,
-        "ABSTAIN": 0.2379
+        "YES": 0.5459,
+        "NO": 0.2037,
+        "ABSTAIN": 0.2504
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -1206,7 +1206,7 @@
       "vote": "NO",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": -0.7333,
+      "score": -0.8333,
       "confidence": 1.0,
       "uncertainty_band": "HIGH",
       "evidence_depth_score": 4,
@@ -1244,14 +1244,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.1167,
-      "confidence": 0.6067,
-      "uncertainty_band": "MEDIUM",
+      "score": 0.0167,
+      "confidence": 0.5067,
+      "uncertainty_band": "LOW",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.6084,
-        "NO": 0.1475,
-        "ABSTAIN": 0.2442
+        "YES": 0.4834,
+        "NO": 0.26,
+        "ABSTAIN": 0.2567
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -1367,7 +1367,7 @@
         "NO": 0.2712,
         "ABSTAIN": 0.2512
       },
-      "rationale_summary": "Directional vote forced by high readiness_score with no hard blockers.",
+      "rationale_summary": "Directional vote forced by completed readiness packet (treasury-aware).",
       "missing_evidence": []
     },
     {
@@ -1415,14 +1415,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.2667,
-      "confidence": 0.7867,
+      "score": 0.1667,
+      "confidence": 0.6867,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.7473,
-        "NO": 0.0465,
-        "ABSTAIN": 0.2062
+        "YES": 0.6784,
+        "NO": 0.0875,
+        "ABSTAIN": 0.2342
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -1567,14 +1567,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.1667,
-      "confidence": 0.6567,
+      "score": 0.0667,
+      "confidence": 0.5567,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.6709,
-        "NO": 0.0912,
-        "ABSTAIN": 0.2379
+        "YES": 0.5459,
+        "NO": 0.2037,
+        "ABSTAIN": 0.2504
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -1586,7 +1586,7 @@
       "vote": "NO",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": -0.7333,
+      "score": -0.8333,
       "confidence": 1.0,
       "uncertainty_band": "HIGH",
       "evidence_depth_score": 4,
@@ -1659,17 +1659,17 @@
       "action_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg",
       "run_id": "gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg-1906881723c3",
       "action_type": "TreasuryWithdrawals",
-      "vote": "YES",
+      "vote": "NO",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.0967,
-      "confidence": 0.5867,
-      "uncertainty_band": "MEDIUM",
+      "score": -0.0033,
+      "confidence": 0.4933,
+      "uncertainty_band": "LOW",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.5834,
-        "NO": 0.17,
-        "ABSTAIN": 0.2467
+        "YES": 0.275,
+        "NO": 0.4666,
+        "ABSTAIN": 0.2583
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []
@@ -1700,14 +1700,14 @@
       "vote": "YES",
       "abstain_reason_code": null,
       "needs_more_info_reason_code": null,
-      "score": 0.1667,
-      "confidence": 0.6567,
+      "score": 0.0667,
+      "confidence": 0.5567,
       "uncertainty_band": "MEDIUM",
       "evidence_depth_score": 4,
       "decision_probs": {
-        "YES": 0.6709,
-        "NO": 0.0912,
-        "ABSTAIN": 0.2379
+        "YES": 0.5459,
+        "NO": 0.2037,
+        "ABSTAIN": 0.2504
       },
       "rationale_summary": "Network DRep distribution used as one signal, not authority.",
       "missing_evidence": []

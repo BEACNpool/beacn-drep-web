@@ -7,7 +7,7 @@
 - Published at: `2026-03-25T13:00:02.009603+00:00`
 
 ## Human-readable rationale
-Vote: NO. For this TreasuryWithdrawals (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score -0.73; confidence 100.0%.
+Vote: NO. For this TreasuryWithdrawals (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score -0.83; confidence 100.0%.
 
 ## What influenced this vote
 - Pinned anchor document is available for this action.
@@ -15,14 +15,19 @@ Vote: NO. For this TreasuryWithdrawals (expired), downside risk and/or weak safe
 - Flag score present (7), reducing confidence.
 
 ## Remaining uncertainty
-- Rule-based system; does not infer unstated intent.
+- Treasury fee-flow signal is in unsustainable regime (advisory penalty applied).
+
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Add line-item budget with milestone-gated disbursement and objective completion checks.
+- Document downside risks, mitigations, and what gets cut first if delivery slips.
 
 ## Proof of vote
 - input_hash: `256e7c6630d4a7d43c445b0ad9528baff0e27b7c4b3c7381a54475c64d0bd116`
-- snapshot_bundle_hash: `b9163908c0b05eef3e8a10d2d5b07fd220752902afc76fd44ad0696ba4ac9212`
-- soul_commit: `ffdf6a8b929dfcd03eb707690676432e6d843bca`
-- resources_commit: `c4477be87cf345890cf3a868ef300b600ab9fca4`
-- core_commit: `5cc5048cf8cb80c1252ecc839a3389030315259c`
-- score: `-0.7333`
+- snapshot_bundle_hash: `ae05738832f7b926f35596b10ae914148d3b86cb2811b6c9a7cfbec475fde327`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
+- score: `-0.8333`
 - confidence: `1.0`
 

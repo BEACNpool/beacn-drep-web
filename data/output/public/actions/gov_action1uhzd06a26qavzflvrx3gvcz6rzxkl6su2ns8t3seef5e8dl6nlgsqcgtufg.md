@@ -1,13 +1,13 @@
 # gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg
 
 ## Vote
-- Decision: **YES**
+- Decision: **NO**
 - Action type: `TreasuryWithdrawals`
 - Status: `active`
 - Published at: `2026-03-25T13:00:02.009603+00:00`
 
 ## Human-readable rationale
-Vote: YES. For this TreasuryWithdrawals (active), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.10; confidence 58.7%.
+Vote: NO. For this TreasuryWithdrawals (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score -0.00; confidence 49.3%.
 
 ## What influenced this vote
 - Pinned anchor document is available for this action.
@@ -15,14 +15,19 @@ Vote: YES. For this TreasuryWithdrawals (active), available evidence supports pr
 - Flag score present (7), reducing confidence.
 
 ## Remaining uncertainty
-- Rule-based system; does not infer unstated intent.
+- Treasury fee-flow signal is in unsustainable regime (advisory penalty applied).
+
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Add line-item budget with milestone-gated disbursement and objective completion checks.
+- Document downside risks, mitigations, and what gets cut first if delivery slips.
 
 ## Proof of vote
 - input_hash: `1906881723c355759d5e52c085c934bd3b367e99095c0b2cc398ae4cc3fc1af8`
-- snapshot_bundle_hash: `e79188b7d18a703fc700cd3b59e137ddd9d12b5afd39d6d900f1aab2ca808d11`
-- soul_commit: `ffdf6a8b929dfcd03eb707690676432e6d843bca`
-- resources_commit: `c4477be87cf345890cf3a868ef300b600ab9fca4`
-- core_commit: `5cc5048cf8cb80c1252ecc839a3389030315259c`
-- score: `0.0967`
-- confidence: `0.5867`
+- snapshot_bundle_hash: `ac0d80e6f1283e5382d06251197c336d79ba8191e1079242eb8d9899d69e5f0d`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
+- score: `-0.0033`
+- confidence: `0.4933`
 

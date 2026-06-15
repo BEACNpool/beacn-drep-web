@@ -17,12 +17,17 @@ Vote: NO. For this HardForkInitiation (ratified), downside risk and/or weak safe
 ## Remaining uncertainty
 - No DRep distribution available.
 
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Provide migration readiness evidence across tooling/wallet/exchange dependencies.
+- Publish rollback/contingency plan and incident response playbook.
+
 ## Proof of vote
 - input_hash: `db0f1699b3a86db4c0d0a880edcda99fba3634f2d7718041ce39e8b2bc25ffca`
-- snapshot_bundle_hash: `223c59bfdedb53364e5087b7927f3bc92831fccc587c040987c2716b6a3f3e6b`
-- soul_commit: `ffdf6a8b929dfcd03eb707690676432e6d843bca`
-- resources_commit: `c4477be87cf345890cf3a868ef300b600ab9fca4`
-- core_commit: `5cc5048cf8cb80c1252ecc839a3389030315259c`
+- snapshot_bundle_hash: `87cf12694c94f174dec376218f7e1e7d0e8395ff02b04bce0d2f47562c31c375`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
 - score: `-0.4033`
 - confidence: `0.9233`
 

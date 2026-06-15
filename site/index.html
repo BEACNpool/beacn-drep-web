@@ -162,7 +162,14 @@
         <div class="layer-icon">🧬</div>
         <div class="layer-name">Soul</div>
         <div class="layer-repo"><a target="_blank" href="https://github.com/BEACNpool/beacn-drep-soul">beacn-drep-soul ↗</a></div>
-        <div class="layer-desc">The <b>only context</b> given to the bot. Values, doctrine, and decision principles. Open-sourced — read every word yourself.</div>
+        <div class="layer-desc">The <b>only context</b> given to the bot. Values, doctrine, and decision principles. Open-sourced — read every word yourself.
+          <br><br><b>Depth of reasoning encoded in soul doctrine:</b>
+          <br>• rolling-window NCL treasury math (not FCFS)
+          <br>• deep-research gating for money-impact proposals
+          <br>• concentration-risk controls + reserve headroom bias
+          <br>• fee-flow sustainability checks + post-AI cost realism
+          <br>• explicit conservative defaults when evidence quality is weak
+        </div>
         <span class="layer-tag tag-soul">CONTEXT LAYER — auditable</span>
       </div>
       <div class="safety-layer">
@@ -186,6 +193,10 @@
       <a target="_blank" href="https://github.com/BEACNpool/beacn-drep-resources/blob/main/RESOURCE_ADMISSION_POLICY.md">Resource Admission Policy</a>
       <span class="muted">·</span>
       <a target="_blank" href="https://github.com/BEACNpool/beacn-drep-web/blob/main/docs/PUBLIC_CONTEXT_AND_LIMITS.md">Public Context & Limits</a>
+      <span class="muted">·</span>
+      <a target="_blank" href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/treasury_spending_doctrine.md">Treasury Doctrine (human)</a>
+      <span class="muted">·</span>
+      <a target="_blank" href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/treasury_spending_doctrine.json">Treasury Doctrine (machine)</a>
     </div>
   </div>
 
@@ -214,10 +225,16 @@
   </section>
 
   <section class="card">
+    <h2>Anchor Fetch Health</h2>
+    <div id="anchorFetchHealth" class="muted">Loading anchor fetch health…</div>
+  </section>
+
+  <section class="card">
     <h2>Voting Record</h2>
     <div id="summaryBar" class="muted"></div>
     <div class="stack" id="agreementStack" style="margin:8px 0 12px;"></div>
     <div class="filter-row">
+      <label>Proposal Set: <select id="filterLegacy"><option value="active">Active only</option><option value="all">Include legacy</option></select></label>
       <label>Type: <select id="filterType"><option value="all">All</option></select></label>
       <label>Bot Vote: <select id="filterVote"><option value="all">All</option><option>YES</option><option>NO</option><option>ABSTAIN</option><option>NEEDS_MORE_INFO</option></select></label>
       <label>Agreement: <select id="filterAgreement"><option value="all">All</option><option value="aligned">Aligned</option><option value="diverged">Diverged</option><option value="unknown">Unknown</option></select></label>
@@ -303,6 +320,22 @@
     <p class="muted" style="margin-top:8px;"><a target="_blank" href="../data/output/public/drep_comparison.json">Raw comparison dataset (JSON)</a></p>
   </section>
 
+  <section class="card">
+    <h2>Why Delegate to BEACN</h2>
+    <p class="muted">Deterministic governance with receipts. No private override channel. Conservative defaults when evidence is weak.</p>
+    <div class="links-row">
+      <a target="_blank" href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/WHY_DELEGATE.md">Why Delegate (full)</a>
+      <span class="muted">·</span>
+      <a target="_blank" href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/GOVERNANCE_PHILOSOPHY.md">Governance Philosophy</a>
+      <span class="muted">·</span>
+      <a target="_blank" href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/values_hierarchy.md">Values Hierarchy</a>
+      <span class="muted">·</span>
+      <a target="_blank" href="https://github.com/BEACNpool/beacn-drep-web/blob/main/docs/NO_TO_YES_CHECKLIST.md">NO → YES Checklist</a>
+      <span class="muted">·</span>
+      <a target="_blank" href="https://github.com/BEACNpool/beacn-drep-web/blob/main/docs/FRONTEND_DECISION.md">Frontend Decision</a>
+    </div>
+  </section>
+
   <footer>
     View-only frontend. Contains zero decision logic. Reads public machine-generated JSON only.
     <br />
@@ -330,20 +363,25 @@ function typeBadge(type){const t=(type||'').toLowerCase();let c='#58a6ff';if(t.i
 let allRows=[],rationaleById={},sortState={key:'proposed_epoch',asc:false};
 
 function renderTable(){
+  const legacyF=document.getElementById('filterLegacy').value;
   const typeF=document.getElementById('filterType').value;
   const voteF=document.getElementById('filterVote').value;
   const agF=document.getElementById('filterAgreement').value;
   let rows=allRows.filter(r=>{
-    return(typeF==='all'||(r.action_type||'')===typeF)&&(voteF==='all'||((r.bot_recommendation||'').toUpperCase()===voteF))&&(agF==='all'||((r.network_agreement||'').toLowerCase()===agF));
+    const status=(r.status||'').toLowerCase();
+    const activeOk=(legacyF==='all')||(status==='active');
+    return activeOk&&(typeF==='all'||(r.action_type||'')===typeF)&&(voteF==='all'||((r.bot_recommendation||'').toUpperCase()===voteF))&&(agF==='all'||((r.network_agreement||'').toLowerCase()===agF));
   });
   rows.sort((a,b)=>{const k=sortState.key;const av=a[k]??'',bv=b[k]??'';const na=parseFloat(av),nb=parseFloat(bv);let cmp;if(!Number.isNaN(na)&&!Number.isNaN(nb))cmp=na-nb;else cmp=String(av).localeCompare(String(bv));return sortState.asc?cmp:-cmp});
   const tb=document.querySelector('#votesTable tbody');tb.innerHTML='';
   for(const x of rows){
     const confPct=Math.max(0,Math.min(100,Number(x.bot_confidence||0)*100));
     const tr=document.createElement('tr');const aid=x.action_id||'';const r=rationaleById[aid]||{};const summary=r.summary||'No rationale summary published yet.';
+    const fixes=(Array.isArray(r.top_fixes)?r.top_fixes:[]).slice(0,3);
+    const fixesHtml=fixes.length?`<div style="margin-top:8px;"><b>Top fixes:</b><ul style="margin:6px 0 0 16px;">${fixes.map(f=>`<li>${esc(f)}</li>`).join('')}</ul></div>`:'';
     const proposalHref=x.proposal_path?`../data/output/public${x.proposal_path}`:(x.anchor_url||'');
     const actionLink=proposalHref?`<a target="_blank" href="${proposalHref}"><span class="mono">${aid.slice(0,16)}${aid.length>16?'…':''}</span> ↗</a>`:`<a target="_blank" href="../data/output/public/actions/${aid}.md"><span class="mono">${aid.slice(0,16)}${aid.length>16?'…':''}</span></a>`;
-    tr.innerHTML=`<td data-label="Action ID">${actionLink}</td><td data-label="Type">${typeBadge(x.action_type||'')}</td><td data-label="Status"><span class="badge unknown">${x.status||''}</span></td><td data-label="Epoch">${x.proposed_epoch||''}</td><td data-label="Bot Vote">${voteBadge(x.bot_recommendation)}</td><td data-label="Score"><span style="color:${Number(x.bot_score)>=0?'var(--vote-yes)':'var(--vote-no)'}">${x.bot_score??''}</span></td><td data-label="Confidence"><span>${confPct.toFixed(1)}%</span><div class="bar"><span style="width:${confPct}%;background:var(--accent)"></span></div></td><td data-label="Net Majority">${x.network_majority||''}</td><td data-label="Agreement">${agreementBadge(x.network_agreement)}</td><td data-label="Rationale"><details><summary style="cursor:pointer;">View</summary><div class="muted" style="margin-top:6px;">${esc(summary)}</div><div style="margin-top:6px;"><a target="_blank" href="../data/output/public/actions/${aid}.md">full rationale ↗</a> · <a target="_blank" href="../data/output/public/actions/${aid}.json">json ↗</a>${(x.proposal_path||x.anchor_url)?` · <a target="_blank" href="${x.proposal_path?`../data/output/public${x.proposal_path}`:x.anchor_url}">full proposal ↗</a>`:''}</div></details></td><td data-label="Anchor">${x.anchor_url?`<a target="_blank" href="${x.anchor_url}">↗</a>`:''}</td>`;
+    tr.innerHTML=`<td data-label="Action ID">${actionLink}</td><td data-label="Type">${typeBadge(x.action_type||'')}</td><td data-label="Status"><span class="badge unknown">${x.status||''}</span></td><td data-label="Epoch">${x.proposed_epoch||''}</td><td data-label="Bot Vote">${voteBadge(x.bot_recommendation)}</td><td data-label="Score"><span style="color:${Number(x.bot_score)>=0?'var(--vote-yes)':'var(--vote-no)'}">${x.bot_score??''}</span></td><td data-label="Confidence"><span>${confPct.toFixed(1)}%</span><div class="bar"><span style="width:${confPct}%;background:var(--accent)"></span></div></td><td data-label="Net Majority">${x.network_majority||''}</td><td data-label="Agreement">${agreementBadge(x.network_agreement)}</td><td data-label="Rationale"><details><summary style="cursor:pointer;">View</summary><div class="muted" style="margin-top:6px;">${esc(summary)}</div>${fixesHtml}<div style="margin-top:6px;"><a target="_blank" href="../data/output/public/actions/${aid}.md">full rationale ↗</a> · <a target="_blank" href="../data/output/public/actions/${aid}.json">json ↗</a>${(x.proposal_path||x.anchor_url)?` · <a target="_blank" href="${x.proposal_path?`../data/output/public${x.proposal_path}`:x.anchor_url}">full proposal ↗</a>`:''}</div></details></td><td data-label="Anchor">${x.anchor_url?`<a target="_blank" href="${x.anchor_url}">↗</a>`:''}</td>`;
     tb.appendChild(tr);
   }
 }
@@ -368,7 +406,9 @@ function renderTable(){
   const abstainRate=rows?(abstentions/rows)*100:0;
   const networkDiv=Number(backtestSummary?.network_diverged||0);
   const networkDivRate=rows?(networkDiv/rows)*100:0;
-  document.getElementById('kpiRow').innerHTML=`<div class="kpi"><div class="label">Actions Seen</div><div class="value">${rows}</div></div><div class="kpi"><div class="label">Votes Cast</div><div class="value">${rows}</div></div><div class="kpi"><div class="label">Abstentions</div><div class="value" style="color:var(--vote-abstain)">${abstentions}</div></div><div class="kpi"><div class="label">Abstain Rate</div><div class="value" style="color:var(--vote-abstain)">${abstainRate.toFixed(1)}%</div></div><div class="kpi"><div class="label">Network Divergence</div><div class="value" style="color:var(--accent)">${networkDivRate.toFixed(1)}%</div></div>`;
+  const anchorCoverage=Number(index?.stats?.anchor_fetch_coverage_pct||0);
+  const anchorFailed=Number(index?.stats?.anchor_fetch_failed||0);
+  document.getElementById('kpiRow').innerHTML=`<div class="kpi"><div class="label">Actions Seen</div><div class="value">${rows}</div></div><div class="kpi"><div class="label">Votes Cast</div><div class="value">${rows}</div></div><div class="kpi"><div class="label">Abstentions</div><div class="value" style="color:var(--vote-abstain)">${abstentions}</div></div><div class="kpi"><div class="label">Abstain Rate</div><div class="value" style="color:var(--vote-abstain)">${abstainRate.toFixed(1)}%</div></div><div class="kpi"><div class="label">Network Divergence</div><div class="value" style="color:var(--accent)">${networkDivRate.toFixed(1)}%</div></div><div class="kpi"><div class="label">Anchor Coverage</div><div class="value" style="color:var(--trust-pass)">${anchorCoverage.toFixed(1)}%</div></div><div class="kpi"><div class="label">Anchor Failures</div><div class="value" style="color:${anchorFailed>0?'var(--vote-no)':'var(--trust-pass)'}">${anchorFailed}</div></div>`;
 
   const types=[...new Set(allRows.map(r=>r.action_type).filter(Boolean))].sort();
   document.getElementById('filterType').innerHTML+=types.map(t=>`<option value="${t}">${t}</option>`).join('');
@@ -378,7 +418,7 @@ function renderTable(){
   renderTable();
 
   document.querySelectorAll('#votesTable th[data-sort]').forEach(th=>{th.addEventListener('click',()=>{const key=th.getAttribute('data-sort');if(sortState.key===key)sortState.asc=!sortState.asc;else{sortState.key=key;sortState.asc=true}renderTable()})});
-  ['filterType','filterVote','filterAgreement'].forEach(id=>{document.getElementById(id).addEventListener('change',renderTable)});
+  ['filterLegacy','filterType','filterVote','filterAgreement'].forEach(id=>{document.getElementById(id).addEventListener('change',renderTable)});
 
   const votes=allRows.reduce((acc,r)=>{const v=(r.bot_recommendation||'ABSTAIN').toUpperCase();acc[v]=(acc[v]||0)+1;return acc},{});
   const yes=votes.YES||0,no=votes.NO||0,abst=votes.ABSTAIN||0;const vt=Math.max(1,yes+no+abst);
@@ -409,6 +449,11 @@ function renderTable(){
   document.getElementById('drepTopList').innerHTML=top.slice(0,12).map(r=>`<div><div><span class="mono">${r.drep_id}</span></div><div class="muted">sample: <b>${r.sample}</b> · agreement: <b>${pct(r.agreements,r.sample)}</b> (${r.agreements}/${r.sample})</div><div class="bar"><span style="width:${r.sample&&r.agreements?(r.agreements/r.sample)*100:0}%;background:var(--vote-yes)"></span></div></div>`).join('')||'<div class="muted">No comparison data yet.</div>';
   document.getElementById('drepDisagreements').innerHTML=latestDis.slice(0,12).map(d=>`<div style="padding:6px;border:1px solid var(--border-default);border-radius:8px;"><div><span class="mono">${d.action_id}</span></div><div class="muted"><span class="mono">${d.drep_id}</span></div><div>BEACN: ${voteBadge(d.beacn_vote)} · DRep: ${voteBadge(d.drep_vote)}</div></div>`).join('')||'<div class="muted">No recent disagreements in dataset.</div>';
   document.getElementById('drepCoverage').innerHTML=`<p>Agreement rates include sample size and are based on each DRep's latest vote per action.</p><p>Dataset: <span class="mono">${dc.generated_at||'unknown'}</span></p><p>Note: analytical comparison, not a ranking by delegation power.</p>`;
+
+  const af=audit?.pipeline?.anchor_fetch||{};
+  const buckets=af.failure_buckets||{};
+  const bucketRows=Object.entries(buckets).map(([k,v])=>`<div><span class="mono">${k}</span>: <b>${v}</b></div>`).join('') || '<div class="muted">No failure buckets reported.</div>';
+  document.getElementById('anchorFetchHealth').innerHTML=`<div class="chip-row"><span class="chip">total: ${af.total??'n/a'}</span><span class="chip">ok: ${af.ok??'n/a'}</span><span class="chip">ok_cached: ${af.ok_cached??'n/a'}</span><span class="chip">failed: ${af.failed??'n/a'}</span><span class="chip">coverage: ${af.coverage_pct??'n/a'}%</span></div><div style="margin-top:10px;">${bucketRows}</div>`;
 
   document.getElementById('lastScan').textContent=`Last scan: ${audit?.pipeline?.last_scan_at||'unknown'}`;
   document.querySelectorAll('.copy-btn').forEach(btn=>{btn.addEventListener('click',()=>copy(btn.getAttribute('data-copy'),btn))});

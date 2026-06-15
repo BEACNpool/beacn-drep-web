@@ -16,18 +16,23 @@
   },
   "proof_of_vote": {
     "vote": "YES",
-    "score": 0.2667,
-    "confidence": 0.7867,
+    "score": 0.1667,
+    "confidence": 0.6867,
     "input_hash": "9e7658f38ec1d19d95e8ed38e1a6dc4bcf4786cb3df66190fe9407e9890fbeec",
-    "snapshot_bundle_hash": "84abb2d11aeb274f6e78e86f05d1380bf5a6fb6fb15c111b25f95d0ece37aa00",
-    "soul_commit": "ffdf6a8b929dfcd03eb707690676432e6d843bca",
-    "resources_commit": "c4477be87cf345890cf3a868ef300b600ab9fca4",
-    "core_commit": "5cc5048cf8cb80c1252ecc839a3389030315259c",
+    "snapshot_bundle_hash": "05cd92abdb254f3b89877c69cd8c0fda2a265dac241cd5cdf1479859735fd4e9",
+    "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
+    "resources_commit": "97b2121993721d9825398517f9b2b7d50ab1004f",
+    "core_commit": "83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db",
     "rationale_markdown_path": "/data/output/gov_action16tdkp3fs0j6303e4utgp8rftdug0ckezr4sslgv8wxdaeq40ngpsq5sr06h-9e7658f38ec1/rationale.md"
   },
   "rationale": {
-    "summary": "Vote: YES. For this TreasuryWithdrawals (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.27; confidence 78.7%.",
+    "summary": "Vote: YES. For this TreasuryWithdrawals (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.",
     "summary_raw": "Network DRep distribution used as one signal, not authority.",
+    "top_fixes": [
+      "Use stable, reproducible anchor links (commit-pinned when possible).",
+      "Add line-item budget with milestone-gated disbursement and objective completion checks.",
+      "Document downside risks, mitigations, and what gets cut first if delivery slips."
+    ],
     "markdown_path": "/data/output/gov_action16tdkp3fs0j6303e4utgp8rftdug0ckezr4sslgv8wxdaeq40ngpsq5sr06h-9e7658f38ec1/rationale.md",
     "missing_evidence": []
   },
@@ -40,16 +45,16 @@
     "anchor_hash": "e2ed7354990674f1087cb3672f0418ed2dde4f7cad3190992cea0448d5ca5bc9",
     "file_sha256": "e9a7c1ece2cfaec0301086e35b88a896a45a6e8a40aca4f6424642b26d4a878e",
     "content_bytes": "20908",
-    "fetched_at_utc": "2026-03-25T16:15:59Z",
+    "fetched_at_utc": "2026-03-26T17:52:30Z",
     "download_path": "/proposals/gov_action16tdkp3fs0j6303e4utgp8rftdug0ckezr4sslgv8wxdaeq40ngpsq5sr06h.json",
     "preview": "{\n  \"@context\": {\n    \"@language\": \"en\",\n    \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n    \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n    \"intersectSpec\": \"https://github.com/IntersectMBO/governance-actions/blob/main/schemas/specification.md#\",\n    \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n    \"body\": {\n      \"@id\": \"CIP108:body\",\n      \"@context\": {\n        \"references\": {\n          \"@id\": \"CIP108:references\",\n          \"@container\": \"@set\",\n          \"@context\": {\n            \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n            \"Other\": \"CIP100:OtherReference\",\n            \"label\": \"CIP100:reference-label\",\n            \"uri\": \"CIP100:reference-uri\",\n            \"referenceHash\": {\n              \"@id\": \"CIP108:referenceHash\",\n              \"@context\": {\n                \"hashDigest\": \"CIP108:hashDigest\",\n                \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n              }\n            }\n          }\n        },\n        \"title\": \"CIP108:title\",\n        \"abstract\": \"CIP108:abstract\",\n        \"motivation\": \"CIP108:motivation\",\n        \"rationale\": \"CIP108:rationale\",\n        \"on"
   },
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
-    "soul_commit": "ffdf6a8b929dfcd03eb707690676432e6d843bca",
+    "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "c4477be87cf345890cf3a868ef300b600ab9fca4",
-    "core_commit": "5cc5048cf8cb80c1252ecc839a3389030315259c",
+    "resources_commit": "97b2121993721d9825398517f9b2b7d50ab1004f",
+    "core_commit": "83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db",
     "resource_ids_used": [
       "gov_actions_api",
       "gov_actions_snapshot",
@@ -124,11 +129,11 @@
   "scoring": {
     "budget_pressure": 0.0,
     "conflict_risk": 0.0,
-    "technical_value": 0.2667,
-    "governance_alignment": 0.7867
+    "technical_value": 0.1667,
+    "governance_alignment": 0.6867
   },
   "freshness": {
-    "snapshot_age_seconds": 8,
+    "snapshot_age_seconds": 7980,
     "max_allowed_seconds": 21600,
     "is_stale": false,
     "snapshot_time": "2026-03-25T21:31:49.682301Z",

@@ -16,12 +16,17 @@ Vote: NO. For this ParameterChange (expired), downside risk and/or weak safeguar
 ## Remaining uncertainty
 - Rule-based system; does not infer unstated intent.
 
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Include SPO/operator impact envelope (CPU/RAM/network/storage) with measurable assumptions.
+- Add rollback/containment plan and explicit halt criteria.
+
 ## Proof of vote
 - input_hash: `1a31148b1eb595dd0c183f3cb56c63ed801b8803585f1223cb2decfc2cf2a7e1`
-- snapshot_bundle_hash: `c1022f7636e16a4c38899d4ba134da81a3fc8bdf20e01602254f66e00dddf4c4`
-- soul_commit: `ffdf6a8b929dfcd03eb707690676432e6d843bca`
-- resources_commit: `c4477be87cf345890cf3a868ef300b600ab9fca4`
-- core_commit: `5cc5048cf8cb80c1252ecc839a3389030315259c`
+- snapshot_bundle_hash: `fa3b2e1d5417ef8219c4ee4fb0aae2b49261f58cfcbeca8e0b7c0cf7e9e0941f`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
 - score: `-0.45`
 - confidence: `1.0`
 

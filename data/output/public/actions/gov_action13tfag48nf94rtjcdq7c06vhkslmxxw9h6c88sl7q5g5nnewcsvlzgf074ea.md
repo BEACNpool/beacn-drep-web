@@ -7,7 +7,7 @@
 - Published at: `2026-03-25T13:00:02.009603+00:00`
 
 ## Human-readable rationale
-Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.27; confidence 78.7%.
+Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Treasury withdrawal actions require elevated scrutiny. Confidence context: score 0.17; confidence 68.7%.
 
 ## What influenced this vote
 - Pinned anchor document is available for this action.
@@ -15,14 +15,19 @@ Vote: YES. For this TreasuryWithdrawals (ratified), available evidence supports 
 - Flag score present (4), reducing confidence.
 
 ## Remaining uncertainty
-- Rule-based system; does not infer unstated intent.
+- Treasury fee-flow signal is in unsustainable regime (advisory penalty applied).
+
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Add line-item budget with milestone-gated disbursement and objective completion checks.
+- Document downside risks, mitigations, and what gets cut first if delivery slips.
 
 ## Proof of vote
 - input_hash: `0cae48d759232f63a1b5352ec11823ee3db946e56a1d5e964b92cd2d367e8da5`
-- snapshot_bundle_hash: `7874b4581702319bc158fae073d7eb70e07b42a274e77b1c9ce5db199084a346`
-- soul_commit: `ffdf6a8b929dfcd03eb707690676432e6d843bca`
-- resources_commit: `c4477be87cf345890cf3a868ef300b600ab9fca4`
-- core_commit: `5cc5048cf8cb80c1252ecc839a3389030315259c`
-- score: `0.2667`
-- confidence: `0.7867`
+- snapshot_bundle_hash: `ba1b4b39a533b505ca58e88506c523f0914db251b2918097023d2233a0dcdb4e`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
+- score: `0.1667`
+- confidence: `0.6867`
 

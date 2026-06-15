@@ -17,12 +17,17 @@ Vote: YES. For this ParameterChange (active), available evidence supports procee
 ## Remaining uncertainty
 - Rule-based system; does not infer unstated intent.
 
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Include SPO/operator impact envelope (CPU/RAM/network/storage) with measurable assumptions.
+- Add rollback/containment plan and explicit halt criteria.
+
 ## Proof of vote
 - input_hash: `712dc7662bc811d6b3f7d64197ea4a03f8be473210c124da9827dfa1cf0efb74`
-- snapshot_bundle_hash: `1de586fc722304dd7915be7637ee13a5dcd324d9ea4f9068cb6312fbc3581e03`
-- soul_commit: `ffdf6a8b929dfcd03eb707690676432e6d843bca`
-- resources_commit: `c4477be87cf345890cf3a868ef300b600ab9fca4`
-- core_commit: `5cc5048cf8cb80c1252ecc839a3389030315259c`
+- snapshot_bundle_hash: `2e633c0f4bdfadb897e67e2de1194a78a7630632ab850f71f3a0226e3039ac56`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
 - score: `0.35`
 - confidence: `0.87`
 

@@ -15,12 +15,17 @@ Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards ou
 ## Remaining uncertainty
 - Anchor document is not yet pinned locally for this action.
 
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Clarify governance intent and expected measurable outcome.
+- Map each major claim to primary receipts and stable source links.
+
 ## Proof of vote
 - input_hash: `5e7c06cbcade7c0593f15f2827b2c1af41cd46dc2bd7d7edbe91cfd3d53d20d0`
-- snapshot_bundle_hash: `0609d33823928a737ab2a5ce9c3258d664afa5989b3b683e08caf600dd6056b5`
-- soul_commit: `ffdf6a8b929dfcd03eb707690676432e6d843bca`
-- resources_commit: `c4477be87cf345890cf3a868ef300b600ab9fca4`
-- core_commit: `5cc5048cf8cb80c1252ecc839a3389030315259c`
+- snapshot_bundle_hash: `48fb2620bdbe81220c612f25565af92d3a39352dfacbbb93a16a27765a27db77`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
 - score: `-0.55`
 - confidence: `1.0`
 

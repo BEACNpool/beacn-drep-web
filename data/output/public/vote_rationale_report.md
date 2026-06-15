@@ -1,6 +1,6 @@
 # Vote Rationale Simulation Report
 
-Generated: `2026-03-25T21:31:59Z`
+Generated: `2026-03-25T23:44:51Z`
 Total actions: `94`
 
 ## gov_action10k0unljvaej0kd89w7pn0zkgdx59c7xkl0x5q78dzvdtd73u0kmqq5xl5y5
@@ -104,12 +104,12 @@ Total actions: `94`
 
 ## gov_action13qr78nhrhetywapvx2wpm63y9uxpc2dc45zsu9gkncasxqhuhltqqqfu32x
 - type: `TreasuryWithdrawals`
-- vote: `YES`
+- vote: `NO`
 - abstain_reason_code: `None`
-- score/confidence: `0.0267` / `0.5467`
-- uncertainty_band: `LOW`
+- score/confidence: `-0.0733` / `0.5933`
+- uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2517, "NO": 0.245, "YES": 0.5034}`
+- decision_probs: `{"ABSTAIN": 0.2458, "NO": 0.5616, "YES": 0.1925}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -117,10 +117,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -128,10 +128,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -139,10 +139,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -150,21 +150,21 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
 ## gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlpcdq823y
 - type: `TreasuryWithdrawals`
-- vote: `YES`
+- vote: `NO`
 - abstain_reason_code: `None`
-- score/confidence: `0.0067` / `0.5267`
-- uncertainty_band: `LOW`
+- score/confidence: `-0.0933` / `0.6133`
+- uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2542, "NO": 0.2675, "YES": 0.4784}`
+- decision_probs: `{"ABSTAIN": 0.2433, "NO": 0.5866, "YES": 0.17}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -172,10 +172,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -183,10 +183,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -194,10 +194,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2467` / `0.7667`
+- score/confidence: `0.1467` / `0.6667`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.213, "NO": 0.0475, "YES": 0.7395}`
+- decision_probs: `{"ABSTAIN": 0.2367, "NO": 0.11, "YES": 0.6534}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -205,10 +205,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -216,10 +216,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -227,10 +227,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `NO`
 - abstain_reason_code: `None`
-- score/confidence: `-0.3833` / `0.9033`
+- score/confidence: `-0.4833` / `1.0`
 - uncertainty_band: `HIGH`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.1717, "NO": 0.7869, "YES": 0.0415}`
+- decision_probs: `{"ABSTAIN": 0.1518, "NO": 0.8093, "YES": 0.0389}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -238,10 +238,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -249,10 +249,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -260,10 +260,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -271,10 +271,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -282,10 +282,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -293,10 +293,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -304,10 +304,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -315,10 +315,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -326,10 +326,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -337,10 +337,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -348,10 +348,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -359,10 +359,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -370,10 +370,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -381,10 +381,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -392,10 +392,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -403,10 +403,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -414,10 +414,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -425,10 +425,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -436,10 +436,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -447,10 +447,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -458,10 +458,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -469,10 +469,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -480,10 +480,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -491,10 +491,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -502,10 +502,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -513,10 +513,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -568,10 +568,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -579,10 +579,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `NO`
 - abstain_reason_code: `None`
-- score/confidence: `-0.1833` / `0.7033`
-- uncertainty_band: `MEDIUM`
+- score/confidence: `-0.2833` / `0.8033`
+- uncertainty_band: `HIGH`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2321, "NO": 0.6991, "YES": 0.0688}`
+- decision_probs: `{"ABSTAIN": 0.2008, "NO": 0.7535, "YES": 0.0457}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -601,10 +601,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -612,10 +612,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -623,10 +623,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.1667` / `0.6567`
+- score/confidence: `0.0667` / `0.5567`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2379, "NO": 0.0912, "YES": 0.6709}`
+- decision_probs: `{"ABSTAIN": 0.2504, "NO": 0.2037, "YES": 0.5459}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -700,7 +700,7 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `NO`
 - abstain_reason_code: `None`
-- score/confidence: `-0.7333` / `1.0`
+- score/confidence: `-0.8333` / `1.0`
 - uncertainty_band: `HIGH`
 - evidence_depth_score: `4`
 - decision_probs: `{"ABSTAIN": 0.1518, "NO": 0.8093, "YES": 0.0389}`
@@ -722,10 +722,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.1167` / `0.6067`
-- uncertainty_band: `MEDIUM`
+- score/confidence: `0.0167` / `0.5067`
+- uncertainty_band: `LOW`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2442, "NO": 0.1475, "YES": 0.6084}`
+- decision_probs: `{"ABSTAIN": 0.2567, "NO": 0.26, "YES": 0.4834}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -792,7 +792,7 @@ Total actions: `94`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `3`
 - decision_probs: `{"ABSTAIN": 0.2512, "NO": 0.2712, "YES": 0.4775}`
-- rationale_summary: Directional vote forced by high readiness_score with no hard blockers.
+- rationale_summary: Directional vote forced by completed readiness packet (treasury-aware).
 - missing_evidence_count: `0`
 
 ## gov_action1k5vwlfrxtyusd2ec37tckd54gjvqn2kd72xj4t6wkkapdv7zfg0qq468n2r
@@ -821,10 +821,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.2667` / `0.7867`
+- score/confidence: `0.1667` / `0.6867`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2062, "NO": 0.0465, "YES": 0.7473}`
+- decision_probs: `{"ABSTAIN": 0.2342, "NO": 0.0875, "YES": 0.6784}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -909,10 +909,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.1667` / `0.6567`
+- score/confidence: `0.0667` / `0.5567`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2379, "NO": 0.0912, "YES": 0.6709}`
+- decision_probs: `{"ABSTAIN": 0.2504, "NO": 0.2037, "YES": 0.5459}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -920,7 +920,7 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `NO`
 - abstain_reason_code: `None`
-- score/confidence: `-0.7333` / `1.0`
+- score/confidence: `-0.8333` / `1.0`
 - uncertainty_band: `HIGH`
 - evidence_depth_score: `4`
 - decision_probs: `{"ABSTAIN": 0.1518, "NO": 0.8093, "YES": 0.0389}`
@@ -962,12 +962,12 @@ Total actions: `94`
 
 ## gov_action1uhzd06a26qavzflvrx3gvcz6rzxkl6su2ns8t3seef5e8dl6nlgsqcgtufg
 - type: `TreasuryWithdrawals`
-- vote: `YES`
+- vote: `NO`
 - abstain_reason_code: `None`
-- score/confidence: `0.0967` / `0.5867`
-- uncertainty_band: `MEDIUM`
+- score/confidence: `-0.0033` / `0.4933`
+- uncertainty_band: `LOW`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2467, "NO": 0.17, "YES": 0.5834}`
+- decision_probs: `{"ABSTAIN": 0.2583, "NO": 0.4666, "YES": 0.275}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 
@@ -986,10 +986,10 @@ Total actions: `94`
 - type: `TreasuryWithdrawals`
 - vote: `YES`
 - abstain_reason_code: `None`
-- score/confidence: `0.1667` / `0.6567`
+- score/confidence: `0.0667` / `0.5567`
 - uncertainty_band: `MEDIUM`
 - evidence_depth_score: `4`
-- decision_probs: `{"ABSTAIN": 0.2379, "NO": 0.0912, "YES": 0.6709}`
+- decision_probs: `{"ABSTAIN": 0.2504, "NO": 0.2037, "YES": 0.5459}`
 - rationale_summary: Network DRep distribution used as one signal, not authority.
 - missing_evidence_count: `0`
 

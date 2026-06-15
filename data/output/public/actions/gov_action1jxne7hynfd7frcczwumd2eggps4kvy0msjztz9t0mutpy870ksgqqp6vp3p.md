@@ -16,12 +16,17 @@ Vote: YES. For this NewConstitution (ratified), available evidence supports proc
 ## Remaining uncertainty
 - Rule-based system; does not infer unstated intent.
 
+## Top 3 fixes to improve next submission
+- Use stable, reproducible anchor links (commit-pinned when possible).
+- Clarify governance intent and expected measurable outcome.
+- Map each major claim to primary receipts and stable source links.
+
 ## Proof of vote
 - input_hash: `197e643567d49282d726add7510c5a22971fef4df035e5ebabb6e56e97b1e640`
-- snapshot_bundle_hash: `0c45671b47f92c63d98df76186feab571e263320489e4ed649e65fd198d65085`
-- soul_commit: `ffdf6a8b929dfcd03eb707690676432e6d843bca`
-- resources_commit: `c4477be87cf345890cf3a868ef300b600ab9fca4`
-- core_commit: `5cc5048cf8cb80c1252ecc839a3389030315259c`
+- snapshot_bundle_hash: `0b11da0a4a0e9da7a960201dafba9ac2bd061366cda1d0e2d3f85fa08d71300a`
+- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
+- resources_commit: `97b2121993721d9825398517f9b2b7d50ab1004f`
+- core_commit: `83ce427f6337b3cefcf1b6bdfd4e4dd97b6626db`
 - score: `0.4`
 - confidence: `0.92`
 
