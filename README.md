@@ -5,7 +5,8 @@
 Presentation layer for BEACN DRep outputs.
 
 Frontend policy:
-- Canonical frontend: `site/index.html` (static, no build step)
+- Canonical frontend: root `index.html`, `styles.css`, and `app.js` (static, no build step)
+- `manifest.json` and `sw.js` provide installability and offline feed fallback
 - Next.js app scaffolding exists for migration history only and is not the production path
 
 Rules:

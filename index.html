@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BEACN DRep — Transparent Autonomous Governance on Cardano</title>
-  <meta name="description" content="BEACN DRep votes on every Cardano governance action autonomously, from public evidence, with no human choosing the outcome — and publishes the rationale and on-chain proof here, daily." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>BEACN DRep — Verifiable Cardano Governance</title>
+  <meta name="description" content="Transparent, deterministic Cardano governance. Inspect every BEACN DRep verdict, rationale, public input, and reproducibility hash." />
   <meta name="theme-color" content="#020617" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="BEACN DRep" />
+  <link rel="manifest" href="./manifest.json" />
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png" />
   <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
@@ -13,640 +18,61 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="BEACN DRep" />
   <meta property="og:title" content="BEACN DRep — Transparent Autonomous Governance on Cardano" />
-  <meta property="og:description" content="Every Cardano governance vote, decided by open deterministic rules with no human in the loop, published with its rationale and on-chain proof — daily." />
+  <meta property="og:description" content="Every Cardano governance vote, decided by open deterministic rules and published with rationale and on-chain proof." />
   <meta property="og:url" content="https://beacnpool.github.io/beacn-drep-web/" />
   <meta property="og:image" content="https://beacnpool.github.io/beacn-drep-web/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="BEACN DRep — Transparent Autonomous Governance on Cardano" />
-  <meta name="twitter:description" content="Every Cardano governance vote, decided by open deterministic rules with no human in the loop — published with rationale and on-chain proof." />
+  <meta name="twitter:description" content="Open rules. Public evidence. Reproducible decisions. On-chain proof." />
   <meta name="twitter:image" content="https://beacnpool.github.io/beacn-drep-web/og.png" />
-  <style>
-    :root{
-      --bg:#06080d; --surface:#0e1320; --surface2:#121a2b; --line:#1b2333; --line2:#2a3650;
-      --fg:#e9eef7; --mut:#8b97a9; --dim:#5c6677;
-      --cyan:#22d3ee; --blue:#5b8cff; --violet:#9b8cff;
-      --yes:#2fd07a; --no:#ff5f5f; --abst:#9aa6b5; --info:#f5b94a;
-      --mono:ui-monospace,SFMono-Regular,Menlo,"Cascadia Code",monospace;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--fg);line-height:1.55;
-         font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-         -webkit-font-smoothing:antialiased;overflow-x:hidden}
-    body::before{content:"";position:fixed;inset:0;z-index:-2;
-      background:
-        radial-gradient(1000px 560px at 82% -8%, rgba(46,230,207,.13), transparent 60%),
-        radial-gradient(820px 560px at 6% -4%, rgba(91,140,255,.13), transparent 55%),
-        var(--bg)}
-    body::after{content:"";position:fixed;inset:0;z-index:-1;opacity:.5;pointer-events:none;
-      background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
-                       linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
-      background-size:46px 46px;
-      -webkit-mask:radial-gradient(circle at 50% -5%,#000,transparent 72%);
-              mask:radial-gradient(circle at 50% -5%,#000,transparent 72%)}
-    .wrap{max-width:1060px;margin:0 auto;padding:18px 20px 80px}
-    a{color:var(--cyan);text-decoration:none} a:hover{text-decoration:underline}
-    .mono{font-family:var(--mono)}
-    .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
-             color:var(--cyan);display:inline-flex;align-items:center;gap:8px}
-    .eyebrow::before{content:"";width:18px;height:1px;background:var(--cyan);opacity:.7}
-    section{margin-top:54px}
-    h2.sec{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin:.4rem 0 .3rem}
-    .sec-note{color:var(--mut);font-size:.92rem;margin:0 0 18px;max-width:74ch}
-
-    /* telemetry / epoch */
-    .telemetry{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-      background:linear-gradient(135deg,rgba(46,230,207,.06),rgba(91,140,255,.05));
-      border:1px solid var(--line);border-radius:13px;padding:11px 15px;margin-bottom:22px}
-    .tlive{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:var(--cyan);
-      display:inline-flex;align-items:center;gap:7px}
-    .tlive .dotpulse{width:8px;height:8px;border-radius:50%;background:var(--cyan);
-      box-shadow:0 0 0 0 rgba(46,230,207,.6);animation:pulse 2s infinite}
-    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(46,230,207,.5)}70%{box-shadow:0 0 0 7px rgba(46,230,207,0)}100%{box-shadow:0 0 0 0 rgba(46,230,207,0)}}
-    .epoch-number{color:var(--fg);font-weight:700}
-    .epoch-countdown{font-family:var(--mono);font-weight:700;font-variant-numeric:tabular-nums;color:var(--fg)}
-    .epoch-meta{color:var(--dim);font-size:.74rem}
-    .telemetry .spacer{flex:1}
-    .epoch-progress{flex-basis:100%;height:3px;background:#0b1018;border-radius:99px;overflow:hidden;margin-top:2px}
-    .epoch-progress span{display:block;height:100%;width:0;border-radius:inherit;
-      background:linear-gradient(90deg,var(--cyan),var(--blue));transition:width 1s linear}
-
-    /* hero */
-    .brandbar{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
-    .seal{width:46px;height:46px;border-radius:13px;flex:none;display:flex;align-items:center;justify-content:center;
-      font-weight:800;font-size:1.3rem;color:#04121a;background:linear-gradient(135deg,var(--cyan),var(--blue));
-      box-shadow:0 6px 24px rgba(46,230,207,.25)}
-    .brandname{font-size:1.4rem;font-weight:800;letter-spacing:-.01em;line-height:1.05}
-    .brandsub{color:var(--mut);font-size:.8rem}
-    .badge{font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-      padding:3px 9px;border-radius:99px}
-    .badge.live{color:var(--yes);background:rgba(47,208,122,.12);border:1px solid rgba(47,208,122,.4)}
-    .badge.shadow{color:var(--info);background:rgba(245,185,74,.12);border:1px solid rgba(245,185,74,.4)}
-    h1{font-size:clamp(2.1rem,5.4vw,3.4rem);line-height:1.04;letter-spacing:-.03em;font-weight:850;
-       margin:22px 0 0;max-width:18ch}
-    h1 .grad{background:linear-gradient(100deg,var(--cyan),var(--blue) 60%,var(--violet));
-      -webkit-background-clip:text;background-clip:text;color:transparent}
-    .lede{font-size:1.12rem;color:#c4cdda;max-width:64ch;margin:18px 0 0}
-    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;font-weight:650;
-      font-size:.95rem;cursor:pointer;border:1px solid transparent}
-    .btn.primary{color:#04121a;background:linear-gradient(135deg,var(--cyan),var(--blue));
-      box-shadow:0 8px 26px rgba(46,230,207,.22)}
-    .btn.primary:hover{text-decoration:none;filter:brightness(1.06)}
-    .btn.ghost{color:var(--fg);border-color:var(--line2);background:rgba(255,255,255,.02)}
-    .btn.ghost:hover{text-decoration:none;border-color:var(--cyan);color:var(--cyan)}
-    .idrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px;font-size:.82rem;color:var(--mut)}
-    .reg-seal{display:inline-flex;align-items:center;gap:6px;color:var(--yes);font-weight:700;font-size:.74rem;
-      background:rgba(47,208,122,.1);border:1px solid rgba(47,208,122,.36);border-radius:99px;padding:3px 11px}
-    .reg-seal:hover{text-decoration:none;filter:brightness(1.12)}
-    .drepid{font-family:var(--mono);color:#b9c4d4;word-break:break-all;font-size:.8rem}
-
-    /* generic card + grids */
-    .card{background:linear-gradient(180deg,var(--surface),#0b101a);border:1px solid var(--line);border-radius:16px}
-    .panel{padding:20px 22px}
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
-    .stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 16px;position:relative;overflow:hidden}
-    .stat::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),transparent)}
-    .stat .n{font-size:2rem;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-    .stat .l{color:var(--mut);font-size:.78rem;margin-top:2px}
-    /* live band */
-    .live-band{display:flex;gap:14px;align-items:flex-start}
-    .live-band .tick{color:var(--yes);font-size:1.4rem;line-height:1.2;filter:drop-shadow(0 0 8px rgba(47,208,122,.5))}
-    .live-band .summary{font-size:1.05rem;font-weight:600}
-    .live-band .stamp{color:var(--mut);font-size:.82rem;margin-top:4px;font-family:var(--mono)}
-    .asap{margin-top:12px;color:#aeb9c8;font-size:.92rem;max-width:72ch}
-
-    /* how it works */
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .step{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
-    .step .k{font-family:var(--mono);color:var(--cyan);font-size:.74rem;letter-spacing:.04em;font-weight:700}
-    .step h3{margin:8px 0 5px;font-size:1rem}
-    .step p{margin:0;color:#c0cad6;font-size:.88rem}
-    .repos{margin-top:16px;font-size:.86rem;color:var(--mut)}
-    .repos a{font-weight:600}
-
-    /* verdict cards */
-    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .vcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:17px 18px;
-      display:flex;flex-direction:column;gap:11px;transition:border-color .15s,transform .15s}
-    .vcard:hover{border-color:var(--line2);transform:translateY(-2px)}
-    .vcard .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-    .vcard .title{font-size:1.06rem;font-weight:700;letter-spacing:-.01em}
-    .chip{font-family:var(--mono);font-size:.68rem;color:var(--mut);border:1px solid var(--line2);border-radius:99px;
-      padding:2px 9px;white-space:nowrap}
-    .verdict{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:1.05rem;letter-spacing:-.01em}
-    .verdict .dot{width:10px;height:10px;border-radius:50%}
-    .v-yes{color:var(--yes)} .v-yes .dot{background:var(--yes);box-shadow:0 0 10px rgba(47,208,122,.6)}
-    .v-no{color:var(--no)} .v-no .dot{background:var(--no);box-shadow:0 0 10px rgba(255,95,95,.5)}
-    .v-abst{color:var(--abst)} .v-abst .dot{background:var(--abst)}
-    .v-info{color:var(--info)} .v-info .dot{background:var(--info);box-shadow:0 0 10px rgba(245,185,74,.4)}
-    .v-pending{color:var(--mut)} .v-pending .dot{background:var(--mut)}
-    .why-vote{background:#0a0f18;border:1px solid var(--line);border-radius:11px;padding:11px 13px;
-      font-size:.88rem;color:#c8d2de;line-height:1.55}
-    .why-vote .lab{font-family:var(--mono);color:var(--cyan);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
-      display:block;margin-bottom:5px}
-    .why-vote details{margin-top:6px}
-    .why-vote summary{cursor:pointer;color:var(--cyan);font-size:.83rem;list-style:none}
-    .why-vote summary::-webkit-details-marker{display:none}
-    .vcard .meta{color:var(--mut);font-size:.8rem}
-    .vcard .links{display:flex;flex-wrap:wrap;gap:14px;font-size:.85rem;margin-top:auto}
-    .proof{color:var(--yes);font-weight:650} .proof.none{color:var(--mut);font-weight:400}
-
-    /* distribution bar + record */
-    .distbar{margin:4px 0 16px}
-    .bar{display:flex;height:16px;border-radius:99px;overflow:hidden;border:1px solid var(--line);background:#0a0f18}
-    .bar .seg{cursor:pointer;transition:filter .15s} .bar .seg:hover{filter:brightness(1.18)}
-    .barleg{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:11px;font-size:.85rem;color:#c4cdda}
-    .legi{display:inline-flex;align-items:center;gap:7px} .legi i{width:11px;height:11px;border-radius:3px;display:inline-block}
-    .legi b{font-weight:800} .legi .pct{color:var(--dim);font-size:.78rem}
-    .dist{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
-    .chipf{cursor:pointer;border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-size:.84rem;
-      color:#c2ccd6;background:var(--surface);user-select:none}
-    .chipf:hover{border-color:var(--line2)}
-    .chipf.active{color:#fff}
-    .chipf.f-all.active{border-color:var(--blue);background:rgba(91,140,255,.16)}
-    .chipf.f-yes.active{border-color:var(--yes);background:rgba(47,208,122,.16)}
-    .chipf.f-no.active{border-color:var(--no);background:rgba(255,95,95,.16)}
-    .chipf.f-abst.active{border-color:var(--abst);background:rgba(154,166,181,.16)}
-    .chipf.f-info.active{border-color:var(--info);background:rgba(245,185,74,.16)}
-    .chipf b{font-weight:800}
-    .search{width:100%;padding:11px 14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;
-      color:var(--fg);font-size:.95rem;margin-bottom:13px}
-    .search:focus{outline:none;border-color:var(--cyan)}
-    .hrow{border:1px solid var(--line);border-radius:11px;margin-bottom:8px;background:var(--surface)}
-    .hrow>summary{list-style:none;cursor:pointer;padding:11px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-    .hrow>summary::-webkit-details-marker{display:none}
-    .hrow>summary:hover{background:#121a2b;border-radius:11px}
-    .hrow .hv{font-weight:800;font-size:.82rem;white-space:nowrap;min-width:74px}
-    .hrow .ht{flex:1 1 230px;min-width:160px;font-weight:550}
-    .hrow .htype{font-family:var(--mono);color:var(--mut);font-size:.74rem;white-space:nowrap}
-    .hrow .hchain{font-size:.76rem;white-space:nowrap}
-    .hrow .hbody{padding:2px 14px 14px;font-size:.88rem;color:#c8d2de;line-height:1.6}
-    .hrow[open]{border-color:var(--line2)}
-
-    /* decide */
-    .gatenote{background:rgba(245,185,74,.07);border:1px solid rgba(245,185,74,.32);border-left:3px solid var(--info);
-      border-radius:11px;padding:13px 16px;margin:12px 0 18px;font-size:.92rem;color:#e7dcc6}
-    .dcards{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
-    .dcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 17px;border-top:3px solid var(--line)}
-    .dcard.yes{border-top-color:var(--yes)} .dcard.no{border-top-color:var(--no)}
-    .dcard.abst{border-top-color:var(--abst)} .dcard.info{border-top-color:var(--info)}
-    .dcard .vh{display:flex;align-items:baseline;gap:9px;margin-bottom:5px}
-    .dcard .lbl{font-weight:800;font-size:1.06rem}
-    .dcard.yes .lbl{color:var(--yes)} .dcard.no .lbl{color:var(--no)}
-    .dcard.abst .lbl{color:var(--abst)} .dcard.info .lbl{color:var(--info)}
-    .dcard .gloss{font-family:var(--mono);color:var(--mut);font-size:.72rem}
-    .dcard .d1{margin:0;font-size:.89rem;color:#c8d2de}
-    .dcard ul{margin:9px 0 0;padding-left:18px;font-size:.86rem;color:#bcc6d2}
-    .dcard li{margin:4px 0}
-    .tiebreak{font-size:.92rem;color:#c4cdda;margin:18px 0 0}
-    .tiebreak b{color:var(--fg)}
-    .verify-row{margin-top:12px;font-size:.86rem;color:var(--mut)}
-
-    /* why delegate */
-    .pitch{font-size:1.08rem;color:#d3dbe6;max-width:76ch}
-    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
-    .pillar{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
-    .pillar h3{margin:0 0 5px;font-size:.97rem}
-    .pillar p{margin:0;font-size:.86rem;color:#bcc6d2}
-    .represents{background:linear-gradient(135deg,rgba(155,140,255,.08),rgba(91,140,255,.05));
-      border:1px solid #34406a;border-radius:14px;padding:17px 19px;margin:18px 0;font-size:1.04rem;color:#dfe4f3}
-    .represents b{color:var(--violet)}
-    .who ul{margin:8px 0 0;padding-left:20px;color:#bcc6d2;font-size:.93rem} .who li{margin:5px 0}
-    .cta{background:linear-gradient(135deg,rgba(46,230,207,.08),rgba(91,140,255,.06));
-      border:1px solid #1f5a52;border-radius:16px;padding:20px 22px;margin:22px 0 4px}
-    .cta h3{margin:0 0 7px;font-size:1.18rem}
-    .cta .id{font-family:var(--mono);font-size:.84rem;background:#0a0f18;border:1px solid var(--line);border-radius:10px;
-      padding:9px 12px;margin:9px 0;word-break:break-all;display:flex;gap:10px;align-items:center;justify-content:space-between}
-    .cta button{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#04121a;border:0;border-radius:8px;
-      padding:6px 13px;font-size:.82rem;cursor:pointer;font-weight:700;white-space:nowrap}
-    .cta .fine{color:var(--mut);font-size:.85rem;margin-top:7px}
-
-    /* footer */
-    footer{margin-top:50px;border-top:1px solid var(--line);padding-top:20px;color:var(--mut);font-size:.82rem}
-    .integrity{display:flex;flex-wrap:wrap;gap:9px 18px;margin:12px 0}
-    .integrity span{font-size:.82rem;color:#c4cdda} .integrity b{color:var(--yes)}
-    .links{margin-top:14px;line-height:2}
-    .err{color:var(--no)}
-    /* sticky section nav */
-    .topnav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-      margin:0 -20px 16px;padding:9px 20px;background:rgba(6,8,13,.82);
-      backdrop-filter:saturate(140%) blur(12px);-webkit-backdrop-filter:saturate(140%) blur(12px);
-      border-bottom:1px solid var(--line)}
-    .navbrand{display:inline-flex;align-items:center;gap:8px;color:var(--fg);font-weight:700;font-size:.92rem}
-    .navbrand img{border-radius:6px}
-    .navbrand:hover{text-decoration:none}
-    .navlinks{display:flex;gap:3px;margin-left:auto;flex-wrap:wrap}
-    .navlinks a{color:var(--mut);font-size:.86rem;padding:5px 11px;border-radius:8px}
-    .navlinks a:hover{color:var(--fg);background:rgba(255,255,255,.05);text-decoration:none}
-    .navlinks a.active{color:var(--cyan);background:rgba(34,211,238,.1)}
-    .seal img{display:block;width:100%;height:100%;border-radius:13px}
-    .copied{color:var(--yes)!important}
-    @media (max-width:720px){
-      .stats,.steps,.cards,.dcards,.pillars{grid-template-columns:1fr}
-      h1{font-size:2.1rem}
-      .navlinks{font-size:.82rem} .navlinks a{padding:4px 8px}
-    }
-    @media (prefers-reduced-motion:reduce){
-      *{animation-duration:.001ms!important;transition-duration:.001ms!important}
-      html{scroll-behavior:auto}
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="wrap" id="top">
-
-    <nav class="topnav">
-      <a class="navbrand" href="#top"><img src="assets/logo.png" alt="" width="24" height="24" />BEACN DRep</a>
-      <div class="navlinks">
-        <a href="#live">Live</a>
-        <a href="#latest">Verdicts</a>
-        <a href="#record">Record</a>
-        <a href="#decides">Rules</a>
-        <a href="#delegate">Delegate</a>
-      </div>
-    </nav>
-
-    <!-- telemetry / epoch clock -->
-    <div class="telemetry">
-      <span class="tlive"><span class="dotpulse"></span>LIVE</span>
-      <span class="mono" style="color:var(--mut);font-size:.74rem">CARDANO MAINNET · EPOCH <span class="epoch-number" id="clock-epoch">—</span></span>
-      <span class="spacer"></span>
-      <span class="epoch-countdown" id="epoch-countdown">--d --h --m --s</span>
-      <span class="epoch-meta" id="epoch-meta">calculating next epoch…</span>
-      <div class="epoch-progress" role="progressbar" aria-label="Current epoch progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="epoch-progress"></span></div>
-    </div>
-
-    <!-- hero -->
-    <header>
-      <div class="brandbar">
-        <div class="seal"><img src="assets/logo.png" alt="BEACN logo" /></div>
-        <div>
-          <div class="brandname">BEACN DRep</div>
-          <div class="brandsub">Official autonomous Delegated Representative · Cardano</div>
-        </div>
-        <span style="margin-left:auto" id="mode-wrap"></span>
-      </div>
-
-      <div class="eyebrow" style="margin-top:30px">Autonomous · On-chain · Verifiable</div>
-      <h1>Governance you can <span class="grad">verify</span>, not trust.</h1>
-      <p class="lede">BEACN votes on every Cardano governance action by software — from public evidence, against
-        open rules, with <strong>no human choosing the outcome</strong>. Every weekday the bot runs to get its
-        vote on chain as fast as an action appears, and the full reasoning lives here. No backrooms, no
-        ambiguity — just decisions in the open.</p>
-
-      <div class="cta-row">
-        <a class="btn primary" href="#record">Explore every verdict</a>
-        <a class="btn ghost" href="#delegate">Delegate to BEACN</a>
-      </div>
-      <div class="idrow">
-        <a class="reg-seal" id="reg-seal" href="https://cardanoscan.io/" target="_blank" rel="noopener">✓ Registered on-chain</a>
-        <span>DRep <span class="drepid" id="drep">…</span></span>
+  <div class="app-shell">
+    <header class="app-header">
+      <a class="brand" href="#/home" aria-label="BEACN DRep home">
+        <img src="./assets/logo.png" width="38" height="38" alt="" />
+        <span><strong>BEACN DRep</strong><small>Verifiable governance</small></span>
+      </a>
+      <div class="header-actions">
+        <span class="connection-dot" id="connection-dot" title="Network status"></span>
+        <button class="icon-button" id="refresh-button" type="button" aria-label="Refresh data">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6v5h-5M4 18v-5h5M6.1 9a7 7 0 0 1 11.5-2.6L20 9M4 15l2.4 2.6A7 7 0 0 0 18 15"/></svg>
+        </button>
       </div>
     </header>
 
-    <!-- live operations -->
-    <section id="live">
-      <div class="eyebrow">Live operations</div>
-      <div class="card panel" style="margin-top:12px">
-        <div class="live-band">
-          <div class="tick">✓</div>
-          <div>
-            <div class="summary" id="summary">Loading the latest governance check…</div>
-            <div class="stamp" id="stamp"></div>
-            <p class="asap">Transparency is the whole point. The bot runs on a daily schedule so a verdict lands
-              on chain quickly and predictably — delegators are never left guessing where BEACN stands, because
-              the vote and its rationale are published here the moment they're decided.</p>
-          </div>
-        </div>
-        <div class="stats">
-          <div class="stat"><div class="n" id="s-epoch">—</div><div class="l">Epoch at last check</div></div>
-          <div class="stat"><div class="n" id="s-open">—</div><div class="l">Open governance actions</div></div>
-          <div class="stat"><div class="n" id="s-voted">—</div><div class="l">Actions voted on-chain</div></div>
-        </div>
+    <div class="refresh-track" aria-hidden="true"><span id="refresh-progress"></span></div>
+    <main id="app" tabindex="-1" aria-live="polite">
+      <div class="view-loading">
+        <div class="skeleton hero-skeleton"></div>
+        <div class="skeleton-grid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+        <div class="skeleton card-skeleton"></div><div class="skeleton card-skeleton"></div>
       </div>
-    </section>
+    </main>
 
-    <!-- how it works -->
-    <section id="how">
-      <div class="eyebrow">How it works</div>
-      <h2 class="sec">Zero human interference</h2>
-      <p class="sec-note">No person picks how BEACN votes. A program does the whole job and shows its work —
-        every input, rule, and result is public and reproducible, so anyone can confirm the on-chain vote
-        matches the rules.</p>
-      <div class="steps">
-        <div class="step"><div class="k">01 · READ</div><h3>Watch the chain</h3>
-          <p>It reads every live governance action directly from Cardano mainnet.</p></div>
-        <div class="step"><div class="k">02 · DECIDE</div><h3>Score the rules</h3>
-          <p>A deterministic, open-source engine scores each action against published doctrine — same inputs, same verdict, every time.</p></div>
-        <div class="step"><div class="k">03 · VOTE &amp; PROVE</div><h3>Sign &amp; publish</h3>
-          <p>It signs and submits the vote on chain and publishes the rationale with hashes you can re-check.</p></div>
-      </div>
-      <div class="repos">Open source, end to end:
-        <a href="https://github.com/BEACNpool/beacn-drep-core" target="_blank" rel="noopener">engine</a> ·
-        <a href="https://github.com/BEACNpool/beacn-drep-soul" target="_blank" rel="noopener">doctrine</a> ·
-        <a href="https://github.com/BEACNpool/beacn-drep-resources" target="_blank" rel="noopener">data</a> ·
-        <a href="https://github.com/BEACNpool/beacn-drep-web" target="_blank" rel="noopener">this site</a></div>
-    </section>
-
-    <!-- latest verdicts -->
-    <section id="latest">
-      <div class="eyebrow">Latest activity</div>
-      <h2 class="sec">Most recent verdicts</h2>
-      <p class="sec-note">What BEACN reviewed most recently, with the reasoning in plain language and — where a
-        vote was cast — a link to the on-chain transaction as proof.</p>
-      <div class="cards" id="cards"><div class="sec-note">Loading latest verdicts…</div></div>
-    </section>
-
-    <!-- full record -->
-    <section id="record">
-      <div class="eyebrow">Full transparency</div>
-      <h2 class="sec">Every verdict on record</h2>
-      <p class="sec-note">BEACN's determination on <strong>every</strong> governance action it has reviewed —
-        including older, now-closed actions whose verdict is recorded here for transparency even when no live
-        vote could be cast. Tap a bar segment or a chip to filter; expand any row for the reasoning.</p>
-      <div class="distbar" id="distbar"></div>
-      <div class="dist" id="dist"></div>
-      <input id="search" class="search" type="search" placeholder="Search by title or type (e.g. treasury, Hydra, hard fork)…" />
-      <div id="hist"><div class="sec-note">Loading the full record…</div></div>
-    </section>
-
-    <!-- how it decides -->
-    <section id="decides">
-      <div class="eyebrow">The rulebook</div>
-      <h2 class="sec">What earns each verdict</h2>
-      <p class="sec-note">A verdict is never a vibe. First a few hard gates can force a conservative outcome,
-        then a public, weighted score routes the action. Here's what pushes an action toward each result.</p>
-      <div class="gatenote"><strong>Conservative gates come first.</strong> Before any scoring, BEACN
-        automatically <span style="color:var(--abst);font-weight:700">abstains</span> on stale data, missing
-        baseline evidence, or an unknown action type — and returns
-        <span style="color:var(--info);font-weight:700">needs more info</span> when a treasury ask arrives
-        without a completed research dossier. Speed never overrides safety.</div>
-      <div class="dcards">
-        <div class="dcard yes"><div class="vh"><span class="lbl">✓ Yes</span><span class="gloss">approve</span></div>
-          <p class="d1">Well-evidenced and scores clearly positive.</p>
-          <ul><li>Verifiable, pinned anchor / context document.</li><li>Risk flags low or mitigated.</li>
-            <li>For treasury: complete dossier, spending within sustainable fee inflow and the rolling-window budget, clear milestones.</li>
-            <li>Net score clears the positive threshold.</li></ul></div>
-        <div class="dcard no"><div class="vh"><span class="lbl">✕ No</span><span class="gloss">reject</span></div>
-          <p class="d1">Identifiable harm, excess cost, or broken treasury discipline.</p>
-          <ul><li>High unmitigated risk or strong negative flags.</li>
-            <li>For treasury: unsustainable outflow, severe recipient concentration, or no milestones.</li>
-            <li>A forced No when the rolling-window budget is already depleted.</li>
-            <li>Net score crosses the negative threshold.</li></ul></div>
-        <div class="dcard abst"><div class="vh"><span class="lbl">— Abstain</span><span class="gloss">no directional vote, on purpose</span></div>
-          <p class="d1">Can't responsibly take a side — discipline, not indecision.</p>
-          <ul><li>Evidence too thin or stale, or context/anchor unpinned.</li>
-            <li>A hard blocker or high unmitigated risk is present.</li>
-            <li>Score too close to neutral to justify a direction.</li></ul></div>
-        <div class="dcard info"><div class="vh"><span class="lbl">? Needs more info</span><span class="gloss">a request, not a refusal</span></div>
-          <p class="d1">A high-impact ask that lacks the evidence to decide.</p>
-          <ul><li>Treasury action missing its deep-research dossier: budget, feasibility, risks, alternatives, failure modes.</li>
-            <li>Always lists exactly what's missing — and what would change the vote.</li></ul></div>
-      </div>
-      <p class="tiebreak">When values conflict, BEACN applies a fixed order:
-        <b>constitutional integrity &amp; protocol safety → treasury stewardship → evidence quality →
-        public benefit → speed.</b> The higher value always wins.</p>
-      <p class="verify-row">Verify the rules — weights are public and versioned
-        (<a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/scoring_weights.json" target="_blank" rel="noopener">scoring_weights.json</a>),
-        thresholds live in source (<a href="https://github.com/BEACNpool/beacn-drep-core" target="_blank" rel="noopener">engine</a>),
-        and every action type has its own doctrine
-        (<a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/treasury_spending_doctrine.md" target="_blank" rel="noopener">treasury</a>,
-        <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/parameter_change_doctrine.md" target="_blank" rel="noopener">parameters</a>,
-        <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/hardfork_doctrine.md" target="_blank" rel="noopener">hard forks</a>,
-        <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/values_hierarchy.md" target="_blank" rel="noopener">values hierarchy</a>).</p>
-    </section>
-
-    <!-- why delegate -->
-    <section id="delegate">
-      <div class="eyebrow">Why BEACN</div>
-      <h2 class="sec">A delegate that can't be lobbied, bought, or tired out</h2>
-      <p class="pitch">The same inputs always produce the same vote, every decision shows its work and can be
-        independently replayed, and there is no channel for money, hype, or fatigue to change the outcome.
-        BEACN treats your stake's voice like a fiduciary — conservative when evidence is thin, honest about
-        what it doesn't know, and disciplined with the treasury.</p>
-      <div class="pillars">
-        <div class="pillar"><h3>🛡️ Incorruptible by design</h3><p>No private lobbying, no backroom overrides, no delegation-size politics. The rules are public and identical for everyone.</p></div>
-        <div class="pillar"><h3>🔎 Public evidence only</h3><p>Decisions use only declared, citable, independently fetchable sources — never private chats, hidden prompts, or undeclared data.</p></div>
-        <div class="pillar"><h3>♻️ Reproducible receipts</h3><p>Every vote cites the exact doctrine version and input hashes, so anyone can re-run it and reach the same result.</p></div>
-        <div class="pillar"><h3>⚖️ Conservative fiduciary</h3><p>When evidence is weak it abstains rather than guesses. "Not enough evidence yet" is discipline, not failure.</p></div>
-        <div class="pillar"><h3>🏛️ Constitution first</h3><p>Protocol safety and constitutional integrity rank above everything — ahead of speed or social momentum.</p></div>
-        <div class="pillar"><h3>💰 Treasury stewardship</h3><p>Treats the Net Change Limit as a ceiling, not a target, favoring sustainable spend. Pro-accountability, not anti-spending.</p></div>
-      </div>
-      <div class="represents">This is a move from <b>"trust me"</b> governance — personalities, politics, and
-        persuasion — to <b>"verify me"</b> governance: rules-based, evidence-based, and accountable by
-        construction rather than by promise. This is what the future of decisions looks like.</div>
-      <div class="who">
-        <h3 style="margin:0 0 2px;font-size:1.04rem">Who it's for</h3>
-        <ul>
-          <li>ADA holders who value process integrity over personality.</li>
-          <li>Delegators who can't track every governance action but want a principled, predictable proxy.</li>
-          <li>Anyone who wants protocol safety and treasury sustainability prioritized over hype.</li>
-          <li>Small holders especially — a rule that can't be lobbied or bought gives every delegator an equal voice.</li>
-        </ul>
-      </div>
-      <div class="cta">
-        <h3>Delegate your voting power to BEACN</h3>
-        <p style="margin:0;font-size:.9rem;color:#c0cad6">In your wallet's governance section, set your DRep delegation to:</p>
-        <div class="id"><span id="cta-drep">drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg</span>
-          <button type="button" onclick="copyDrep(this)">Copy</button></div>
-        <p class="fine">Your ADA never moves and never leaves your wallet — delegation only assigns how your
-          voting power is used, and you can change it anytime.
-          <a id="cta-cs" href="https://cardanoscan.io/" target="_blank" rel="noopener">View on Cardanoscan ↗</a> ·
-          <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/GOVERNANCE_PHILOSOPHY.md" target="_blank" rel="noopener">Read the full philosophy</a> ·
-          <a href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/WHY_DELEGATE.md" target="_blank" rel="noopener">…and our honest limits</a></p>
-      </div>
-    </section>
-
-    <footer>
-      <div id="note"></div>
-      <div class="integrity">
-        <span>🔒 <b>No hidden inputs</b></span>
-        <span>🚫 <b>No manual override</b></span>
-        <span>📂 <b>Public evidence only</b></span>
-        <span>♻️ <b>Reproducible &amp; replayable</b></span>
-      </div>
-      <p>BEACN DRep is operated as a public good by the BEACN stake pool. Every verdict is produced by software
-        from public inputs and is independently verifiable on chain. Doctrine and code are open source.</p>
-      <div class="links">
-        <a href="./site/index.html">Trust dashboard</a> ·
-        <a href="./docs/PUBLIC_CONTEXT_AND_LIMITS.md">Context &amp; limits</a> ·
-        <a href="./docs/OPERATING_MODEL.md">Operating model</a> ·
-        <a href="./status.json">Raw status feed (JSON)</a> ·
-        <a href="./data/output/public/rationales.json">Rationale feed</a> ·
-        <a href="./BEACNpool.jsonld">DRep metadata</a> ·
-        <a id="cs-drep" href="https://cardanoscan.io/" target="_blank" rel="noopener">DRep on Cardanoscan</a>
-      </div>
-    </footer>
+    <nav class="tab-bar" aria-label="Primary navigation">
+      <a href="#/home" data-tab="home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
+        <span>Live</span>
+      </a>
+      <a href="#/proposals" data-tab="proposals">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h5"/></svg>
+        <span>Proposals</span>
+      </a>
+      <a href="#/decides" data-tab="decides">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 6h14M5 6l-3 6h6zM19 6l-3 6h6zM8 21h8"/></svg>
+        <span>Decides</span>
+      </a>
+      <a href="#/verify" data-tab="verify">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V7zM8.5 12l2.2 2.2 4.8-5"/></svg>
+        <span>Verify</span>
+      </a>
+    </nav>
   </div>
-
-  <script>
-    // --- epoch clock ---
-    const CARDANO_START_MS = Date.parse('2017-09-23T21:44:51Z');
-    const EPOCH_MS = 5 * 24 * 60 * 60 * 1000;
-    const pad2 = n => String(n).padStart(2, '0');
-    const updateEpochClock = () => {
-      const elapsed = Math.max(0, Date.now() - CARDANO_START_MS);
-      const epoch = Math.floor(elapsed / EPOCH_MS);
-      const ee = elapsed % EPOCH_MS, rem = EPOCH_MS - ee, ts = Math.max(0, Math.floor(rem / 1000));
-      const days = Math.floor(ts / 86400), h = Math.floor((ts % 86400) / 3600),
-            m = Math.floor((ts % 3600) / 60), s = ts % 60;
-      const nextEpoch = new Date(CARDANO_START_MS + (epoch + 1) * EPOCH_MS);
-      document.getElementById('clock-epoch').textContent = epoch;
-      document.getElementById('epoch-countdown').textContent = days + 'd ' + pad2(h) + 'h ' + pad2(m) + 'm ' + pad2(s) + 's';
-      document.getElementById('epoch-meta').textContent = 'next epoch ' + nextEpoch.toISOString().replace('.000Z', ' UTC');
-      const p = Math.min(100, Math.max(0, ee / EPOCH_MS * 100));
-      document.getElementById('epoch-progress').style.width = p + '%';
-      document.querySelector('.epoch-progress').setAttribute('aria-valuenow', Math.round(p));
-    };
-    updateEpochClock(); setInterval(updateEpochClock, 1000);
-
-    // --- copy-to-clipboard with feedback ---
-    function copyDrep(btn){
-      const t = document.getElementById('cta-drep').textContent;
-      const done = () => { const o = btn.textContent; btn.textContent = 'Copied ✓'; btn.classList.add('copied');
-        setTimeout(() => { btn.textContent = o; btn.classList.remove('copied'); }, 1600); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done).catch(done);
-      else done();
-    }
-
-    // --- scroll-spy: highlight the active section in the sticky nav ---
-    const navlinks = [...document.querySelectorAll('.navlinks a')];
-    const spy = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) {
-      const id = '#' + e.target.id;
-      navlinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
-    }}), { rootMargin: '-45% 0px -50% 0px' });
-    ['live','latest','record','decides','delegate'].forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
-
-    // --- helpers ---
-    const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-    const ago = iso => { const s = Math.max(0,(Date.now()-new Date(iso).getTime())/1000);
-      return s<90?Math.round(s)+'s ago':s<5400?Math.round(s/60)+' min ago':s<172800?Math.round(s/3600)+' h ago':Math.round(s/86400)+' d ago'; };
-    const govUrl = g => 'https://cardanoscan.io/govAction/' + encodeURIComponent(g || '');
-    const actionUrl = a => a.cip129_action_id ? govUrl(a.cip129_action_id)
-      : 'https://cardanoscan.io/govAction/' + (a.action_id || '').replace('#','');
-    const DEC = { YES:{cls:'v-yes',label:'Yes'}, NO:{cls:'v-no',label:'No'},
-      ABSTAIN:{cls:'v-abst',label:'Abstain'}, NEEDS_MORE_INFO:{cls:'v-info',label:'Needs info'} };
-    const decOf = d => DEC[(d||'').toUpperCase()] || {cls:'v-pending',label:(d||'—')};
-    const verdictOf = a => {
-      const v=(a.our_vote||'').toLowerCase();
-      if(v.includes('yes'))return{cls:'v-yes',label:'Voted Yes'};
-      if(v.includes('no'))return{cls:'v-no',label:'Voted No'};
-      if(v.includes('abst'))return{cls:'v-abst',label:'Voted Abstain'};
-      const r=(a.recommendation||'').toUpperCase();
-      if(r==='YES')return{cls:'v-yes',label:'Recommends Yes'};
-      if(r==='NO')return{cls:'v-no',label:'Recommends No'};
-      if(r==='ABSTAIN')return{cls:'v-abst',label:'Abstains'};
-      if(r==='NEEDS_MORE_INFO')return{cls:'v-info',label:'Needs more info'};
-      return{cls:'v-pending',label:'Evaluating'};
-    };
-    const proofHtml = a => a.transaction_hash
-      ? '<a class="proof" href="https://cardanoscan.io/transaction/'+esc(a.transaction_hash)+'" target="_blank" rel="noopener">✓ Verify on-chain ↗</a>'
-      : '<span class="proof none">No vote cast'+(((a.recommendation||'')==='NEEDS_MORE_INFO')?' — awaiting evidence':'')+'</span>';
-
-    let RAT = {}, STMT = {};
-    const cleanSummary = r => (r && r.summary) ? String(r.summary).trim().replace(/^Vote:\s*[A-Z_]+\.\s*/,'') : '';
-    // Prefer the generated plain-language statement; fall back to the deterministic summary.
-    const explainFor = gid => STMT[gid] || cleanSummary(RAT[gid]);
-    const proseFor = a => {
-      const full = explainFor(a.cip129_action_id || a.action_id);
-      if(!full) return '';
-      const i = full.indexOf('. '), head = i>0?full.slice(0,i+1):full, rest = i>0?full.slice(i+1).trim():'';
-      return '<div class="why-vote"><span class="lab">Why BEACN voted this way</span>'+esc(head)+
-        (rest?'<details><summary>Read the full explanation</summary><div style="margin-top:6px">'+esc(rest)+'</div></details>':'')+'</div>';
-    };
-
-    let HIST = [], curFilter = 'ALL';
-    const buildDistBar = () => {
-      const c={YES:0,NO:0,ABSTAIN:0,NEEDS_MORE_INFO:0}; HIST.forEach(h=>c[h.decision]=(c[h.decision]||0)+1);
-      const total=HIST.length||1;
-      const segs=[['YES','Yes','var(--yes)'],['NO','No','var(--no)'],['NEEDS_MORE_INFO','Needs info','var(--info)'],['ABSTAIN','Abstain','var(--abst)']].filter(([k])=>c[k]);
-      document.getElementById('distbar').innerHTML =
-        '<div class="bar">'+segs.map(([k,l,col])=>'<span class="seg" data-f="'+k+'" title="'+l+': '+c[k]+'" style="width:'+(c[k]/total*100)+'%;background:'+col+'"></span>').join('')+'</div>'+
-        '<div class="barleg">'+segs.map(([k,l,col])=>'<span class="legi"><i style="background:'+col+'"></i>'+l+' <b>'+c[k]+'</b> <span class="pct">'+Math.round(c[k]/total*100)+'%</span></span>').join('')+'</div>';
-      document.querySelectorAll('.seg').forEach(el=>el.addEventListener('click',()=>{curFilter=el.getAttribute('data-f');buildDist();renderHist(document.getElementById('search').value);}));
-    };
-    const buildDist = () => {
-      const c={ALL:HIST.length,YES:0,NO:0,ABSTAIN:0,NEEDS_MORE_INFO:0}; HIST.forEach(h=>c[h.decision]=(c[h.decision]||0)+1);
-      const defs=[['ALL','f-all','All'],['YES','f-yes','Yes'],['NO','f-no','No'],['ABSTAIN','f-abst','Abstain'],['NEEDS_MORE_INFO','f-info','Needs info']];
-      document.getElementById('dist').innerHTML = defs.filter(([k])=>k==='ALL'||c[k])
-        .map(([k,cl,l])=>'<span class="chipf '+cl+(k===curFilter?' active':'')+'" data-f="'+k+'">'+l+' <b>'+(c[k]||0)+'</b></span>').join('');
-      document.querySelectorAll('.chipf').forEach(el=>el.addEventListener('click',()=>{curFilter=el.getAttribute('data-f');buildDist();renderHist(document.getElementById('search').value);}));
-    };
-    const renderHist = q => {
-      q=(q||'').trim().toLowerCase();
-      const rows=HIST.filter(h=>(curFilter==='ALL'||h.decision===curFilter)&&(!q||(h.title+' '+h.type).toLowerCase().includes(q)))
-        .map(h=>{const vd=decOf(h.decision);
-          const chain=h.transaction_hash
-            ? '<span class="hchain"><a class="proof" href="https://cardanoscan.io/transaction/'+esc(h.transaction_hash)+'" target="_blank" rel="noopener">✓ on-chain ↗</a></span>'
-            : '<span class="hchain proof none">recorded · not on-chain</span>';
-          return '<details class="hrow"><summary><span class="hv '+vd.cls+'">'+esc(vd.label)+'</span>'+
-            '<span class="ht"><a href="'+govUrl(h.action_id)+'" target="_blank" rel="noopener">'+esc(h.title)+'</a></span>'+
-            '<span class="htype">'+esc(h.type||'—')+'</span>'+chain+
-            '</summary><div class="hbody">'+(h.prose||'No published explanation for this action.')+'</div></details>';
-        }).join('');
-      document.getElementById('hist').innerHTML = rows || '<div class="sec-note">No matching verdicts.</div>';
-    };
-
-    Promise.all([
-      fetch('./status.json?t='+Date.now()).then(r=>{if(!r.ok)throw new Error('status.json HTTP '+r.status);return r.json();}),
-      fetch('./data/output/public/rationales.json?t='+Date.now()).then(r=>r.ok?r.json():{items:[]}).catch(()=>({items:[]})),
-      fetch('./data/output/public/actions.json?t='+Date.now()).then(r=>r.ok?r.json():{items:[]}).catch(()=>({items:[]})),
-      fetch('./data/output/public/statements.json?t='+Date.now()).then(r=>r.ok?r.json():{}).catch(()=>({})),
-    ]).then(([d,rj,aj,sj])=>{
-      (rj.items||[]).forEach(it=>{if(it.action_id)RAT[it.action_id]=it;});
-      Object.keys(sj||{}).forEach(k=>{const s=sj[k]; if(s&&s.statement)STMT[k]=s.statement;});
-      const mode=(d.mode||'shadow');
-      document.getElementById('mode-wrap').innerHTML='<span class="badge '+mode+'">'+esc(mode)+' mode</span>';
-      document.getElementById('drep').textContent=d.drep_id||'';
-      if(d.drep_id){const u='https://cardanoscan.io/drep/'+encodeURIComponent(d.drep_id);
-        ['cs-drep','cta-cs','reg-seal'].forEach(id=>document.getElementById(id).href=u);
-        document.getElementById('cta-drep').textContent=d.drep_id;}
-      const lc=d.last_check||{};
-      document.getElementById('summary').textContent='Daily governance check complete. '+(lc.summary||'');
-      document.getElementById('stamp').textContent=d.generated_at?'last run '+ago(d.generated_at)+' · '+d.generated_at:'';
-      document.getElementById('s-epoch').textContent=lc.epoch??'—';
-      document.getElementById('s-open').textContent=lc.open_actions??'—';
-      document.getElementById('s-voted').textContent=lc.actions_with_our_vote??'—';
-      document.getElementById('note').textContent=d.note||'';
-
-      const ALL=d.actions||[];
-      const latest=ALL.slice().sort((a,b)=>(b.submitted_at||'').localeCompare(a.submitted_at||'')||(b.proposed_in_epoch||0)-(a.proposed_in_epoch||0)).slice(0,6);
-      document.getElementById('cards').innerHTML=latest.map(a=>{const vd=verdictOf(a);
-        return '<div class="vcard"><div class="top"><div class="title">'+esc(a.title||'Governance action')+'</div>'+
-          '<span class="chip">'+esc(a.type||'—')+'</span></div>'+
-          '<div class="verdict '+vd.cls+'"><span class="dot"></span>'+esc(vd.label)+'</div>'+proseFor(a)+
-          '<div class="meta">Status: '+esc(a.status||'—')+(a.expires_after_epoch?' · expires epoch '+esc(a.expires_after_epoch):'')+'</div>'+
-          '<div class="links">'+(a.rationale_url?'<a href="'+esc(a.rationale_url)+'" target="_blank" rel="noopener">Full rationale ↗</a>':'')+
-          '<a href="'+actionUrl(a)+'" target="_blank" rel="noopener">What it asked for ↗</a>'+proofHtml(a)+'</div></div>';
-      }).join('')||'<div class="sec-note">No actions in the latest check.</div>';
-
-      const stByGid={}; ALL.forEach(a=>{if(a.cip129_action_id)stByGid[a.cip129_action_id]=a;});
-      HIST=(aj.items||[]).map(it=>({action_id:it.action_id,title:it.title||it.action_id,type:it.type||'',
-        decision:(it.decision||'').toUpperCase(),transaction_hash:(stByGid[it.action_id]||{}).transaction_hash||null,
-        prose:esc(explainFor(it.action_id))}));
-      buildDistBar(); buildDist(); renderHist('');
-      document.getElementById('search').addEventListener('input',e=>renderHist(e.target.value));
-    }).catch(e=>{
-      document.getElementById('summary').innerHTML='<span class="err">Could not load the status feed — '+esc(e.message)+'</span>';
-      document.getElementById('cards').innerHTML='<div class="err">no feed yet</div>';
-      document.getElementById('hist').innerHTML='<div class="err">no feed yet</div>';
-    });
-
-    // --- keep the live status fresh without a reload ---
-    function refreshStatus(){
-      fetch('./status.json?t='+Date.now()).then(r=>r.ok?r.json():null).then(d=>{
-        if(!d) return; const lc=d.last_check||{};
-        document.getElementById('summary').textContent='Daily governance check complete. '+(lc.summary||'');
-        document.getElementById('stamp').textContent=d.generated_at?'last run '+ago(d.generated_at)+' · '+d.generated_at:'';
-        document.getElementById('s-epoch').textContent=lc.epoch??'—';
-        document.getElementById('s-open').textContent=lc.open_actions??'—';
-        document.getElementById('s-voted').textContent=lc.actions_with_our_vote??'—';
-      }).catch(()=>{});
-    }
-    setInterval(refreshStatus, 180000);
-  </script>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="./app.js" defer></script>
 </body>
 </html>
