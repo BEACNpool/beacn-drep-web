@@ -437,6 +437,24 @@ function extractedAmount(detail) {
   return titleMatch ? titleMatch[1].trim() : "";
 }
 
+function renderAssessmentTree(assessment) {
+  const sections = assessment?.sections || [];
+  if (!sections.length) return "";
+  return `<article class="card detail-section">
+    <h2><span>03</span>Review tree</h2>
+    <p class="subtitle">The proposal must pass through these assessment steps before the final vote is defensible.</p>
+    <div class="assessment-status">Assessment status: <strong>${esc(assessment.overall_status || "unknown")}</strong></div>
+    <div class="assessment-list">
+      ${sections.map(section => `<div class="assessment-item ${attr(section.status || "")}">
+        <div class="assessment-item-head"><strong>${esc(section.title || "Assessment")}</strong><span>${esc(section.status || "unknown")}</span></div>
+        ${section.conclusion ? `<p>${esc(section.conclusion)}</p>` : ""}
+        ${(section.findings || []).length ? `<ul>${section.findings.slice(0, 6).map(item => `<li>${esc(item)}</li>`).join("")}</ul>` : ""}
+        ${(section.missing || []).length ? `<div class="missing-list"><b>Missing</b>${section.missing.slice(0, 6).map(item => `<span>${esc(item)}</span>`).join("")}</div>` : ""}
+      </div>`).join("")}
+    </div>
+  </article>`;
+}
+
 async function renderDetail(id) {
   document.body.classList.add("detail-open");
   const backRoute = currentMap().has(id) ? "#/home" : "#/proposals";
@@ -456,6 +474,7 @@ async function renderDetail(id) {
   const live = currentMap().get(id) || {};
   const evidence = detail.proposal_evidence || {};
   const rationale = detail.rationale || {};
+  const assessment = rationale.assessment || {};
   const proof = detail.proof_of_vote || detail.reproducibility || {};
   const reproducibility = detail.reproducibility || {};
   const decision = detail.decision || {};
@@ -502,8 +521,10 @@ async function renderDetail(id) {
       ${state.statements.get(id)?.model ? `<p class="timestamp" style="margin-top:10px">Plain-language layer: ${esc(state.statements.get(id).model)}. The deterministic record below is binding.</p>` : ""}
     </article>
 
+    ${renderAssessmentTree(assessment)}
+
     <article class="card detail-section">
-      <h2><span>03</span>Reasons that structured the vote</h2>
+      <h2><span>${assessment?.sections?.length ? "04" : "03"}</span>Reasons that structured the vote</h2>
       <p class="verify-copy">${esc(rationale.summary || "No deterministic summary was published.")}</p>
       <div class="metric-grid">
         <div class="metric"><span>Reason</span><strong title="${attr(reasonCode)}">${esc(reasonCode)}</strong></div>
@@ -517,7 +538,7 @@ async function renderDetail(id) {
     </article>
 
     <article class="card detail-section">
-      <h2><span>04</span>Proof and reproducibility</h2>
+      <h2><span>${assessment?.sections?.length ? "05" : "04"}</span>Proof and reproducibility</h2>
       <p class="subtitle">These receipts bind the public inputs and rule versions to the published result.</p>
       <div class="proof-list">
         ${proofRow("Vote", decision.vote || proof.vote)}
