@@ -5,40 +5,133 @@
   "status": "active",
   "source": {
     "origin": "governance fetch pipeline",
-    "raw_input_hash": "sha256:d06104934e3fe00538255abfd5adc1b18793a9bb7f74bcb1b51f258ca511d715",
+    "raw_input_hash": "sha256:027ade80fcd973ebf355e78ab15aa340230c7b09d3b80e5b4457d61c2c3148af",
     "detected_at": "2026-06-09T17:00:01.167198+00:00"
   },
   "decision": {
     "vote": "NO",
-    "published_at": "2026-06-15T15:21:58.675624+00:00",
-    "signed": true,
-    "submitted": true,
-    "transaction_hash": "de862f99b9ee1b3ba6677007f506ab0261c321fcc8797e1ba176c28af7743107",
-    "submitted_at": "2026-06-15T15:42:23+00:00"
+    "published_at": "2026-06-16T11:30:04.531219+00:00",
+    "signed": false,
+    "submitted": false,
+    "transaction_hash": null,
+    "submitted_at": null
   },
   "proof_of_vote": {
     "vote": "NO",
-    "score": -0.5,
-    "confidence": 1.0,
-    "input_hash": "d06104934e3fe00538255abfd5adc1b18793a9bb7f74bcb1b51f258ca511d715",
-    "snapshot_bundle_hash": "c72656cae89066aced65bf7d45fb0508fc6146ce55a35a97c93e43f41e9a9398",
-    "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
-    "resources_commit": "7da435ff32d6151125006e6138bc2da8eb0bcfc4",
-    "core_commit": "644fe9a91fc19aa43e727f123ff46114e6b2351a",
-    "rationale_markdown_path": "/data/output/public/rationales/gov_action1t5ap7etluvct2x69nj5mfqhurgakuvekyflcsrv2qkrhrs378n3qq3z2c22-d06104934e3f.md",
-    "rationale_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/7419914e693115c428d0806d.md",
-    "rationale_anchor_hash": "7419914e693115c428d0806d11d6ec8ab82cc5780e9d1f844ff901045c92c710"
+    "score": -0.15,
+    "confidence": 0.67,
+    "input_hash": "027ade80fcd973ebf355e78ab15aa340230c7b09d3b80e5b4457d61c2c3148af",
+    "snapshot_bundle_hash": "0b5a8faf1ebc64ab638b6024fa14b34760088e812f0a8d38847d41f0b58c2997",
+    "soul_commit": "6bf4a7d7baa636417ad929e543cfb8be8fae1f03",
+    "resources_commit": "51dc1e5a721f4f0de333921fc8457f5a54787c79",
+    "core_commit": "036c7083f78bbd06ec947bc23bd61eb3915e27da",
+    "rationale_markdown_path": "/data/output/public/rationales/gov_action1t5ap7etluvct2x69nj5mfqhurgakuvekyflcsrv2qkrhrs378n3qq3z2c22-027ade80fcd9.md",
+    "rationale_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/82e00cd6ab9231f1e3f9a083.md",
+    "rationale_anchor_hash": "82e00cd6ab9231f1e3f9a08350eafb7597d8fd08faf31d6ef1344ba3e90eaebe"
   },
   "rationale": {
-    "summary": "Vote: NO. For this InfoAction (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score -0.50; confidence 100.0%.",
+    "summary": "Vote: NO. For this InfoAction (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score -0.15; confidence 67.0%.",
     "summary_raw": "Network DRep distribution used as one signal, not authority.",
     "top_fixes": [
       "Use stable, reproducible anchor links (commit-pinned when possible).",
       "Clarify governance intent and expected measurable outcome.",
       "Map each major claim to primary receipts and stable source links."
     ],
-    "markdown_path": "/data/output/public/rationales/gov_action1t5ap7etluvct2x69nj5mfqhurgakuvekyflcsrv2qkrhrs378n3qq3z2c22-d06104934e3f.md",
-    "missing_evidence": []
+    "markdown_path": "/data/output/public/rationales/gov_action1t5ap7etluvct2x69nj5mfqhurgakuvekyflcsrv2qkrhrs378n3qq3z2c22-027ade80fcd9.md",
+    "missing_evidence": [],
+    "assessment_status": "incomplete",
+    "assessment_schema_version": "assessment-tree-v1",
+    "assessment": {
+      "schema_version": "assessment-tree-v1",
+      "action_id": "gov_action1t5ap7etluvct2x69nj5mfqhurgakuvekyflcsrv2qkrhrs378n3qq3z2c22",
+      "action_type": "InfoAction",
+      "overall_status": "incomplete",
+      "sections": [
+        {
+          "title": "Intake",
+          "status": "complete",
+          "findings": [
+            "Action type: InfoAction",
+            "Status: active",
+            "Proposed epoch: 636",
+            "Expires after epoch: unknown",
+            "Treasury request: not specified",
+            "Anchor pinned locally: yes"
+          ],
+          "missing": [],
+          "conclusion": "Baseline fields and source anchors establish whether the proposal can be reviewed at all."
+        },
+        {
+          "title": "Claims and evidence",
+          "status": "thin",
+          "findings": [
+            "Proposal anchor: pinned and replayable",
+            "Proposal document read by reasoning layer: yes",
+            "Snapshot freshness source: manifest",
+            "Deep research dossier: not required",
+            "Requested: Reforming Treasury Governance",
+            "Recipient: ",
+            "Stated amount: not stated in document",
+            "Deliverables: Treasury governance should enable strategic alignment and facilitate decision-making., However, treasury governance within the Cardano ecosystem is in a poor state., Second, while being pivotal for Cardano's stability and growth, treasury governance is only indirectly addressed and barely supported by the existing governance system., This governance info action sketches basic ideas for reforming treasury governance and introduces them into public discussion.",
+            "Deadline/expiry: not stated in document",
+            "Claim (governance, proposer_asserted, high materiality): Treasury governance should enable strategic alignment and facilitate decision-making.",
+            "Claim (governance, supported_in_proposal, high materiality): However, treasury governance within the Cardano ecosystem is in a poor state.",
+            "Claim (governance, supported_in_proposal, high materiality): Second, while being pivotal for Cardano's stability and growth, treasury governance is only indirectly addressed and barely supported by the existing governance system.",
+            "Claim (governance, supported_in_proposal, high materiality): This governance info action sketches basic ideas for reforming treasury governance and introduces them into public discussion.",
+            "Claim (governance, supported_in_proposal, high materiality): In its current form, Cardano governance and voting on treasury withdrawals have revealed significant dysfunctionalities.",
+            "Claim (other, supported_in_proposal, high materiality): In particular, treasury withdrawal actions from different, but likewise important domains have led to a perceived competition for scarce resources."
+          ],
+          "missing": [
+            "Independent evidence for: Treasury governance should enable strategic alignment and facilitate decision-making."
+          ],
+          "conclusion": "Each claim must map to replayable public evidence; proposer assertions alone are not enough for confidence."
+        },
+        {
+          "title": "Risk review",
+          "status": "complete",
+          "findings": [
+            "Execution risk: low",
+            "Governance risk: medium",
+            "Technical risk: low",
+            "Treasury exposure risk: none",
+            "Mitigation evidence: not confirmed",
+            "Independent assurance: not confirmed",
+            "Rollback/remedy path: not confirmed",
+            "Flag count: 1"
+          ],
+          "missing": [
+            "mitigation evidence",
+            "independent assurance",
+            "rollback/remedy path",
+            "dependency map"
+          ],
+          "conclusion": "Risk is not a side note; unmitigated execution or governance risk can dominate an otherwise attractive proposal."
+        },
+        {
+          "title": "Counterargument pass",
+          "status": "complete",
+          "findings": [
+            "Strongest YES: the proposal substantiates \"However, treasury governance within the Cardano ecosystem is in a poor state.\" and clears the evidence gates.",
+            "Strongest NO: a material claim is unsupported \u2014 \"Treasury governance should enable strategic alignment and facilitate decision-making.\" \u2014 so cost or precedent may outweigh the benefit.",
+            "Strongest hold: if claims cannot be tied to replayable evidence, abstaining avoids overclaiming certainty."
+          ],
+          "missing": [],
+          "conclusion": "A defensible rationale must show the best opposing case before it reaches a vote."
+        },
+        {
+          "title": "Synthesis",
+          "status": "ready",
+          "findings": [
+            "Final vote must be derived from completed sections above, not from a prose summary.",
+            "The public rationale should name the decisive section and the strongest counterargument."
+          ],
+          "missing": [],
+          "conclusion": "The vote is only credible if the assessment tree shows enough work for a skeptical delegator to audit."
+        }
+      ],
+      "blocking_questions": []
+    },
+    "assessment_path": "/data/output/public/rationales/gov_action1t5ap7etluvct2x69nj5mfqhurgakuvekyflcsrv2qkrhrs378n3qq3z2c22-027ade80fcd9.assessment.json"
   },
   "proposal_evidence": {
     "available": true,
@@ -49,16 +142,16 @@
     "anchor_hash": "7a6249ed06feef4edda1e6ff190dd40f9165004fb08febe8477c0f1d14d7243b",
     "file_sha256": "f0ad812499a8a1bf2385c52b796d020ab006972ba15d4c91c417b12885eeb306",
     "content_bytes": "8406",
-    "fetched_at_utc": "2026-06-15T15:28:20Z",
+    "fetched_at_utc": "2026-06-16T11:30:30Z",
     "download_path": "/proposals/gov_action1t5ap7etluvct2x69nj5mfqhurgakuvekyflcsrv2qkrhrs378n3qq3z2c22.txt",
     "preview": "{\n  \"@context\": {\n    \"@language\": \"en-us\",\n    \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n    \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n    \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n    \"body\": {\n      \"@id\": \"CIP108:body\",\n      \"@context\": {\n        \"references\": {\n          \"@id\": \"CIP108:references\",\n          \"@container\": \"@set\",\n          \"@context\": {\n            \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n            \"Other\": \"CIP100:OtherReference\",\n            \"label\": \"CIP100:reference-label\",\n            \"uri\": \"CIP100:reference-uri\",\n            \"referenceHash\": {\n              \"@id\": \"CIP108:referenceHash\",\n              \"@context\": {\n                \"hashDigest\": \"CIP108:hashDigest\",\n                \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n              }\n            }\n          }\n        },\n        \"title\": \"CIP108:title\",\n        \"abstract\": \"CIP108:abstract\",\n        \"motivation\": \"CIP108:motivation\",\n        \"rationale\": \"CIP108:rationale\"\n      }\n    },\n    \"authors\": {\n      \"@id\": \"CIP100:authors\",\n      \"@container\": \"@set\",\n      \"@context\": {\n        \""
   },
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
-    "soul_commit": "a0d3b8b59ec356b6a4733bb8a0822326604b0766",
+    "soul_commit": "6bf4a7d7baa636417ad929e543cfb8be8fae1f03",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "7da435ff32d6151125006e6138bc2da8eb0bcfc4",
-    "core_commit": "644fe9a91fc19aa43e727f123ff46114e6b2351a",
+    "resources_commit": "51dc1e5a721f4f0de333921fc8457f5a54787c79",
+    "core_commit": "036c7083f78bbd06ec947bc23bd61eb3915e27da",
     "resource_ids_used": [
       "gov_actions_api",
       "gov_actions_snapshot",
@@ -119,16 +212,16 @@
     }
   ],
   "scoring": {
-    "budget_pressure": 0.5,
+    "budget_pressure": 0.15,
     "conflict_risk": 0.0,
     "technical_value": 0.0,
-    "governance_alignment": 1.0
+    "governance_alignment": 0.67
   },
   "freshness": {
-    "snapshot_age_seconds": 208,
+    "snapshot_age_seconds": 1,
     "max_allowed_seconds": 21600,
     "is_stale": false,
-    "snapshot_time": "2026-06-15T15:27:49.748338Z",
+    "snapshot_time": "2026-06-16T11:30:30.317943Z",
     "freshness_source": "manifest"
   }
 }

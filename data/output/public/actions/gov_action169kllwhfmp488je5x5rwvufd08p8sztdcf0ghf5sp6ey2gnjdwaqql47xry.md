@@ -4,16 +4,32 @@
 - Decision: **YES**
 - Action type: `InfoAction`
 - Status: `expired`
-- Published at: `2026-06-15T15:21:58.675624+00:00`
+- Published at: `2026-06-16T11:30:04.531219+00:00`
 
 ## Human-readable rationale
-Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Flag score present (10), reducing confidence. Additional context: Residual uncertainty: Anchor document is not yet pinned locally for this action. Confidence context: score 0.12; confidence 63.7%.
+Vote: YES. For this InfoAction (expired), available evidence supports proceeding, with risk judged manageable under current context. Why: Pinned anchor document is available for this action. Additional context: Flag score present (3), reducing confidence. Confidence context: score 0.05; confidence 57.0%.
+
+## Assessment tree
+- assessment_status: `incomplete`
+- Intake: `complete` — Baseline fields and source anchors establish whether the proposal can be reviewed at all.
+- Claims and evidence: `thin` — Each claim must map to replayable public evidence; proposer assertions alone are not enough for confidence.
+- Risk review: `complete` — Risk is not a side note; unmitigated execution or governance risk can dominate an otherwise attractive proposal.
+- Counterargument pass: `complete` — A defensible rationale must show the best opposing case before it reaches a vote.
+- Synthesis: `ready` — The vote is only credible if the assessment tree shows enough work for a skeptical delegator to audit.
 
 ## What influenced this vote
-- Flag score present (10), reducing confidence.
+- Pinned anchor document is available for this action.
+- Flag score present (3), reducing confidence.
+- Intake: Action type: InfoAction
+- Claims and evidence: Proposal anchor: pinned and replayable
+- Risk review: Execution risk: high
+- Counterargument pass: Strongest YES: the proposal substantiates "The Cardano Community adopted the 2025 Net Change Limit (NCL) on 24 April 2025, which defined the maximum amount of lovelace that could be withdrawn from the Cardano Treasury from the start of Epoch 532 until the conclusion of Epoch 604." and clears the evidence gates.
+- Synthesis: Final vote must be derived from completed sections above, not from a prose summary.
 
 ## Remaining uncertainty
-- Anchor document is not yet pinned locally for this action.
+- Rule-based system; does not infer unstated intent.
+- Claims and evidence missing: Independent evidence for: We seek to have this Governance Action adopted so that the management of the Cardano Treasury will not be disrupted by the expiration of the current NCL.
+- Claims and evidence status is thin.
 
 ## Top 3 fixes to improve next submission
 - Use stable, reproducible anchor links (commit-pinned when possible).
@@ -21,11 +37,11 @@ Vote: YES. For this InfoAction (expired), available evidence supports proceeding
 - Map each major claim to primary receipts and stable source links.
 
 ## Proof of vote
-- input_hash: `dceb74cd833641b0a72d636e9c04714259292d6ea5873445adb7440aa3898d75`
-- snapshot_bundle_hash: `b50e9a58225a0205d1a89529fab3dd05741f1ea170d05555521e7ca7950ce79d`
-- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
-- resources_commit: `7da435ff32d6151125006e6138bc2da8eb0bcfc4`
-- core_commit: `644fe9a91fc19aa43e727f123ff46114e6b2351a`
-- score: `0.1167`
-- confidence: `0.6367`
+- input_hash: `275d529923b016d16569edbc173fabb4ab6bc95adf8ad923b3e17d1825bdc60a`
+- snapshot_bundle_hash: `25972e5efec88b92cb077a1e0703a562ac1a3195995e32fc2a7afbbdcd7badde`
+- soul_commit: `6bf4a7d7baa636417ad929e543cfb8be8fae1f03`
+- resources_commit: `51dc1e5a721f4f0de333921fc8457f5a54787c79`
+- core_commit: `036c7083f78bbd06ec947bc23bd61eb3915e27da`
+- score: `0.05`
+- confidence: `0.57`
 
