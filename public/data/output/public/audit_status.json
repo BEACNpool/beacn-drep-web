@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-06-16T00:58:01Z",
+  "current_versions": {
+    "soul_commit": "6bf4a7d7baa636417ad929e543cfb8be8fae1f03",
+    "resources_commit": "7da435ff32d6151125006e6138bc2da8eb0bcfc4",
+    "core_commit": "b5a4472bea87128ce2afd4052fe91a609fecf600"
+  },
+  "pipeline": {
+    "last_scan_at": "2026-06-16T00:58:01Z",
+    "last_decision_at": "2026-06-16T00:58:01Z",
+    "last_publish_at": "2026-06-16T00:58:01Z",
+    "anchor_fetch": {
+      "total": 125,
+      "ok": 123,
+      "ok_cached": 123,
+      "failed": 2,
+      "coverage_pct": 98.4,
+      "failure_buckets": {
+        "http_error:404": 2
+      }
+    }
+  },
+  "integrity": {
+    "hidden_inputs_allowed": false,
+    "undeclared_resources_allowed": false,
+    "manual_override_enabled": false,
+    "private_assistant_context_allowed": false,
+    "private_memory_allowed": false,
+    "policy_doc": "docs/PUBLIC_CONTEXT_AND_LIMITS.md"
+  }
+}
