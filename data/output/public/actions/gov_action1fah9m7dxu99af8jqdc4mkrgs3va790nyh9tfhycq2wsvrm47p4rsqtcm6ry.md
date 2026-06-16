@@ -4,28 +4,54 @@
 - Decision: **NEEDS_MORE_INFO**
 - Action type: `TreasuryWithdrawals`
 - Status: `active`
-- Published at: `2026-06-15T15:21:58.675624+00:00`
+- Published at: `2026-06-16T11:30:04.531219+00:00`
 
 ## Human-readable rationale
-Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (active), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.
+Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (active), critical information needed for a responsible directional vote is still missing. Why: Treasury actions are high-impact and require a completed deep research dossier. Additional context: Intake: Action type: TreasuryWithdrawals What would increase confidence: Deep research dossier is required for treasury actions before directional voting. Confidence context: score 0.00; confidence 20.0%.
+
+## Assessment tree
+- assessment_status: `blocked`
+- Intake: `complete` — Baseline fields and source anchors establish whether the proposal can be reviewed at all.
+- Claims and evidence: `thin` — Each claim must map to replayable public evidence; proposer assertions alone are not enough for confidence.
+- Treasury analysis: `incomplete` — Treasury votes require a higher bar because they consume shared ADA and create precedent.
+- Risk review: `complete` — Risk is not a side note; unmitigated execution or governance risk can dominate an otherwise attractive proposal.
+- Counterargument pass: `complete` — A defensible rationale must show the best opposing case before it reaches a vote.
+- Synthesis: `blocked` — The vote is only credible if the assessment tree shows enough work for a skeptical delegator to audit.
 
 ## What influenced this vote
 - Treasury actions are high-impact and require a completed deep research dossier.
+- Intake: Action type: TreasuryWithdrawals
+- Claims and evidence: Proposal anchor: pinned and replayable
+- Treasury analysis: Requested ADA: 5100781
+- Risk review: Execution risk: medium
+- Counterargument pass: Strongest YES: the proposal substantiates "Proposal as pdf: https://ipnso-com.ipns.inbrowser.link/?cid=Qmbk3jHKKLQ1VrniKaD7sGMscJxCKvoXqt1sQoEnRLTku4 Hydra is the only production-grade Layer 2 on Cardano, already running live workloads for Delta DeFi, Masumi, Intersect, Vtechcom and others." and clears the evidence gates.
+- Synthesis: Final vote must be derived from completed sections above, not from a prose summary.
 
 ## Remaining uncertainty
 - Dossier completeness not confirmed for this treasury proposal.
+- Claims and evidence missing: Independent evidence for: Hydra delivers sub-second finality, near-zero fees, and high parallel throughput with L1-grade settlement.
+- Claims and evidence missing: budget analysis
+- Claims and evidence status is thin.
+- Treasury analysis missing: line-item budget
+- Treasury analysis missing: milestone-gated disbursement
+- Treasury analysis status is incomplete.
+- Risk review missing: mitigation evidence
+- Risk review missing: independent assurance
+- Synthesis missing: missing budget analysis
+- Synthesis missing: missing feasibility assessment
+- Synthesis status is blocked.
 
 ## Top 3 fixes to improve next submission
 - Provide: Deep research dossier is required for treasury actions before directional voting.
 - Provide: Complete proposal summary, budget analysis, feasibility, risks, alternatives, and failure-mode sections.
-- Add line-item budget with milestone-gated disbursement and objective completion checks.
+- Provide: Missing dossier section: budget analysis
 
 ## Proof of vote
-- input_hash: `b820f1aa849e2a0ec9b35cf9696730d4d1af05e4017998273951c531f2931f07`
-- snapshot_bundle_hash: `da871bf0555c1b9a6181876312eeeb9bd80f43ef14ac64854835eb74ae901044`
-- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
-- resources_commit: `7da435ff32d6151125006e6138bc2da8eb0bcfc4`
-- core_commit: `644fe9a91fc19aa43e727f123ff46114e6b2351a`
+- input_hash: `99f7a7ca93b9d1ece2913ecb38ff9b8b2c9445e43def23f5ca871d20951cbc8f`
+- snapshot_bundle_hash: `0bd0e32ff28ba15cb75baa78ec6f23e4b3b668a169c5144284d96022b8b4afd1`
+- soul_commit: `6bf4a7d7baa636417ad929e543cfb8be8fae1f03`
+- resources_commit: `51dc1e5a721f4f0de333921fc8457f5a54787c79`
+- core_commit: `036c7083f78bbd06ec947bc23bd61eb3915e27da`
 - score: `0.0`
 - confidence: `0.2`
 

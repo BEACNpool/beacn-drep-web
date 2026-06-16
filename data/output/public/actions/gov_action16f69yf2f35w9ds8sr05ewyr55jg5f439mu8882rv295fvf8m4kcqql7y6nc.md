@@ -1,19 +1,35 @@
 # gov_action16f69yf2f35w9ds8sr05ewyr55jg5f439mu8882rv295fvf8m4kcqql7y6nc
 
 ## Vote
-- Decision: **NO**
+- Decision: **ABSTAIN**
 - Action type: `InfoAction`
 - Status: `expired`
-- Published at: `2026-06-15T15:21:58.675624+00:00`
+- Published at: `2026-06-16T11:30:04.531219+00:00`
 
 ## Human-readable rationale
-Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Deterministic rule set applied. Additional context: Residual uncertainty: Anchor document is not yet pinned locally for this action. Confidence context: score -0.45; confidence 100.0%.
+Vote: ABSTAIN. For this InfoAction (expired), evidence quality was insufficient for a reliable YES or NO decision. Primary blocker: evidence did not clear the directional decision threshold. Why: Pinned anchor document is available for this action. Additional context: Intake: Action type: InfoAction Confidence context: score -0.05; confidence 60.0%.
+
+## Assessment tree
+- assessment_status: `incomplete`
+- Intake: `complete` — Baseline fields and source anchors establish whether the proposal can be reviewed at all.
+- Claims and evidence: `complete` — Each claim must map to replayable public evidence; proposer assertions alone are not enough for confidence.
+- Risk review: `thin` — Risk is not a side note; unmitigated execution or governance risk can dominate an otherwise attractive proposal.
+- Counterargument pass: `complete` — A defensible rationale must show the best opposing case before it reaches a vote.
+- Synthesis: `ready` — The vote is only credible if the assessment tree shows enough work for a skeptical delegator to audit.
 
 ## What influenced this vote
-- Deterministic rule set applied.
+- Pinned anchor document is available for this action.
+- Intake: Action type: InfoAction
+- Claims and evidence: Proposal anchor: pinned and replayable
+- Risk review: Execution risk: unknown
+- Counterargument pass: Strongest YES: the proposal substantiates "This governance action proposes a budget of 1,000,000 ada to provide compensation for Cardano Constitutional Committee members serving between epochs 581 and 653." and clears the evidence gates.
+- Synthesis: Final vote must be derived from completed sections above, not from a prose summary.
 
 ## Remaining uncertainty
-- Anchor document is not yet pinned locally for this action.
+- Rule-based system; does not infer unstated intent.
+- Risk review missing: mitigation evidence
+- Risk review missing: independent assurance
+- Risk review status is thin.
 
 ## Top 3 fixes to improve next submission
 - Use stable, reproducible anchor links (commit-pinned when possible).
@@ -21,11 +37,11 @@ Vote: NO. For this InfoAction (expired), downside risk and/or weak safeguards ou
 - Map each major claim to primary receipts and stable source links.
 
 ## Proof of vote
-- input_hash: `8cbe1a171385cd65664134d46063cce4d4462b3e4958725a9a799d6292a4c23d`
-- snapshot_bundle_hash: `dc01772735f41f05c00a004f84ee9bbedea45a61356312937ccbdcac076525da`
-- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
-- resources_commit: `7da435ff32d6151125006e6138bc2da8eb0bcfc4`
-- core_commit: `644fe9a91fc19aa43e727f123ff46114e6b2351a`
-- score: `-0.45`
-- confidence: `1.0`
+- input_hash: `fce7cb644e21e0bbef4375a41fd7006b002c385f83bce9afb2fec8df2cde38bd`
+- snapshot_bundle_hash: `a1c85707651bca9c8fbe9b74aeeaea482a340305ce755c6ff659902a03c6bc1b`
+- soul_commit: `6bf4a7d7baa636417ad929e543cfb8be8fae1f03`
+- resources_commit: `51dc1e5a721f4f0de333921fc8457f5a54787c79`
+- core_commit: `036c7083f78bbd06ec947bc23bd61eb3915e27da`
+- score: `-0.05`
+- confidence: `0.6`
 

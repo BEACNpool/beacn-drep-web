@@ -1,20 +1,36 @@
 # gov_action1mldvtys6ketjg87wtpvr6cd77kdrd8sp62a8sxgadhmxx2s8lh7sqp2qedq
 
 ## Vote
-- Decision: **NO**
+- Decision: **ABSTAIN**
 - Action type: `ParameterChange`
 - Status: `expired`
-- Published at: `2026-06-15T15:21:58.675624+00:00`
+- Published at: `2026-06-16T11:30:04.531219+00:00`
 
 ## Human-readable rationale
-Vote: NO. For this ParameterChange (expired), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Why: Pinned anchor document is available for this action. Additional context: Protocol parameter changes carry system-wide risk. Confidence context: score -0.17; confidence 72.0%.
+Vote: ABSTAIN. For this ParameterChange (expired), evidence quality was insufficient for a reliable YES or NO decision. Primary blocker: evidence did not clear the directional decision threshold. Why: Pinned anchor document is available for this action. Additional context: Protocol parameter changes carry system-wide risk. Confidence context: score -0.10; confidence 65.0%.
+
+## Assessment tree
+- assessment_status: `incomplete`
+- Intake: `complete` — Baseline fields and source anchors establish whether the proposal can be reviewed at all.
+- Claims and evidence: `complete` — Each claim must map to replayable public evidence; proposer assertions alone are not enough for confidence.
+- Risk review: `thin` — Risk is not a side note; unmitigated execution or governance risk can dominate an otherwise attractive proposal.
+- Counterargument pass: `complete` — A defensible rationale must show the best opposing case before it reaches a vote.
+- Synthesis: `ready` — The vote is only credible if the assessment tree shows enough work for a skeptical delegator to audit.
 
 ## What influenced this vote
 - Pinned anchor document is available for this action.
 - Protocol parameter changes carry system-wide risk.
+- Intake: Action type: ParameterChange
+- Claims and evidence: Proposal anchor: pinned and replayable
+- Risk review: Execution risk: unknown
+- Counterargument pass: Strongest YES: the proposal substantiates "Reduce the minimum Constitutional Committee size (committeeMinSize) from 7 to 5 in order to improve operational resilience while maintaining constitutional safeguards." and clears the evidence gates.
+- Synthesis: Final vote must be derived from completed sections above, not from a prose summary.
 
 ## Remaining uncertainty
 - Rule-based system; does not infer unstated intent.
+- Risk review missing: mitigation evidence
+- Risk review missing: independent assurance
+- Risk review status is thin.
 
 ## Top 3 fixes to improve next submission
 - Use stable, reproducible anchor links (commit-pinned when possible).
@@ -22,11 +38,11 @@ Vote: NO. For this ParameterChange (expired), downside risk and/or weak safeguar
 - Add rollback/containment plan and explicit halt criteria.
 
 ## Proof of vote
-- input_hash: `db6f7cfa7bbc12550144918f7c1bbbb90758656ebcfa359ca6672617dfc90eac`
-- snapshot_bundle_hash: `8125a7ba5efb10ce5dc7b9b0d004ba48a60ed46d7681187cce236745792741e5`
-- soul_commit: `a0d3b8b59ec356b6a4733bb8a0822326604b0766`
-- resources_commit: `7da435ff32d6151125006e6138bc2da8eb0bcfc4`
-- core_commit: `644fe9a91fc19aa43e727f123ff46114e6b2351a`
-- score: `-0.17`
-- confidence: `0.72`
+- input_hash: `bd15f855f2eb4b131ff504fd4d41238f12b87c0e0dd78bdb5cb0b721b1b68774`
+- snapshot_bundle_hash: `8159b4a7a11fa8d76e18eb7b59de5c8026e0824fd67b0be1adbf71fa54e7e50d`
+- soul_commit: `6bf4a7d7baa636417ad929e543cfb8be8fae1f03`
+- resources_commit: `51dc1e5a721f4f0de333921fc8457f5a54787c79`
+- core_commit: `036c7083f78bbd06ec947bc23bd61eb3915e27da`
+- score: `-0.1`
+- confidence: `0.65`
 
