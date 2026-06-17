@@ -1,4 +1,4 @@
-const CACHE = "beacn-drep-v6";
+const CACHE = "beacn-drep-v7";
 const SHELL = [
   "./",
   "./index.html",
@@ -30,15 +30,27 @@ self.addEventListener("fetch", event => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
-  if (url.pathname.endsWith(".json")) {
-    const cacheKey = new Request(url.origin + url.pathname);
+  // Network-first for the app shell (HTML/JS/CSS) and all data (JSON), so a new
+  // deploy reaches returning visitors without waiting on a cache-version bump.
+  // Cache is only a fallback when offline. Static images stay cache-first below.
+  const path = url.pathname;
+  const networkFirst =
+    event.request.mode === "navigate" ||
+    path.endsWith("/") ||
+    path.endsWith(".html") ||
+    path.endsWith(".js") ||
+    path.endsWith(".css") ||
+    path.endsWith(".json");
+
+  if (networkFirst) {
+    const cacheKey = new Request(url.origin + path);
     event.respondWith(
       fetch(event.request)
         .then(response => {
           if (response.ok) caches.open(CACHE).then(cache => cache.put(cacheKey, response.clone()));
           return response;
         })
-        .catch(() => caches.match(cacheKey))
+        .catch(() => caches.match(cacheKey).then(match => match || caches.match(event.request)))
     );
     return;
   }
