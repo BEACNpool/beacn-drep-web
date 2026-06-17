@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-17T14:27:37+00:00",
+  "generated_at": "2026-06-17T14:36:52+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-06-17T14:27:37+00:00",
+    "at": "2026-06-17T14:36:52+00:00",
     "epoch": 637,
     "open_actions": 12,
     "actions_with_our_vote": 3,
@@ -52,7 +52,7 @@
       "proposed_in_epoch": 635,
       "expires_after_epoch": 641,
       "status": "open",
-      "our_vote": "VoteNo",
+      "our_vote": "VoteYes",
       "anchor_url": "ipfs://bafkreidbxerdwxxntmmr6qvjvquyla3qbwhk3flfqjbm3d5lj2ubxfk3aq"
     },
     {
