@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-17T14:13:45+00:00",
+  "generated_at": "2026-06-17T14:27:37+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-06-17T14:13:45+00:00",
+    "at": "2026-06-17T14:27:37+00:00",
     "epoch": 637,
     "open_actions": 12,
-    "actions_with_our_vote": 2,
-    "summary": "Last checked at epoch 637. 12 open governance action(s); this DRep has voted on 2. Mode: shadow."
+    "actions_with_our_vote": 3,
+    "summary": "Last checked at epoch 637. 12 open governance action(s); this DRep has voted on 3. Mode: shadow."
   },
   "actions": [
     {
@@ -25,7 +25,7 @@
       "proposed_in_epoch": 637,
       "expires_after_epoch": 643,
       "status": "open",
-      "our_vote": null,
+      "our_vote": "VoteYes",
       "anchor_url": "ipfs://bafkreib3ds3bj7izvspcmodz543m5y66slpcmoifzmvpl6xvq6mozaak64"
     },
     {
