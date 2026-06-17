@@ -76,9 +76,15 @@ const verdictMeta = value => ({
 }[verdictKey(value)] || { label: compact(value) || "Pending", cls: "v-abstain", color: "var(--slate)" });
 const routeFor = id => `#/action/${encodeURIComponent(id)}`;
 const summaryFor = id => {
-  const statement = state.statements.get(id);
-  if (statement?.statement) return statement.statement;
   const rationale = state.rationale.get(id);
+  const binding = rationale?.decision ? verdictKey(rationale.decision) : "";
+  const statement = state.statements.get(id);
+  // Convenience statements can drift from the binding deterministic record. Only
+  // surface a statement when it agrees with the binding verdict (or none is known);
+  // otherwise fall back to the deterministic rationale so the site never contradicts itself.
+  if (statement?.statement && (!binding || !statement.decision || verdictKey(statement.decision) === binding)) {
+    return statement.statement;
+  }
   return compact(rationale?.summary || "").replace(/^Vote:\s*[A-Z_]+\.\s*/i, "");
 };
 const currentMap = () => new Map((state.status?.actions || []).filter(a => a.cip129_action_id).map(a => [a.cip129_action_id, a]));
@@ -198,27 +204,81 @@ function viewHeader(eyebrow, title, subtitle) {
   return `<div class="view-head"><div class="eyebrow">${esc(eyebrow)}</div><h1>${title}</h1><p class="subtitle">${subtitle}</p></div>`;
 }
 
+const isActive = item => String(item?.status || "").toLowerCase() === "active";
+const activeActionIds = () => new Set(state.actions.filter(isActive).map(item => item.action_id));
+
+function activeRecords() {
+  return state.actions
+    .filter(isActive)
+    .map(item => ({
+      ...item,
+      cip129_action_id: item.action_id,
+      decision: verdictKey(item.decision),
+      summary: summaryFor(item.action_id),
+      reviewedAt: item.published_at || item.detected_at || ""
+    }))
+    .sort((a, b) =>
+      Number(new Date(b.detected_at || 0)) - Number(new Date(a.detected_at || 0)) ||
+      String(a.title || "").localeCompare(String(b.title || ""))
+    );
+}
+
+const DECK_FLOW = ["Intake", "Evidence", "Verdict"];
+
+function deckCard(item, index) {
+  const v = verdictMeta(item.decision);
+  const summary = firstSentence(item.summary) || "Open the decision record to inspect the published rationale, review tree, and on-chain proof.";
+  const reviewed = item.reviewedAt ? `Reviewed ${relative(item.reviewedAt)}` : "Awaiting publication";
+  return `<a class="deck-card" data-index="${index}" style="--vc:${v.color}" href="${routeFor(item.cip129_action_id)}">
+    <span class="deck-card-glow" aria-hidden="true"></span>
+    <div class="deck-card-top">
+      <span class="type-pill">${esc(item.type || "Governance")}</span>
+      <span class="live-pill"><i></i> Active</span>
+    </div>
+    <div class="deck-verdict ${v.cls}">
+      <span class="deck-verdict-ring" aria-hidden="true"></span>
+      <strong>${esc(v.label)}</strong>
+      <small>BEACN DRep verdict</small>
+    </div>
+    <h3 class="deck-title">${esc(item.title || "Governance action")}</h3>
+    <p class="deck-summary">${esc(summary)}</p>
+    <div class="deck-flow" aria-hidden="true">
+      ${DECK_FLOW.map((step, i) => `<span class="deck-flow-step"><i>${i + 1}</i>${step}</span>`).join('<span class="deck-flow-line"></span>')}
+    </div>
+    <div class="deck-card-foot">
+      <span class="deck-reviewed">${esc(reviewed)}</span>
+      <span class="deck-open">Open decision flow <span aria-hidden="true">→</span></span>
+    </div>
+  </a>`;
+}
+
 function renderHome() {
   const status = state.status || {};
   const check = status.last_check || {};
-  const current = currentRecords().sort((a, b) =>
-    Number(a.expires_after_epoch || Infinity) - Number(b.expires_after_epoch || Infinity) ||
-    String(a.title || "").localeCompare(String(b.title || ""))
-  );
-  const counts = { ALL: current.length, YES: 0, NO: 0, ABSTAIN: 0, NEEDS_MORE_INFO: 0 };
-  current.forEach(r => { counts[verdictKey(r.decision)] = (counts[verdictKey(r.decision)] || 0) + 1; });
-  const q = state.query.trim().toLowerCase();
-  const visible = current.filter(r =>
-    (state.verdict === "ALL" || verdictKey(r.decision) === state.verdict) &&
-    (!q || `${r.title} ${r.type} ${r.action_id}`.toLowerCase().includes(q))
-  );
+  const all = activeRecords();
+  const counts = { ALL: all.length, YES: 0, NO: 0, ABSTAIN: 0, NEEDS_MORE_INFO: 0 };
+  all.forEach(r => { counts[verdictKey(r.decision)] = (counts[verdictKey(r.decision)] || 0) + 1; });
+  const visible = state.verdict === "ALL"
+    ? all
+    : all.filter(r => verdictKey(r.decision) === state.verdict);
   const { epoch, within } = epochSnapshot();
-  const nextExpiry = current.reduce((soonest, item) =>
-    Math.min(soonest, Number(item.expires_after_epoch || Infinity)), Infinity);
-  const expiringThisEpoch = current.filter(item => Number(item.expires_after_epoch) === epoch).length;
-  const held = current.filter(item => verdictKey(item.decision) === "NEEDS_MORE_INFO").length;
+  const held = all.filter(r => verdictKey(r.decision) === "NEEDS_MORE_INFO").length;
+  const directional = all.filter(r => ["YES", "NO"].includes(verdictKey(r.decision))).length;
+  const pad = n => String(n).padStart(2, "0");
+  const deck = visible.length
+    ? `<div class="deck-wrap">
+        <button class="deck-nav prev" type="button" aria-label="Previous proposal"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="deck" id="deck">${visible.map(deckCard).join("")}</div>
+        <button class="deck-nav next" type="button" aria-label="Next proposal"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+      <div class="deck-progress">
+        <span class="deck-counter" id="deck-counter">${pad(1)} / ${pad(visible.length)}</span>
+        <div class="deck-dots" id="deck-dots">${visible.map((_, i) => `<button type="button" class="${i === 0 ? "active" : ""}" aria-label="Go to proposal ${i + 1}"></button>`).join("")}</div>
+        <span class="deck-hint">Swipe · tap a card to open</span>
+      </div>`
+    : '<div class="card empty">No active proposals match this filter right now.</div>';
   app.innerHTML = `<section class="view">
-    ${viewHeader("Active governance", "Live proposals", "The actions currently open for DRep voting, ordered by the nearest expiry. Open any proposal to inspect the request, BEACN verdict, rationale, and proof.")}
+    ${viewHeader("Active governance", "Live proposals", "Every governance action currently open for DRep voting. Swipe the deck, then open any card to follow the decision flow from public evidence to the BEACN verdict and on-chain proof.")}
     <article class="card epoch-dashboard">
       <div class="epoch-dashboard-top">
         <div>
@@ -230,10 +290,10 @@ function renderHome() {
       <div class="progress epoch-progress"><span id="epoch-progress" style="width:${within / EPOCH_MS * 100}%"></span></div>
       <div class="epoch-scale"><span>Epoch ${epoch} began</span><span>Epoch ${epoch + 1} begins</span></div>
       <div class="epoch-stats">
-        <div><strong>${current.length}</strong><span>Active proposals</span></div>
+        <div><strong>${all.length}</strong><span>Active proposals</span></div>
+        <div><strong>${directional}</strong><span>Directional votes</span></div>
         <div><strong>${held}</strong><span>Awaiting evidence</span></div>
-        <div><strong>${expiringThisEpoch}</strong><span>Expire this epoch</span></div>
-        <div><strong>${Number.isFinite(nextExpiry) ? `E${nextExpiry}` : "—"}</strong><span>Nearest expiry</span></div>
+        <div><strong>${pad(epoch)}</strong><span>Current epoch</span></div>
       </div>
     </article>
 
@@ -243,22 +303,90 @@ function renderHome() {
     </div>
 
     <div class="filters live-filters">
-      <div class="search-wrap">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-        <input class="search" id="proposal-search" type="search" value="${attr(state.query)}" placeholder="Search current proposals" aria-label="Search current proposals" />
-      </div>
       <div class="chips">
         ${[
           ["ALL", "All"], ["YES", "Yes"], ["NO", "No"], ["ABSTAIN", "Abstain"], ["NEEDS_MORE_INFO", "Needs info"]
         ].map(([key, label]) => `<button class="chip ${state.verdict === key ? "active" : ""}" type="button" data-verdict="${key}">${label} ${counts[key] || 0}</button>`).join("")}
       </div>
     </div>
-    ${distribution(current)}
-    <div class="result-count">Showing ${visible.length} of ${current.length} active proposals · soonest expiry first</div>
-    <div class="card-list">${visible.map(proposalCard).join("") || '<div class="card empty">No current proposals match these filters.</div>'}</div>
+    <div class="deck-heading"><span>Showing ${visible.length} of ${all.length} active proposals</span></div>
+    ${deck}
   </section>`;
   bindProposalFilters(renderHome);
+  bindDeck();
   updateEpochClock();
+}
+
+function bindDeck() {
+  const deck = document.getElementById("deck");
+  if (!deck) return;
+  const cards = [...deck.querySelectorAll(".deck-card")];
+  if (!cards.length) return;
+  const counter = document.getElementById("deck-counter");
+  const dots = [...document.querySelectorAll("#deck-dots button")];
+  const pad = n => String(n).padStart(2, "0");
+  let active = -1;
+  const apply = () => {
+    const center = deck.scrollLeft + deck.clientWidth / 2;
+    let best = 0;
+    let bestDist = Infinity;
+    cards.forEach(card => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const dist = Math.abs(cardCenter - center);
+      const norm = Math.min(1, dist / ((card.offsetWidth || 1) * 0.9));
+      card.style.setProperty("--p", norm.toFixed(3));
+      if (dist < bestDist) { bestDist = dist; best = cards.indexOf(card); }
+    });
+    cards.forEach((card, i) => card.classList.toggle("is-active", i === best));
+    if (best !== active) {
+      active = best;
+      if (counter) counter.textContent = `${pad(active + 1)} / ${pad(cards.length)}`;
+      dots.forEach((d, i) => d.classList.toggle("active", i === active));
+    }
+  };
+  let raf = 0;
+  deck.addEventListener("scroll", () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(apply);
+  }, { passive: true });
+  const goTo = i => {
+    const card = cards[Math.max(0, Math.min(cards.length - 1, i))];
+    if (card) deck.scrollTo({ left: card.offsetLeft - (deck.clientWidth - card.offsetWidth) / 2, behavior: "smooth" });
+  };
+  document.querySelector(".deck-nav.prev")?.addEventListener("click", () => goTo(active - 1));
+  document.querySelector(".deck-nav.next")?.addEventListener("click", () => goTo(active + 1));
+  dots.forEach((d, i) => d.addEventListener("click", () => goTo(i)));
+
+  let down = false;
+  let startX = 0;
+  let startLeft = 0;
+  let moved = 0;
+  deck.addEventListener("pointerdown", event => {
+    if (event.pointerType === "touch") return;
+    down = true;
+    startX = event.clientX;
+    startLeft = deck.scrollLeft;
+    moved = 0;
+    deck.setPointerCapture(event.pointerId);
+    deck.classList.add("dragging");
+  });
+  deck.addEventListener("pointermove", event => {
+    if (!down) return;
+    const dx = event.clientX - startX;
+    moved = Math.max(moved, Math.abs(dx));
+    deck.scrollLeft = startLeft - dx;
+  });
+  const endDrag = event => {
+    if (!down) return;
+    down = false;
+    deck.classList.remove("dragging");
+    try { deck.releasePointerCapture(event.pointerId); } catch (_) {}
+    goTo(active);
+  };
+  deck.addEventListener("pointerup", endDrag);
+  deck.addEventListener("pointercancel", endDrag);
+  deck.addEventListener("click", event => { if (moved > 8) event.preventDefault(); }, true);
+  apply();
 }
 
 function distribution(records) {
@@ -274,8 +402,7 @@ function distribution(records) {
 
 function renderProposals() {
   const all = state.actions.map(recordFor);
-  const currentIds = new Set((state.status?.actions || []).map(a => a.cip129_action_id));
-  const archived = all.filter(r => !currentIds.has(r.action_id));
+  const archived = all.filter(r => !isActive(r));
   const scoped = state.archiveStatus === "ALL"
     ? archived
     : archived.filter(r => String(r.status || "").toUpperCase() === state.archiveStatus);
@@ -457,7 +584,7 @@ function renderAssessmentTree(assessment) {
 
 async function renderDetail(id) {
   document.body.classList.add("detail-open");
-  const backRoute = currentMap().has(id) ? "#/home" : "#/proposals";
+  const backRoute = activeActionIds().has(id) ? "#/home" : "#/proposals";
   detailSkeleton(backRoute);
   let detail = state.details.get(id);
   if (!detail) {
