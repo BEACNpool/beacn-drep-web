@@ -106,7 +106,9 @@ const recordFor = item => {
 };
 const currentRecords = () => {
   const byId = new Map(state.actions.map(item => [item.action_id, item]));
-  return (state.status?.actions || []).filter(item => item.cip129_action_id).map(live => {
+  return (state.status?.actions || [])
+    .filter(item => item.cip129_action_id && String(item.status || "").toLowerCase() === "open")
+    .map(live => {
     const record = byId.get(live.cip129_action_id) || {};
     return {
       ...record,
@@ -205,20 +207,13 @@ function viewHeader(eyebrow, title, subtitle) {
 }
 
 const isActive = item => String(item?.status || "").toLowerCase() === "active";
-const activeActionIds = () => new Set(state.actions.filter(isActive).map(item => item.action_id));
+const activeActionIds = () => new Set(currentRecords().map(item => item.action_id));
 
 function activeRecords() {
-  return state.actions
-    .filter(isActive)
-    .map(item => ({
-      ...item,
-      cip129_action_id: item.action_id,
-      decision: verdictKey(item.decision),
-      summary: summaryFor(item.action_id),
-      reviewedAt: item.published_at || item.detected_at || ""
-    }))
+  return currentRecords()
+    .map(item => ({ ...item, reviewedAt: item.submitted_at || item.published_at || item.detected_at || "" }))
     .sort((a, b) =>
-      Number(new Date(b.detected_at || 0)) - Number(new Date(a.detected_at || 0)) ||
+      Number(a.expires_after_epoch || Infinity) - Number(b.expires_after_epoch || Infinity) ||
       String(a.title || "").localeCompare(String(b.title || ""))
     );
 }
