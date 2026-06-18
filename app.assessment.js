@@ -97,7 +97,8 @@ const recordFor = item => {
   return {
     ...item,
     cip129_action_id: item.action_id,
-    decision: verdictKey(item.decision || live.recommendation || live.our_vote),
+    decision: verdictKey(live.our_vote || item.decision || live.recommendation),
+    onchain: !!live.our_vote,
     transaction_hash: live.transaction_hash || null,
     expires_after_epoch: live.expires_after_epoch,
     proposed_in_epoch: live.proposed_in_epoch,
@@ -115,7 +116,8 @@ const currentRecords = () => {
       ...live,
       action_id: live.cip129_action_id,
       cip129_action_id: live.cip129_action_id,
-      decision: verdictKey(live.recommendation || live.our_vote || record.decision),
+      decision: verdictKey(live.our_vote || live.recommendation || record.decision),
+      onchain: !!live.our_vote,
       summary: summaryFor(live.cip129_action_id)
     };
   });
@@ -191,7 +193,7 @@ function proposalCard(item) {
       <h3 class="proposal-title">${esc(item.title || "Governance action")}</h3>
       <span class="type-pill">${esc(item.type || "Unknown type")}</span>
     </div>
-    <span class="verdict ${v.cls}">${esc(v.label)}</span>
+    <span class="verdict ${v.cls}">${esc(v.label)}</span>${item.onchain ? '<span class="onchain-tag">On-chain ✓</span>' : ""}
     <p class="summary-line">${esc(firstSentence(item.summary) || "Open the decision record to inspect the published rationale.")}</p>
     <span class="reason-link">Full reasoning <span aria-hidden="true">→</span></span>
     <div class="proposal-meta">
@@ -233,7 +235,7 @@ function deckCard(item, index) {
     <div class="deck-verdict ${v.cls}">
       <span class="deck-verdict-ring" aria-hidden="true"></span>
       <strong>${esc(v.label)}</strong>
-      <small>BEACN DRep verdict</small>
+      <small>${item.onchain ? "On-chain vote ✓" : "BEACN DRep verdict"}</small>
     </div>
     <h3 class="deck-title">${esc(item.title || "Governance action")}</h3>
     <p class="deck-summary">${esc(summary)}</p>
@@ -648,7 +650,11 @@ async function renderDetail(id) {
   const reproducibility = detail.reproducibility || {};
   const decision = detail.decision || {};
   const scoring = detail.scoring || {};
-  const verdict = verdictMeta(decision.vote || proof.vote || listRecord.decision);
+  const onchainVote = live.our_vote || "";
+  const onchainKey = onchainVote ? verdictKey(onchainVote) : "";
+  const engineKey = verdictKey(decision.vote || proof.vote || listRecord.decision);
+  const drift = onchainKey && onchainKey !== engineKey;
+  const verdict = verdictMeta(onchainVote || decision.vote || proof.vote || listRecord.decision);
   const statement = summaryFor(id) || rationale.summary || "No plain-language statement has been published for this action.";
   const amount = extractedAmount(detail);
   const snapshot = localPath(evidence.download_path || listRecord.proposal_path);
@@ -663,7 +669,7 @@ async function renderDetail(id) {
     <article class="card detail-hero">
       <div class="detail-meta"><span class="status-pill">${esc(detail.status || listRecord.status || "recorded")}</span><span class="type-pill">${esc(detail.type || listRecord.type || "Unknown type")}</span></div>
       <h1>${esc(detail.title || listRecord.title || "Governance action")}</h1>
-      <span class="verdict ${verdict.cls}">${esc(verdict.label)}</span>
+      <span class="verdict ${verdict.cls}">${esc(verdict.label)}</span>${onchainVote ? '<span class="onchain-tag">On-chain ✓</span>' : ""}
       <div class="detail-links"><a href="${cardanoscan.action(id)}" target="_blank" rel="noopener">Action on Cardanoscan ↗</a>${decision.transaction_hash ? `<a href="${cardanoscan.tx(decision.transaction_hash)}" target="_blank" rel="noopener">Vote transaction ↗</a>` : ""}</div>
     </article>
 
@@ -686,7 +692,9 @@ async function renderDetail(id) {
 
     <article class="card detail-section">
       <h2><span>02</span>BEACN's verdict</h2>
+      ${onchainVote ? `<p class="onchain-note"><strong>On-chain vote: ${esc(verdictMeta(onchainKey).label)} ✓</strong> — recorded in Cardano governance state, authoritative.</p>` : ""}
       <div class="callout">${esc(statement)}</div>
+      ${drift ? `<p class="timestamp drift-note" style="margin-top:10px">Note: the on-chain vote (${esc(verdictMeta(onchainKey).label)}) differs from the current engine rationale (${esc(verdictMeta(engineKey).label)}), a conservative fallback generated on stale data. The chain is authoritative; the rationale is being reconciled.</p>` : ""}
       ${state.statements.get(id)?.model ? `<p class="timestamp" style="margin-top:10px">Plain-language layer: ${esc(state.statements.get(id).model)}. The deterministic record below is binding.</p>` : ""}
     </article>
 
@@ -710,7 +718,8 @@ async function renderDetail(id) {
       <h2><span>${assessment?.sections?.length ? "05" : "04"}</span>Proof and reproducibility</h2>
       <p class="subtitle">These receipts bind the public inputs and rule versions to the published result.</p>
       <div class="proof-list">
-        ${proofRow("Vote", decision.vote || proof.vote)}
+        ${proofRow("On-chain vote", onchainVote || "not yet on-chain")}
+        ${proofRow("Engine record", decision.vote || proof.vote)}
         ${proofRow("Submitted", decision.submitted_at)}
         ${proofRow("Transaction", decision.transaction_hash, decision.transaction_hash ? cardanoscan.tx(decision.transaction_hash) : "")}
         ${proofRow("Input hash", proof.input_hash)}

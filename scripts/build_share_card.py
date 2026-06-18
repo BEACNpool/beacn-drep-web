@@ -49,6 +49,9 @@ VERDICTS = {
     "PENDING": ("Pending", "#a8b2c1", "rgba(168,178,193,.14)"),
 }
 
+SHORT = {"YES": "Yes", "NO": "No", "ABSTAIN": "Abstain",
+         "NEEDS_MORE_INFO": "Needs more info", "PENDING": "Pending"}
+
 TYPE_LABELS = {
     "TreasuryWithdrawals": "Treasury withdrawal",
     "ParameterChange": "Protocol parameter change",
@@ -68,7 +71,7 @@ def verdict_key(value):
         return "ABSTAIN"
     if "YES" in v:
         return "YES"
-    if v == "NO" or v.startswith("NO_") or "VOTE_NO" in v:
+    if "NO" in v:  # VOTENO, NO, NO_CONFIDENCE...
         return "NO"
     return v if v in VERDICTS else "PENDING"
 
@@ -164,15 +167,23 @@ def build_model(action_id, status, statements):
     live = next((a for a in (status or {}).get("actions", [])
                  if a.get("cip129_action_id") == action_id), {})
 
-    vkey = verdict_key(decision.get("vote") or proof.get("vote")
-                       or live.get("recommendation") or live.get("our_vote"))
+    # On-chain truth (status.json our_vote, read from gov-state) is authoritative
+    # wherever it exists; the engine recommendation is only a fallback for actions
+    # not yet voted. Drift = the chain vote differs from the current engine output.
+    engine_vkey = verdict_key(decision.get("vote") or proof.get("vote") or live.get("recommendation"))
+    onchain_raw = live.get("our_vote")
+    onchain = bool(onchain_raw)
+    vkey = verdict_key(onchain_raw) if onchain else engine_vkey
+    drift = onchain and vkey != engine_vkey
     vlabel, vcolor, vbg = VERDICTS[vkey]
 
-    # What it is: prefer the anchor abstract, then motivation, then statement.
-    what = clean_md(body.get("abstract") or body.get("motivation"), 300)
+    # What it is: describe the PROPOSAL from its own anchor, never BEACN's stance
+    # (a verdict-flavored fallback would contradict the verdict badge on drift).
+    what = clean_md(body.get("abstract") or body.get("motivation") or body.get("rationale"), 300)
     if not what:
-        st = statements.get(action_id, {})
-        what = clean_md(st.get("statement") or rationale.get("summary"), 300)
+        tl = TYPE_LABELS.get(detail.get("type"), detail.get("type") or "governance")
+        what = (f"An on-chain {tl.lower()} governance action. The full proposal text was not "
+                f"included in the published anchor snapshot — open the record to verify the source.")
 
     # Why: a headline reason plus up to three concrete points.
     headline = clean_md(rationale.get("summary_raw"), 180)
@@ -193,6 +204,16 @@ def build_model(action_id, status, statements):
         why_label = "Why BEACN voted this way"
     points = [p for p in points if p][:3]
 
+    # Drift: the on-chain vote differs from the current engine rationale. Trust the
+    # chain for the verdict, but say plainly that the published rationale is being
+    # reconciled rather than show abstain-flavoured reasons under a NO badge.
+    if drift:
+        why_label = "Note on this vote"
+        headline = (f"BEACN's vote is recorded on-chain as {SHORT[vkey]}. The published "
+                    f"deterministic rationale currently reads {SHORT[engine_vkey]} — a conservative "
+                    f"fallback generated on stale data — and is being reconciled.")
+        points = []
+
     epoch = live.get("proposed_in_epoch") or current_epoch()
     short_id = action_id if len(action_id) <= 26 else f"{action_id[:14]}…{action_id[-6:]}"
     type_label = TYPE_LABELS.get(detail.get("type"), detail.get("type") or "Governance action")
@@ -205,23 +226,25 @@ def build_model(action_id, status, statements):
     stats = []
     if amount:
         stats.append(("Requested", f"{amount} ADA"))
-    if conf_pct:
+    if conf_pct and not drift:
         stats.append(("Confidence", conf_pct))
     if window:
         stats.append(("Voting window", window))
 
-    tx = decision.get("transaction_hash")
-    decided = fmt_date(decision.get("published_at") or decision.get("submitted_at"))
-    proof_line = ("On-chain vote recorded ✓" if tx else "Decision record — vote not yet on-chain")
-    if decided:
-        proof_line = f"Decided {decided} · {proof_line}"
+    if onchain:
+        proof_line = "On-chain vote recorded ✓ — verifiable in Cardano gov-state"
+    else:
+        proof_line = "Decision record — vote not yet on-chain"
+        decided = fmt_date(decision.get("published_at") or decision.get("submitted_at"))
+        if decided:
+            proof_line = f"Decided {decided} · {proof_line}"
 
     return {
         "title": detail.get("title") or "Governance action",
         "type_label": type_label,
         "epoch": epoch,
         "status": (detail.get("status") or live.get("status") or "recorded").upper(),
-        "vlabel": vlabel, "vcolor": vcolor, "vbg": vbg,
+        "vlabel": vlabel, "vcolor": vcolor, "vbg": vbg, "onchain": onchain,
         "what": what or "Proposal source admitted and analyzed; see the verified record.",
         "headline": headline,
         "points": points,
@@ -258,6 +281,8 @@ h1{{font-size:60px;line-height:1.08;font-weight:800;letter-spacing:-.5px;margin-
   padding:18px 30px;border-radius:18px;background:{m['vbg']};border:1.5px solid {m['vcolor']}}}
 .verdict i{{width:20px;height:20px;border-radius:50%;background:{m['vcolor']}}}
 .verdict b{{font-size:34px;font-weight:800;color:{m['vcolor']}}}
+.onchain-pill{{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:14px;
+  background:rgba(52,211,153,.12);border:1.5px solid #34d399;color:#34d399;font-size:24px;font-weight:800}}
 .stats{{display:flex;gap:14px;flex-wrap:wrap}}
 .stat{{padding:12px 20px;border:1px solid var(--line);border-radius:14px;background:rgba(2,6,23,.5)}}
 .stat span{{display:block;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}}
@@ -272,7 +297,7 @@ li{{position:relative;padding-left:34px;font-size:26px;line-height:1.4;color:#cb
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
 li::before{{content:"";position:absolute;left:6px;top:14px;width:11px;height:11px;border-radius:3px;background:{m['vcolor']}}}
 .spacer{{flex:1}}
-.proofline{{font-size:21px;color:var(--muted);margin-bottom:22px}}
+.proofline{{font-size:21px;color:{'#34d399' if m['onchain'] else 'var(--muted)'};margin-bottom:22px}}
 .proofline .id{{font-family:ui-monospace,Menlo,Consolas,monospace;color:#64748b}}
 .foot{{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}}
 .foot .l{{font-size:21px;color:var(--muted);line-height:1.45}}
@@ -285,6 +310,7 @@ li::before{{content:"";position:absolute;left:6px;top:14px;width:11px;height:11p
   <div class="tags"><span class="tag epoch">Epoch {e(str(m['epoch']))}</span><span class="tag">{e(m['type_label'])}</span><span class="tag">{e(m['status'])}</span></div>
   <h1>{e(m['title'])}</h1>
   <div class="vrow"><div class="verdict"><i></i><b>{e(m['vlabel'])}</b></div>
+    {'<div class="onchain-pill">On-chain ✓</div>' if m['onchain'] else ''}
     <div class="stats">{''.join(f'<div class="stat"><span>{e(lab)}</span><b>{e(val)}</b></div>' for lab,val in m['stats'])}</div>
   </div>
   <div class="block"><div class="label">What it is</div><div class="what">{e(m['what'])}</div></div>
