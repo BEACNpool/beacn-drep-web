@@ -209,9 +209,9 @@ def build_model(action_id, status, statements):
     # reconciled rather than show abstain-flavoured reasons under a NO badge.
     if drift:
         why_label = "Note on this vote"
-        headline = (f"BEACN's vote is recorded on-chain as {SHORT[vkey]}. The published "
-                    f"deterministic rationale currently reads {SHORT[engine_vkey]} — a conservative "
-                    f"fallback generated on stale data — and is being reconciled.")
+        headline = (f"BEACN's vote is recorded on-chain as {SHORT[vkey]}. The published deterministic "
+                    f"rationale currently computes {SHORT[engine_vkey]}; the on-chain vote is "
+                    f"authoritative and the two are being reconciled.")
         points = []
 
     epoch = live.get("proposed_in_epoch") or current_epoch()

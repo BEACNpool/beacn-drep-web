@@ -694,7 +694,7 @@ async function renderDetail(id) {
       <h2><span>02</span>BEACN's verdict</h2>
       ${onchainVote ? `<p class="onchain-note"><strong>On-chain vote: ${esc(verdictMeta(onchainKey).label)} ✓</strong> — recorded in Cardano governance state, authoritative.</p>` : ""}
       <div class="callout">${esc(statement)}</div>
-      ${drift ? `<p class="timestamp drift-note" style="margin-top:10px">Note: the on-chain vote (${esc(verdictMeta(onchainKey).label)}) differs from the current engine rationale (${esc(verdictMeta(engineKey).label)}), a conservative fallback generated on stale data. The chain is authoritative; the rationale is being reconciled.</p>` : ""}
+      ${drift ? `<p class="timestamp drift-note" style="margin-top:10px">Note: the on-chain vote (${esc(verdictMeta(onchainKey).label)}) differs from the current engine rationale (${esc(verdictMeta(engineKey).label)}). The chain is authoritative; the two are being reconciled.</p>` : ""}
       ${state.statements.get(id)?.model ? `<p class="timestamp" style="margin-top:10px">Plain-language layer: ${esc(state.statements.get(id).model)}. The deterministic record below is binding.</p>` : ""}
     </article>
 
