@@ -542,6 +542,53 @@ const doctrineLinks = [
   ["Constitutional amendments", "Requirements for changing the constitution", "constitutional_amendment_doctrine.md"]
 ];
 
+const WHY_REASONS = [
+  ["1", "Governance is real work", "To vote well you need a wallet set up for voting, you have to catch every action the moment it appears, read the proposal and its anchor, and weigh the trade-offs. For most people, on most proposals, that's hours you don't have."],
+  ["2", "Delegating is the rational default", "Hand the routine decisions to a DRep that does this every single day. Reserve your own attention for the handful of actions you truly care about — BEACN covers the rest with consistent, published reasoning."],
+  ["3", "Scanned daily, decided instantly", "BEACN pulls the newest governance actions every day and produces a decision the moment the evidence is in. No proposal slips past while you're busy, traveling, or asleep."],
+  ["4", "Every vote is verifiable", "Open this site any time to see exactly how BEACN voted, with the rationale and on-chain proof behind each decision. No black box, no backroom logic — just receipts."]
+];
+
+function renderWhy() {
+  const drep = state.status?.drep_id || DREP_FALLBACK;
+  app.innerHTML = `<section class="view">
+    ${viewHeader("Why delegate", "Delegate the work. Keep the control.", "Voting on every Cardano governance action takes time, attention, and a wallet you keep tuned to the calendar. Hand the routine to a DRep that does it every day — and stay free to step in on the proposals you care about.")}
+
+    <article class="card why-hero">
+      <div class="method-kicker">The case in one line</div>
+      <h2>Most proposals don't need your time. The few that do, you still control.</h2>
+      <p class="verify-copy">BEACN reviews every governance action on declared public evidence, publishes the reasoning, and casts the vote — so you don't have to track the calendar. Your ADA never leaves your wallet, and you can redelegate the moment a vote doesn't match your interests.</p>
+    </article>
+
+    <div class="section-title"><h2>Why it's worth delegating</h2></div>
+    <div class="why-grid">
+      ${WHY_REASONS.map(([n, title, body]) => `<article class="card why-reason">
+        <b>${esc(n)}</b>
+        <div><strong>${esc(title)}</strong><span>${esc(body)}</span></div>
+      </article>`).join("")}
+    </div>
+
+    <article class="card why-control">
+      <div class="eyebrow">You're never locked in</div>
+      <h2>A vote you disagree with is one move from undone.</h2>
+      <p class="verify-copy">Delegation assigns governance voting power only — never custody. When a proposal matters to you, watch how BEACN votes here first. If it moves against your interests, redelegate to yourself or another DRep instantly: no approval, no waiting, no lockup. You delegate the routine without ever surrendering the decisions that count.</p>
+    </article>
+
+    <article class="card delegate-card">
+      <div class="eyebrow">Delegate</div>
+      <h2>Put governance on autopilot — with the receipts.</h2>
+      <p class="verify-copy">Set BEACN as your DRep in any Cardano wallet. Your ADA stays put; only voting power is assigned, and you can change it at any time.</p>
+      <div class="drep-id" id="why-drep-id">${esc(drep)}</div>
+      <div class="button-row">
+        <button class="button" id="why-copy-drep" type="button">Copy DRep ID</button>
+        <a class="button secondary" href="${cardanoscan.drep(drep)}" target="_blank" rel="noopener">View on Cardanoscan</a>
+        <a class="button secondary" href="#/home">See live votes</a>
+      </div>
+    </article>
+  </section>`;
+  document.getElementById("why-copy-drep")?.addEventListener("click", () => copyText(drep));
+}
+
 function detailSkeleton(backRoute) {
   app.innerHTML = `<section class="view"><div class="detail-head"><a class="icon-button back-button" href="${backRoute}" aria-label="Back"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>Loading decision record…</span></div><div class="skeleton hero-skeleton"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div></section>`;
 }
@@ -686,7 +733,7 @@ function parseRoute() {
   const [view = "home", encodedId] = raw.split("/");
   if (view === "action" && encodedId) return { view, id: decodeURIComponent(encodedId) };
   if (view === "decides" || view === "verify") return { view: "method" };
-  return { view: ["home", "proposals", "method"].includes(view) ? view : "home" };
+  return { view: ["home", "why", "proposals", "method"].includes(view) ? view : "home" };
 }
 
 function updateNavigation(view) {
@@ -706,6 +753,7 @@ async function renderRoute() {
   try {
     await loadFeeds();
     if (route.view === "home") renderHome();
+    if (route.view === "why") renderWhy();
     if (route.view === "proposals") renderProposals();
     if (route.view === "method") renderMethod();
     if (route.view === "action") await renderDetail(route.id);
