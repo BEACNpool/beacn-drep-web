@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-18T18:05:22+00:00",
+  "generated_at": "2026-06-18T20:21:19+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-06-18T18:05:22+00:00",
+    "at": "2026-06-18T20:21:19+00:00",
     "epoch": 637,
-    "open_actions": 12,
+    "open_actions": 13,
     "actions_with_our_vote": 4,
-    "summary": "Last checked at epoch 637. 12 open governance action(s); this DRep has voted on 4. Mode: shadow."
+    "summary": "Last checked at epoch 637. 13 open governance action(s); this DRep has voted on 4. Mode: shadow."
   },
   "actions": [
     {
@@ -33,6 +33,18 @@
       "recommendation": "YES",
       "our_vote": "VoteYes",
       "anchor_url": "ipfs://bafkreib3ds3bj7izvspcmodz543m5y66slpcmoifzmvpl6xvq6mozaak64"
+    },
+    {
+      "action_id": "8721696358acdd43e34e5ed9ef1b3e2a1d2af9c1aa1972e017b9b9271b7ddc70#0",
+      "cip129_action_id": null,
+      "title": "",
+      "type": "TreasuryWithdrawals",
+      "proposed_in_epoch": 637,
+      "expires_after_epoch": 643,
+      "status": "open",
+      "recommendation": null,
+      "our_vote": null,
+      "anchor_url": "ipfs://QmYM4nuNZTVMiMmvCr7mntct7YE1VgWyLgxGhyfWptgFgC"
     },
     {
       "action_id": "5d3a1f657fe330b51b459ca9b482fc1a3b6e3336227f880d8a058771c23e3ce2#0",
