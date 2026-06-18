@@ -23,8 +23,8 @@
     "input_hash": "54301c6db97184101f49414e43cc0e9093220a20c8e3ef1d511b5c87d3d45550",
     "snapshot_bundle_hash": "2510b150e0eabd8a6b161ac279acf9ba3ba6a20e2fed4b8bdee6a006451a2856",
     "soul_commit": "6bf4a7d7baa636417ad929e543cfb8be8fae1f03",
-    "resources_commit": "9888051c6d5ec763affe3e12d9a462e2556e458a",
-    "core_commit": "324fd5515339426fcc2cfb81eb0d7219679a8b88",
+    "resources_commit": "c2d37d96622e9918a7eb9e4cc72da2044797ae72",
+    "core_commit": "c25882a0c1eb931c7016918503c995752b3d696f",
     "rationale_markdown_path": "/data/output/public/rationales/gov_action1k5vwlfrxtyusd2ec37tckd54gjvqn2kd72xj4t6wkkapdv7zfg0qq468n2r-54301c6db971.md",
     "rationale_anchor_url": null,
     "rationale_anchor_hash": null
@@ -150,8 +150,8 @@
     "soul_repo": "beacn-drep-soul",
     "soul_commit": "6bf4a7d7baa636417ad929e543cfb8be8fae1f03",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "9888051c6d5ec763affe3e12d9a462e2556e458a",
-    "core_commit": "324fd5515339426fcc2cfb81eb0d7219679a8b88",
+    "resources_commit": "c2d37d96622e9918a7eb9e4cc72da2044797ae72",
+    "core_commit": "c25882a0c1eb931c7016918503c995752b3d696f",
     "resource_ids_used": [
       "gov_actions_api",
       "gov_actions_snapshot",
