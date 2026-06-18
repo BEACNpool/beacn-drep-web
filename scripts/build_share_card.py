@@ -100,6 +100,36 @@ def clean_md(text, limit=320):
     return (cut[:sp] if sp > 0 else cut).rstrip(" ,;:") + "…"
 
 
+def fmt_date(iso):
+    try:
+        d = datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+        return d.strftime("%b %d, %Y").replace(" 0", " ")
+    except Exception:
+        return ""
+
+
+def extract_amount(detail, body):
+    """Return a treasury amount only when it can be read reliably; never guess."""
+    for k in ("amount", "requested_amount", "treasury_amount", "withdrawal_amount"):
+        v = detail.get(k)
+        if v not in (None, ""):
+            return str(v)
+    m = re.search(r"(?:withdraw|request(?:ing)?)\s+[₳$]?\s?([\d][\d,]*\.?\d*)\s*(?:ADA|₳)",
+                  str(detail.get("title", "")), re.I)
+    return m.group(1) if m else ""
+
+
+def epochs_left_text(expires, current):
+    if expires in (None, ""):
+        return ""
+    left = int(expires) - current
+    if left < 0:
+        return "Voting closed"
+    if left == 0:
+        return "Closes this epoch"
+    return f"{left} epoch{'s' if left != 1 else ''} left"
+
+
 def load_json(path):
     try:
         return json.loads(Path(path).read_text())
@@ -167,6 +197,25 @@ def build_model(action_id, status, statements):
     short_id = action_id if len(action_id) <= 26 else f"{action_id[:14]}…{action_id[-6:]}"
     type_label = TYPE_LABELS.get(detail.get("type"), detail.get("type") or "Governance action")
 
+    conf = proof.get("confidence")
+    conf_pct = f"{round(conf * 100)}%" if isinstance(conf, (int, float)) else ""
+    window = epochs_left_text(live.get("expires_after_epoch"), current_epoch())
+    amount = extract_amount(detail, body)
+
+    stats = []
+    if amount:
+        stats.append(("Requested", f"{amount} ADA"))
+    if conf_pct:
+        stats.append(("Confidence", conf_pct))
+    if window:
+        stats.append(("Voting window", window))
+
+    tx = decision.get("transaction_hash")
+    decided = fmt_date(decision.get("published_at") or decision.get("submitted_at"))
+    proof_line = ("On-chain vote recorded ✓" if tx else "Decision record — vote not yet on-chain")
+    if decided:
+        proof_line = f"Decided {decided} · {proof_line}"
+
     return {
         "title": detail.get("title") or "Governance action",
         "type_label": type_label,
@@ -177,6 +226,9 @@ def build_model(action_id, status, statements):
         "headline": headline,
         "points": points,
         "why_label": why_label,
+        "stats": stats,
+        "proof_line": proof_line,
+        "drep_id": (status or {}).get("drep_id") or "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
         "short_id": short_id,
     }
 
@@ -201,10 +253,15 @@ body{{font-family:'Inter','Segoe UI',system-ui,-apple-system,Helvetica,Arial,san
 .tag.epoch{{color:var(--cyan);border-color:rgba(34,211,238,.4)}}
 h1{{font-size:60px;line-height:1.08;font-weight:800;letter-spacing:-.5px;margin-bottom:30px;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}
-.verdict{{display:inline-flex;align-items:center;gap:16px;align-self:flex-start;
-  padding:18px 30px;border-radius:18px;background:{m['vbg']};border:1.5px solid {m['vcolor']};margin-bottom:34px}}
+.vrow{{display:flex;align-items:center;flex-wrap:wrap;gap:20px;margin-bottom:30px}}
+.verdict{{display:inline-flex;align-items:center;gap:16px;
+  padding:18px 30px;border-radius:18px;background:{m['vbg']};border:1.5px solid {m['vcolor']}}}
 .verdict i{{width:20px;height:20px;border-radius:50%;background:{m['vcolor']}}}
 .verdict b{{font-size:34px;font-weight:800;color:{m['vcolor']}}}
+.stats{{display:flex;gap:14px;flex-wrap:wrap}}
+.stat{{padding:12px 20px;border:1px solid var(--line);border-radius:14px;background:rgba(2,6,23,.5)}}
+.stat span{{display:block;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}}
+.stat b{{display:block;font-size:25px;font-weight:800;margin-top:3px}}
 .block{{margin-bottom:30px}}
 .label{{font-size:20px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}}
 .what{{font-size:29px;line-height:1.5;color:#dbe4f0;
@@ -215,25 +272,30 @@ li{{position:relative;padding-left:34px;font-size:26px;line-height:1.4;color:#cb
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
 li::before{{content:"";position:absolute;left:6px;top:14px;width:11px;height:11px;border-radius:3px;background:{m['vcolor']}}}
 .spacer{{flex:1}}
-.foot{{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}}
-.foot .l{{font-size:23px;color:var(--muted);line-height:1.5}}
-.foot .l b{{color:#f1f5f9}}
-.foot .r{{text-align:right;font-size:22px;color:var(--muted)}}
+.proofline{{font-size:21px;color:var(--muted);margin-bottom:22px}}
+.proofline .id{{font-family:ui-monospace,Menlo,Consolas,monospace;color:#64748b}}
+.foot{{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}}
+.foot .l{{font-size:21px;color:var(--muted);line-height:1.45}}
+.foot .l .lab{{font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:800}}
+.foot .l .drep{{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:18px;color:#f1f5f9;word-break:break-all;margin-top:5px}}
+.foot .r{{text-align:right;font-size:21px;color:var(--muted);white-space:nowrap}}
 .foot .r b{{display:block;color:var(--cyan);font-size:24px;font-weight:800}}
-.id{{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:19px;color:#64748b;margin-top:8px}}
 </style></head><body>
   <div class="head"><img src="{logo}" alt=""><div class="brand"><b>BEACN DRep</b><span>Verifiable Cardano Governance</span></div></div>
   <div class="tags"><span class="tag epoch">Epoch {e(str(m['epoch']))}</span><span class="tag">{e(m['type_label'])}</span><span class="tag">{e(m['status'])}</span></div>
   <h1>{e(m['title'])}</h1>
-  <div class="verdict"><i></i><b>{e(m['vlabel'])}</b></div>
+  <div class="vrow"><div class="verdict"><i></i><b>{e(m['vlabel'])}</b></div>
+    <div class="stats">{''.join(f'<div class="stat"><span>{e(lab)}</span><b>{e(val)}</b></div>' for lab,val in m['stats'])}</div>
+  </div>
   <div class="block"><div class="label">What it is</div><div class="what">{e(m['what'])}</div></div>
   <div class="block"><div class="label">{e(m['why_label'])}</div>
     {f'<div class="headline">{e(m["headline"])}</div>' if m['headline'] else ''}
     <ul>{points}</ul></div>
   <div class="spacer"></div>
+  <div class="proofline">{e(m['proof_line'])} · <span class="id">{e(m['short_id'])}</span></div>
   <div class="foot">
-    <div class="l">Your ADA never leaves your wallet.<br><b>Redelegate any time.</b><div class="id">{e(m['short_id'])}</div></div>
-    <div class="r"><b>{e(X_HANDLE)}</b>{e(SITE_URL)}<br>Open rules · on-chain proof</div>
+    <div class="l"><span class="lab">Delegate to BEACN</span><div class="drep">{e(m['drep_id'])}</div></div>
+    <div class="r"><b>{e(X_HANDLE)}</b>{e(SITE_URL)}<br>Your ADA never leaves your wallet</div>
   </div>
 </body></html>"""
 
