@@ -97,7 +97,8 @@ const recordFor = item => {
   return {
     ...item,
     cip129_action_id: item.action_id,
-    decision: verdictKey(item.decision || live.recommendation || live.our_vote),
+    decision: verdictKey(live.our_vote || item.decision || live.recommendation),
+    onchain: !!live.our_vote,
     transaction_hash: live.transaction_hash || null,
     expires_after_epoch: live.expires_after_epoch,
     proposed_in_epoch: live.proposed_in_epoch,
@@ -115,7 +116,8 @@ const currentRecords = () => {
       ...live,
       action_id: live.cip129_action_id,
       cip129_action_id: live.cip129_action_id,
-      decision: verdictKey(live.recommendation || live.our_vote || record.decision),
+      decision: verdictKey(live.our_vote || live.recommendation || record.decision),
+      onchain: !!live.our_vote,
       summary: summaryFor(live.cip129_action_id)
     };
   });
@@ -191,7 +193,7 @@ function proposalCard(item) {
       <h3 class="proposal-title">${esc(item.title || "Governance action")}</h3>
       <span class="type-pill">${esc(item.type || "Unknown type")}</span>
     </div>
-    <span class="verdict ${v.cls}">${esc(v.label)}</span>
+    <span class="verdict ${v.cls}">${esc(v.label)}</span>${item.onchain ? '<span class="onchain-tag">On-chain ✓</span>' : ""}
     <p class="summary-line">${esc(firstSentence(item.summary) || "Open the decision record to inspect the published rationale.")}</p>
     <span class="reason-link">Full reasoning <span aria-hidden="true">→</span></span>
     <div class="proposal-meta">
@@ -233,7 +235,7 @@ function deckCard(item, index) {
     <div class="deck-verdict ${v.cls}">
       <span class="deck-verdict-ring" aria-hidden="true"></span>
       <strong>${esc(v.label)}</strong>
-      <small>BEACN DRep verdict</small>
+      <small>${item.onchain ? "On-chain vote ✓" : "BEACN DRep verdict"}</small>
     </div>
     <h3 class="deck-title">${esc(item.title || "Governance action")}</h3>
     <p class="deck-summary">${esc(summary)}</p>
@@ -542,6 +544,53 @@ const doctrineLinks = [
   ["Constitutional amendments", "Requirements for changing the constitution", "constitutional_amendment_doctrine.md"]
 ];
 
+const WHY_REASONS = [
+  ["1", "Governance is real work", "To vote well you need a wallet set up for voting, you have to catch every action the moment it appears, read the proposal and its anchor, and weigh the trade-offs. For most people, on most proposals, that's hours you don't have."],
+  ["2", "Delegating is the rational default", "Hand the routine decisions to a DRep that does this every single day. Reserve your own attention for the handful of actions you truly care about — BEACN covers the rest with consistent, published reasoning."],
+  ["3", "Scanned daily, decided instantly", "BEACN pulls the newest governance actions every day and produces a decision the moment the evidence is in. No proposal slips past while you're busy, traveling, or asleep."],
+  ["4", "Every vote is verifiable", "Open this site any time to see exactly how BEACN voted, with the rationale and on-chain proof behind each decision. No black box, no backroom logic — just receipts."]
+];
+
+function renderWhy() {
+  const drep = state.status?.drep_id || DREP_FALLBACK;
+  app.innerHTML = `<section class="view">
+    ${viewHeader("Why delegate", "Delegate the work. Keep the control.", "Voting on every Cardano governance action takes time, attention, and a wallet you keep tuned to the calendar. Hand the routine to a DRep that does it every day — and stay free to step in on the proposals you care about.")}
+
+    <article class="card why-hero">
+      <div class="method-kicker">The case in one line</div>
+      <h2>Most proposals don't need your time. The few that do, you still control.</h2>
+      <p class="verify-copy">BEACN reviews every governance action on declared public evidence, publishes the reasoning, and casts the vote — so you don't have to track the calendar. Your ADA never leaves your wallet, and you can redelegate the moment a vote doesn't match your interests.</p>
+    </article>
+
+    <div class="section-title"><h2>Why it's worth delegating</h2></div>
+    <div class="why-grid">
+      ${WHY_REASONS.map(([n, title, body]) => `<article class="card why-reason">
+        <b>${esc(n)}</b>
+        <div><strong>${esc(title)}</strong><span>${esc(body)}</span></div>
+      </article>`).join("")}
+    </div>
+
+    <article class="card why-control">
+      <div class="eyebrow">You're never locked in</div>
+      <h2>A vote you disagree with is one move from undone.</h2>
+      <p class="verify-copy">Delegation assigns governance voting power only — never custody. When a proposal matters to you, watch how BEACN votes here first. If it moves against your interests, redelegate to yourself or another DRep instantly: no approval, no waiting, no lockup. You delegate the routine without ever surrendering the decisions that count.</p>
+    </article>
+
+    <article class="card delegate-card">
+      <div class="eyebrow">Delegate</div>
+      <h2>Put governance on autopilot — with the receipts.</h2>
+      <p class="verify-copy">Set BEACN as your DRep in any Cardano wallet. Your ADA stays put; only voting power is assigned, and you can change it at any time.</p>
+      <div class="drep-id" id="why-drep-id">${esc(drep)}</div>
+      <div class="button-row">
+        <button class="button" id="why-copy-drep" type="button">Copy DRep ID</button>
+        <a class="button secondary" href="${cardanoscan.drep(drep)}" target="_blank" rel="noopener">View on Cardanoscan</a>
+        <a class="button secondary" href="#/home">See live votes</a>
+      </div>
+    </article>
+  </section>`;
+  document.getElementById("why-copy-drep")?.addEventListener("click", () => copyText(drep));
+}
+
 function detailSkeleton(backRoute) {
   app.innerHTML = `<section class="view"><div class="detail-head"><a class="icon-button back-button" href="${backRoute}" aria-label="Back"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>Loading decision record…</span></div><div class="skeleton hero-skeleton"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div></section>`;
 }
@@ -601,7 +650,11 @@ async function renderDetail(id) {
   const reproducibility = detail.reproducibility || {};
   const decision = detail.decision || {};
   const scoring = detail.scoring || {};
-  const verdict = verdictMeta(decision.vote || proof.vote || listRecord.decision);
+  const onchainVote = live.our_vote || "";
+  const onchainKey = onchainVote ? verdictKey(onchainVote) : "";
+  const engineKey = verdictKey(decision.vote || proof.vote || listRecord.decision);
+  const drift = onchainKey && onchainKey !== engineKey;
+  const verdict = verdictMeta(onchainVote || decision.vote || proof.vote || listRecord.decision);
   const statement = summaryFor(id) || rationale.summary || "No plain-language statement has been published for this action.";
   const amount = extractedAmount(detail);
   const snapshot = localPath(evidence.download_path || listRecord.proposal_path);
@@ -616,7 +669,7 @@ async function renderDetail(id) {
     <article class="card detail-hero">
       <div class="detail-meta"><span class="status-pill">${esc(detail.status || listRecord.status || "recorded")}</span><span class="type-pill">${esc(detail.type || listRecord.type || "Unknown type")}</span></div>
       <h1>${esc(detail.title || listRecord.title || "Governance action")}</h1>
-      <span class="verdict ${verdict.cls}">${esc(verdict.label)}</span>
+      <span class="verdict ${verdict.cls}">${esc(verdict.label)}</span>${onchainVote ? '<span class="onchain-tag">On-chain ✓</span>' : ""}
       <div class="detail-links"><a href="${cardanoscan.action(id)}" target="_blank" rel="noopener">Action on Cardanoscan ↗</a>${decision.transaction_hash ? `<a href="${cardanoscan.tx(decision.transaction_hash)}" target="_blank" rel="noopener">Vote transaction ↗</a>` : ""}</div>
     </article>
 
@@ -639,7 +692,9 @@ async function renderDetail(id) {
 
     <article class="card detail-section">
       <h2><span>02</span>BEACN's verdict</h2>
+      ${onchainVote ? `<p class="onchain-note"><strong>On-chain vote: ${esc(verdictMeta(onchainKey).label)} ✓</strong> — recorded in Cardano governance state, authoritative.</p>` : ""}
       <div class="callout">${esc(statement)}</div>
+      ${drift ? `<p class="timestamp drift-note" style="margin-top:10px">Note: the on-chain vote (${esc(verdictMeta(onchainKey).label)}) differs from the current engine rationale (${esc(verdictMeta(engineKey).label)}). The chain is authoritative; the two are being reconciled.</p>` : ""}
       ${state.statements.get(id)?.model ? `<p class="timestamp" style="margin-top:10px">Plain-language layer: ${esc(state.statements.get(id).model)}. The deterministic record below is binding.</p>` : ""}
     </article>
 
@@ -663,7 +718,8 @@ async function renderDetail(id) {
       <h2><span>${assessment?.sections?.length ? "05" : "04"}</span>Proof and reproducibility</h2>
       <p class="subtitle">These receipts bind the public inputs and rule versions to the published result.</p>
       <div class="proof-list">
-        ${proofRow("Vote", decision.vote || proof.vote)}
+        ${proofRow("On-chain vote", onchainVote || "not yet on-chain")}
+        ${proofRow("Engine record", decision.vote || proof.vote)}
         ${proofRow("Submitted", decision.submitted_at)}
         ${proofRow("Transaction", decision.transaction_hash, decision.transaction_hash ? cardanoscan.tx(decision.transaction_hash) : "")}
         ${proofRow("Input hash", proof.input_hash)}
@@ -686,7 +742,7 @@ function parseRoute() {
   const [view = "home", encodedId] = raw.split("/");
   if (view === "action" && encodedId) return { view, id: decodeURIComponent(encodedId) };
   if (view === "decides" || view === "verify") return { view: "method" };
-  return { view: ["home", "proposals", "method"].includes(view) ? view : "home" };
+  return { view: ["home", "why", "proposals", "method"].includes(view) ? view : "home" };
 }
 
 function updateNavigation(view) {
@@ -706,6 +762,7 @@ async function renderRoute() {
   try {
     await loadFeeds();
     if (route.view === "home") renderHome();
+    if (route.view === "why") renderWhy();
     if (route.view === "proposals") renderProposals();
     if (route.view === "method") renderMethod();
     if (route.view === "action") await renderDetail(route.id);
