@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-18T11:30:48+00:00",
+  "generated_at": "2026-06-18T18:05:22+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-06-18T11:30:48+00:00",
+    "at": "2026-06-18T18:05:22+00:00",
     "epoch": 637,
     "open_actions": 12,
     "actions_with_our_vote": 4,
@@ -43,7 +43,7 @@
       "expires_after_epoch": 642,
       "status": "open",
       "recommendation": "ABSTAIN",
-      "our_vote": "VoteNo",
+      "our_vote": "Abstain",
       "anchor_url": "https://raw.githubusercontent.com/AGT-T/RTG/refs/heads/main/data.jsonld"
     },
     {
