@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-19T15:55:12+00:00",
+  "generated_at": "2026-06-19T16:13:14+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-06-19T15:55:12+00:00",
+    "at": "2026-06-19T16:13:14+00:00",
     "epoch": 638,
     "open_actions": 11,
-    "actions_with_our_vote": 3,
-    "summary": "Last checked at epoch 638. 11 open governance action(s); this DRep has voted on 3. Mode: shadow."
+    "actions_with_our_vote": 10,
+    "summary": "Last checked at epoch 638. 11 open governance action(s); this DRep has voted on 10. Mode: shadow."
   },
   "actions": [
     {
@@ -19,7 +19,7 @@
       "expires_after_epoch": 643,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://QmQ6cDaLLeBMnf1zio7Xn8jV8uTUk68tPirx5uKH6HLr3L"
     },
     {
@@ -43,7 +43,7 @@
       "expires_after_epoch": 643,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://QmYM4nuNZTVMiMmvCr7mntct7YE1VgWyLgxGhyfWptgFgC"
     },
     {
@@ -67,7 +67,7 @@
       "expires_after_epoch": 642,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmSy2CiQhPBzzNLKDFVvMQaDb1FQDbmn9bJf6fVntVAQ1t"
     },
     {
@@ -91,7 +91,7 @@
       "expires_after_epoch": 641,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://QmYaPeha2PvacQxAwt5ZRsunGGgVbNwgDzu9pxLWA8zS9d"
     },
     {
@@ -103,7 +103,7 @@
       "expires_after_epoch": 640,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreieyqnaojdv7rofmwd6pndv3j6uuho6cnyyjcowbk5p5x2ux4e744e"
     },
     {
@@ -115,7 +115,7 @@
       "expires_after_epoch": 639,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreifbqd4hblfoi24clcyg4kzr4o2nivgprtaj7hi4uqdnjrvdz3rsfq"
     },
     {
@@ -139,7 +139,7 @@
       "expires_after_epoch": 638,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://QmbLLQDmduuWJNESHtWXqFCKXTL6g8PvchzmMx7QavkeYS"
     },
     {
