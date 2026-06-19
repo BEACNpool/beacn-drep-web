@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-18T20:21:19+00:00",
+  "generated_at": "2026-06-19T15:55:12+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-06-18T20:21:19+00:00",
-    "epoch": 637,
-    "open_actions": 13,
-    "actions_with_our_vote": 4,
-    "summary": "Last checked at epoch 637. 13 open governance action(s); this DRep has voted on 4. Mode: shadow."
+    "at": "2026-06-19T15:55:12+00:00",
+    "epoch": 638,
+    "open_actions": 11,
+    "actions_with_our_vote": 3,
+    "summary": "Last checked at epoch 638. 11 open governance action(s); this DRep has voted on 3. Mode: shadow."
   },
   "actions": [
     {
@@ -18,7 +18,7 @@
       "proposed_in_epoch": 637,
       "expires_after_epoch": 643,
       "status": "open",
-      "recommendation": "NEEDS_MORE_INFO",
+      "recommendation": "NO",
       "our_vote": null,
       "anchor_url": "ipfs://QmQ6cDaLLeBMnf1zio7Xn8jV8uTUk68tPirx5uKH6HLr3L"
     },
@@ -36,13 +36,13 @@
     },
     {
       "action_id": "8721696358acdd43e34e5ed9ef1b3e2a1d2af9c1aa1972e017b9b9271b7ddc70#0",
-      "cip129_action_id": null,
-      "title": "",
+      "cip129_action_id": "gov_action1suskjc6c4nw58c6wtmv77xe79gwj47wp4gvh9cqhhxujwxmam3cqqkz5nwj",
+      "title": "Strike Finance Liquidity Deployment",
       "type": "TreasuryWithdrawals",
       "proposed_in_epoch": 637,
       "expires_after_epoch": 643,
       "status": "open",
-      "recommendation": null,
+      "recommendation": "NO",
       "our_vote": null,
       "anchor_url": "ipfs://QmYM4nuNZTVMiMmvCr7mntct7YE1VgWyLgxGhyfWptgFgC"
     },
@@ -66,7 +66,7 @@
       "proposed_in_epoch": 636,
       "expires_after_epoch": 642,
       "status": "open",
-      "recommendation": "NEEDS_MORE_INFO",
+      "recommendation": "NO",
       "our_vote": null,
       "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmSy2CiQhPBzzNLKDFVvMQaDb1FQDbmn9bJf6fVntVAQ1t"
     },
@@ -90,7 +90,7 @@
       "proposed_in_epoch": 635,
       "expires_after_epoch": 641,
       "status": "open",
-      "recommendation": "NEEDS_MORE_INFO",
+      "recommendation": "NO",
       "our_vote": null,
       "anchor_url": "ipfs://QmYaPeha2PvacQxAwt5ZRsunGGgVbNwgDzu9pxLWA8zS9d"
     },
@@ -102,21 +102,9 @@
       "proposed_in_epoch": 634,
       "expires_after_epoch": 640,
       "status": "open",
-      "recommendation": "NEEDS_MORE_INFO",
+      "recommendation": "NO",
       "our_vote": null,
       "anchor_url": "ipfs://bafkreieyqnaojdv7rofmwd6pndv3j6uuho6cnyyjcowbk5p5x2ux4e744e"
-    },
-    {
-      "action_id": "c82f3834898e4d70d3605fa0d92ffe31345701075b107a54309c1525f9581f62#0",
-      "cip129_action_id": "gov_action1eqhnsdyf3exhp5mqt7sdjtl7xy69wqg8tvg854psns2jt72cra3qqrcnr8r",
-      "title": "Update Plutus Cost Models",
-      "type": "ParameterChange",
-      "proposed_in_epoch": 633,
-      "expires_after_epoch": 639,
-      "status": "open",
-      "recommendation": "ABSTAIN",
-      "our_vote": "Abstain",
-      "anchor_url": "ipfs://bafkreie4ykbbk6rjpiqqjcqhubk3b2yrzgvpntm4ozopx2ospendufvhyu"
     },
     {
       "action_id": "3f4b022c9913d52f9f39a8c82a1b9ebe5143fb745f3531f9366c7268bf9b9ce4#0",
@@ -126,7 +114,7 @@
       "proposed_in_epoch": 633,
       "expires_after_epoch": 639,
       "status": "open",
-      "recommendation": "NEEDS_MORE_INFO",
+      "recommendation": "NO",
       "our_vote": null,
       "anchor_url": "ipfs://bafkreifbqd4hblfoi24clcyg4kzr4o2nivgprtaj7hi4uqdnjrvdz3rsfq"
     },
@@ -138,7 +126,7 @@
       "proposed_in_epoch": 632,
       "expires_after_epoch": 638,
       "status": "open",
-      "recommendation": "NEEDS_MORE_INFO",
+      "recommendation": "NO",
       "our_vote": null,
       "anchor_url": "ipfs://bafkreia3kwal45bb6ivjxzqohw6yvwkeiximblnfccsribzdny3mfb6fy4"
     },
@@ -150,45 +138,21 @@
       "proposed_in_epoch": 632,
       "expires_after_epoch": 638,
       "status": "open",
-      "recommendation": "NEEDS_MORE_INFO",
+      "recommendation": "NO",
       "our_vote": null,
       "anchor_url": "ipfs://QmbLLQDmduuWJNESHtWXqFCKXTL6g8PvchzmMx7QavkeYS"
     },
     {
       "action_id": "9a020ea7a6a0d813ff08c92bd8300b26077ae69a4b827c4d432ac665120325d7#0",
-      "cip129_action_id": "gov_action1ngpqafax5rvp8lcgey4asvqtycrh4e56fwp8cn2r9trx2ysryhtsqdm3w3z",
+      "cip129_action_id": null,
       "title": "Eternl: Path to Sustainability (2026-2027)",
       "type": "TreasuryWithdrawals",
       "proposed_in_epoch": 631,
       "expires_after_epoch": 637,
-      "status": "open",
-      "recommendation": "NEEDS_MORE_INFO",
+      "status": "closed",
+      "recommendation": "NO",
       "our_vote": null,
       "anchor_url": "ipfs://QmWmEKFTae7Q12HUeVyMui6ReCuTXRx55W6eahBGn9ECgn"
-    },
-    {
-      "action_id": "0b3c83b5e62a63603948c247b47cfd012279756fa38cf73b0c6c19ce63f0868c#0",
-      "cip129_action_id": null,
-      "title": "Cardano dOSPO and OMF Program",
-      "type": "TreasuryWithdrawals",
-      "proposed_in_epoch": 630,
-      "expires_after_epoch": 636,
-      "status": "closed",
-      "recommendation": "NEEDS_MORE_INFO",
-      "our_vote": null,
-      "anchor_url": "ipfs://QmP76MXJwp19ZAcX8soUPyh5jcvMoK1DoLbxAJT9LLRhDK"
-    },
-    {
-      "action_id": "e0900fddf52f1f2f6439fa8a3aaa8c224ab59b6074d0e2db3b27c8f06b0e5d33#0",
-      "cip129_action_id": null,
-      "title": "Scalus: Cardano\u2019s Application Platform for Building, Launching, and Scaling",
-      "type": "TreasuryWithdrawals",
-      "proposed_in_epoch": 630,
-      "expires_after_epoch": 636,
-      "status": "closed",
-      "recommendation": "NEEDS_MORE_INFO",
-      "our_vote": null,
-      "anchor_url": "ipfs://QmPuukXDGrY4VjeprLZhovQfWCY5RDyXjQAPUKhRFNPiDT"
     }
   ],
   "note": "Generated by the BEACN DRep bot on each check. A live feed may replace this later."
