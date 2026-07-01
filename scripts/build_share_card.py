@@ -176,6 +176,11 @@ def build_model(action_id, status, statements):
     vkey = verdict_key(onchain_raw) if onchain else engine_vkey
     drift = onchain and vkey != engine_vkey
     vlabel, vcolor, vbg = VERDICTS[vkey]
+    # Never claim a vote that is not on-chain: until gov-state shows our_vote,
+    # the badge says what BEACN *recommends*, not what it voted.
+    if not onchain and vkey in ("YES", "NO", "ABSTAIN"):
+        vlabel = {"YES": "Recommends YES", "NO": "Recommends NO",
+                  "ABSTAIN": "Recommends ABSTAIN"}[vkey]
 
     # What it is: describe the PROPOSAL from its own anchor, never BEACN's stance
     # (a verdict-flavored fallback would contradict the verdict badge on drift).
@@ -195,13 +200,33 @@ def build_model(action_id, status, statements):
             headline = "A directional vote can't be justified from the admitted evidence yet."
         why_label = "Why — what would change the vote"
     else:
-        summary = rationale.get("summary", "")
-        tail = re.split(r"\bWhy:\s*", summary, maxsplit=1)
-        body_txt = tail[1] if len(tail) > 1 else summary
-        points = [clean_md(s, 150) for s in re.split(r"(?<=[.!?])\s+", body_txt) if len(s) > 12]
-        if not headline:
-            headline = clean_md(summary, 180)
-        why_label = "Why BEACN voted this way"
+        # Directional vote: lead with the decisive reason, acknowledge the best
+        # opposing case, and say concretely what would change the vote.
+        assessment = rationale.get("assessment") or {}
+        counters = {}
+        for s in assessment.get("sections") or []:
+            if s.get("title") == "Counterargument pass":
+                for f in s.get("findings") or []:
+                    for key, label in (("yes", "Strongest YES:"), ("no", "Strongest NO:")):
+                        if str(f).startswith(label):
+                            counters[key] = str(f)[len(label):].strip()
+        decisive = counters.get("no" if vkey == "NO" else "yes", "")
+        counter = counters.get("yes" if vkey == "NO" else "no", "")
+        points = []
+        if counter:
+            points.append(clean_md(f"Weighed against it: {counter}", 150))
+        for fx in (rationale.get("top_fixes") or [])[:2]:
+            prefix = "Would change this vote: " if vkey == "NO" else "Watch item: "
+            points.append(clean_md(prefix + str(fx), 150))
+        if not points:
+            summary = rationale.get("summary", "")
+            points = [clean_md(s, 150) for s in re.split(r"(?<=[.!?])\s+", summary) if len(s) > 12]
+        # The decisive counterargument beats summary_raw (which is often internal
+        # scoring narration) as the headline a delegator reads first.
+        headline = clean_md(decisive, 180) or headline or clean_md(rationale.get("summary", ""), 180)
+        if headline:
+            headline = headline[0].upper() + headline[1:]
+        why_label = "Why BEACN voted this way" if onchain else "Why BEACN recommends this"
     points = [p for p in points if p][:3]
 
     # Drift: the on-chain vote differs from the current engine rationale. Trust the
