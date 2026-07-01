@@ -331,7 +331,11 @@ def find_chromium():
         path = shutil.which(name)
         if path:
             return path
-    raise RuntimeError("No chromium/chrome binary found on PATH")
+    # cron runs without /snap/bin on PATH; snap chromium is the only install on opsbox
+    for path in ("/snap/bin/chromium", "/snap/bin/chromium-browser"):
+        if Path(path).exists():
+            return path
+    raise RuntimeError("No chromium/chrome binary found on PATH or /snap/bin")
 
 
 def render_png(model, out_path):
