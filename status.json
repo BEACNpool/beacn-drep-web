@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-02T00:16:43+00:00",
+  "generated_at": "2026-07-02T00:20:03+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-07-02T00:16:43+00:00",
+    "at": "2026-07-02T00:20:03+00:00",
     "epoch": 640,
     "open_actions": 26,
-    "actions_with_our_vote": 12,
-    "summary": "Last checked at epoch 640. 26 open governance action(s); this DRep has voted on 12. Mode: shadow."
+    "actions_with_our_vote": 14,
+    "summary": "Last checked at epoch 640. 26 open governance action(s); this DRep has voted on 14. Mode: shadow."
   },
   "actions": [
     {
@@ -43,7 +43,7 @@
       "expires_after_epoch": 645,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "https://raw.githubusercontent.com/sundial-protocol/alchemy-proposal/d5460de0ed4af81602c44b65567dd8a54cf1c61c/data.jsonld"
     },
     {
@@ -187,7 +187,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreicf3r76m64xzy4jqhfbbhmzwpjz2qcw7q27hzjm3r7eo24lbxr7li"
     },
     {
