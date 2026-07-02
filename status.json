@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-02T00:24:51+00:00",
+  "generated_at": "2026-07-02T00:27:31+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-07-02T00:24:51+00:00",
+    "at": "2026-07-02T00:27:31+00:00",
     "epoch": 640,
     "open_actions": 26,
-    "actions_with_our_vote": 20,
-    "summary": "Last checked at epoch 640. 26 open governance action(s); this DRep has voted on 20. Mode: shadow."
+    "actions_with_our_vote": 23,
+    "summary": "Last checked at epoch 640. 26 open governance action(s); this DRep has voted on 23. Mode: shadow."
   },
   "actions": [
     {
@@ -55,7 +55,7 @@
       "expires_after_epoch": 645,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://QmT8VE8KBqPUYRpev2jybiMENhPrDh9gwjoNW9Pmgw4ffj"
     },
     {
@@ -103,7 +103,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreie2tzzdv7w4b2rplt3ng47abfyutra2agiyqdlxvgexpljdvkaezm"
     },
     {
@@ -163,7 +163,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreibk6hukcc2ou2aabwau6a6xcaqn7mwo2vj2wzpk723yxlmdn2dcra"
     },
     {
