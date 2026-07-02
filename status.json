@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-01T23:32:45+00:00",
+  "generated_at": "2026-07-02T00:45:16+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-07-01T23:32:45+00:00",
+    "at": "2026-07-02T00:45:16+00:00",
     "epoch": 640,
     "open_actions": 26,
-    "actions_with_our_vote": 9,
-    "summary": "Last checked at epoch 640. 26 open governance action(s); this DRep has voted on 9. Mode: shadow."
+    "actions_with_our_vote": 27,
+    "summary": "Last checked at epoch 640. 26 open governance action(s); this DRep has voted on 27. Mode: shadow."
   },
   "actions": [
     {
@@ -19,7 +19,7 @@
       "expires_after_epoch": 646,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://QmcZPndRnPR3giqybj1u24VVFx5q4csN9uYHuFCtT38uqD"
     },
     {
@@ -31,7 +31,7 @@
       "expires_after_epoch": 646,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmcYmPjBjNMz4fuSJcyFmBRuCHuoGcQjvwRELsEm4DW1YD"
     },
     {
@@ -43,7 +43,7 @@
       "expires_after_epoch": 645,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "https://raw.githubusercontent.com/sundial-protocol/alchemy-proposal/d5460de0ed4af81602c44b65567dd8a54cf1c61c/data.jsonld"
     },
     {
@@ -55,7 +55,7 @@
       "expires_after_epoch": 645,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://QmT8VE8KBqPUYRpev2jybiMENhPrDh9gwjoNW9Pmgw4ffj"
     },
     {
@@ -67,7 +67,7 @@
       "expires_after_epoch": 645,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://QmYVmiR5xqF5kTW55EazGVsC5rsBxPno94m1sDu4SFndMc"
     },
     {
@@ -79,7 +79,7 @@
       "expires_after_epoch": 645,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://QmdWtCCvK6CJUzP4SFiuL5W8hg3eNr5LyngJHnwjoNxJey"
     },
     {
@@ -91,7 +91,7 @@
       "expires_after_epoch": 645,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://QmYiT1K8KUr5wvAEkuLmiFJm79oy9pZ8CB3PbToAUePDYp"
     },
     {
@@ -103,7 +103,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreie2tzzdv7w4b2rplt3ng47abfyutra2agiyqdlxvgexpljdvkaezm"
     },
     {
@@ -115,7 +115,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreie3kt3363c47zgywymkz6sb5ae7b7i5ljepn3pmhjdjlpwuwptngi"
     },
     {
@@ -127,7 +127,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreidws5xwzccvn6lqlqroqmkdhob4uop6k7mvrrjbs5gaxskevkerbe"
     },
     {
@@ -139,7 +139,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreifcdcyszxluac2norfjt7shba7uycplnwrkzr2ebkbpdxvpwo6unq"
     },
     {
@@ -151,7 +151,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreibk6uedirxck6snc6lozidgc77gu322rvdn572xjfpt6iyql4qe6i"
     },
     {
@@ -163,7 +163,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreibk6hukcc2ou2aabwau6a6xcaqn7mwo2vj2wzpk723yxlmdn2dcra"
     },
     {
@@ -175,7 +175,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreidixjkquc6xtimbbdwet2klabcdzbt6kduktlca2ywl3slpqlgx2q"
     },
     {
@@ -187,7 +187,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreicf3r76m64xzy4jqhfbbhmzwpjz2qcw7q27hzjm3r7eo24lbxr7li"
     },
     {
@@ -199,7 +199,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreicg6l7ug42xjsai4p7smkwqt4ly4zuzy65weenhiwehgub7mcbg4i"
     },
     {
@@ -211,7 +211,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreidzymldukq7tuixvvwpwdqizfuz3pgtuon4b46pwjdciuxsordbue"
     },
     {
@@ -223,7 +223,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "ipfs://bafkreie4xwthsxjris2oc6sbmhspo757t6zdnyiyd6o4d7zyxs6vh5bzmy"
     },
     {
