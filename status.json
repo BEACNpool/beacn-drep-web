@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-02T00:31:51+00:00",
+  "generated_at": "2026-07-02T00:45:16+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-07-02T00:31:51+00:00",
+    "at": "2026-07-02T00:45:16+00:00",
     "epoch": 640,
     "open_actions": 26,
-    "actions_with_our_vote": 26,
-    "summary": "Last checked at epoch 640. 26 open governance action(s); this DRep has voted on 26. Mode: shadow."
+    "actions_with_our_vote": 27,
+    "summary": "Last checked at epoch 640. 26 open governance action(s); this DRep has voted on 27. Mode: shadow."
   },
   "actions": [
     {
@@ -31,7 +31,7 @@
       "expires_after_epoch": 646,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": null,
+      "our_vote": "VoteNo",
       "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmcYmPjBjNMz4fuSJcyFmBRuCHuoGcQjvwRELsEm4DW1YD"
     },
     {
