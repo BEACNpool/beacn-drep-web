@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-02T11:43:51+00:00",
+  "generated_at": "2026-07-03T11:44:44+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "shadow",
   "last_check": {
-    "at": "2026-07-02T11:43:51+00:00",
+    "at": "2026-07-03T11:44:44+00:00",
     "epoch": 640,
-    "open_actions": 26,
+    "open_actions": 27,
     "actions_with_our_vote": 27,
-    "summary": "Last checked at epoch 640. 26 open governance action(s); this DRep has voted on 27. Mode: shadow."
+    "summary": "Last checked at epoch 640. 27 open governance action(s); this DRep has voted on 27. Mode: shadow."
   },
   "actions": [
     {
@@ -33,6 +33,18 @@
       "recommendation": "NO",
       "our_vote": "VoteNo",
       "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmcYmPjBjNMz4fuSJcyFmBRuCHuoGcQjvwRELsEm4DW1YD"
+    },
+    {
+      "action_id": "a75645e0871f3dbb6207df867d9bd6a1a3a5befa40d68df6da651db4d6607fbf#0",
+      "cip129_action_id": "gov_action15atytcy8ru7mkcs8m7r8mx7k5x36t0h6grtgmak6v5wmf4nq07lsqhakceq",
+      "title": "Net Change Limit: Cardano Treasury (Epochs 613-713)",
+      "type": "InfoAction",
+      "proposed_in_epoch": 640,
+      "expires_after_epoch": 646,
+      "status": "open",
+      "recommendation": "ABSTAIN",
+      "our_vote": null,
+      "anchor_url": "ipfs://QmXFz2SrMXustcHZzmg6kz3vXRThebgyZ4pChF9grxqqMD"
     },
     {
       "action_id": "0f75dd11be0b7a6cb4b305a175b17cf4b60cd307c052fccabf9f572950e70583#0",
