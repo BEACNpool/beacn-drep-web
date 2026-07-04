@@ -437,6 +437,41 @@ function extractedAmount(detail) {
   return titleMatch ? titleMatch[1].trim() : "";
 }
 
+function renderDeepResearch(deep, number) {
+  if (!deep || !deep.status) return "";
+  const labels = {
+    approved_agentic: "Approved — agentic verification passed",
+    approved: "Approved — human reviewed",
+    drafted_pending_review: "Drafted — awaiting verification",
+    verification_failed: "Held — verification did not pass",
+    needs_independent_diligence: "Hand-curated profile — full dossier pending",
+  };
+  const v = deep.verification || {};
+  const ratio = Number.isFinite(Number(v.support_ratio)) ? `${Math.round(Number(v.support_ratio) * 100)}%` : "—";
+  const dossier = localPath(deep.dossier_path);
+  const receipt = localPath(deep.receipt_path);
+  return `<article class="card detail-section">
+    <h2><span>${number}</span>Deep-research dossier</h2>
+    <p class="subtitle">BEACN's own diligence for this action: a 7-section dossier drafted and independently fact-checked by separate model passes, published for anyone to spot-check.</p>
+    <div class="metric-grid">
+      <div class="metric"><span>Status</span><strong>${esc(labels[deep.status] || deep.status)}</strong></div>
+      <div class="metric"><span>Sections grounded</span><strong>${esc(deep.sections_grounded)}/${esc(deep.sections_total)}</strong></div>
+      <div class="metric"><span>Facts verified</span><strong>${v.fact_count ? `${esc(v.supported)}/${esc(v.fact_count)} (${ratio})` : "—"}</strong></div>
+    </div>
+    <div class="proof-list">
+      ${proofRow("Dossier complete", deep.dossier_complete)}
+      ${proofRow("Verifier model", v.model)}
+      ${proofRow("Verified at", v.verified_at_utc)}
+      ${proofRow("Material discrepancies", v.fact_count ? String(v.material_discrepancies ?? "") : "")}
+      ${proofRow("Drafted by", deep.owner)}
+    </div>
+    <div class="detail-links">
+      ${dossier ? `<a href="${attr(dossier)}" target="_blank" rel="noopener">Read the full dossier ↗</a>` : ""}
+      ${receipt ? `<a href="${attr(receipt)}" target="_blank" rel="noopener">Attestation receipt (per-fact verdicts) ↗</a>` : ""}
+    </div>
+  </article>`;
+}
+
 function renderAssessmentTree(assessment) {
   const sections = assessment?.sections || [];
   if (!sections.length) return "";
@@ -556,6 +591,8 @@ async function renderDetail(id) {
         ${proof.rationale_anchor_url ? `<a href="${attr(proof.rationale_anchor_url)}" target="_blank" rel="noopener">Published anchor ↗</a>` : ""}
       </div>
     </article>
+
+    ${renderDeepResearch(detail.deep_research, assessment?.sections?.length ? "06" : "05")}
   </section>`;
 }
 
