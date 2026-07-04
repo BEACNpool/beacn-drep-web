@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-03T11:44:44+00:00",
+  "generated_at": "2026-07-04T04:28:47+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
-  "mode": "shadow",
+  "mode": "live",
   "last_check": {
-    "at": "2026-07-03T11:44:44+00:00",
-    "epoch": 640,
+    "at": "2026-07-04T04:28:47+00:00",
+    "epoch": 641,
     "open_actions": 27,
-    "actions_with_our_vote": 27,
-    "summary": "Last checked at epoch 640. 27 open governance action(s); this DRep has voted on 27. Mode: shadow."
+    "actions_with_our_vote": 26,
+    "summary": "Last checked at epoch 641. 27 open governance action(s); this DRep has voted on 26. Mode: live."
   },
   "actions": [
     {
@@ -20,6 +20,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.4133,
+      "raw_score": -0.3833,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.52,
       "anchor_url": "ipfs://QmcZPndRnPR3giqybj1u24VVFx5q4csN9uYHuFCtT38uqD"
     },
     {
@@ -32,6 +37,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.4133,
+      "raw_score": -0.3833,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.52,
       "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmcYmPjBjNMz4fuSJcyFmBRuCHuoGcQjvwRELsEm4DW1YD"
     },
     {
@@ -43,8 +53,30 @@
       "expires_after_epoch": 646,
       "status": "open",
       "recommendation": "ABSTAIN",
-      "our_vote": null,
+      "our_vote": "Abstain",
+      "score": -0.07,
+      "raw_score": -0.05,
+      "llm_score_adjustment": -0.02,
+      "directional_threshold": 0.12,
+      "confidence": 0.4375,
       "anchor_url": "ipfs://QmXFz2SrMXustcHZzmg6kz3vXRThebgyZ4pChF9grxqqMD"
+    },
+    {
+      "action_id": "dfd81f8db652fd9263e0ce3bef043b4823045ec3a5da10c817681ada7a23f034#0",
+      "cip129_action_id": "gov_action1mlvplrdk2t7eyclqeca77ppmfq3sghkr5hdppjqhdqdd573r7q6qqms7jwt",
+      "title": "Bifrost: Unlocking Bitcoin DeFi on Cardano \u2014 Road to Mainnet (Phase 1 of 2)",
+      "type": "TreasuryWithdrawals",
+      "proposed_in_epoch": 640,
+      "expires_after_epoch": 646,
+      "status": "open",
+      "recommendation": "NO",
+      "our_vote": null,
+      "score": -0.4133,
+      "raw_score": -0.3833,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.52,
+      "anchor_url": "ipfs://QmZwHmFoyhd18WMRhv9356CXfbUqjkPsKKGZtCpVLaWgcU"
     },
     {
       "action_id": "0f75dd11be0b7a6cb4b305a175b17cf4b60cd307c052fccabf9f572950e70583#0",
@@ -56,6 +88,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.5133,
+      "raw_score": -0.4833,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.49,
       "anchor_url": "https://raw.githubusercontent.com/sundial-protocol/alchemy-proposal/d5460de0ed4af81602c44b65567dd8a54cf1c61c/data.jsonld"
     },
     {
@@ -68,6 +105,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.5133,
+      "raw_score": -0.4833,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.49,
       "anchor_url": "ipfs://QmT8VE8KBqPUYRpev2jybiMENhPrDh9gwjoNW9Pmgw4ffj"
     },
     {
@@ -80,6 +122,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.4133,
+      "raw_score": -0.3833,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.52,
       "anchor_url": "ipfs://QmYVmiR5xqF5kTW55EazGVsC5rsBxPno94m1sDu4SFndMc"
     },
     {
@@ -92,6 +139,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.4133,
+      "raw_score": -0.3833,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.52,
       "anchor_url": "ipfs://QmdWtCCvK6CJUzP4SFiuL5W8hg3eNr5LyngJHnwjoNxJey"
     },
     {
@@ -104,6 +156,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.5133,
+      "raw_score": -0.4833,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.49,
       "anchor_url": "ipfs://QmYiT1K8KUr5wvAEkuLmiFJm79oy9pZ8CB3PbToAUePDYp"
     },
     {
@@ -116,6 +173,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3933,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.04,
+      "directional_threshold": 0.12,
+      "confidence": 0.5183,
       "anchor_url": "ipfs://bafkreie2tzzdv7w4b2rplt3ng47abfyutra2agiyqdlxvgexpljdvkaezm"
     },
     {
@@ -128,6 +190,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3833,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.5158,
       "anchor_url": "ipfs://bafkreie3kt3363c47zgywymkz6sb5ae7b7i5ljepn3pmhjdjlpwuwptngi"
     },
     {
@@ -140,6 +207,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3833,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.5158,
       "anchor_url": "ipfs://bafkreidws5xwzccvn6lqlqroqmkdhob4uop6k7mvrrjbs5gaxskevkerbe"
     },
     {
@@ -152,6 +224,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3833,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.5158,
       "anchor_url": "ipfs://bafkreifcdcyszxluac2norfjt7shba7uycplnwrkzr2ebkbpdxvpwo6unq"
     },
     {
@@ -164,6 +241,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3833,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.5158,
       "anchor_url": "ipfs://bafkreibk6uedirxck6snc6lozidgc77gu322rvdn572xjfpt6iyql4qe6i"
     },
     {
@@ -176,6 +258,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3833,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.5158,
       "anchor_url": "ipfs://bafkreibk6hukcc2ou2aabwau6a6xcaqn7mwo2vj2wzpk723yxlmdn2dcra"
     },
     {
@@ -188,6 +275,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3833,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.5158,
       "anchor_url": "ipfs://bafkreidixjkquc6xtimbbdwet2klabcdzbt6kduktlca2ywl3slpqlgx2q"
     },
     {
@@ -200,6 +292,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3833,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.5158,
       "anchor_url": "ipfs://bafkreicf3r76m64xzy4jqhfbbhmzwpjz2qcw7q27hzjm3r7eo24lbxr7li"
     },
     {
@@ -212,6 +309,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3833,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.5158,
       "anchor_url": "ipfs://bafkreicg6l7ug42xjsai4p7smkwqt4ly4zuzy65weenhiwehgub7mcbg4i"
     },
     {
@@ -224,6 +326,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3833,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.5158,
       "anchor_url": "ipfs://bafkreidzymldukq7tuixvvwpwdqizfuz3pgtuon4b46pwjdciuxsordbue"
     },
     {
@@ -236,6 +343,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.3833,
+      "raw_score": -0.3533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.5158,
       "anchor_url": "ipfs://bafkreie4xwthsxjris2oc6sbmhspo757t6zdnyiyd6o4d7zyxs6vh5bzmy"
     },
     {
@@ -248,6 +360,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.4833,
+      "raw_score": -0.4533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.49,
       "anchor_url": "ipfs://QmQ6cDaLLeBMnf1zio7Xn8jV8uTUk68tPirx5uKH6HLr3L"
     },
     {
@@ -260,6 +377,11 @@
       "status": "open",
       "recommendation": "YES",
       "our_vote": "VoteYes",
+      "score": -0.03,
+      "raw_score": -0.01,
+      "llm_score_adjustment": -0.02,
+      "directional_threshold": 0.12,
+      "confidence": 0.4575,
       "anchor_url": "ipfs://bafkreib3ds3bj7izvspcmodz543m5y66slpcmoifzmvpl6xvq6mozaak64"
     },
     {
@@ -272,6 +394,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.5233,
+      "raw_score": -0.4833,
+      "llm_score_adjustment": -0.04,
+      "directional_threshold": 0.12,
+      "confidence": 0.49,
       "anchor_url": "ipfs://QmYM4nuNZTVMiMmvCr7mntct7YE1VgWyLgxGhyfWptgFgC"
     },
     {
@@ -284,6 +411,11 @@
       "status": "open",
       "recommendation": "ABSTAIN",
       "our_vote": "Abstain",
+      "score": -0.06,
+      "raw_score": -0.05,
+      "llm_score_adjustment": -0.01,
+      "directional_threshold": 0.12,
+      "confidence": 0.535,
       "anchor_url": "https://raw.githubusercontent.com/AGT-T/RTG/refs/heads/main/data.jsonld"
     },
     {
@@ -296,6 +428,11 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.4833,
+      "raw_score": -0.4533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.64,
       "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmSy2CiQhPBzzNLKDFVvMQaDb1FQDbmn9bJf6fVntVAQ1t"
     },
     {
@@ -308,6 +445,11 @@
       "status": "open",
       "recommendation": "YES",
       "our_vote": "VoteYes",
+      "score": 0.08,
+      "raw_score": 0.06,
+      "llm_score_adjustment": 0.02,
+      "directional_threshold": 0.12,
+      "confidence": 0.57,
       "anchor_url": "ipfs://bafkreidbxerdwxxntmmr6qvjvquyla3qbwhk3flfqjbm3d5lj2ubxfk3aq"
     },
     {
@@ -320,31 +462,12 @@
       "status": "open",
       "recommendation": "NO",
       "our_vote": "VoteNo",
+      "score": -0.4833,
+      "raw_score": -0.4533,
+      "llm_score_adjustment": -0.03,
+      "directional_threshold": 0.12,
+      "confidence": 0.64,
       "anchor_url": "ipfs://QmYaPeha2PvacQxAwt5ZRsunGGgVbNwgDzu9pxLWA8zS9d"
-    },
-    {
-      "action_id": "17e43ffe4b2e0df1787d54f21ac66643c74abb131a326272fceecbdbbdd0d3fc#0",
-      "cip129_action_id": "gov_action1zljrlljt9cxlz7ra2nep43nxg0r54wcnrgexyuhuam9ah0ws607qq2vcg4x",
-      "title": "Tweag Core Cardano Infrastructure: Treasury Withdrawal 2026\u20132027",
-      "type": "TreasuryWithdrawals",
-      "proposed_in_epoch": 634,
-      "expires_after_epoch": 640,
-      "status": "open",
-      "recommendation": "NO",
-      "our_vote": "VoteNo",
-      "anchor_url": "ipfs://bafkreieyqnaojdv7rofmwd6pndv3j6uuho6cnyyjcowbk5p5x2ux4e744e"
-    },
-    {
-      "action_id": "3f4b022c9913d52f9f39a8c82a1b9ebe5143fb745f3531f9366c7268bf9b9ce4#0",
-      "cip129_action_id": null,
-      "title": "Rare Evo and Dev Gov Day 2026: Cardano Title Sponsorship",
-      "type": "TreasuryWithdrawals",
-      "proposed_in_epoch": 633,
-      "expires_after_epoch": 639,
-      "status": "closed",
-      "recommendation": "NO",
-      "our_vote": "VoteNo",
-      "anchor_url": "ipfs://bafkreifbqd4hblfoi24clcyg4kzr4o2nivgprtaj7hi4uqdnjrvdz3rsfq"
     }
   ],
   "note": "Generated by the BEACN DRep bot on each check. A live feed may replace this later."
