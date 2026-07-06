@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-07-05T11:47:43.055365+00:00",
+  "generated_at_utc": "2026-07-06T11:52:19.356965+00:00",
   "inputs": {
     "core_output_dir": "/home/ubuntudesktop/.openclaw/workspace/beacn-drep-core/data/output",
     "resources_governance_dir": "/home/ubuntudesktop/.openclaw/workspace/beacn-drep-resources/data/input/governance",
     "resources_drep_dir": "/home/ubuntudesktop/.openclaw/workspace/beacn-drep-resources/data/input/drep",
-    "resources_actions_hash": "4b05cdc7701234c758e140bbb3d952f98f1239189e32cdf5ddbb04c6b5320614",
+    "resources_actions_hash": "a0657a311df6ed9d4d22ef6775fe0a47b958e05efd6a719880f2f35d0a9126a7",
     "resources_top_drep_hash": "2897d2b484a054921e4b738b28f8e47a7190add3c0f18daace9edfcedc7214ab"
   },
   "summary": {
