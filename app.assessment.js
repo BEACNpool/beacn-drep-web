@@ -647,8 +647,12 @@ function renderDecisionContract(detail, rationale) {
     ${rows ? `<div class="metric-grid score-grid">${rows}</div>` : ""}
     <div class="proof-list">
       ${proofRow("Composite formula", contract.composite_formula)}
+      ${proofRow("Benefit weights", contract.benefit_formula)}
       ${proofRow("Composite score", dimensions.composite)}
       ${proofRow("Evidence status", dimensions.evidence_status)}
+      ${proofRow("Intrinsic merit", contract.merit_recommendation || rationale.merit_recommendation)}
+      ${proofRow("Merit reason", contract.merit_reason || rationale.merit_reason)}
+      ${proofRow("Execution distinction", contract.execution_note)}
       ${proofRow("YES rule", contract.yes_rule)}
       ${proofRow("NO rule", contract.no_rule)}
       ${proofRow("Portfolio / NCL gate", contract.portfolio_gate)}
