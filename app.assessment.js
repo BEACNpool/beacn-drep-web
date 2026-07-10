@@ -97,7 +97,7 @@ const recordFor = item => {
   return {
     ...item,
     cip129_action_id: item.action_id,
-    decision: verdictKey(live.our_vote || item.decision || live.recommendation),
+    decision: verdictKey(live.recommendation || item.decision || live.our_vote),
     onchain: !!live.our_vote,
     transaction_hash: live.transaction_hash || null,
     expires_after_epoch: live.expires_after_epoch,
@@ -116,7 +116,7 @@ const currentRecords = () => {
       ...live,
       action_id: live.cip129_action_id,
       cip129_action_id: live.cip129_action_id,
-      decision: verdictKey(live.our_vote || live.recommendation || record.decision),
+      decision: verdictKey(live.recommendation || record.decision || live.our_vote),
       onchain: !!live.our_vote,
       summary: summaryFor(live.cip129_action_id)
     };
@@ -626,6 +626,38 @@ function renderAssessmentTree(assessment) {
   </article>`;
 }
 
+function renderDecisionContract(detail, rationale) {
+  const contract = detail.decision_contract || rationale.decision_contract || {};
+  const dimensions = contract.dimensions || rationale.treasury_dimensions || {};
+  if (!Object.keys(contract).length && !Object.keys(dimensions).length) return "";
+  const labels = {
+    benefit: "Ecosystem benefit", delivery_confidence: "Delivery confidence",
+    cost_efficiency: "Cost efficiency", downside_risk: "Downside risk"
+  };
+  const floors = contract.yes_floors || {};
+  const rows = Object.entries(labels).filter(([key]) => dimensions[key] !== undefined).map(([key, label]) => {
+    const value = Number(dimensions[key]);
+    const threshold = floors[key];
+    const comparator = key === "downside_risk" ? "ceiling" : "floor";
+    return `<div class="metric"><span>${esc(label)}</span><strong>${Number.isFinite(value) ? `${Math.round(value * 100)}%` : "—"}</strong>${threshold !== undefined ? `<small>${comparator}: ${Math.round(Number(threshold) * 100)}%</small>` : ""}</div>`;
+  }).join("");
+  return `<article class="card detail-section">
+    <h2><span>04</span>How this decision was scored</h2>
+    <p class="subtitle">The deterministic policy is binding. Model influence on the vote is ${esc(contract.model_vote_influence ?? "0")}; missing evidence causes a hold, not a NO.</p>
+    ${rows ? `<div class="metric-grid score-grid">${rows}</div>` : ""}
+    <div class="proof-list">
+      ${proofRow("Composite formula", contract.composite_formula)}
+      ${proofRow("Composite score", dimensions.composite)}
+      ${proofRow("Evidence status", dimensions.evidence_status)}
+      ${proofRow("YES rule", contract.yes_rule)}
+      ${proofRow("NO rule", contract.no_rule)}
+      ${proofRow("Portfolio / NCL gate", contract.portfolio_gate)}
+      ${proofRow("Weights version", contract.weights_version)}
+      ${proofRow("Weights hash", contract.weights_hash)}
+    </div>
+  </article>`;
+}
+
 async function renderDetail(id) {
   document.body.classList.add("detail-open");
   const backRoute = activeActionIds().has(id) ? "#/home" : "#/proposals";
@@ -654,7 +686,7 @@ async function renderDetail(id) {
   const onchainKey = onchainVote ? verdictKey(onchainVote) : "";
   const engineKey = verdictKey(decision.vote || proof.vote || listRecord.decision);
   const drift = onchainKey && onchainKey !== engineKey;
-  const verdict = verdictMeta(onchainVote || decision.vote || proof.vote || listRecord.decision);
+  const verdict = verdictMeta(decision.vote || proof.vote || listRecord.decision || onchainVote);
   const statement = summaryFor(id) || rationale.summary || "No plain-language statement has been published for this action.";
   const amount = extractedAmount(detail);
   const snapshot = localPath(evidence.download_path || listRecord.proposal_path);
@@ -669,7 +701,7 @@ async function renderDetail(id) {
     <article class="card detail-hero">
       <div class="detail-meta"><span class="status-pill">${esc(detail.status || listRecord.status || "recorded")}</span><span class="type-pill">${esc(detail.type || listRecord.type || "Unknown type")}</span></div>
       <h1>${esc(detail.title || listRecord.title || "Governance action")}</h1>
-      <span class="verdict ${verdict.cls}">${esc(verdict.label)}</span>${onchainVote ? '<span class="onchain-tag">On-chain ✓</span>' : ""}
+      <span class="verdict ${verdict.cls}">${esc(verdict.label)}</span><span class="recommendation-tag">Current recommendation</span>
       <div class="detail-links"><a href="${cardanoscan.action(id)}" target="_blank" rel="noopener">Action on Cardanoscan ↗</a>${decision.transaction_hash ? `<a href="${cardanoscan.tx(decision.transaction_hash)}" target="_blank" rel="noopener">Vote transaction ↗</a>` : ""}</div>
     </article>
 
@@ -692,13 +724,16 @@ async function renderDetail(id) {
 
     <article class="card detail-section">
       <h2><span>02</span>BEACN's verdict</h2>
-      ${onchainVote ? `<p class="onchain-note"><strong>On-chain vote: ${esc(verdictMeta(onchainKey).label)} ✓</strong> — recorded in Cardano governance state, authoritative.</p>` : ""}
+      <p class="onchain-note"><strong>Current recommendation: ${esc(verdict.label)}</strong> — this is the binding result of the latest published assessment.</p>
+      ${onchainVote ? `<p class="onchain-note"><strong>Recorded on-chain vote: ${esc(verdictMeta(onchainKey).label)} ✓</strong> — immutable history unless a later vote revision is submitted.</p>` : ""}
       <div class="callout">${esc(statement)}</div>
-      ${drift ? `<p class="timestamp drift-note" style="margin-top:10px">Note: the on-chain vote (${esc(verdictMeta(onchainKey).label)}) differs from the current engine rationale (${esc(verdictMeta(engineKey).label)}). The chain is authoritative; the two are being reconciled.</p>` : ""}
+      ${drift ? `<p class="timestamp drift-note" style="margin-top:10px">Decision update: the recorded on-chain vote (${esc(verdictMeta(onchainKey).label)}) differs from the current recommendation (${esc(verdictMeta(engineKey).label)}). No new ballot is implied; both facts are shown separately.</p>` : ""}
       ${state.statements.get(id)?.model ? `<p class="timestamp" style="margin-top:10px">Plain-language layer: ${esc(state.statements.get(id).model)}. The deterministic record below is binding.</p>` : ""}
     </article>
 
     ${renderAssessmentTree(assessment)}
+
+    ${renderDecisionContract(detail, rationale)}
 
     <article class="card detail-section">
       <h2><span>${assessment?.sections?.length ? "04" : "03"}</span>Reasons that structured the vote</h2>
