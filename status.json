@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-10T12:14:51+00:00",
+  "generated_at": "2026-07-10T13:27:07+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-07-10T12:14:51+00:00",
+    "at": "2026-07-10T13:27:07+00:00",
     "epoch": 642,
     "open_actions": 27,
     "actions_with_our_vote": 27,
@@ -413,7 +413,7 @@
       "our_vote": "VoteYes",
       "score": 0.0,
       "raw_score": -0.07,
-      "llm_score_adjustment": -0.02,
+      "llm_score_adjustment": -0.03,
       "directional_threshold": 0.12,
       "confidence": 0.5,
       "anchor_url": "ipfs://bafkreib3ds3bj7izvspcmodz543m5y66slpcmoifzmvpl6xvq6mozaak64"
@@ -447,7 +447,7 @@
       "our_vote": "Abstain",
       "score": -0.05,
       "raw_score": -0.05,
-      "llm_score_adjustment": -0.02,
+      "llm_score_adjustment": -0.01,
       "directional_threshold": 0.12,
       "confidence": 0.4825,
       "anchor_url": "https://raw.githubusercontent.com/AGT-T/RTG/refs/heads/main/data.jsonld"
