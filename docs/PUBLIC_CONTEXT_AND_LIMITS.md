@@ -35,6 +35,12 @@ The following are explicitly excluded from decision logic:
 - Budget scope, cost assumptions, and sustainability logic should be explicit enough for public review.
 - Where proposal sustainability depends on fee recovery or ongoing support, that dependency should be clearly stated and testable.
 - If financial sustainability context is materially incomplete, confidence should be reduced and conservative outcomes are preferred.
+- Missing evidence is not negative evidence: it yields `NEEDS_MORE_INFO` or `ABSTAIN`, never a
+  penalty-driven treasury `NO`.
+- Treasury `YES` requires independently pinned ecosystem benefit plus delivery, cost-efficiency,
+  and downside-protection floors. Treasury `NO` requires affirmative independently pinned evidence
+  of waste, duplication, excessive cost, delivery failure, private capture, or unacceptable downside.
+- A proposal anchor proves what the proposer said; it is not independent proof that the claim is true.
 
 ## Why this exists
 

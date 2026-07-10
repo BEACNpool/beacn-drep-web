@@ -30,14 +30,21 @@
   <link rel="stylesheet" href="./styles.assessment.css" />
 </head>
 <body>
+  <a class="skip-link" href="#app">Skip to governance content</a>
   <div class="app-shell">
     <header class="app-header">
       <a class="brand" href="#/home" aria-label="BEACN DRep home">
         <img src="./assets/logo.png" width="38" height="38" alt="" />
         <span><strong>BEACN DRep</strong><small>Verifiable governance</small></span>
       </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#/home" data-tab="home">Live</a>
+        <a href="#/why" data-tab="why">Why delegate</a>
+        <a href="#/proposals" data-tab="proposals">Archive</a>
+        <a href="#/method" data-tab="method">Method</a>
+      </nav>
       <div class="header-actions">
-        <span class="connection-dot" id="connection-dot" title="Network status"></span>
+        <span class="connection-status"><span class="connection-dot" id="connection-dot" title="Network status"></span><span>Public feeds</span></span>
         <button class="icon-button" id="refresh-button" type="button" aria-label="Refresh data">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6v5h-5M4 18v-5h5M6.1 9a7 7 0 0 1 11.5-2.6L20 9M4 15l2.4 2.6A7 7 0 0 0 18 15"/></svg>
         </button>

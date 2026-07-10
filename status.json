@@ -1,15 +1,32 @@
 {
-  "generated_at": "2026-07-08T13:00:03+00:00",
+  "generated_at": "2026-07-10T03:37:35+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-07-08T13:00:03+00:00",
-    "epoch": 641,
-    "open_actions": 28,
+    "at": "2026-07-10T03:37:35+00:00",
+    "epoch": 642,
+    "open_actions": 27,
     "actions_with_our_vote": 27,
-    "summary": "Last checked at epoch 641. 28 open governance action(s); this DRep has voted on 27. Mode: live."
+    "summary": "Last checked at epoch 642. 27 open governance action(s); this DRep has voted on 27. Mode: live."
   },
   "actions": [
+    {
+      "action_id": "529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0",
+      "cip129_action_id": "529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0",
+      "title": "Withdraw 120,000,000 ada for AlphaGrowth\u2019s Cardano PRIME",
+      "type": "TreasuryWithdrawals",
+      "proposed_in_epoch": 642,
+      "expires_after_epoch": 648,
+      "status": "open",
+      "recommendation": "ABSTAIN",
+      "our_vote": null,
+      "score": 0.0,
+      "raw_score": 0.0,
+      "llm_score_adjustment": 0.0,
+      "directional_threshold": 0.12,
+      "confidence": 0.1,
+      "anchor_url": "ipfs://bafkreieaerpnfvjblld4pywite3rbfxkebf2fvlacerklrdmsfvp4kvui4"
+    },
     {
       "action_id": "2f429bde312c0806bd16199da10f4145da9807161e99d4486174c6fb9a91f983#0",
       "cip129_action_id": "2f429bde312c0806bd16199da10f4145da9807161e99d4486174c6fb9a91f983#0",
@@ -71,11 +88,11 @@
       "status": "open",
       "recommendation": "ABSTAIN",
       "our_vote": "Abstain",
-      "score": -0.07,
+      "score": -0.05,
       "raw_score": -0.05,
       "llm_score_adjustment": -0.02,
       "directional_threshold": 0.12,
-      "confidence": 0.4875,
+      "confidence": 0.4825,
       "anchor_url": "ipfs://QmXFz2SrMXustcHZzmg6kz3vXRThebgyZ4pChF9grxqqMD"
     },
     {
@@ -392,13 +409,13 @@
       "proposed_in_epoch": 637,
       "expires_after_epoch": 643,
       "status": "open",
-      "recommendation": "YES",
+      "recommendation": "ABSTAIN",
       "our_vote": "VoteYes",
-      "score": -0.1,
+      "score": 0.0,
       "raw_score": -0.07,
       "llm_score_adjustment": -0.03,
       "directional_threshold": 0.12,
-      "confidence": 0.525,
+      "confidence": 0.5,
       "anchor_url": "ipfs://bafkreib3ds3bj7izvspcmodz543m5y66slpcmoifzmvpl6xvq6mozaak64"
     },
     {
@@ -454,12 +471,12 @@
     },
     {
       "action_id": "c75bb221606687aa858ec89c7a15c88e9c17054f2e045ae31ecc8a9687cd206e#0",
-      "cip129_action_id": "c75bb221606687aa858ec89c7a15c88e9c17054f2e045ae31ecc8a9687cd206e#0",
+      "cip129_action_id": null,
       "title": "Reduce the committeeMinSize parameter from 7 to 5",
       "type": "ParameterChange",
       "proposed_in_epoch": 635,
       "expires_after_epoch": 641,
-      "status": "open",
+      "status": "closed",
       "recommendation": "ABSTAIN",
       "our_vote": "VoteYes",
       "score": 0.0,
@@ -471,12 +488,12 @@
     },
     {
       "action_id": "4f6e5df9a6e14bd49e406e2bbb0d108b3be2be64b9569b930053a0c1eebe0d47#0",
-      "cip129_action_id": "4f6e5df9a6e14bd49e406e2bbb0d108b3be2be64b9569b930053a0c1eebe0d47#0",
+      "cip129_action_id": null,
       "title": "IO: Hydra",
       "type": "TreasuryWithdrawals",
       "proposed_in_epoch": 635,
       "expires_after_epoch": 641,
-      "status": "open",
+      "status": "closed",
       "recommendation": "ABSTAIN",
       "our_vote": "VoteNo",
       "score": 0.0,

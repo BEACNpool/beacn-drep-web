@@ -275,7 +275,7 @@ function renderHome() {
       </div>`
     : '<div class="card empty">No active proposals match this filter right now.</div>';
   app.innerHTML = `<section class="view">
-    ${viewHeader("Active governance", "Live proposals", "Every governance action currently open for DRep voting. Swipe the deck, then open any card to follow the decision flow from public evidence to the BEACN verdict and on-chain proof.")}
+    ${viewHeader("Cardano governance · independently verifiable", "Governance, in plain sight.", "Follow every open proposal from public evidence to the BEACN verdict and its on-chain proof. No black box, no missing receipts.")}
     <article class="card epoch-dashboard">
       <div class="epoch-dashboard-top">
         <div>
