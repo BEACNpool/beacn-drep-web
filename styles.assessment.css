@@ -323,3 +323,45 @@ select.sel:focus { border-color: var(--blue); outline: none; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* ---------- flags ---------- */
+.flags { list-style: none; display: grid; gap: var(--s2); }
+.flag {
+  display: flex; gap: var(--s3); align-items: baseline; flex-wrap: wrap;
+  padding: var(--s2) var(--s3); border-radius: 8px;
+  border-left: 3px solid var(--line-2); background: var(--panel-2);
+  font-size: var(--f-sm);
+}
+.flag.red    { border-left-color: var(--no);      background: rgba(244,63,94,.08); }
+.flag.yellow { border-left-color: var(--abstain); background: rgba(234,179,8,.06); }
+.flag-name { font-weight: 600; font-size: var(--f-xs); letter-spacing: .04em; white-space: nowrap; }
+.flag.red .flag-name    { color: var(--no); }
+.flag.yellow .flag-name { color: var(--abstain); }
+.flag-detail { color: var(--mut); font-size: var(--f-xs); min-width: 0; overflow-wrap: anywhere; }
+
+/* ---------- NCL capacity ---------- */
+.ncl-bar {
+  height: 10px; border-radius: 5px; overflow: hidden;
+  background: linear-gradient(90deg, rgba(16,185,129,.25), rgba(16,185,129,.15));
+  box-shadow: inset 0 0 0 1px var(--line-2);
+}
+.ncl-bar > i {
+  display: block; height: 100%;
+  background: linear-gradient(90deg, var(--amber), var(--no));
+}
+.ncl-legend {
+  display: flex; justify-content: space-between; gap: var(--s3);
+  margin-top: 6px; font-size: var(--f-xs); color: var(--dim); flex-wrap: wrap;
+}
+.ncl-legend b { color: var(--txt); font-family: var(--mono); }
+.ncl-verdict {
+  margin-top: var(--s3); padding: var(--s3);
+  border-radius: 8px; font-size: var(--f-sm); border-left: 3px solid;
+}
+.ncl-verdict.fits { border-left-color: var(--yes); background: rgba(16,185,129,.08); color: #a7f3d0; }
+.ncl-verdict.over { border-left-color: var(--no);  background: rgba(244,63,94,.08); color: #fda4af; }
+.ncl-verdict b { font-family: var(--mono); }
+.caveat {
+  margin-top: var(--s3); padding-top: var(--s3); border-top: 1px solid var(--line);
+  font-size: var(--f-xs); color: var(--dim); line-height: 1.6;
+}

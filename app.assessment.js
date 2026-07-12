@@ -70,6 +70,78 @@ function divergeHTML(a) {
     <b>${esc(a.decision)}</b>. The cast vote stands until a revision clears the anti-churn policy.</span>`;
 }
 
+const ADA = lov => {
+  const n = Number(lov || 0) / 1e6;
+  if (!n) return "0 ₳";
+  if (n >= 1e6) return `${(n / 1e6).toFixed(n >= 1e7 ? 0 : 2)}M ₳`;
+  if (n >= 1e3) return `${(n / 1e3).toFixed(0)}k ₳`;
+  return `${n.toFixed(0)} ₳`;
+};
+
+/** Why a proposal drew scrutiny. Red flags first — a reader asking "why didn't this pass?"
+ *  should see these before anything else. */
+function flagsHTML(flags) {
+  if (!Array.isArray(flags) || !flags.length) return "";
+  const order = { red: 0, yellow: 1 };
+  const sorted = [...flags].sort((a, b) => (order[a.severity] ?? 9) - (order[b.severity] ?? 9));
+  return `<div class="panel">
+    <h2>Flags raised on this proposal</h2>
+    <p class="muted sm" style="margin-bottom:10px">Automated checks against the proposal's own
+      metadata and on-chain record. A flag is a reason to look harder — not, by itself, a reason
+      to vote no.</p>
+    <ul class="flags">
+      ${sorted.map(f => `<li class="flag ${esc(f.severity)}">
+        <span class="flag-name">${esc(f.flag)}</span>
+        <span class="flag-detail">${esc(f.detail)}</span>
+      </li>`).join("")}
+    </ul>
+  </div>`;
+}
+
+/** The Net Change Limit and the arithmetic this ask had to fit inside. Published so anyone can
+ *  check it themselves — including the honest caveat that no NCL is ever formally enacted. */
+function capacityHTML(tc) {
+  if (!tc) return "";
+  if (!tc.verified) {
+    return `<div class="panel"><h2>Treasury capacity</h2>
+      <p class="muted sm">${esc(tc.why || "No Net Change Limit is currently pinned.")}</p></div>`;
+  }
+  const req = Number(tc.requested_lovelace || 0);
+  const rem = Number(tc.remaining_capacity_lovelace || 0);
+  const ncl = Number(tc.ncl_lovelace || 0);
+  const spent = Number(tc.withdrawals_in_period_lovelace || 0);
+  const pctSpent = ncl ? Math.min(100, (spent / ncl) * 100) : 0;
+  const fits = tc.fits_remaining;
+  return `<div class="panel">
+    <h2>Treasury capacity — the Net Change Limit</h2>
+    <p class="muted sm" style="margin-bottom:12px">Cardano caps how much ADA may leave the treasury
+      in a period. BEACN will not vote to fund an ask that does not fit inside what is left.</p>
+
+    <div class="ncl-bar" role="img" aria-label="${pctSpent.toFixed(0)}% of the Net Change Limit already spent">
+      <i style="width:${pctSpent}%"></i>
+    </div>
+    <div class="ncl-legend">
+      <span><b>${ADA(spent)}</b> already withdrawn</span>
+      <span><b>${ADA(rem)}</b> left of ${ADA(ncl)}</span>
+    </div>
+
+    ${req > 0 ? `<div class="ncl-verdict ${fits ? "fits" : "over"}">
+      This proposal asks <b>${ADA(req)}</b> —
+      ${fits ? `it fits within the ${ADA(rem)} still available.`
+             : `more than the ${ADA(rem)} still available, so it cannot be funded within this period's limit.`}
+    </div>` : ""}
+
+    <div class="kv" style="margin-top:12px">
+      <div class="kv-row"><span class="k">Limit</span><span class="v">${ADA(ncl)} · epochs ${esc(tc.period_start_epoch)}–${esc(tc.period_end_epoch)}</span></div>
+      <div class="kv-row"><span class="k">Measured as</span><span class="v">${esc((tc.spend_basis || "").replace(/_/g, " "))}</span></div>
+      <div class="kv-row"><span class="k">Set by</span><span class="v">${esc(short(tc.source_action_id, 16))}</span></div>
+      <div class="kv-row"><span class="k">Anchor hash</span><span class="v">${esc(short(tc.source_anchor_hash, 14))} ✓ verified</span></div>
+      ${tc.drep_support ? `<div class="kv-row"><span class="k">DRep support</span><span class="v">${esc(tc.drep_support.yes_pct_of_participating_stake)}% of participating stake</span></div>` : ""}
+    </div>
+    ${tc.caveat ? `<p class="caveat">${esc(tc.caveat)}</p>` : ""}
+  </div>`;
+}
+
 function cardHTML(a) {
   const openChip = a.status === "active"
     ? `<span class="chip open">Open</span>`
@@ -269,6 +341,24 @@ function viewMethod() {
   </section>
 
   <section class="sec">
+    <div class="sec-h"><h2>The hardest gate: the Net Change Limit</h2></div>
+    <p class="sec-lead">Cardano's Constitution caps how much ADA may leave the treasury in a
+      defined period. However good a proposal is, BEACN will not vote to fund an ask that does not
+      fit inside what is left of that limit. Here is the exact arithmetic every treasury decision
+      is measured against — check it yourself.</p>
+    ${capacityHTML(state.index?.treasury_capacity)}
+    <div class="prose">
+      <p><strong>Why this is not simply "on-chain".</strong> The NCL is set by an <em>Info</em>
+        governance action. Info actions change no ledger state, so they always expire and can never
+        be enacted — there is no such thing as a formally ratified NCL to look up. BEACN therefore
+        pins the strongest evidence that does exist: an anchor document byte-verified against its
+        on-chain hash, covering the current epoch, which won a majority of participating DRep
+        stake. The later action supersedes the earlier. That caveat is published with the number
+        above, and travels into every rationale that relies on it.</p>
+    </div>
+  </section>
+
+  <section class="sec">
     <div class="sec-h"><h2>When BEACN abstains</h2></div>
     <div class="prose">
       <p>Abstention is a real answer, not a dodge — but it is only honest when it is <em>about the
@@ -388,6 +478,9 @@ async function viewDetail(id) {
       <div class="xs muted" style="margin-top:4px">${(conf * 100).toFixed(1)}%</div>
     </div>
   </div>
+
+  ${flagsHTML(d.flags)}
+  ${capacityHTML(d.treasury_capacity)}
 
   ${missing.length ? `<div class="panel">
     <h2>What is still missing</h2>
