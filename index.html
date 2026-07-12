@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>BEACN DRep — Verifiable Cardano Governance</title>
-  <meta name="description" content="Transparent, deterministic Cardano governance. Inspect every BEACN DRep verdict, rationale, public input, and reproducibility hash." />
-  <meta name="theme-color" content="#020617" />
+  <title>BEACN DRep — Cardano governance, decided in the open</title>
+  <meta name="description" content="An autonomous, evidence-based Cardano DRep. Every vote is deterministic, replayable, and published with its reasoning and its on-chain proof." />
+  <meta name="theme-color" content="#0a0e14" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -17,69 +17,60 @@
   <link rel="canonical" href="https://beacnpool.github.io/beacn-drep-web/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="BEACN DRep" />
-  <meta property="og:title" content="BEACN DRep — Transparent Autonomous Governance on Cardano" />
-  <meta property="og:description" content="Every Cardano governance vote, decided by open deterministic rules and published with rationale and on-chain proof." />
+  <meta property="og:title" content="BEACN DRep — Cardano governance, decided in the open" />
+  <meta property="og:description" content="Open rules. Public evidence. Reproducible decisions. On-chain proof for every vote." />
   <meta property="og:url" content="https://beacnpool.github.io/beacn-drep-web/" />
   <meta property="og:image" content="https://beacnpool.github.io/beacn-drep-web/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BEACN DRep — Transparent Autonomous Governance on Cardano" />
-  <meta name="twitter:description" content="Open rules. Public evidence. Reproducible decisions. On-chain proof." />
+  <meta name="twitter:title" content="BEACN DRep — Cardano governance, decided in the open" />
+  <meta name="twitter:description" content="Open rules. Public evidence. Reproducible decisions. On-chain proof for every vote." />
   <meta name="twitter:image" content="https://beacnpool.github.io/beacn-drep-web/og.png" />
   <link rel="stylesheet" href="./styles.assessment.css" />
 </head>
 <body>
-  <a class="skip-link" href="#app">Skip to governance content</a>
-  <div class="app-shell">
-    <header class="app-header">
-      <a class="brand" href="#/home" aria-label="BEACN DRep home">
-        <img src="./assets/logo.png" width="38" height="38" alt="" />
-        <span><strong>BEACN DRep</strong><small>Verifiable governance</small></span>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <a class="brand" href="#/live" aria-label="BEACN DRep home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-txt"><b>BEACN</b><span class="brand-sub">DRep</span></span>
       </a>
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="#/home" data-tab="home">Live</a>
-        <a href="#/why" data-tab="why">Why delegate</a>
-        <a href="#/proposals" data-tab="proposals">Archive</a>
-        <a href="#/method" data-tab="method">Method</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#/live" data-route="live">Live</a>
+        <a href="#/record" data-route="record">Record</a>
+        <a href="#/method" data-route="method">Method</a>
+        <a href="#/delegate" data-route="delegate">Delegate</a>
       </nav>
-      <div class="header-actions">
-        <span class="connection-status"><span class="connection-dot" id="connection-dot" title="Network status"></span><span>Public feeds</span></span>
-        <button class="icon-button" id="refresh-button" type="button" aria-label="Refresh data">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6v5h-5M4 18v-5h5M6.1 9a7 7 0 0 1 11.5-2.6L20 9M4 15l2.4 2.6A7 7 0 0 0 18 15"/></svg>
-        </button>
-      </div>
-    </header>
+    </div>
+    <div class="wrap"><div id="sysbanner" class="sysbanner" hidden></div></div>
+  </header>
 
-    <div class="refresh-track" aria-hidden="true"><span id="refresh-progress"></span></div>
-    <main id="app" tabindex="-1" aria-live="polite">
-      <div class="view-loading">
-        <div class="skeleton hero-skeleton"></div>
-        <div class="skeleton-grid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
-        <div class="skeleton card-skeleton"></div><div class="skeleton card-skeleton"></div>
-      </div>
-    </main>
+  <main id="main" class="wrap">
+    <div id="view" aria-live="polite">
+      <div class="loading"><span class="spin" aria-hidden="true"></span> Loading the public record…</div>
+    </div>
+  </main>
 
-    <nav class="tab-bar" aria-label="Primary navigation">
-      <a href="#/home" data-tab="home">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
-        <span>Live</span>
-      </a>
-      <a href="#/why" data-tab="why">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>
-        <span>Why</span>
-      </a>
-      <a href="#/proposals" data-tab="proposals">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h5"/></svg>
-        <span>Archive</span>
-      </a>
-      <a href="#/method" data-tab="method">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V7zM8.5 12l2.2 2.2 4.8-5"/></svg>
-        <span>Method</span>
-      </a>
-    </nav>
-  </div>
-  <div class="toast" id="toast" role="status"></div>
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <div>
+        <p class="foot-lead">Everything this DRep decides is public, deterministic, and replayable.</p>
+        <p class="muted sm">The binding vote is pure Python over declared inputs. A language model assists
+          with extraction and plain-English explanation only — it can never set, change, or veto a vote.</p>
+      </div>
+      <nav class="foot-links" aria-label="Source repositories">
+        <a href="https://github.com/BEACNpool/beacn-drep-soul" rel="noopener">Doctrine</a>
+        <a href="https://github.com/BEACNpool/beacn-drep-resources" rel="noopener">Inputs</a>
+        <a href="https://github.com/BEACNpool/beacn-drep-core" rel="noopener">Engine</a>
+        <a href="https://github.com/BEACNpool/beacn-drep-web" rel="noopener">This site</a>
+      </nav>
+    </div>
+    <div class="wrap"><p id="provenance" class="muted xs prov"></p></div>
+  </footer>
+
   <script src="./app.assessment.js" defer></script>
 </body>
 </html>
