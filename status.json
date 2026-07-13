@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-13T04:28:31+00:00",
+  "generated_at": "2026-07-13T04:50:33+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-07-13T04:28:31+00:00",
+    "at": "2026-07-13T04:50:33+00:00",
     "epoch": 642,
     "open_actions": 27,
     "actions_with_our_vote": 27,
@@ -257,7 +257,7 @@
       "expires_after_epoch": 644,
       "status": "open",
       "recommendation": "YES",
-      "our_vote": "VoteNo",
+      "our_vote": "VoteYes",
       "score": 0.189,
       "raw_score": -0.08,
       "llm_score_adjustment": 0.02,
