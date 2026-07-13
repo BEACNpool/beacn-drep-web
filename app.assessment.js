@@ -669,11 +669,16 @@ async function runVerification(actionId) {
      other two checks to stand on their own. Marking it FAILED would cry wolf; hiding it would be
      dishonest about the coverage. */
   try {
-    const want = pov.rationale_anchor_hash;
+    // Check against the hash THE CHAIN RECORDS for the vote, never against one we derived here.
+    // The engine rewrites its local anchor hash every time it re-scores on fresh evidence, so
+    // comparing the published file to that would be comparing a file to its own hash: it passes
+    // always and proves nothing. The chain's copy is immutable and beyond BEACN's reach to revise,
+    // which is the entire reason it is worth checking.
+    const want = pov.onchain_anchor_hash;
     if (!want) {
       notAnchored = true;
       setCheck("anchor", "na", "not anchored",
-        hashRow("status", "This vote predates on-chain rationale anchoring, so there is no anchor hash to check against.") +
+        hashRow("status", "The chain records no rationale anchor for this vote — BEACN's earliest votes predate anchoring, so there is nothing to check against.") +
         (dec.transaction_hash ? hashRow("vote tx", dec.transaction_hash) : ""));
       throw { handled: true };
     }
@@ -685,7 +690,7 @@ async function runVerification(actionId) {
     const r = await verifyAnchor(bytes, want);
     allPass = allPass && r.ok;
     setCheck("anchor", r.ok ? "pass" : "fail", r.ok ? "verified" : "MISMATCH",
-      hashRow("on-chain", r.want, r.ok ? "match" : "mismatch") +
+      hashRow("in vote tx", r.want, r.ok ? "match" : "mismatch") +
       hashRow("computed", r.got, r.ok ? "match" : "mismatch") +
       hashRow("algorithm", "blake2b-256, computed in this browser") +
       (dec.transaction_hash ? hashRow("vote tx", dec.transaction_hash) : ""));

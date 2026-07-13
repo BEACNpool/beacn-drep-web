@@ -81,10 +81,21 @@ check('all three integrity checks pass in-browser', passed === 3, `${passed}/3 g
 // compares "" to "" would also show green.
 const anchorRows = await page.$$eval('#v-anchor .hrow', rows =>
   rows.map(r => [r.querySelector('.k')?.textContent.trim(), r.querySelector('.v')?.textContent.trim()]));
-const onchain = (anchorRows.find(r => r[0] === 'on-chain') || [])[1] || '';
+const onchain = (anchorRows.find(r => r[0] === 'in vote tx') || [])[1] || '';
 const computed = (anchorRows.find(r => r[0] === 'computed') || [])[1] || '';
 check('anchor check compares real 64-hex hashes', /^[0-9a-f]{64}$/.test(computed) && computed === onchain,
   `${computed.slice(0, 16)}… vs ${onchain.slice(0, 16)}…`);
+
+// The anchor hash MUST come from the vote transaction, never from a hash the site derived itself.
+// If the page ever falls back to the engine's locally-recomputed anchor, the check becomes "hash a
+// file, compare it to its own hash" — it passes forever and proves nothing. Assert the hash the
+// page displays is the one the CHAIN records, by cross-checking the published artifact.
+const chainMatch = await page.evaluate(async (shown) => {
+  const id = document.getElementById('v-pick').value;
+  const d = await (await fetch(`./data/output/public/actions/${encodeURIComponent(id)}.json`)).json();
+  return d.proof_of_vote?.onchain_anchor_hash === shown;
+}, onchain);
+check('anchor hash is the one recorded on-chain, not a locally-derived one', chainMatch);
 
 // Negative control: corrupt one byte of the rationale and the anchor check MUST go red.
 const flipped = await page.evaluate(async () => {
