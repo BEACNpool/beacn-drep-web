@@ -1,9 +1,10 @@
-const CACHE = "beacn-drep-v8";
+const CACHE = "beacn-drep-v10";
 const SHELL = [
   "./",
   "./index.html",
   "./styles.assessment.css",
   "./app.assessment.js",
+  "./verify.js",
   "./manifest.json",
   "./assets/logo.png",
   "./assets/icon-192.png",

@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-11T12:00:04Z",
-  "beacn_history_count": 298,
+  "generated_at": "2026-07-13T15:31:54Z",
+  "beacn_history_count": 150,
   "consistency": {
-    "abstain_rate": 0.3121,
-    "needs_more_info_rate": 0.6644
+    "abstain_rate": 0.3267,
+    "needs_more_info_rate": 0.5733
   },
   "top_n_comparison": {
     "available": false,

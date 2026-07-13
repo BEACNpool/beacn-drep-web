@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-07-11T12:00:04Z",
+  "generated_at": "2026-07-13T15:31:54Z",
   "current_versions": {
     "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
-    "resources_commit": "98204209c1160292d57e948cc03515956c20be3e",
-    "core_commit": "55c0f3f68cffa73033d65fea06087205839b256e"
+    "resources_commit": "a650e5f55d3662a45d71b3a19d5301fd64c2bbee",
+    "core_commit": "ded627116d3160ff38c58fb5f3db6f3956f0cced"
   },
   "pipeline": {
-    "last_scan_at": "2026-07-11T12:00:04Z",
-    "last_decision_at": "2026-07-11T12:00:04Z",
-    "last_publish_at": "2026-07-11T12:00:04Z",
+    "last_scan_at": "2026-07-13T15:31:54Z",
+    "last_decision_at": "2026-07-13T15:31:54Z",
+    "last_publish_at": "2026-07-13T15:31:54Z",
     "anchor_fetch": {
-      "total": 298,
-      "ok": 294,
-      "ok_cached": 294,
-      "failed": 4,
-      "coverage_pct": 98.66,
+      "total": 150,
+      "ok": 148,
+      "ok_cached": 148,
+      "failed": 2,
+      "coverage_pct": 98.67,
       "failure_buckets": {
-        "http_error:404": 4
+        "http_error:404": 2
       }
     }
   },

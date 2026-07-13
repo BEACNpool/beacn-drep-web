@@ -5,12 +5,14 @@
   "status": "expired",
   "source": {
     "origin": "governance fetch pipeline",
-    "raw_input_hash": "sha256:dae278078a8d75c83b37b98b2aab1b7ea4e8f9764b49fe4bf172125d79a57295",
+    "raw_input_hash": "sha256:b203deea0d3958b813f8784743658ee85949faf82440d6d33190679a65b57855",
     "detected_at": "2026-07-07T21:00:01.830677+00:00"
   },
   "decision": {
     "vote": "ABSTAIN",
-    "published_at": "2026-07-11T11:30:05.186378+00:00",
+    "onchain_vote": null,
+    "diverged": false,
+    "published_at": "2026-07-13T15:15:32.806919+00:00",
     "signed": false,
     "submitted": false,
     "transaction_hash": null,
@@ -20,14 +22,17 @@
     "vote": "ABSTAIN",
     "score": 0.11,
     "confidence": 0.6275,
-    "input_hash": "dae278078a8d75c83b37b98b2aab1b7ea4e8f9764b49fe4bf172125d79a57295",
-    "snapshot_bundle_hash": "cf02b7b9f7351b6051f6b5dc30f1d08fc87b7b45388493298a9b50b6229e86df",
+    "input_hash": "b203deea0d3958b813f8784743658ee85949faf82440d6d33190679a65b57855",
+    "snapshot_bundle_hash": "49c5561ed4899d8d25b524acffcacf270b1b3e1b68465ebca0e33ea89523e351",
     "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
-    "resources_commit": "98204209c1160292d57e948cc03515956c20be3e",
-    "core_commit": "55c0f3f68cffa73033d65fea06087205839b256e",
-    "rationale_markdown_path": "/data/output/public/rationales/eb8ef28ca80dbd9ced6f577f013bdfc64897d1f4e326beb37a50fb6b62c38ccd#0-dae278078a8d.md",
+    "resources_commit": "a650e5f55d3662a45d71b3a19d5301fd64c2bbee",
+    "core_commit": "ded627116d3160ff38c58fb5f3db6f3956f0cced",
+    "rationale_markdown_path": "/data/output/public/rationales/eb8ef28ca80dbd9ced6f577f013bdfc64897d1f4e326beb37a50fb6b62c38ccd#0-b203deea0d39.md",
     "rationale_anchor_url": null,
-    "rationale_anchor_hash": null
+    "rationale_anchor_hash": null,
+    "onchain_anchor_hash": null,
+    "onchain_anchor_url": null,
+    "onchain_vote": null
   },
   "rationale": {
     "summary": "Vote: ABSTAIN. For this NewCommittee (expired), evidence quality was insufficient for a reliable YES or NO decision. Primary blocker: evidence did not clear the directional decision threshold. Decisive reason: if claims cannot be tied to replayable evidence, abstaining avoids overclaiming certainty. Weighed against it: the proposal substantiates \"This governance action proposes to add an additional Constitutional Committee member through a community-initiated Update Committee action.\" and clears the evidence gates. What would enable a directional vote: Provide mitigation evidence; Provide independent assurance. Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score 0.11; confidence 62.7%.",
@@ -37,8 +42,9 @@
       "Provide independent assurance.",
       "Provide rollback/remedy path."
     ],
-    "markdown_path": "/data/output/public/rationales/eb8ef28ca80dbd9ced6f577f013bdfc64897d1f4e326beb37a50fb6b62c38ccd#0-dae278078a8d.md",
+    "markdown_path": "/data/output/public/rationales/eb8ef28ca80dbd9ced6f577f013bdfc64897d1f4e326beb37a50fb6b62c38ccd#0-b203deea0d39.md",
     "missing_evidence": [],
+    "blocked_reason_code": "RULE_THRESHOLD_UNMET",
     "assessment_status": "incomplete",
     "assessment_schema_version": "assessment-tree-v1",
     "assessment": {
@@ -129,7 +135,7 @@
       ],
       "blocking_questions": []
     },
-    "assessment_path": "/data/output/public/rationales/eb8ef28ca80dbd9ced6f577f013bdfc64897d1f4e326beb37a50fb6b62c38ccd#0-dae278078a8d.assessment.json",
+    "assessment_path": "/data/output/public/rationales/eb8ef28ca80dbd9ced6f577f013bdfc64897d1f4e326beb37a50fb6b62c38ccd#0-b203deea0d39.assessment.json",
     "treasury_dimensions": null,
     "decision_contract": {
       "policy": "balanced-return-risk-v1",
@@ -185,17 +191,19 @@
     "anchor_hash": "84e66f959fdecfd86708a5e9cad50b24bcf2da97186182abedd2aa046447a4b2",
     "file_sha256": "159e3d765c96c7148f73dca604d1337755731736bfff9e0aff614e0c35b4846d",
     "content_bytes": "8638",
-    "fetched_at_utc": "2026-07-11T11:30:14Z",
+    "fetched_at_utc": "2026-07-13T15:16:04Z",
     "download_path": "/proposals/eb8ef28ca80dbd9ced6f577f013bdfc64897d1f4e326beb37a50fb6b62c38ccd#0.json",
     "preview": "{\n  \"@context\": {\n    \"@context\": {\n      \"@language\": \"en\",\n      \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n      \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n      \"intersectSpec\": \"https://github.com/IntersectMBO/governance-actions/blob/main/schemas/specification.md#\",\n      \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n      \"body\": {\n        \"@id\": \"CIP108:body\",\n        \"@context\": {\n          \"references\": {\n            \"@id\": \"CIP108:references\",\n            \"@container\": \"@set\",\n            \"@context\": {\n              \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n              \"Other\": \"CIP100:OtherReference\",\n              \"label\": \"CIP100:reference-label\",\n              \"uri\": \"CIP100:reference-uri\",\n              \"referenceHash\": {\n                \"@id\": \"CIP108:referenceHash\",\n                \"@context\": {\n                  \"hashDigest\": \"CIP108:hashDigest\",\n                  \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n                }\n              }\n            }\n          },\n          \"title\": \"CIP108:title\",\n          \"abstract\": \"CIP108:abstract\",\n          \"motivation\":"
   },
   "deep_research": null,
+  "flags": [],
+  "treasury_capacity": null,
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
     "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "98204209c1160292d57e948cc03515956c20be3e",
-    "core_commit": "55c0f3f68cffa73033d65fea06087205839b256e",
+    "resources_commit": "a650e5f55d3662a45d71b3a19d5301fd64c2bbee",
+    "core_commit": "ded627116d3160ff38c58fb5f3db6f3956f0cced",
     "resource_ids_used": [
       "gov_actions_snapshot",
       "drep_vote_history_snapshot",
@@ -269,10 +277,10 @@
     "model_vote_influence": 0
   },
   "freshness": {
-    "snapshot_age_seconds": 12,
+    "snapshot_age_seconds": 2,
     "max_allowed_seconds": 21600,
     "is_stale": false,
-    "snapshot_time": "2026-07-11T11:59:37.109210Z",
+    "snapshot_time": "2026-07-13T15:31:49.224054Z",
     "freshness_source": "deep_research_dossiers.csv"
   }
 }

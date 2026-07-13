@@ -1,872 +1,1120 @@
-"use strict";
+/* BEACN DRep — public transparency platform.
+   View-only. No decision logic lives here; every number is read from the machine-generated
+   public artifacts. The one rule this file must never break: `decision` is what the engine
+   RECOMMENDS today, `onchain_vote` is what BEACN actually CAST. They can differ, and the
+   site must always show which is which. */
 
-const PATHS = {
-  status: "./status.json",
-  actions: "./data/output/public/actions.json",
-  rationales: "./data/output/public/rationales.json",
-  statements: "./data/output/public/statements.json",
-  detail: id => `./data/output/public/actions/${encodeURIComponent(id)}.json`
-};
-const CARDANO_START = Date.parse("2017-09-23T21:44:51Z");
-const EPOCH_MS = 5 * 24 * 60 * 60 * 1000;
-const DREP_FALLBACK = "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg";
-const state = {
-  status: null, actions: [], rationale: new Map(), statements: new Map(), details: new Map(),
-  verdict: "ALL", query: "", archiveStatus: "ALL", loading: false
-};
-const app = document.getElementById("app");
-const refreshButton = document.getElementById("refresh-button");
-const refreshProgress = document.getElementById("refresh-progress");
-const connectionDot = document.getElementById("connection-dot");
-let pullStart = 0;
-let pullDistance = 0;
-let activeListView = "";
+import { blake2b256Hex, verifyManifest, verifyAnchor } from "./verify.js";
 
-const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
-  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-}[c]));
-const attr = value => esc(value).replace(/`/g, "&#96;");
-const compact = value => String(value || "").replace(/\s+/g, " ").trim();
-const firstSentence = value => {
-  const text = compact(value);
-  const match = text.match(/^(.+?[.!?])(?:\s|$)/);
-  return match ? match[1] : text;
+const SRC = {
+  status:    "./status.json",
+  index:     "./data/output/public/index.json",
+  actions:   "./data/output/public/actions.json",
+  weights:   "./data/output/public/scoring_weights.json",
+  detail:    id => `./data/output/public/actions/${encodeURIComponent(id)}.json`,
 };
-const dateText = iso => {
-  if (!iso) return "Not published";
-  const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? iso : new Intl.DateTimeFormat(undefined, {
-    month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit"
-  }).format(d);
+
+const GH = {
+  soul:      c => `https://github.com/BEACNpool/beacn-drep-soul/tree/${c}`,
+  core:      c => `https://github.com/BEACNpool/beacn-drep-core/tree/${c}`,
+  resources: c => `https://github.com/BEACNpool/beacn-drep-resources/tree/${c}`,
+  weights:   c => `https://github.com/BEACNpool/beacn-drep-soul/blob/${c}/scoring_weights.json`,
 };
-const relative = iso => {
-  const seconds = Math.max(0, (Date.now() - new Date(iso).getTime()) / 1000);
-  if (!Number.isFinite(seconds)) return "";
-  if (seconds < 90) return `${Math.round(seconds)}s ago`;
-  if (seconds < 5400) return `${Math.round(seconds / 60)}m ago`;
-  if (seconds < 172800) return `${Math.round(seconds / 3600)}h ago`;
-  return `${Math.round(seconds / 86400)}d ago`;
+
+/* Published artifact paths are recorded absolute ("/data/output/..."), but the site is served from
+   a subpath on GitHub Pages ("/beacn-drep-web/"), so they must be made relative or every fetch 404s.
+   They also contain a literal "#" — governance action ids are "<tx>#<index>", and that character is
+   baked into the run-id filenames. Left raw, the browser reads it as the start of a URL fragment and
+   silently requests the wrong file. Encode it. */
+const rel = p => "./" + String(p || "").replace(/^\/+/, "").replace(/#/g, "%23");
+
+const EXPLORER = h => `https://cardanoscan.io/transaction/${h}`;
+const PAGE_SIZE = 25;
+
+const TYPE_LABEL = {
+  TreasuryWithdrawals: "Treasury",
+  ParameterChange: "Parameter",
+  HardForkInitiation: "Hard fork",
+  NewCommittee: "Committee",
+  NewConstitution: "Constitution",
+  NoConfidence: "No confidence",
+  InfoAction: "Info",
 };
-const cardanoscan = {
-  action: id => `https://cardanoscan.io/govAction/${encodeURIComponent(id)}`,
-  tx: hash => `https://cardanoscan.io/transaction/${encodeURIComponent(hash)}`,
-  drep: id => `https://cardanoscan.io/drep/${encodeURIComponent(id)}`
-};
-const repoCommit = (repo, hash) => hash ? `https://github.com/BEACNpool/${repo}/commit/${encodeURIComponent(hash)}` : "";
-const localPath = path => {
-  if (!path) return "";
-  if (/^https?:\/\//i.test(path)) return path;
-  const clean = String(path).replace(/^\/+/, "");
-  return clean.startsWith("data/") ? `./${clean}` : `./data/output/public/${clean}`;
-};
-const verdictKey = value => {
-  const v = String(value || "").toUpperCase().replace(/\s+/g, "_");
-  if (v.includes("NEEDS") || v.includes("MORE_INFO")) return "NEEDS_MORE_INFO";
-  if (v.includes("ABSTAIN")) return "ABSTAIN";
-  if (v.includes("YES")) return "YES";
-  if (v.includes("NO")) return "NO";
-  return v || "PENDING";
-};
-const verdictMeta = value => ({
-  YES: { label: "Yes", cls: "v-yes", color: "var(--green)" },
-  NO: { label: "No", cls: "v-no", color: "var(--red)" },
-  ABSTAIN: { label: "Abstain", cls: "v-abstain", color: "var(--slate)" },
-  NEEDS_MORE_INFO: { label: "Needs info", cls: "v-info", color: "var(--amber)" },
-  PENDING: { label: "Pending", cls: "v-abstain", color: "var(--slate)" }
-}[verdictKey(value)] || { label: compact(value) || "Pending", cls: "v-abstain", color: "var(--slate)" });
-const routeFor = id => `#/action/${encodeURIComponent(id)}`;
-const summaryFor = id => {
-  const rationale = state.rationale.get(id);
-  const binding = rationale?.decision ? verdictKey(rationale.decision) : "";
-  const statement = state.statements.get(id);
-  // Convenience statements can drift from the binding deterministic record. Only
-  // surface a statement when it agrees with the binding verdict (or none is known);
-  // otherwise fall back to the deterministic rationale so the site never contradicts itself.
-  if (statement?.statement && (!binding || !statement.decision || verdictKey(statement.decision) === binding)) {
-    return statement.statement;
+
+const state = { index: null, actions: [], status: null, weights: null, verifyId: null, byId: new Map() };
+
+/* ---------- utils ---------- */
+const el = document.getElementById.bind(document);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c =>
+  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+const short = (h, n = 8) => (h ? `${h.slice(0, n)}…${h.slice(-4)}` : "");
+const typeLabel = t => TYPE_LABEL[t] || t || "—";
+
+function fmtDate(s) {
+  if (!s) return "—";
+  const d = new Date(s);
+  return isNaN(d) ? "—" : d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+}
+
+async function getJSON(url) {
+  const r = await fetch(`${url}${url.includes("?") ? "&" : "?"}v=${Date.now()}`, { cache: "no-store" });
+  if (!r.ok) throw new Error(`${r.status} ${url}`);
+  return r.json();
+}
+
+const linkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6v6M20 4l-8 8"/></svg>`;
+
+/* ---------- shared renderers ---------- */
+
+/** The vote BEACN actually cast on-chain, with its proof link. Never the recommendation. */
+function proofHTML(a) {
+  if (!a.submitted || !a.transaction_hash) {
+    return `<span class="novote">No vote cast on-chain yet</span>`;
   }
-  return compact(rationale?.summary || "").replace(/^Vote:\s*[A-Z_]+\.\s*/i, "");
+  return `<span class="vote ${esc(a.onchain_vote || "NONE")}">${esc(a.onchain_vote || "—")}</span>
+    <a class="proof" href="${EXPLORER(esc(a.transaction_hash))}" target="_blank" rel="noopener"
+       onclick="event.stopPropagation()" title="View the vote transaction on Cardanoscan">
+      ${linkIcon}<span class="hash">${esc(short(a.transaction_hash, 10))}</span>
+    </a>`;
+}
+
+/** Disclose, never hide, a drift between the cast vote and today's recommendation. */
+function divergeHTML(a) {
+  if (!a.diverged) return "";
+  return `<span class="diverge"><b>Would not re-derive this vote today.</b> BEACN cast
+    <b>${esc(a.onchain_vote)}</b> on-chain; on today's evidence the engine reaches
+    <b>${esc(a.decision)}</b>. The cast vote stands until a revision clears the anti-churn policy —
+    a gap in evidence is never allowed to retract a vote that was made.</span>`;
+}
+
+const ADA = lov => {
+  const n = Number(lov || 0) / 1e6;
+  if (!n) return "0 ₳";
+  if (n >= 1e6) return `${(n / 1e6).toFixed(n >= 1e7 ? 0 : 2)}M ₳`;
+  if (n >= 1e3) return `${(n / 1e3).toFixed(0)}k ₳`;
+  return `${n.toFixed(0)} ₳`;
 };
-const currentMap = () => new Map((state.status?.actions || []).filter(a => a.cip129_action_id).map(a => [a.cip129_action_id, a]));
-const epochSnapshot = () => {
-  const elapsed = Math.max(0, Date.now() - CARDANO_START);
-  return { epoch: Math.floor(elapsed / EPOCH_MS), within: elapsed % EPOCH_MS };
-};
-const recordFor = item => {
-  const live = currentMap().get(item.action_id) || {};
-  return {
-    ...item,
-    cip129_action_id: item.action_id,
-    decision: verdictKey(live.recommendation || item.decision || live.our_vote),
-    onchain: !!live.our_vote,
-    transaction_hash: live.transaction_hash || null,
-    expires_after_epoch: live.expires_after_epoch,
-    proposed_in_epoch: live.proposed_in_epoch,
-    summary: summaryFor(item.action_id)
-  };
-};
-const currentRecords = () => {
-  const byId = new Map(state.actions.map(item => [item.action_id, item]));
-  return (state.status?.actions || [])
-    .filter(item => item.cip129_action_id && String(item.status || "").toLowerCase() === "open")
-    .map(live => {
-    const record = byId.get(live.cip129_action_id) || {};
-    return {
-      ...record,
-      ...live,
-      action_id: live.cip129_action_id,
-      cip129_action_id: live.cip129_action_id,
-      decision: verdictKey(live.recommendation || record.decision || live.our_vote),
-      onchain: !!live.our_vote,
-      summary: summaryFor(live.cip129_action_id)
-    };
+
+/** Why a proposal drew scrutiny. Red flags first — a reader asking "why didn't this pass?"
+ *  should see these before anything else. */
+function flagsHTML(flags) {
+  if (!Array.isArray(flags) || !flags.length) return "";
+  const order = { red: 0, yellow: 1 };
+  const sorted = [...flags].sort((a, b) => (order[a.severity] ?? 9) - (order[b.severity] ?? 9));
+  return `<div class="panel">
+    <h2>Flags raised on this proposal</h2>
+    <p class="muted sm" style="margin-bottom:10px">Automated checks against the proposal's own
+      metadata and on-chain record. A flag is a reason to look harder — not, by itself, a reason
+      to vote no.</p>
+    <ul class="flags">
+      ${sorted.map(f => `<li class="flag ${esc(f.severity)}">
+        <span class="flag-name">${esc(f.flag)}</span>
+        <span class="flag-detail">${esc(f.detail)}</span>
+      </li>`).join("")}
+    </ul>
+  </div>`;
+}
+
+/** The Net Change Limit and the arithmetic this ask had to fit inside. Published so anyone can
+ *  check it themselves — including the honest caveat that no NCL is ever formally enacted. */
+function capacityHTML(tc) {
+  if (!tc) return "";
+  if (!tc.verified) {
+    return `<div class="panel"><h2>Treasury capacity</h2>
+      <p class="muted sm">${esc(tc.why || "No Net Change Limit is currently pinned.")}</p></div>`;
+  }
+  const req = Number(tc.requested_lovelace || 0);
+  const rem = Number(tc.remaining_capacity_lovelace || 0);
+  const ncl = Number(tc.ncl_lovelace || 0);
+  const spent = Number(tc.withdrawals_in_period_lovelace || 0);
+  const pctSpent = ncl ? Math.min(100, (spent / ncl) * 100) : 0;
+  const fits = tc.fits_remaining;
+  return `<div class="panel">
+    <h2>Treasury capacity — the Net Change Limit</h2>
+    <p class="muted sm" style="margin-bottom:12px">Cardano caps how much ADA may leave the treasury
+      in a period. BEACN will not vote to fund an ask that does not fit inside what is left.</p>
+
+    <div class="ncl-bar" role="img" aria-label="${pctSpent.toFixed(0)}% of the Net Change Limit already spent">
+      <i style="width:${pctSpent}%"></i>
+    </div>
+    <div class="ncl-legend">
+      <span><b>${ADA(spent)}</b> already withdrawn</span>
+      <span><b>${ADA(rem)}</b> left of ${ADA(ncl)}</span>
+    </div>
+
+    ${req > 0 ? `<div class="ncl-verdict ${fits ? "fits" : "over"}">
+      This proposal asks <b>${ADA(req)}</b> —
+      ${fits ? `it fits within the ${ADA(rem)} still available.`
+             : `more than the ${ADA(rem)} still available, so it cannot be funded within this period's limit.`}
+    </div>` : ""}
+
+    <div class="kv" style="margin-top:12px">
+      <div class="kv-row"><span class="k">Limit</span><span class="v">${ADA(ncl)} · epochs ${esc(tc.period_start_epoch)}–${esc(tc.period_end_epoch)}</span></div>
+      <div class="kv-row"><span class="k">Measured as</span><span class="v">${esc((tc.spend_basis || "").replace(/_/g, " "))}</span></div>
+      <div class="kv-row"><span class="k">Set by</span><span class="v">${esc(short(tc.source_action_id, 16))}</span></div>
+      <div class="kv-row"><span class="k">Anchor hash</span><span class="v">${esc(short(tc.source_anchor_hash, 14))} ✓ verified</span></div>
+      ${tc.drep_support ? `<div class="kv-row"><span class="k">DRep support</span><span class="v">${esc(tc.drep_support.yes_pct_of_participating_stake)}% of participating stake</span></div>` : ""}
+    </div>
+    ${tc.caveat ? `<p class="caveat">${esc(tc.caveat)}</p>` : ""}
+  </div>`;
+}
+
+function cardHTML(a) {
+  const openChip = a.status === "active"
+    ? `<span class="chip open">Open</span>`
+    : `<span class="chip closed">Closed</span>`;
+  return `<button class="card" data-id="${esc(a.action_id)}">
+    <div class="card-top">
+      <span class="chip type">${esc(typeLabel(a.type))}</span>
+      ${openChip}
+    </div>
+    <h3>${esc(a.title || a.action_id)}</h3>
+    <div class="stance">
+      <div class="stance-cell">
+        <div class="lbl">BEACN's vote on-chain</div>
+        <div class="val">${proofHTML(a)}</div>
+      </div>
+      <div class="stance-cell">
+        <div class="lbl">Engine recommendation today</div>
+        <div class="val"><span class="vote ${esc(a.decision || "NONE")}">${esc(a.decision || "—")}</span></div>
+      </div>
+    </div>
+    ${divergeHTML(a)}
+    <div class="card-foot">
+      <span>Seen ${esc(fmtDate(a.detected_at))}</span>
+      <span>Published ${esc(fmtDate(a.published_at))}</span>
+    </div>
+  </button>`;
+}
+
+function listHTML(items) {
+  if (!items.length) return `<div class="empty">Nothing matches those filters.</div>`;
+  return `<div class="cards">${items.map(cardHTML).join("")}</div>`;
+}
+
+function wireCards(root) {
+  root.querySelectorAll(".card[data-id]").forEach(b => {
+    b.addEventListener("click", () => { location.hash = `#/action/${encodeURIComponent(b.dataset.id)}`; });
   });
-};
-const expiryText = expiry => {
-  if (expiry === null || expiry === undefined || expiry === "") return "";
-  const remaining = Number(expiry) - epochSnapshot().epoch;
-  if (remaining < 0) return `expired ${Math.abs(remaining)} epoch${Math.abs(remaining) === 1 ? "" : "s"} ago`;
-  if (remaining === 0) return "expires this epoch";
-  return `${remaining} epoch${remaining === 1 ? "" : "s"} remaining`;
-};
-const showToast = message => {
-  const el = document.getElementById("toast");
-  el.textContent = message;
-  el.classList.add("show");
-  clearTimeout(showToast.timer);
-  showToast.timer = setTimeout(() => el.classList.remove("show"), 1800);
-};
-const copyText = async text => {
-  try {
-    await navigator.clipboard.writeText(text);
-    showToast("Copied to clipboard");
-  } catch {
-    showToast("Copy failed");
-  }
-};
-
-async function fetchJSON(url, required = false) {
-  const response = await fetch(`${url}${url.includes("?") ? "&" : "?"}v=${Date.now()}`, { cache: "no-store" });
-  if (!response.ok) {
-    if (required) throw new Error(`${url} returned HTTP ${response.status}`);
-    return null;
-  }
-  return response.json();
 }
 
-async function loadFeeds(force = false) {
-  if (state.loading) return;
-  if (state.status && !force) return;
-  state.loading = true;
-  refreshButton.classList.add("spinning");
-  refreshProgress.style.width = "38%";
-  try {
-    const [status, actions, rationales, statements] = await Promise.all([
-      fetchJSON(PATHS.status, true),
-      fetchJSON(PATHS.actions, true),
-      fetchJSON(PATHS.rationales),
-      fetchJSON(PATHS.statements)
-    ]);
-    state.status = status;
-    state.actions = actions?.items || [];
-    state.rationale = new Map((rationales?.items || []).map(item => [item.action_id, item]));
-    state.statements = new Map(Object.entries(statements || {}).map(([id, value]) => [id, value]));
-    connectionDot.className = "connection-dot online";
-    connectionDot.title = "Feeds online";
-    refreshProgress.style.width = "100%";
-  } catch (error) {
-    connectionDot.className = "connection-dot offline";
-    connectionDot.title = "Using cached data if available";
-    if (!state.status) throw error;
-    showToast("Offline: showing cached data");
-  } finally {
-    state.loading = false;
-    refreshButton.classList.remove("spinning");
-    setTimeout(() => { refreshProgress.style.width = "0"; }, 300);
-  }
-}
+/* ---------- views ---------- */
 
-function proposalCard(item) {
-  const v = verdictMeta(item.decision);
-  return `<a class="proposal-card" href="${routeFor(item.cip129_action_id)}">
-    <div class="proposal-top">
-      <h3 class="proposal-title">${esc(item.title || "Governance action")}</h3>
-      <span class="type-pill">${esc(item.type || "Unknown type")}</span>
+function viewLive() {
+  const s = state.index?.stats || {};
+  const open = state.actions.filter(a => a.status === "active");
+  const voted = state.actions.filter(a => a.submitted);
+  const openVoted = open.filter(a => a.submitted).length;
+
+  // Sort: unvoted open actions first — those are the ones the community should look at.
+  open.sort((a, b) => (a.submitted === b.submitted ? 0 : a.submitted ? 1 : -1));
+
+  return `
+  <section class="hero">
+    <span class="eyebrow">Live on Cardano mainnet</span>
+    <h1>An autonomous DRep voting <em>real money</em>, in the open.</h1>
+    <p class="hero-lead">BEACN decides Cardano governance with deterministic, open-source rules over
+       public evidence — then publishes the reasoning and the on-chain proof of every vote. The
+       weights are a versioned file you can read. The engine is a commit you can replay. Nothing
+       here is a claim you have to take on trust.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#/verify">Verify a decision yourself →</a>
+      <a class="btn" href="#/method">How the weighting works</a>
     </div>
-    <span class="verdict ${v.cls}">${esc(v.label)}</span>${item.onchain ? '<span class="onchain-tag">On-chain ✓</span>' : ""}
-    <p class="summary-line">${esc(firstSentence(item.summary) || "Open the decision record to inspect the published rationale.")}</p>
-    <span class="reason-link">Full reasoning <span aria-hidden="true">→</span></span>
-    <div class="proposal-meta">
-      <span>${esc(item.status || "recorded")}</span>
-      ${item.expires_after_epoch ? `<span class="${Number(item.expires_after_epoch) - epochSnapshot().epoch <= 1 ? "urgent" : ""}">${esc(expiryText(item.expires_after_epoch))} · epoch ${esc(item.expires_after_epoch)}</span>` : ""}
-      ${item.transaction_hash ? "<span>on-chain vote</span>" : "<span>decision record</span>"}
+    <p class="drepid" style="margin-top:var(--s5)">DRep <code>${esc(state.status?.drep_id || "—")}</code></p>
+  </section>
+
+  <div class="stats">
+    <div class="stat accent">
+      <div class="n">${open.length}</div>
+      <div class="k">Open now</div>
+      <div class="sub">${openVoted} with a vote cast</div>
     </div>
-  </a>`;
-}
-
-function viewHeader(eyebrow, title, subtitle) {
-  return `<div class="view-head"><div class="eyebrow">${esc(eyebrow)}</div><h1>${title}</h1><p class="subtitle">${subtitle}</p></div>`;
-}
-
-const isActive = item => String(item?.status || "").toLowerCase() === "active";
-const activeActionIds = () => new Set(currentRecords().map(item => item.action_id));
-
-function activeRecords() {
-  return currentRecords()
-    .map(item => ({ ...item, reviewedAt: item.submitted_at || item.published_at || item.detected_at || "" }))
-    .sort((a, b) =>
-      Number(a.expires_after_epoch || Infinity) - Number(b.expires_after_epoch || Infinity) ||
-      String(a.title || "").localeCompare(String(b.title || ""))
-    );
-}
-
-const DECK_FLOW = ["Intake", "Evidence", "Verdict"];
-
-function deckCard(item, index) {
-  const v = verdictMeta(item.decision);
-  const summary = firstSentence(item.summary) || "Open the decision record to inspect the published rationale, review tree, and on-chain proof.";
-  const reviewed = item.reviewedAt ? `Reviewed ${relative(item.reviewedAt)}` : "Awaiting publication";
-  return `<a class="deck-card" data-index="${index}" style="--vc:${v.color}" href="${routeFor(item.cip129_action_id)}">
-    <span class="deck-card-glow" aria-hidden="true"></span>
-    <div class="deck-card-top">
-      <span class="type-pill">${esc(item.type || "Governance")}</span>
-      <span class="live-pill"><i></i> Active</span>
+    <div class="stat">
+      <div class="n">${voted.length}</div>
+      <div class="k">Votes on-chain</div>
+      <div class="sub">every one links to its tx</div>
     </div>
-    <div class="deck-verdict ${v.cls}">
-      <span class="deck-verdict-ring" aria-hidden="true"></span>
-      <strong>${esc(v.label)}</strong>
-      <small>${item.onchain ? "On-chain vote ✓" : "BEACN DRep verdict"}</small>
+    <div class="stat">
+      <div class="n">${s.decisions_published ?? "—"}</div>
+      <div class="k">Decisions published</div>
+      <div class="sub">since inception</div>
     </div>
-    <h3 class="deck-title">${esc(item.title || "Governance action")}</h3>
-    <p class="deck-summary">${esc(summary)}</p>
-    <div class="deck-flow" aria-hidden="true">
-      ${DECK_FLOW.map((step, i) => `<span class="deck-flow-step"><i>${i + 1}</i>${step}</span>`).join('<span class="deck-flow-line"></span>')}
+    <div class="stat">
+      <div class="n">${s.anchor_fetch_coverage_pct != null ? s.anchor_fetch_coverage_pct + "%" : "—"}</div>
+      <div class="k">Anchor coverage</div>
+      <div class="sub">proposal docs pinned</div>
     </div>
-    <div class="deck-card-foot">
-      <span class="deck-reviewed">${esc(reviewed)}</span>
-      <span class="deck-open">Open decision flow <span aria-hidden="true">→</span></span>
-    </div>
-  </a>`;
-}
+  </div>
 
-function renderHome() {
-  const status = state.status || {};
-  const check = status.last_check || {};
-  const all = activeRecords();
-  const counts = { ALL: all.length, YES: 0, NO: 0, ABSTAIN: 0, NEEDS_MORE_INFO: 0 };
-  all.forEach(r => { counts[verdictKey(r.decision)] = (counts[verdictKey(r.decision)] || 0) + 1; });
-  const visible = state.verdict === "ALL"
-    ? all
-    : all.filter(r => verdictKey(r.decision) === state.verdict);
-  const { epoch, within } = epochSnapshot();
-  const held = all.filter(r => verdictKey(r.decision) === "NEEDS_MORE_INFO").length;
-  const directional = all.filter(r => ["YES", "NO"].includes(verdictKey(r.decision))).length;
-  const pad = n => String(n).padStart(2, "0");
-  const deck = visible.length
-    ? `<div class="deck-wrap">
-        <button class="deck-nav prev" type="button" aria-label="Previous proposal"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
-        <div class="deck" id="deck">${visible.map(deckCard).join("")}</div>
-        <button class="deck-nav next" type="button" aria-label="Next proposal"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
-      </div>
-      <div class="deck-progress">
-        <span class="deck-counter" id="deck-counter">${pad(1)} / ${pad(visible.length)}</span>
-        <div class="deck-dots" id="deck-dots">${visible.map((_, i) => `<button type="button" class="${i === 0 ? "active" : ""}" aria-label="Go to proposal ${i + 1}"></button>`).join("")}</div>
-        <span class="deck-hint">Swipe · tap a card to open</span>
-      </div>`
-    : '<div class="card empty">No active proposals match this filter right now.</div>';
-  app.innerHTML = `<section class="view">
-    ${viewHeader("Cardano governance · independently verifiable", "Governance, in plain sight.", "Follow every open proposal from public evidence to the BEACN verdict and its on-chain proof. No black box, no missing receipts.")}
-    <article class="card epoch-dashboard">
-      <div class="epoch-dashboard-top">
-        <div>
-          <span class="live-pill"><i></i> Epoch in progress</span>
-          <div class="epoch-number">Epoch <strong id="epoch-number">${epoch}</strong></div>
-        </div>
-        <div class="epoch-remaining"><span>Time until next epoch</span><strong id="epoch-countdown">calculating…</strong></div>
-      </div>
-      <div class="progress epoch-progress"><span id="epoch-progress" style="width:${within / EPOCH_MS * 100}%"></span></div>
-      <div class="epoch-scale"><span>Epoch ${epoch} began</span><span>Epoch ${epoch + 1} begins</span></div>
-      <div class="epoch-stats">
-        <div><strong>${all.length}</strong><span>Active proposals</span></div>
-        <div><strong>${directional}</strong><span>Directional votes</span></div>
-        <div><strong>${held}</strong><span>Awaiting evidence</span></div>
-        <div><strong>${pad(epoch)}</strong><span>Current epoch</span></div>
-      </div>
-    </article>
-
-    <div class="live-status-line">
-      <span>${esc(check.summary || "Loading the latest governance snapshot.")}</span>
-      <small>${status.generated_at ? `Checked ${esc(relative(status.generated_at))}` : ""}</small>
-    </div>
-
-    <div class="filters live-filters">
-      <div class="chips">
-        ${[
-          ["ALL", "All"], ["YES", "Yes"], ["NO", "No"], ["ABSTAIN", "Abstain"], ["NEEDS_MORE_INFO", "Needs info"]
-        ].map(([key, label]) => `<button class="chip ${state.verdict === key ? "active" : ""}" type="button" data-verdict="${key}">${label} ${counts[key] || 0}</button>`).join("")}
-      </div>
-    </div>
-    <div class="deck-heading"><span>Showing ${visible.length} of ${all.length} active proposals</span></div>
-    ${deck}
+  <section class="sec">
+    <div class="sec-h"><h2>Live governance actions</h2><span class="count">${open.length}</span></div>
+    <p class="sec-lead">Everything currently open for a vote on Cardano. Unvoted actions are listed
+       first. For each one you can see what BEACN cast on-chain, what the engine recommends on
+       today's evidence, and — where those differ — why.</p>
+    ${listHTML(open)}
   </section>`;
-  bindProposalFilters(renderHome);
-  bindDeck();
-  updateEpochClock();
 }
 
-function bindDeck() {
-  const deck = document.getElementById("deck");
-  if (!deck) return;
-  const cards = [...deck.querySelectorAll(".deck-card")];
-  if (!cards.length) return;
-  const counter = document.getElementById("deck-counter");
-  const dots = [...document.querySelectorAll("#deck-dots button")];
-  const pad = n => String(n).padStart(2, "0");
-  let active = -1;
-  const apply = () => {
-    const center = deck.scrollLeft + deck.clientWidth / 2;
-    let best = 0;
-    let bestDist = Infinity;
-    cards.forEach(card => {
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const dist = Math.abs(cardCenter - center);
-      const norm = Math.min(1, dist / ((card.offsetWidth || 1) * 0.9));
-      card.style.setProperty("--p", norm.toFixed(3));
-      if (dist < bestDist) { bestDist = dist; best = cards.indexOf(card); }
-    });
-    cards.forEach((card, i) => card.classList.toggle("is-active", i === best));
-    if (best !== active) {
-      active = best;
-      if (counter) counter.textContent = `${pad(active + 1)} / ${pad(cards.length)}`;
-      dots.forEach((d, i) => d.classList.toggle("active", i === active));
-    }
-  };
-  let raf = 0;
-  deck.addEventListener("scroll", () => {
-    cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(apply);
-  }, { passive: true });
-  const goTo = i => {
-    const card = cards[Math.max(0, Math.min(cards.length - 1, i))];
-    if (card) deck.scrollTo({ left: card.offsetLeft - (deck.clientWidth - card.offsetWidth) / 2, behavior: "smooth" });
-  };
-  document.querySelector(".deck-nav.prev")?.addEventListener("click", () => goTo(active - 1));
-  document.querySelector(".deck-nav.next")?.addEventListener("click", () => goTo(active + 1));
-  dots.forEach((d, i) => d.addEventListener("click", () => goTo(i)));
+function viewRecord() {
+  const q = (el("q")?.value || "").toLowerCase();
+  const ft = el("f-type")?.value || "";
+  const fv = el("f-vote")?.value || "";
+  const page = Math.max(1, parseInt(new URLSearchParams(location.hash.split("?")[1] || "").get("p") || "1", 10));
 
-  let down = false;
-  let startX = 0;
-  let startLeft = 0;
-  let moved = 0;
-  deck.addEventListener("pointerdown", event => {
-    if (event.pointerType === "touch") return;
-    down = true;
-    startX = event.clientX;
-    startLeft = deck.scrollLeft;
-    moved = 0;
-    deck.setPointerCapture(event.pointerId);
-    deck.classList.add("dragging");
-  });
-  deck.addEventListener("pointermove", event => {
-    if (!down) return;
-    const dx = event.clientX - startX;
-    moved = Math.max(moved, Math.abs(dx));
-    deck.scrollLeft = startLeft - dx;
-  });
-  const endDrag = event => {
-    if (!down) return;
-    down = false;
-    deck.classList.remove("dragging");
-    try { deck.releasePointerCapture(event.pointerId); } catch (_) {}
-    goTo(active);
-  };
-  deck.addEventListener("pointerup", endDrag);
-  deck.addEventListener("pointercancel", endDrag);
-  deck.addEventListener("click", event => { if (moved > 8) event.preventDefault(); }, true);
-  apply();
-}
+  let items = state.actions.slice();
+  if (q) items = items.filter(a => (a.title || "").toLowerCase().includes(q) || (a.action_id || "").toLowerCase().includes(q));
+  if (ft) items = items.filter(a => a.type === ft);
+  if (fv) items = items.filter(a => (fv === "__none" ? !a.submitted : a.onchain_vote === fv));
 
-function distribution(records) {
-  const counts = { YES: 0, NO: 0, ABSTAIN: 0, NEEDS_MORE_INFO: 0 };
-  records.forEach(r => { counts[verdictKey(r.decision)] = (counts[verdictKey(r.decision)] || 0) + 1; });
-  const total = Math.max(1, records.length);
-  return `<div class="distribution" aria-label="Verdict distribution">
-    ${Object.entries(counts).filter(([, count]) => count).map(([key, count]) =>
-      `<span title="${verdictMeta(key).label}: ${count}" style="width:${count / total * 100}%;background:${verdictMeta(key).color}"></span>`
-    ).join("")}
-  </div><div class="distribution-label"><span>Verdict distribution</span><span>${records.length} reviewed</span></div>`;
-}
+  items.sort((a, b) => String(b.detected_at || "").localeCompare(String(a.detected_at || "")));
 
-function renderProposals() {
-  const all = state.actions.map(recordFor);
-  const archived = all.filter(r => !isActive(r));
-  const scoped = state.archiveStatus === "ALL"
-    ? archived
-    : archived.filter(r => String(r.status || "").toUpperCase() === state.archiveStatus);
-  const counts = { ALL: scoped.length, YES: 0, NO: 0, ABSTAIN: 0, NEEDS_MORE_INFO: 0 };
-  scoped.forEach(r => { counts[verdictKey(r.decision)] = (counts[verdictKey(r.decision)] || 0) + 1; });
-  const q = state.query.trim().toLowerCase();
-  const visible = scoped.filter(r =>
-    (state.verdict === "ALL" || verdictKey(r.decision) === state.verdict) &&
-    (!q || `${r.title} ${r.type} ${r.action_id}`.toLowerCase().includes(q))
-  );
-  app.innerHTML = `<section class="view">
-    ${viewHeader("Concluded governance", "Proposal archive", `Browse ${archived.length} expired and enacted governance actions. Every record preserves the request, verdict, structured reasons, and proof.`)}
+  const pages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+  const p = Math.min(page, pages);
+  const slice = items.slice((p - 1) * PAGE_SIZE, p * PAGE_SIZE);
+
+  const types = [...new Set(state.actions.map(a => a.type).filter(Boolean))].sort();
+
+  return `
+  <section class="sec">
+    <div class="sec-h"><h2>The full record</h2><span class="count">${items.length} of ${state.actions.length}</span></div>
+    <p class="sec-lead">Every governance action BEACN has ever seen, and what it did about each one.
+       Votes carry a link to the transaction on-chain — the proof, not our word for it.</p>
+
     <div class="filters">
-      <div class="segmented archive-segmented" role="group" aria-label="Archive status">
-        ${[
-          ["ALL", `All (${archived.length})`],
-          ["EXPIRED", `Expired (${archived.filter(r => String(r.status).toLowerCase() === "expired").length})`],
-          ["ENACTED", `Enacted (${archived.filter(r => String(r.status).toLowerCase() === "enacted").length})`]
-        ].map(([key, label]) => `<button type="button" data-archive-status="${key}" class="${state.archiveStatus === key ? "active" : ""}">${label}</button>`).join("")}
-      </div>
-      <div class="search-wrap">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-        <input class="search" id="proposal-search" type="search" value="${attr(state.query)}" placeholder="Search title, type, or action ID" aria-label="Search proposals" />
-      </div>
-      <div class="chips">
-        ${[
-          ["ALL", "All"], ["YES", "Yes"], ["NO", "No"], ["ABSTAIN", "Abstain"], ["NEEDS_MORE_INFO", "Needs info"]
-        ].map(([key, label]) => `<button class="chip ${state.verdict === key ? "active" : ""}" type="button" data-verdict="${key}">${label} ${counts[key] || 0}</button>`).join("")}
-      </div>
+      <input id="q" class="search" type="search" placeholder="Search titles or action ids…" value="${esc(q)}" aria-label="Search the record">
+      <select id="f-type" class="sel" aria-label="Filter by action type">
+        <option value="">All types</option>
+        ${types.map(t => `<option value="${esc(t)}" ${t === ft ? "selected" : ""}>${esc(typeLabel(t))}</option>`).join("")}
+      </select>
+      <select id="f-vote" class="sel" aria-label="Filter by vote cast">
+        <option value="">Any vote</option>
+        <option value="YES" ${fv === "YES" ? "selected" : ""}>Voted YES</option>
+        <option value="NO" ${fv === "NO" ? "selected" : ""}>Voted NO</option>
+        <option value="ABSTAIN" ${fv === "ABSTAIN" ? "selected" : ""}>Voted ABSTAIN</option>
+        <option value="__none" ${fv === "__none" ? "selected" : ""}>No vote cast</option>
+      </select>
     </div>
-    ${distribution(scoped)}
-    <div class="result-count">Showing ${visible.length} of ${scoped.length}</div>
-    <div class="card-list" id="proposal-results">${visible.map(proposalCard).join("") || '<div class="card empty">No proposals match these filters.</div>'}</div>
+
+    ${listHTML(slice)}
+
+    ${pages > 1 ? `<div class="pager">
+      <button id="prev" ${p <= 1 ? "disabled" : ""}>← Newer</button>
+      <span class="pg">Page ${p} / ${pages}</span>
+      <button id="next" ${p >= pages ? "disabled" : ""}>Older →</button>
+    </div>` : ""}
   </section>`;
-  bindProposalFilters();
 }
 
-function bindProposalFilters(render = renderProposals) {
-  document.querySelectorAll("[data-archive-status]").forEach(button => button.addEventListener("click", () => {
-    state.archiveStatus = button.dataset.archiveStatus;
-    state.verdict = "ALL";
-    render();
-  }));
-  document.querySelectorAll("[data-verdict]").forEach(button => button.addEventListener("click", () => {
-    state.verdict = button.dataset.verdict;
-    render();
-  }));
-  document.getElementById("proposal-search")?.addEventListener("input", event => {
-    state.query = event.target.value;
-    render();
-    const input = document.getElementById("proposal-search");
-    input?.focus();
-    input?.setSelectionRange(input.value.length, input.value.length);
+/* The weight labels below explain what each number DOES. The numbers themselves are never written
+   here — they are read from the published scoring_weights.json, which is the same file the engine
+   loads at runtime. If a weight changes, this page changes with it; it cannot flatter us. */
+const WEIGHT_COPY = {
+  anchor_present_bonus:               ["Proposal document is pinned and readable", "A proposal whose anchor document can be fetched and hash-verified is easier to hold to account."],
+  treasury_base_penalty:              ["Every treasury ask starts negative", "Spending public money must be argued for. The default answer to “give me ada” is no."],
+  treasury_flow_sustainable_bonus:    ["Treasury inflow is healthy", "Measured from real on-chain flow, not forecasts."],
+  treasury_flow_stressed_penalty:     ["Treasury inflow is stressed", "Tightens the bar for new spending when the treasury is under pressure."],
+  treasury_flow_unsustainable_penalty:["Treasury inflow is unsustainable", "The strongest flow-based brake on new spending."],
+  parameter_change_base_penalty:      ["Parameter changes start negative", "Live protocol parameters are load-bearing; changing them needs a positive case."],
+  hardfork_base_penalty:              ["Hard forks start strongly negative", "The highest-consequence, least-reversible action on Cardano."],
+  flag_score_divisor:                 ["Risk-flag divisor", "Automated risk flags (no discussion, no milestones, concentration…) are divided by this, so flags scale rather than dominate."],
+  flag_penalty_cap:                   ["Maximum total flag penalty", "Even a proposal covered in red flags cannot be sunk by flags alone — evidence still has to carry the call."],
+  drep_margin_cap:                    ["Maximum influence of other DReps", "How much the crowd can move BEACN. Deliberately capped BELOW the directional threshold, so consensus alone can never decide a vote."],
+};
+
+/* Not every number in the weights file is a directional weight. Three of them are BOUNDS — a
+   divisor and two caps that limit how far something can push the score. Rendering a cap as a green
+   "+0.35 toward YES" bar would badly misdescribe what it does: flag_penalty_cap is a ceiling on a
+   PENALTY, and drep_margin_cap is a ceiling on outside influence. They get their own group. */
+const WEIGHT_BOUNDS = { flag_score_divisor: "÷", flag_penalty_cap: "≤", drep_margin_cap: "≤" };
+
+function weightsHTML() {
+  const w = state.weights?.weights;
+  if (!w) return `<p class="muted sm">Weights file unavailable.</p>`;
+
+  const directional = Object.entries(w).filter(([k]) => !(k in WEIGHT_BOUNDS));
+  const bounds = Object.entries(w).filter(([k]) => k in WEIGHT_BOUNDS);
+  const max = Math.max(...directional.map(([, v]) => Math.abs(Number(v))));
+
+  const dirRow = ([k, v]) => {
+    const n = Number(v);
+    const pos = n >= 0;
+    const [name, why] = WEIGHT_COPY[k] || [k, ""];
+    const pct = max ? (Math.abs(n) / max) * 50 : 0;
+    return `<div class="wrow">
+      <span class="wname">${esc(name)}<small>${esc(why)}</small></span>
+      <div class="wtrack"><span class="wmid"></span>
+        <span class="wfill ${pos ? "pos" : "neg"}"
+              style="${pos ? `left:50%;width:${pct}%` : `right:50%;width:${pct}%`}"></span></div>
+      <span class="wval ${pos ? "pos" : "neg"}">${pos ? "+" : ""}${n}</span>
+    </div>`;
+  };
+  const boundRow = ([k, v]) => {
+    const [name, why] = WEIGHT_COPY[k] || [k, ""];
+    return `<div class="wrow">
+      <span class="wname">${esc(name)}<small>${esc(why)}</small></span>
+      <span></span>
+      <span class="wval">${WEIGHT_BOUNDS[k]} ${esc(String(v))}</span>
+    </div>`;
+  };
+
+  return `
+    <h3 class="wgroup">Directional weights <span>push the score toward YES or NO</span></h3>
+    <div class="wgrid">${directional.map(dirRow).join("")}</div>
+    <h3 class="wgroup">Limits <span>bound how far anything can push — they never add score</span></h3>
+    <div class="wgrid">${bounds.map(boundRow).join("")}</div>`;
+}
+
+function viewMethod() {
+  // Read the live weighting contract off a real decision rather than restating it by hand,
+  // so this page cannot drift from the engine that actually votes.
+  const sample = state.actions.find(a => a.submitted) || state.actions[0];
+  const wm = state.weights || {};
+  const soul = state.index?.soul?.commit || "";
+  return `
+  <section class="hero">
+    <span class="eyebrow">Open weighting system</span>
+    <h1>How a vote is made — <em>and how you check it</em>.</h1>
+    <p class="hero-lead">The binding decision is pure deterministic Python over declared inputs. A
+       language model helps read documents and explain outcomes in plain English — it can never set,
+       change, or veto a vote. That boundary is the whole design, and it is enforced in code, not
+       promised in a blog post.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h">
+      <h2>The weighting system</h2>
+      <span class="count">v${esc(wm.version || "—")}</span>
+    </div>
+    <p class="sec-lead">These are not illustrative numbers. This page renders
+       <a href="${GH.weights(soul)}" rel="noopener">scoring_weights.json</a> — the same file the
+       engine loads when it scores a proposal. Change a weight and this page changes with it. A
+       change also requires a changelog entry and a doctrine commit, so it can never happen quietly.</p>
+    ${weightsHTML()}
+    <p class="muted sm" style="margin-top:var(--s4)">
+      Positive weights push toward YES, negative toward NO. Note the last one: the influence of other
+      DReps is capped at ${esc(String(wm.weights?.drep_margin_cap ?? "—"))} — deliberately
+      <em>below</em> the directional threshold — so BEACN cannot be carried across the line by
+      popularity alone. Its own evidence has to do the work.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>Merit scoring for treasury asks</h2></div>
+    <p class="sec-lead">Where money is being requested, four independently-evidenced dimensions
+       combine. The −0.50 is the standing burden of proof: a proposal that is merely average does not
+       clear it.</p>
+    <div class="formula">composite = <b>0.40</b>·benefit + <b>0.25</b>·delivery + <b>0.20</b>·cost + <b>0.15</b>·(1 − downside) <b>− 0.50</b></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>Tamper-evidence</h2></div>
+    <p class="sec-lead">Open weights are only meaningful if you can prove the engine actually used
+       them. Every decision is bound by hash to the doctrine commit, the doctrine's text, and every
+       evidence file read — and the written rationale is hashed into the vote transaction itself.
+       You can recompute all of it in your own browser.</p>
+    <a class="btn btn-primary" href="#/verify">Run the checks →</a>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>The pipeline</h2></div>
+    <div class="steps">
+      <div class="step"><div>
+        <h3>Intake &amp; claim extraction <span class="tag adv">advisory</span></h3>
+        <p>The proposal's anchor document is pinned and read. Claims are extracted and tagged by
+           how the document supports them — independently verifiable, proposer-asserted, or
+           unsupported. This never feeds a gate.</p>
+      </div></div>
+      <div class="step"><div>
+        <h3>Evidence check <span class="tag det">deterministic</span></h3>
+        <p>Anchor integrity, metadata, amount, and data freshness. A snapshot older than the
+           freshness limit forces an ABSTAIN — BEACN does not vote on a stale view of the chain.</p>
+      </div></div>
+      <div class="step"><div>
+        <h3>Analysis <span class="tag det">deterministic</span></h3>
+        <p>Treasury sustainability against a rolling-window regime, plus the structured risk review.</p>
+      </div></div>
+      <div class="step"><div>
+        <h3>Score &amp; gates <span class="tag det">deterministic, binding</span></h3>
+        <p>Treasury actions are scored on four explicit dimensions: independently verified
+           ecosystem benefit, delivery confidence, cost efficiency, and downside protection.
+           <strong>Missing evidence can never become a NO</strong> — a directional NO requires
+           affirmative, pinned proof of waste, duplication, excessive cost, or failed delivery.
+           Missing evidence also can never <strong>retract</strong> a vote already cast.</p>
+      </div></div>
+      <div class="step"><div>
+        <h3>Rationale <span class="tag det">deterministic</span></h3>
+        <p>Facts, inferences and uncertainty are separated, the best case for and against is
+           stated, and the whole record is hashed.</p>
+      </div></div>
+      <div class="step"><div>
+        <h3>Plain-English explanation <span class="tag adv">advisory</span></h3>
+        <p>A model explains the <em>already-decided</em> verdict. It explains; it cannot change.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>The weighting contract</h2></div>
+    <p class="sec-lead">These are not marketing words — this is the exact scoring contract carried
+       inside every published decision, versioned and hashed. If it changes, the hash changes.</p>
+    ${sample?.action_id ? `<div class="panel" id="contract"><div class="loading"><span class="spin"></span> Loading the live contract…</div></div>` : ""}
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>The hardest gate: the Net Change Limit</h2></div>
+    <p class="sec-lead">Cardano's Constitution caps how much ADA may leave the treasury in a
+      defined period. However good a proposal is, BEACN will not vote to fund an ask that does not
+      fit inside what is left of that limit. Here is the exact arithmetic every treasury decision
+      is measured against — check it yourself.</p>
+    ${capacityHTML(state.index?.treasury_capacity)}
+    <div class="prose">
+      <p><strong>Why this is not simply "on-chain".</strong> The NCL is set by an <em>Info</em>
+        governance action. Info actions change no ledger state, so they always expire and can never
+        be enacted — there is no such thing as a formally ratified NCL to look up. BEACN therefore
+        pins the strongest evidence that does exist: an anchor document byte-verified against its
+        on-chain hash, covering the current epoch, which won a majority of participating DRep
+        stake. The later action supersedes the earlier. That caveat is published with the number
+        above, and travels into every rationale that relies on it.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>When BEACN abstains</h2></div>
+    <div class="prose">
+      <p>Abstention is a real answer, not a dodge — but it is only honest when it is <em>about the
+         proposal</em>. BEACN abstains when the evidence genuinely does not decide the question, and
+         it says so in the rationale, naming what is outstanding and whose homework it is.</p>
+      <p>What it must never do is dress up a gap in its own pipeline as a judgement about your
+         proposal. An empty or stale evidence file is a fact about BEACN, not about you. So an
+         abstention caused by missing evidence is labelled as exactly that, and it is not allowed
+         to pull a vote that was already cast back off the chain.</p>
+      <h3>The order of values, when they conflict</h3>
+      <ul>
+        <li>Constitutional integrity and protocol safety</li>
+        <li>Treasury stewardship and downside protection</li>
+        <li>Evidence quality and reproducibility</li>
+        <li>Public-benefit ecosystem growth</li>
+        <li>Execution speed and social consensus momentum</li>
+      </ul>
+      <p>Popularity ranks last on purpose. The network's DRep distribution may <em>inform</em> a
+         vote; it is mathematically capped so it can never <em>determine</em> one.</p>
+    </div>
+  </section>`;
+}
+
+/* ---------- verify: tamper-evidence, run in the visitor's own browser ----------
+   This is the part of the site that matters most. Everything else asks you to believe BEACN's
+   published numbers; this proves them. The checks below run locally, on bytes fetched from this
+   site, using no third-party script — so a compromised BEACN cannot fake a pass. */
+
+const CHECKS = [
+  {
+    id: "anchor",
+    name: "Rationale matches the hash BEACN put on-chain",
+    what: `When BEACN votes, it writes a hash of its written reasoning into the vote transaction
+           itself. We fetch that published reasoning, hash it here in your browser (blake2b-256, the
+           hash Cardano uses), and compare. If BEACN ever edited a rationale after voting — softened
+           a criticism, rewrote a justification — this hash would no longer match, and the on-chain
+           anchor cannot be changed to cover it up.`,
+  },
+  {
+    id: "bundle",
+    name: "Evidence bundle and doctrine are unaltered",
+    what: `The decision is bound to a single hash covering the exact doctrine commit, the doctrine's
+           text hash, and the hash of every evidence file the engine read. We recompute that hash from
+           its parts. Swap in different evidence, or point the engine at different rules, and this
+           breaks.`,
+  },
+  {
+    id: "input",
+    name: "Scored the real on-chain proposal",
+    what: `The hash of the exact governance-action data the engine scored. Proves the decision was
+           made about this proposal, with these numbers — not a doctored copy.`,
+  },
+];
+
+function viewVerify() {
+  const votable = state.actions.filter(a => a.submitted && a.transaction_hash);
+  // Lead with a fully-anchored vote so the first thing a visitor sees is the complete chain, not
+  // the "not anchored" caveat of an early one. The early votes stay in the list — they are part of
+  // the record — they just aren't the opening argument.
+  const anchored = votable.filter(a => a.rationale_anchored);
+  votable.sort((a, b) => (b.rationale_anchored ? 1 : 0) - (a.rationale_anchored ? 1 : 0));
+  const sel = state.verifyId || (votable[0] && votable[0].action_id) || "";
+
+  return `
+  <section class="hero">
+    <span class="eyebrow">Tamper-evidence</span>
+    <h1>Don't trust BEACN. <em>Check it.</em></h1>
+    <p class="hero-lead">An autonomous agent that spends real treasury money is only as trustworthy as
+       its receipts. These checks run entirely in your browser, on files fetched from this site, with
+       no server and no third-party code. If this engine had been quietly re-tuned to force a
+       decision, or a rationale rewritten after the fact, the hashes below would not match.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>Verify a real decision</h2>
+      <span class="count">${anchored.length} of ${votable.length} anchored</span></div>
+    <p class="sec-lead">Pick any vote BEACN has cast on Cardano mainnet. ${anchored.length} of them
+       carry a hash of their written reasoning inside the vote transaction itself — a complete,
+       checkable chain from the on-chain tx back to the rules that produced it. The
+       ${votable.length - anchored.length} earliest votes predate rationale anchoring and say so.</p>
+
+    <div class="filters">
+      <select class="sel search" id="v-pick" aria-label="Choose a decision to verify">
+        ${votable.map(a => `<option value="${esc(a.action_id)}"${a.action_id === sel ? " selected" : ""}>
+          ${esc((a.title || a.action_id).slice(0, 78))}</option>`).join("")}
+      </select>
+      <button class="btn btn-primary" id="v-run">Run checks</button>
+    </div>
+
+    <div class="vpanel">
+      <div class="vpanel-head">
+        <div>
+          <h3>Integrity checks</h3>
+          <p id="v-sub">Computed locally — nothing is sent anywhere.</p>
+        </div>
+        <span class="vstatus idle" id="v-status">Ready</span>
+      </div>
+      <div class="vpanel-body">
+        <div class="checks" id="v-checks">
+          ${CHECKS.map(c => `
+            <div class="check" id="v-${c.id}">
+              <div class="check-top">
+                <span class="check-ico">${CHECKS.indexOf(c) + 1}</span>
+                <span class="check-name">${esc(c.name)}</span>
+                <span class="check-verdict">—</span>
+              </div>
+              <p class="check-what">${esc(c.what.replace(/\s+/g, " ").trim())}</p>
+              <div class="check-hashes" hidden></div>
+            </div>`).join("")}
+        </div>
+      </div>
+    </div>
+
+    <div id="v-prov"></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>What this does and doesn't prove</h2></div>
+    <p class="sec-lead">Being straight about the limits is the point — a verification page that
+       overclaims is just marketing with a monospace font.</p>
+    <div class="kv">
+      <div class="kv-row">
+        <span class="k">It proves</span>
+        <span class="v">The published reasoning is byte-identical to what BEACN committed to on-chain
+          when it voted, and the decision is bound to a specific doctrine commit and a specific set of
+          evidence files. None of that can be changed after the fact without breaking a hash.</span>
+      </div>
+      <div class="kv-row">
+        <span class="k">It does not prove</span>
+        <span class="v">That the rules themselves are <em>good</em>. Hashes prove nothing was swapped;
+          they cannot tell you the weighting is wise. That judgement is yours — which is exactly why
+          the weights are published as a plain, versioned file rather than buried in code.</span>
+      </div>
+      <div class="kv-row">
+        <span class="k">Going further</span>
+        <span class="v">These checks confirm the artifacts are internally consistent and chain-pinned.
+          To prove the engine <em>produces</em> this decision from these inputs, clone the engine at the
+          commit below and replay it — the run is deterministic, so you should reproduce these hashes
+          exactly. If you don't, something is wrong and we want to hear about it.</span>
+      </div>
+    </div>
+  </section>`;
+}
+
+function hashRow(k, v, cls = "") {
+  return `<div class="hrow"><span class="k">${esc(k)}</span><span class="v ${cls}">${esc(v)}</span></div>`;
+}
+
+function setCheck(id, cls, verdict, rows) {
+  const node = el(`v-${id}`);
+  if (!node) return;
+  node.className = `check ${cls}`;
+  node.querySelector(".check-verdict").textContent = verdict;
+  node.querySelector(".check-ico").textContent =
+    cls === "pass" ? "✓" : cls === "fail" ? "✕" : cls === "na" ? "–"
+      : String(CHECKS.findIndex(c => c.id === id) + 1);
+  const box = node.querySelector(".check-hashes");
+  if (rows) { box.innerHTML = rows; box.hidden = false; } else { box.hidden = true; }
+}
+
+async function runVerification(actionId) {
+  const status = el("v-status");
+  const setStatus = (cls, txt) => { status.className = `vstatus ${cls}`; status.textContent = txt; };
+
+  CHECKS.forEach(c => setCheck(c.id, "running", "checking…", null));
+  setStatus("running", "Running");
+  el("v-sub").textContent = "Fetching artifacts and hashing them in your browser…";
+
+  let detail;
+  try {
+    detail = await getJSON(SRC.detail(actionId));
+  } catch {
+    setStatus("fail", "No data");
+    CHECKS.forEach(c => setCheck(c.id, "fail", "no data", null));
+    return;
+  }
+
+  const pov = detail.proof_of_vote || {};
+  const dec = detail.decision || {};
+  let allPass = true;
+  let notAnchored = false;
+  const fail = (id, msg) => { allPass = false; setCheck(id, "fail", "failed", hashRow("error", msg)); };
+
+  /* 1. ANCHOR — blake2b-256 of the published rationale vs the hash anchored in the vote tx.
+     BEACN's earliest votes were cast before rationale anchoring existed, so they carry no anchor
+     hash. That is a real gap in the record, not a tampering signal — say so plainly and leave the
+     other two checks to stand on their own. Marking it FAILED would cry wolf; hiding it would be
+     dishonest about the coverage. */
+  try {
+    // Check against the hash THE CHAIN RECORDS for the vote, never against one we derived here.
+    // The engine rewrites its local anchor hash every time it re-scores on fresh evidence, so
+    // comparing the published file to that would be comparing a file to its own hash: it passes
+    // always and proves nothing. The chain's copy is immutable and beyond BEACN's reach to revise,
+    // which is the entire reason it is worth checking.
+    const want = pov.onchain_anchor_hash;
+    if (!want) {
+      notAnchored = true;
+      setCheck("anchor", "na", "not anchored",
+        hashRow("status", "The chain records no rationale anchor for this vote — BEACN's earliest votes predate anchoring, so there is nothing to check against.") +
+        (dec.transaction_hash ? hashRow("vote tx", dec.transaction_hash) : ""));
+      throw { handled: true };
+    }
+    // Anchored copies are served at /r/<first 24 hex of their own hash>.md — the filename is
+    // derived from the bytes, so it is itself a checksum.
+    const res = await fetch(`./data/output/public/r/${want.slice(0, 24)}.md`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`anchored rationale not reachable (${res.status})`);
+    const bytes = new Uint8Array(await res.arrayBuffer());
+    const r = await verifyAnchor(bytes, want);
+    allPass = allPass && r.ok;
+    setCheck("anchor", r.ok ? "pass" : "fail", r.ok ? "verified" : "MISMATCH",
+      hashRow("in vote tx", r.want, r.ok ? "match" : "mismatch") +
+      hashRow("computed", r.got, r.ok ? "match" : "mismatch") +
+      hashRow("algorithm", "blake2b-256, computed in this browser") +
+      (dec.transaction_hash ? hashRow("vote tx", dec.transaction_hash) : ""));
+  } catch (e) {
+    if (!e || !e.handled) fail("anchor", e.message);
+  }
+
+  /* 2 + 3. BUNDLE and INPUT — recompute the manifest's own headline hashes from its contents. */
+  try {
+    const mdPath = pov.rationale_markdown_path;
+    if (!mdPath) throw new Error("no manifest recorded for this decision");
+    const manifest = await getJSON(rel(mdPath).replace(/\.md$/, ".manifest.json"));
+    const r = await verifyManifest(manifest);
+
+    allPass = allPass && r.bundle.ok;
+    const files = (manifest.resource_snapshots || []).length;
+    setCheck("bundle", r.bundle.ok ? "pass" : "fail", r.bundle.ok ? "verified" : "MISMATCH",
+      hashRow("published", r.bundle.want, r.bundle.ok ? "match" : "mismatch") +
+      hashRow("computed", r.bundle.got, r.bundle.ok ? "match" : "mismatch") +
+      hashRow("covers", `${files} evidence sources · doctrine ${short(manifest.soul_commit, 7)} · doctrine text ${short(manifest.soul_text_hash, 8)}`));
+
+    allPass = allPass && r.input.ok;
+    setCheck("input", r.input.ok ? "pass" : "fail", r.input.ok ? "verified" : "MISMATCH",
+      hashRow("published", r.input.want, r.input.ok ? "match" : "mismatch") +
+      hashRow("computed", r.input.got, r.input.ok ? "match" : "mismatch") +
+      hashRow("proposal", manifest.action?.metadata_title || manifest.action?.action_id || "—"));
+
+    renderProvenance(manifest, detail);
+  } catch (e) {
+    fail("bundle", e.message);
+    fail("input", e.message);
+  }
+
+  if (!allPass) {
+    setStatus("fail", "Check failed");
+    el("v-sub").textContent = "At least one hash did not match. Treat this decision as unverified.";
+  } else if (notAnchored) {
+    setStatus("pass", "Verified");
+    el("v-sub").textContent = "Evidence and inputs verified locally. This early vote carries no on-chain rationale anchor.";
+  } else {
+    setStatus("pass", "All checks passed");
+    el("v-sub").textContent = "Every hash was recomputed in your browser and matches. Nothing was taken on trust.";
+  }
+}
+
+function renderProvenance(manifest, detail) {
+  const box = el("v-prov");
+  if (!box) return;
+  const pov = detail.proof_of_vote || {};
+  const dec = detail.decision || {};
+  const core = pov.core_commit || "";
+  const soul = pov.soul_commit || "";
+  const res = pov.resources_commit || "";
+
+  box.innerHTML = `
+  <div class="sec-h" style="margin-top:var(--s6)"><h2>Chain of custody</h2></div>
+  <p class="sec-lead">The exact code, rules, and evidence behind this one decision. Every commit is
+     public — clone any of them and replay.</p>
+  <div class="kv">
+    <div class="kv-row"><span class="k">Engine (deterministic)</span>
+      <span class="v"><a class="hash" href="${GH.core(core)}" rel="noopener">${esc(core)}</a></span></div>
+    <div class="kv-row"><span class="k">Doctrine &amp; weights</span>
+      <span class="v"><a class="hash" href="${GH.soul(soul)}" rel="noopener">${esc(soul)}</a></span></div>
+    <div class="kv-row"><span class="k">Doctrine text hash</span>
+      <span class="v hash">${esc(manifest.soul_text_hash || "—")}</span></div>
+    <div class="kv-row"><span class="k">Evidence inputs</span>
+      <span class="v"><a class="hash" href="${GH.resources(res)}" rel="noopener">${esc(res)}</a></span></div>
+    <div class="kv-row"><span class="k">Evidence bundle</span>
+      <span class="v hash">${esc(manifest.snapshot_bundle_hash || "—")}</span></div>
+    ${dec.transaction_hash ? `<div class="kv-row"><span class="k">On-chain vote</span>
+      <span class="v"><a class="proof" href="${EXPLORER(dec.transaction_hash)}" rel="noopener">
+      ${linkIcon} ${esc(short(dec.transaction_hash, 12))}</a>
+      <span class="xs muted"> — open it and compare the anchor hash yourself</span></span></div>` : ""}
+  </div>`;
+}
+
+function wireVerify() {
+  const pick = el("v-pick");
+  const run = el("v-run");
+  if (!pick || !run) return;
+  const go = () => {
+    state.verifyId = pick.value;
+    run.disabled = true;
+    runVerification(pick.value).finally(() => { run.disabled = false; });
+  };
+  run.addEventListener("click", go);
+  pick.addEventListener("change", go);
+  if (pick.value) go();          // verify the first decision immediately — no empty state to click past
+}
+
+function viewDelegate() {
+  return `
+  <section class="hero">
+    <h1>Delegate to a DRep that shows its work.</h1>
+    <p>You do not have to trust BEACN. You can check it. Every decision ships with the inputs it
+       used, the commit of the doctrine it applied, a hash of the rationale, and a link to the
+       vote on-chain.</p>
+    <span class="drepid">DRep <code>${esc(state.status?.drep_id || "—")}</code></span>
+  </section>
+  <section class="sec">
+    <div class="prose">
+      <h3>What you are delegating to</h3>
+      <ul>
+        <li><strong>Deterministic votes.</strong> The binding decision is code, not vibes, and it replays byte-for-byte.</li>
+        <li><strong>No hidden inputs.</strong> Only public, admitted evidence reaches a gate.</li>
+        <li><strong>Funding, not reflexive opposition.</strong> Missing information produces a request for
+            information — never a NO. A NO has to be earned with affirmative evidence.</li>
+        <li><strong>Published reasoning.</strong> Facts, inferences and uncertainty, separated, for every action.</li>
+      </ul>
+      <h3>What it will not do</h3>
+      <ul>
+        <li>Vote on a stale view of the chain.</li>
+        <li>Turn a gap in its own evidence pipeline into a verdict about your proposal.</li>
+        <li>Optimise for popularity, social pressure, or delegation size.</li>
+      </ul>
+      <a class="cta" href="#/record">Read the full voting record →</a>
+    </div>
+  </section>`;
+}
+
+async function viewDetail(id) {
+  const view = el("view");
+  view.innerHTML = `<div class="loading"><span class="spin"></span> Loading decision…</div>`;
+  let d;
+  try {
+    d = await getJSON(SRC.detail(id));
+  } catch {
+    view.innerHTML = `<a class="back" href="#/record">← Back</a>
+      <div class="empty">No published decision found for this action.</div>`;
+    return;
+  }
+
+  const a = state.byId.get(id) || {};
+  const dec = d.decision || {};
+  const sc = d.scoring || {};
+  const rat = d.rationale || {};
+  const asmt = rat.assessment || {};
+  const fresh = d.freshness || {};
+  const pov = d.proof_of_vote || {};
+  const dc = d.decision_contract || rat.decision_contract || {};
+
+  const conf = Number(sc.confidence || 0);
+  const sections = Array.isArray(asmt.sections) ? asmt.sections : [];
+  const missing = Array.isArray(rat.missing_evidence) ? rat.missing_evidence : [];
+  // The engine names the SPECIFIC things a proposer could publish to earn a re-score. Prefer those
+  // over the coarse dimension name — "publish a line-item budget" is actionable, "cost comparables,
+  // budget proportionality, or sustainability evidence" is not.
+  const asks = ((rat.treasury_dimensions || {}).actionable_asks) || [];
+
+  view.innerHTML = `
+  <a class="back" href="#/record">← Back to the record</a>
+  <div class="detail-head">
+    <div class="card-top">
+      <span class="chip type">${esc(typeLabel(d.type))}</span>
+      <span class="chip ${d.status === "active" ? "open" : "closed"}">${d.status === "active" ? "Open" : "Closed"}</span>
+    </div>
+    <h1>${esc(d.title || id)}</h1>
+  </div>
+
+  <div class="panel">
+    <h2>BEACN's position</h2>
+    <div class="stance">
+      <div class="stance-cell">
+        <div class="lbl">Vote cast on-chain</div>
+        <div class="val">${proofHTML({
+          submitted: dec.submitted, transaction_hash: dec.transaction_hash, onchain_vote: dec.onchain_vote,
+        })}</div>
+      </div>
+      <div class="stance-cell">
+        <div class="lbl">Engine recommendation today</div>
+        <div class="val"><span class="vote ${esc(dec.vote || "NONE")}">${esc(dec.vote || "—")}</span></div>
+      </div>
+    </div>
+    ${divergeHTML({ diverged: dec.diverged, onchain_vote: dec.onchain_vote, decision: dec.vote })}
+    ${rat.summary ? `<p class="muted sm" style="margin-top:12px">${esc(rat.summary)}</p>` : ""}
+  </div>
+
+  <div class="panel">
+    <h2>Score &amp; confidence</h2>
+    <div class="kv">
+      <div class="kv-row"><span class="k">Binding score</span><span class="v">${esc(sc.binding_score ?? "—")}</span></div>
+      <div class="kv-row"><span class="k">Directional threshold</span><span class="v">±${esc(sc.directional_threshold ?? "—")}</span></div>
+      <div class="kv-row"><span class="k">Model influence on the vote</span><span class="v">${esc(sc.model_vote_influence ?? 0)}</span></div>
+    </div>
+    <div style="margin-top:12px">
+      <div class="lbl xs muted">Confidence — verified evidence coverage, capped at 0.90</div>
+      <div class="bar"><i style="width:${Math.round(Math.min(conf, 1) * 100)}%"></i></div>
+      <div class="xs muted" style="margin-top:4px">${(conf * 100).toFixed(1)}%</div>
+    </div>
+  </div>
+
+  ${flagsHTML(d.flags)}
+  ${capacityHTML(d.treasury_capacity)}
+
+  ${(asks.length || missing.length) ? `<div class="panel ask">
+    <h2>What would change this vote</h2>
+    <p class="muted sm" style="margin-bottom:12px">This is not a rejection. BEACN cannot certify the
+       price of this work on what has been published, and it will not turn that silence into a NO.
+       Publish the following and the engine re-scores it automatically on the next run — no appeal,
+       no lobbying, no relationship required.</p>
+    <ul class="asklist">
+      ${(asks.length ? asks : missing).map(m => `<li>${esc(m)}</li>`).join("")}
+    </ul>
+    <p class="muted xs" style="margin-top:12px">Each of these is a public, checkable fact about the
+       proposal — not an opinion about the team.</p>
+  </div>` : ""}
+
+  ${sections.length ? `<div class="panel">
+    <h2>The assessment</h2>
+    ${sections.map(s => `
+      <div class="asec ${esc(s.status === "complete" ? "complete" : "incomplete")}">
+        <h3>${esc(s.title)} <span class="chip">${esc(s.status || "")}</span></h3>
+        ${Array.isArray(s.findings) && s.findings.length ? `<ul>${s.findings.map(f => `<li>${esc(f)}</li>`).join("")}</ul>` : ""}
+        ${Array.isArray(s.missing) && s.missing.length ? `<ul>${s.missing.map(m => `<li class="miss">${esc(m)}</li>`).join("")}</ul>` : ""}
+        ${s.conclusion ? `<p class="concl">${esc(s.conclusion)}</p>` : ""}
+      </div>`).join("")}
+  </div>` : ""}
+
+  ${dc.composite_formula || dc.yes_rule ? `<div class="panel">
+    <h2>The rule that decided this</h2>
+    ${dc.composite_formula ? `<div class="formula">${esc(dc.composite_formula)}</div>` : ""}
+    <div class="kv" style="margin-top:12px">
+      ${dc.yes_rule ? `<div class="kv-row"><span class="k">YES requires</span><span class="v">${esc(dc.yes_rule)}</span></div>` : ""}
+      ${dc.no_rule ? `<div class="kv-row"><span class="k">NO requires</span><span class="v">${esc(dc.no_rule)}</span></div>` : ""}
+      ${dc.policy ? `<div class="kv-row"><span class="k">Policy</span><span class="v">${esc(dc.policy)}</span></div>` : ""}
+      ${dc.weights_version ? `<div class="kv-row"><span class="k">Weights version</span><span class="v">${esc(dc.weights_version)}</span></div>` : ""}
+      ${dc.weights_hash ? `<div class="kv-row"><span class="k">Weights hash</span><span class="v">${esc(short(dc.weights_hash, 12))}</span></div>` : ""}
+    </div>
+  </div>` : ""}
+
+  <div class="panel">
+    <h2>Reproduce this decision</h2>
+    <p class="muted sm" style="margin-bottom:8px">These pin the exact doctrine, inputs and code that
+       produced the verdict. Same commits + same inputs = same vote, byte for byte.</p>
+    <div class="kv">
+      <div class="kv-row"><span class="k">Input hash</span><span class="v">${esc(short(pov.input_hash, 16))}</span></div>
+      <div class="kv-row"><span class="k">Doctrine commit</span><span class="v">${esc(short(pov.soul_commit, 12))}</span></div>
+      <div class="kv-row"><span class="k">Inputs commit</span><span class="v">${esc(short(pov.resources_commit, 12))}</span></div>
+      <div class="kv-row"><span class="k">Engine commit</span><span class="v">${esc(short(pov.core_commit, 12))}</span></div>
+      <div class="kv-row"><span class="k">Snapshot age</span><span class="v">${fresh.snapshot_age_seconds != null ? Math.round(fresh.snapshot_age_seconds / 60) + " min" : "—"}${fresh.is_stale ? " (STALE)" : ""}</span></div>
+      ${dec.submitted && dec.transaction_hash ? `<div class="kv-row"><span class="k">Vote transaction</span>
+        <span class="v"><a href="${EXPLORER(esc(dec.transaction_hash))}" target="_blank" rel="noopener">${esc(short(dec.transaction_hash, 16))}</a></span></div>` : ""}
+    </div>
+    ${pov.rationale_anchor_url ? `<a class="cta" href="${esc(pov.rationale_anchor_url)}" target="_blank" rel="noopener">Read the full signed rationale →</a>` : ""}
+  </div>`;
+}
+
+/* ---------- contract panel (method page) ---------- */
+async function loadContract(id) {
+  const box = el("contract");
+  if (!box) return;
+  try {
+    const d = await getJSON(SRC.detail(id));
+    const dc = d.decision_contract || d.rationale?.decision_contract || {};
+    const rows = [
+      ["Policy", dc.policy],
+      ["Weights version", dc.weights_version],
+      ["Weights hash", short(dc.weights_hash, 16)],
+      ["YES requires", dc.yes_rule],
+      ["NO requires", dc.no_rule],
+      ["Portfolio gate", dc.portfolio_gate],
+      ["Model influence on the vote", dc.model_vote_influence ?? 0],
+    ].filter(([, v]) => v != null && v !== "");
+    box.innerHTML = `
+      ${dc.composite_formula ? `<div class="formula">${esc(dc.composite_formula)}</div>` : ""}
+      ${dc.benefit_formula ? `<div class="formula" style="margin-top:8px">${esc(dc.benefit_formula)}</div>` : ""}
+      <div class="kv" style="margin-top:12px">
+        ${rows.map(([k, v]) => `<div class="kv-row"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span></div>`).join("")}
+      </div>`;
+  } catch {
+    box.innerHTML = `<p class="muted sm">The live contract could not be loaded.</p>`;
+  }
+}
+
+/* An open position is not one thing. Lumping them together hides the only question a reader
+   actually has: whose move is it? These four buckets have four different owners — BEACN, the
+   proposer, the treasury's own capacity limit, and the chain. */
+function groupDivergences(actions) {
+  const out = { revise: [], undisclosed: [], capacity: [], other: [] };
+  for (const a of actions) {
+    if (!a.diverged || a.status !== "active") continue;
+    const code = a.blocked_reason_code || "";
+    const missing = a.missing_evidence || [];
+    if (a.decision === "YES" || a.decision === "NO") out.revise.push(a);          // BEACN's move
+    else if (code === "PORTFOLIO_CAPACITY_NOT_CLEARED") out.capacity.push(a);     // nobody's fault
+    else if (missing.length) out.undisclosed.push(a);                             // the proposer's move
+    else out.other.push(a);
+  }
+  return out;
+}
+
+/* ---------- banner ---------- */
+function renderBanner() {
+  const b = el("sysbanner");
+  const diverged = state.actions.filter(a => a.diverged && a.status === "active").length;
+  if (!diverged) { b.hidden = true; return; }
+  b.hidden = false;
+  // DERIVED, never narrated. Two hand-written versions of this banner have now gone stale within
+  // hours of being written — first "the evidence pipeline is being repaired" (it was fixed), then
+  // "the proposal does not disclose enough of its own budget" (true of 7 of them, not all, and two
+  // had flipped to YES). A sentence I type is a claim that rots. So the banner is computed from the
+  // decisions themselves, and it groups them by CAUSE — because "11 unresolved" tells a reader
+  // nothing, while "2 BEACN must fix, 7 the proposer must, 1 is scarcity" tells them everything.
+  const g = groupDivergences(state.actions);
+  const parts = [];
+  if (g.revise.length) parts.push(`<b>${g.revise.length}</b> where BEACN would now vote the other way
+    — it must revise its own vote, and the anti-churn policy makes it prove that twice first`);
+  if (g.undisclosed.length) parts.push(`<b>${g.undisclosed.length}</b> where the proposal will not
+    disclose enough of its own budget to certify the price. BEACN will not turn that silence into a
+    NO — missing evidence never becomes negative evidence — so it holds`);
+  if (g.capacity.length) parts.push(`<b>${g.capacity.length}</b> that clears every quality bar but
+    falls outside the treasury capacity left this period`);
+  if (g.other.length) parts.push(`<b>${g.other.length}</b> awaiting other evidence`);
+
+  b.innerHTML = `<span aria-hidden="true">⚠</span><span><b>${diverged} open
+    ${diverged === 1 ? "position" : "positions"} BEACN would not re-derive today.</b>
+    ${parts.join("; ")}. The votes already on-chain stand. Open any of them to see exactly which
+    evidence is absent and what would change the vote.</span>`;
+}
+
+/* ---------- router ---------- */
+function setNav(route) {
+  document.querySelectorAll(".nav a").forEach(a => {
+    if (a.dataset.route === route) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
   });
 }
 
-function renderMethod() {
-  const drep = state.status?.drep_id || DREP_FALLBACK;
-  app.innerHTML = `<section class="view">
-    ${viewHeader("Method and trust", "How BEACN earns a vote", "A good DRep page has one job here: show the path from public evidence to a public vote, then make each decision easy to verify.")}
-
-    <article class="card method-hero">
-      <div class="method-kicker">First principles</div>
-      <h2>The site should answer three questions.</h2>
-      <div class="method-question-grid">
-        <div><strong>What is live?</strong><span>Handled by Live: current proposals, epoch timing, and urgent evidence holds.</span></div>
-        <div><strong>What happened?</strong><span>Handled by Archive: expired and enacted decisions with preserved reasoning.</span></div>
-        <div><strong>Why trust it?</strong><span>Handled here: rules, input boundaries, replay path, and delegation safety.</span></div>
-      </div>
-    </article>
-
-    <article class="card pipeline-card">
-      <h2>Decision pipeline</h2>
-      <p class="verify-copy">Each vote moves through the same public chain. The website renders the result; it does not decide anything.</p>
-      <div class="pipeline-steps">
-        <div><b>1</b><strong>Proposal</strong><span>Governance action and anchor material are fetched from declared public sources.</span></div>
-        <div><b>2</b><strong>Admitted evidence</strong><span>Only resource-registry inputs can influence a rationale.</span></div>
-        <div><b>3</b><strong>Doctrine</strong><span>Public soul rules set values, gates, and scoring boundaries.</span></div>
-        <div><b>4</b><strong>Engine</strong><span>Core applies deterministic checks and produces the verdict.</span></div>
-        <div><b>5</b><strong>Proof</strong><span>Hashes, commits, rationale anchors, and transactions are published per action.</span></div>
-      </div>
-    </article>
-
-    <div class="method-grid">
-      <article class="card gate-card"><h2>Safety gates run first</h2><p class="verify-copy">Stale data, missing baseline evidence, an unknown action type, constitutional risk, or an incomplete treasury dossier blocks a confident directional vote. Speed never outranks protocol safety or evidence quality.</p></article>
-      <article class="card gate-card"><h2>Verification lives on each action</h2><p class="verify-copy">Hashes and receipts only matter when attached to the decision they prove. Open any proposal from Live or Archive to inspect source snapshots, rationale markdown, commits, and on-chain vote transactions.</p></article>
-    </div>
-
-    <div class="section-title"><h2>Verdict meanings</h2></div>
-    <div class="rule-grid compact-rules">
-      <article class="card rule-card yes"><h2 class="v-yes">Yes</h2><p>Evidence is complete, safeguards are credible, public benefit is demonstrated, and the weighted score clears the positive threshold.</p></article>
-      <article class="card rule-card no"><h2 class="v-no">No</h2><p>Demonstrated downside, weak safeguards, constitutional conflict, or unsustainable cost outweighs the claimed benefit.</p></article>
-      <article class="card rule-card abstain"><h2 class="v-abstain">Abstain</h2><p>A directional vote cannot be justified from admitted evidence. This records participation without pretending confidence.</p></article>
-      <article class="card rule-card info"><h2 class="v-info">Needs more info</h2><p>A proposal is reviewable, but required evidence is missing. The detail page names what would change the vote.</p></article>
-    </div>
-
-    <article class="card hierarchy">
-      <h2>Values hierarchy</h2>
-      <p class="subtitle">When values conflict, the higher public value wins in this fixed order.</p>
-      <ol><li>Constitutional integrity and protocol safety</li><li>Treasury stewardship</li><li>Evidence quality</li><li>Public benefit</li><li>Speed</li></ol>
-    </article>
-
-    <article class="card verify-hero">
-      <h2>Verify the system</h2>
-      <p class="verify-copy">Clone the repos, inspect the public doctrine and admitted resources, then replay a published decision from the action detail receipts. Generated plain-English statements are convenience text; the deterministic record is binding.</p>
-      <div class="repo-row">
-        <a href="https://github.com/BEACNpool/beacn-drep-core" target="_blank" rel="noopener">Core<small>Deterministic engine</small></a>
-        <a href="https://github.com/BEACNpool/beacn-drep-soul" target="_blank" rel="noopener">Soul<small>Doctrine and values</small></a>
-        <a href="https://github.com/BEACNpool/beacn-drep-resources" target="_blank" rel="noopener">Resources<small>Admitted public data</small></a>
-        <a href="https://github.com/BEACNpool/beacn-drep-web" target="_blank" rel="noopener">Web<small>Published record</small></a>
-      </div>
-    </article>
-
-    <div class="section-title"><h2>Philosophy and doctrine</h2></div>
-    <div class="link-grid">
-      ${doctrineLinks.map(([title, note, file]) => `<a class="card link-card" href="https://github.com/BEACNpool/beacn-drep-soul/blob/main/${file}" target="_blank" rel="noopener"><span><strong>${esc(title)}</strong><small>${esc(note)}</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>`).join("")}
-    </div>
-    <article class="card delegate-card">
-      <div class="eyebrow">Delegate</div>
-      <h2>Your ADA never leaves your wallet.</h2>
-      <p class="verify-copy">Delegation assigns governance voting power only. You keep custody and can change your DRep at any time.</p>
-      <div class="drep-id" id="drep-id">${esc(drep)}</div>
-      <div class="button-row">
-        <button class="button" id="copy-drep" type="button">Copy DRep ID</button>
-        <a class="button secondary" href="${cardanoscan.drep(drep)}" target="_blank" rel="noopener">View on Cardanoscan</a>
-      </div>
-    </article>
-  </section>`;
-  document.getElementById("copy-drep")?.addEventListener("click", () => copyText(drep));
-}
-
-const doctrineLinks = [
-  ["Governance philosophy", "The constitutional and evidence-first foundation", "GOVERNANCE_PHILOSOPHY.md"],
-  ["Why delegate", "The case for BEACN and its honest limits", "WHY_DELEGATE.md"],
-  ["Values hierarchy", "How conflicts between priorities are resolved", "values_hierarchy.md"],
-  ["Scoring weights", "The public deterministic weighting contract", "scoring_weights.json"],
-  ["Treasury spending", "Budget, milestones, concentration, and sustainability", "treasury_spending_doctrine.md"],
-  ["Parameter changes", "Safety rules for protocol parameter proposals", "parameter_change_doctrine.md"],
-  ["Hard forks", "Readiness and protocol upgrade requirements", "hardfork_doctrine.md"],
-  ["Committee updates", "Constitutional committee evaluation rules", "committee_update_doctrine.md"],
-  ["Info actions", "How non-binding governance signals are assessed", "info_action_doctrine.md"],
-  ["Constitutional amendments", "Requirements for changing the constitution", "constitutional_amendment_doctrine.md"]
-];
-
-const WHY_REASONS = [
-  ["1", "Governance is real work", "To vote well you need a wallet set up for voting, you have to catch every action the moment it appears, read the proposal and its anchor, and weigh the trade-offs. For most people, on most proposals, that's hours you don't have."],
-  ["2", "Delegating is the rational default", "Hand the routine decisions to a DRep that does this every single day. Reserve your own attention for the handful of actions you truly care about — BEACN covers the rest with consistent, published reasoning."],
-  ["3", "Scanned daily, decided instantly", "BEACN pulls the newest governance actions every day and produces a decision the moment the evidence is in. No proposal slips past while you're busy, traveling, or asleep."],
-  ["4", "Every vote is verifiable", "Open this site any time to see exactly how BEACN voted, with the rationale and on-chain proof behind each decision. No black box, no backroom logic — just receipts."]
-];
-
-function renderWhy() {
-  const drep = state.status?.drep_id || DREP_FALLBACK;
-  app.innerHTML = `<section class="view">
-    ${viewHeader("Why delegate", "Delegate the work. Keep the control.", "Voting on every Cardano governance action takes time, attention, and a wallet you keep tuned to the calendar. Hand the routine to a DRep that does it every day — and stay free to step in on the proposals you care about.")}
-
-    <article class="card why-hero">
-      <div class="method-kicker">The case in one line</div>
-      <h2>Most proposals don't need your time. The few that do, you still control.</h2>
-      <p class="verify-copy">BEACN reviews every governance action on declared public evidence, publishes the reasoning, and casts the vote — so you don't have to track the calendar. Your ADA never leaves your wallet, and you can redelegate the moment a vote doesn't match your interests.</p>
-    </article>
-
-    <div class="section-title"><h2>Why it's worth delegating</h2></div>
-    <div class="why-grid">
-      ${WHY_REASONS.map(([n, title, body]) => `<article class="card why-reason">
-        <b>${esc(n)}</b>
-        <div><strong>${esc(title)}</strong><span>${esc(body)}</span></div>
-      </article>`).join("")}
-    </div>
-
-    <article class="card why-control">
-      <div class="eyebrow">You're never locked in</div>
-      <h2>A vote you disagree with is one move from undone.</h2>
-      <p class="verify-copy">Delegation assigns governance voting power only — never custody. When a proposal matters to you, watch how BEACN votes here first. If it moves against your interests, redelegate to yourself or another DRep instantly: no approval, no waiting, no lockup. You delegate the routine without ever surrendering the decisions that count.</p>
-    </article>
-
-    <article class="card delegate-card">
-      <div class="eyebrow">Delegate</div>
-      <h2>Put governance on autopilot — with the receipts.</h2>
-      <p class="verify-copy">Set BEACN as your DRep in any Cardano wallet. Your ADA stays put; only voting power is assigned, and you can change it at any time.</p>
-      <div class="drep-id" id="why-drep-id">${esc(drep)}</div>
-      <div class="button-row">
-        <button class="button" id="why-copy-drep" type="button">Copy DRep ID</button>
-        <a class="button secondary" href="${cardanoscan.drep(drep)}" target="_blank" rel="noopener">View on Cardanoscan</a>
-        <a class="button secondary" href="#/home">See live votes</a>
-      </div>
-    </article>
-  </section>`;
-  document.getElementById("why-copy-drep")?.addEventListener("click", () => copyText(drep));
-}
-
-function detailSkeleton(backRoute) {
-  app.innerHTML = `<section class="view"><div class="detail-head"><a class="icon-button back-button" href="${backRoute}" aria-label="Back"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>Loading decision record…</span></div><div class="skeleton hero-skeleton"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div><div class="skeleton card-skeleton" style="margin-top:14px"></div></section>`;
-}
-
-function proofRow(label, value, link = "") {
-  if (value === undefined || value === null || value === "") return "";
-  return `<div class="proof-row"><span>${esc(label)}</span>${link ? `<a href="${attr(link)}" target="_blank" rel="noopener"><code>${esc(value)}</code></a>` : `<code>${esc(value)}</code>`}</div>`;
-}
-
-function extractedAmount(detail) {
-  for (const value of [detail.amount, detail.requested_amount, detail.treasury_amount, detail.withdrawal_amount]) {
-    if (value !== undefined && value !== null && value !== "") return String(value);
-  }
-  const titleMatch = String(detail.title || "").match(/(?:withdraw|request(?:ing)?)\s+([₳$€£]?\s?[\d,.]+\s*(?:ADA|₳)?)/i);
-  return titleMatch ? titleMatch[1].trim() : "";
-}
-
-function renderAssessmentTree(assessment) {
-  const sections = assessment?.sections || [];
-  if (!sections.length) return "";
-  return `<article class="card detail-section">
-    <h2><span>03</span>Review tree</h2>
-    <p class="subtitle">The proposal must pass through these assessment steps before the final vote is defensible.</p>
-    <div class="assessment-status">Assessment status: <strong>${esc(assessment.overall_status || "unknown")}</strong></div>
-    <div class="assessment-list">
-      ${sections.map(section => `<div class="assessment-item ${attr(section.status || "")}">
-        <div class="assessment-item-head"><strong>${esc(section.title || "Assessment")}</strong><span>${esc(section.status || "unknown")}</span></div>
-        ${section.conclusion ? `<p>${esc(section.conclusion)}</p>` : ""}
-        ${(section.findings || []).length ? `<ul>${section.findings.slice(0, 6).map(item => `<li>${esc(item)}</li>`).join("")}</ul>` : ""}
-        ${(section.missing || []).length ? `<div class="missing-list"><b>Missing</b>${section.missing.slice(0, 6).map(item => `<span>${esc(item)}</span>`).join("")}</div>` : ""}
-      </div>`).join("")}
-    </div>
-  </article>`;
-}
-
-function renderDecisionContract(detail, rationale) {
-  const contract = detail.decision_contract || rationale.decision_contract || {};
-  const dimensions = contract.dimensions || rationale.treasury_dimensions || {};
-  if (!Object.keys(contract).length && !Object.keys(dimensions).length) return "";
-  const labels = {
-    benefit: "Ecosystem benefit", delivery_confidence: "Delivery confidence",
-    cost_efficiency: "Cost efficiency", downside_risk: "Downside risk"
+function wireRecord() {
+  const rerender = () => {
+    const v = el("view");
+    v.innerHTML = viewRecord();
+    wireCards(v);
+    wireRecord();
   };
-  const floors = contract.yes_floors || {};
-  const rows = Object.entries(labels).filter(([key]) => dimensions[key] !== undefined).map(([key, label]) => {
-    const value = Number(dimensions[key]);
-    const threshold = floors[key];
-    const comparator = key === "downside_risk" ? "ceiling" : "floor";
-    return `<div class="metric"><span>${esc(label)}</span><strong>${Number.isFinite(value) ? `${Math.round(value * 100)}%` : "—"}</strong>${threshold !== undefined ? `<small>${comparator}: ${Math.round(Number(threshold) * 100)}%</small>` : ""}</div>`;
-  }).join("");
-  return `<article class="card detail-section">
-    <h2><span>04</span>How this decision was scored</h2>
-    <p class="subtitle">The deterministic policy is binding. Model influence on the vote is ${esc(contract.model_vote_influence ?? "0")}; missing evidence causes a hold, not a NO.</p>
-    ${rows ? `<div class="metric-grid score-grid">${rows}</div>` : ""}
-    <div class="proof-list">
-      ${proofRow("Composite formula", contract.composite_formula)}
-      ${proofRow("Benefit weights", contract.benefit_formula)}
-      ${proofRow("Composite score", dimensions.composite)}
-      ${proofRow("Evidence status", dimensions.evidence_status)}
-      ${proofRow("Intrinsic merit", contract.merit_recommendation || rationale.merit_recommendation)}
-      ${proofRow("Merit reason", contract.merit_reason || rationale.merit_reason)}
-      ${proofRow("Execution distinction", contract.execution_note)}
-      ${proofRow("YES rule", contract.yes_rule)}
-      ${proofRow("NO rule", contract.no_rule)}
-      ${proofRow("Portfolio / NCL gate", contract.portfolio_gate)}
-      ${proofRow("Weights version", contract.weights_version)}
-      ${proofRow("Weights hash", contract.weights_hash)}
-    </div>
-  </article>`;
+  el("q")?.addEventListener("input", debounce(rerender, 200));
+  el("f-type")?.addEventListener("change", rerender);
+  el("f-vote")?.addEventListener("change", rerender);
+  el("prev")?.addEventListener("click", () => goPage(-1));
+  el("next")?.addEventListener("click", () => goPage(1));
 }
 
-async function renderDetail(id) {
-  document.body.classList.add("detail-open");
-  const backRoute = activeActionIds().has(id) ? "#/home" : "#/proposals";
-  detailSkeleton(backRoute);
-  let detail = state.details.get(id);
-  if (!detail) {
-    try {
-      detail = await fetchJSON(PATHS.detail(id), true);
-      state.details.set(id, detail);
-    } catch (error) {
-      app.innerHTML = `<section class="view"><div class="detail-head"><a class="icon-button back-button" href="${backRoute}" aria-label="Back"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>Decision record</span></div><div class="card empty"><h2>Detail unavailable</h2><p>${esc(error.message)}</p><a href="${cardanoscan.action(id)}" target="_blank" rel="noopener">Open action on Cardanoscan</a></div></section>`;
-      return;
-    }
+function goPage(delta) {
+  const parts = location.hash.split("?");
+  const p = Math.max(1, parseInt(new URLSearchParams(parts[1] || "").get("p") || "1", 10) + delta);
+  location.hash = `#/record?p=${p}`;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function debounce(fn, ms) {
+  let t;
+  return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
+}
+
+async function route() {
+  const view = el("view");
+  const hash = location.hash || "#/live";
+  const path = hash.split("?")[0];
+
+  if (path.startsWith("#/action/")) {
+    setNav("");
+    await viewDetail(decodeURIComponent(path.slice("#/action/".length)));
+    return;
   }
-  if (parseRoute().id !== id) return;
-  const listRecord = state.actions.find(item => item.action_id === id) || {};
-  const live = currentMap().get(id) || {};
-  const evidence = detail.proposal_evidence || {};
-  const rationale = detail.rationale || {};
-  const assessment = rationale.assessment || {};
-  const proof = detail.proof_of_vote || detail.reproducibility || {};
-  const reproducibility = detail.reproducibility || {};
-  const decision = detail.decision || {};
-  const scoring = detail.scoring || {};
-  const onchainVote = live.our_vote || "";
-  const onchainKey = onchainVote ? verdictKey(onchainVote) : "";
-  const engineKey = verdictKey(decision.vote || proof.vote || listRecord.decision);
-  const drift = onchainKey && onchainKey !== engineKey;
-  const verdict = verdictMeta(decision.vote || proof.vote || listRecord.decision || onchainVote);
-  const statement = summaryFor(id) || rationale.summary || "No plain-language statement has been published for this action.";
-  const amount = extractedAmount(detail);
-  const snapshot = localPath(evidence.download_path || listRecord.proposal_path);
-  const rationaleMarkdown = localPath(proof.rationale_markdown_path || rationale.markdown_path);
-  const confidence = Number(proof.confidence);
-  const confidenceText = Number.isFinite(confidence) ? `${Math.round(confidence * 100)}%` : "—";
-  const score = Number.isFinite(Number(proof.score)) ? Number(proof.score).toFixed(2) : "—";
-  const reasonCode = detail.reason_code || rationale.reason_code || rationale.summary_raw || "Published deterministic rationale";
-  const missing = rationale.missing_evidence || [];
-  app.innerHTML = `<section class="view">
-    <div class="detail-head"><a class="icon-button back-button" href="${backRoute}" aria-label="Back to proposals"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></a><span>${esc(id)}</span></div>
-    <article class="card detail-hero">
-      <div class="detail-meta"><span class="status-pill">${esc(detail.status || listRecord.status || "recorded")}</span><span class="type-pill">${esc(detail.type || listRecord.type || "Unknown type")}</span></div>
-      <h1>${esc(detail.title || listRecord.title || "Governance action")}</h1>
-      <span class="verdict ${verdict.cls}">${esc(verdict.label)}</span><span class="recommendation-tag">Current recommendation</span>
-      <div class="detail-links"><a href="${cardanoscan.action(id)}" target="_blank" rel="noopener">Action on Cardanoscan ↗</a>${decision.transaction_hash ? `<a href="${cardanoscan.tx(decision.transaction_hash)}" target="_blank" rel="noopener">Vote transaction ↗</a>` : ""}</div>
-    </article>
-
-    <article class="card detail-section">
-      <h2><span>01</span>The request</h2>
-      <p class="subtitle">The proposal material that was admitted and analyzed.</p>
-      ${amount ? `<div class="metric-grid"><div class="metric"><span>Requested amount</span><strong>${esc(amount)}</strong></div></div>` : ""}
-      ${evidence.available ? `<pre class="preview">${esc(evidence.preview || "A proposal snapshot is available, but no preview was published.")}</pre>` : `<p class="missing">The proposal source was not available in this published record.</p>`}
-      <div class="detail-links">
-        ${evidence.source_anchor_url ? `<a href="${attr(evidence.source_anchor_url)}" target="_blank" rel="noopener">Original proposal / anchor ↗</a>` : ""}
-        ${snapshot ? `<a href="${attr(snapshot)}" target="_blank" rel="noopener">Download public snapshot ↗</a>` : ""}
-      </div>
-      <div class="proof-list">
-        ${proofRow("Content type", evidence.content_type)}
-        ${proofRow("Fetched", evidence.fetched_at_utc)}
-        ${proofRow("Proposal SHA-256", evidence.file_sha256)}
-        ${proofRow("Anchor hash", evidence.anchor_hash)}
-      </div>
-    </article>
-
-    <article class="card detail-section">
-      <h2><span>02</span>BEACN's verdict</h2>
-      <p class="onchain-note"><strong>Current recommendation: ${esc(verdict.label)}</strong> — this is the binding result of the latest published assessment.</p>
-      ${onchainVote ? `<p class="onchain-note"><strong>Recorded on-chain vote: ${esc(verdictMeta(onchainKey).label)} ✓</strong> — immutable history unless a later vote revision is submitted.</p>` : ""}
-      <div class="callout">${esc(statement)}</div>
-      ${drift ? `<p class="timestamp drift-note" style="margin-top:10px">Decision update: the recorded on-chain vote (${esc(verdictMeta(onchainKey).label)}) differs from the current recommendation (${esc(verdictMeta(engineKey).label)}). No new ballot is implied; both facts are shown separately.</p>` : ""}
-      ${state.statements.get(id)?.model ? `<p class="timestamp" style="margin-top:10px">Plain-language layer: ${esc(state.statements.get(id).model)}. The deterministic record below is binding.</p>` : ""}
-    </article>
-
-    ${renderAssessmentTree(assessment)}
-
-    ${renderDecisionContract(detail, rationale)}
-
-    <article class="card detail-section">
-      <h2><span>${assessment?.sections?.length ? "04" : "03"}</span>Reasons that structured the vote</h2>
-      <p class="verify-copy">${esc(rationale.summary || "No deterministic summary was published.")}</p>
-      <div class="metric-grid">
-        <div class="metric"><span>Reason</span><strong title="${attr(reasonCode)}">${esc(reasonCode)}</strong></div>
-        <div class="metric"><span>Score</span><strong>${esc(score)}</strong></div>
-        <div class="metric"><span>Confidence</span><strong>${esc(confidenceText)}</strong></div>
-      </div>
-      ${Object.keys(scoring).length ? `<div class="proof-list">${Object.entries(scoring).map(([key, value]) => proofRow(key.replaceAll("_", " "), value)).join("")}</div>` : ""}
-      ${missing.length ? `<h3 style="margin-top:18px">Missing evidence</h3><ul class="fix-list">${missing.map(item => `<li>${esc(item)}</li>`).join("")}</ul>` : ""}
-      <h3 style="margin-top:18px">What would change the vote</h3>
-      <ul class="fix-list">${(rationale.top_fixes || []).map(item => `<li>${esc(item)}</li>`).join("") || "<li>No specific changes were published.</li>"}</ul>
-    </article>
-
-    <article class="card detail-section">
-      <h2><span>${assessment?.sections?.length ? "05" : "04"}</span>Proof and reproducibility</h2>
-      <p class="subtitle">These receipts bind the public inputs and rule versions to the published result.</p>
-      <div class="proof-list">
-        ${proofRow("On-chain vote", onchainVote || "not yet on-chain")}
-        ${proofRow("Engine record", decision.vote || proof.vote)}
-        ${proofRow("Submitted", decision.submitted_at)}
-        ${proofRow("Transaction", decision.transaction_hash, decision.transaction_hash ? cardanoscan.tx(decision.transaction_hash) : "")}
-        ${proofRow("Input hash", proof.input_hash)}
-        ${proofRow("Snapshot bundle", proof.snapshot_bundle_hash)}
-        ${proofRow("Soul commit", proof.soul_commit || reproducibility.soul_commit, repoCommit("beacn-drep-soul", proof.soul_commit || reproducibility.soul_commit))}
-        ${proofRow("Resources commit", proof.resources_commit || reproducibility.resources_commit, repoCommit("beacn-drep-resources", proof.resources_commit || reproducibility.resources_commit))}
-        ${proofRow("Core commit", proof.core_commit || reproducibility.core_commit, repoCommit("beacn-drep-core", proof.core_commit || reproducibility.core_commit))}
-        ${proofRow("Rationale anchor", proof.rationale_anchor_hash, proof.rationale_anchor_url)}
-      </div>
-      <div class="detail-links">
-        ${rationaleMarkdown ? `<a href="${attr(rationaleMarkdown)}" target="_blank" rel="noopener">Full rationale markdown ↗</a>` : ""}
-        ${proof.rationale_anchor_url ? `<a href="${attr(proof.rationale_anchor_url)}" target="_blank" rel="noopener">Published anchor ↗</a>` : ""}
-      </div>
-    </article>
-  </section>`;
-}
-
-function parseRoute() {
-  const raw = location.hash.replace(/^#\/?/, "");
-  const [view = "home", encodedId] = raw.split("/");
-  if (view === "action" && encodedId) return { view, id: decodeURIComponent(encodedId) };
-  if (view === "decides" || view === "verify") return { view: "method" };
-  return { view: ["home", "why", "proposals", "method"].includes(view) ? view : "home" };
-}
-
-function updateNavigation(view) {
-  document.querySelectorAll(".tab-bar a").forEach(link => link.classList.toggle("active", link.dataset.tab === view));
-  if (view !== "action") document.body.classList.remove("detail-open");
-}
-
-async function renderRoute() {
-  const route = parseRoute();
-  if (["home", "proposals"].includes(route.view) && route.view !== activeListView) {
-    state.verdict = "ALL";
-    state.query = "";
-    activeListView = route.view;
+  if (path.startsWith("#/record")) {
+    setNav("record");
+    view.innerHTML = viewRecord();
+    wireCards(view);
+    wireRecord();
+    return;
   }
-  updateNavigation(route.view);
-  window.scrollTo({ top: 0, behavior: "instant" });
+  if (path.startsWith("#/method")) {
+    setNav("method");
+    view.innerHTML = viewMethod();
+    const sample = state.actions.find(a => a.submitted) || state.actions[0];
+    if (sample) loadContract(sample.action_id);
+    return;
+  }
+  if (path.startsWith("#/verify")) {
+    setNav("verify");
+    view.innerHTML = viewVerify();
+    wireVerify();
+    return;
+  }
+  if (path.startsWith("#/delegate")) {
+    setNav("delegate");
+    view.innerHTML = viewDelegate();
+    return;
+  }
+  setNav("live");
+  view.innerHTML = viewLive();
+  wireCards(view);
+}
+
+/* ---------- boot ---------- */
+async function boot() {
   try {
-    await loadFeeds();
-    if (route.view === "home") renderHome();
-    if (route.view === "why") renderWhy();
-    if (route.view === "proposals") renderProposals();
-    if (route.view === "method") renderMethod();
-    if (route.view === "action") await renderDetail(route.id);
-    app.focus({ preventScroll: true });
-  } catch (error) {
-    app.innerHTML = `<div class="card empty"><h2>Could not load the public feeds</h2><p>${esc(error.message)}</p><button class="button" id="retry-load" type="button">Try again</button></div>`;
-    document.getElementById("retry-load")?.addEventListener("click", async () => {
-      state.status = null;
-      await renderRoute();
-    });
+    const [index, actions, status, weights] = await Promise.all([
+      getJSON(SRC.index).catch(() => null),
+      getJSON(SRC.actions),
+      getJSON(SRC.status).catch(() => null),
+      getJSON(SRC.weights).catch(() => null),
+    ]);
+    state.index = index;
+    state.status = status;
+    state.weights = weights;
+    state.actions = (actions.items || []).filter(a => a && a.action_id);
+    state.actions.forEach(a => state.byId.set(a.action_id, a));
+
+    renderBanner();
+    el("provenance").textContent =
+      `Published ${index?.generated_at || "—"} · doctrine ${short(index?.soul?.commit, 7)} · ` +
+      `inputs ${short(index?.resources?.commit, 7)} · engine ${short(index?.core?.commit, 7)}`;
+
+    await route();
+    window.addEventListener("hashchange", route);
+  } catch (e) {
+    el("view").innerHTML = `<div class="empty">Could not load the public record.<br>
+      <span class="xs">${esc(e.message)}</span></div>`;
   }
 }
 
-function updateEpochClock() {
-  const number = document.getElementById("epoch-number");
-  if (!number) return;
-  const elapsed = Math.max(0, Date.now() - CARDANO_START);
-  const epoch = Math.floor(elapsed / EPOCH_MS);
-  const within = elapsed % EPOCH_MS;
-  const remaining = Math.max(0, Math.floor((EPOCH_MS - within) / 1000));
-  const days = Math.floor(remaining / 86400);
-  const hours = Math.floor((remaining % 86400) / 3600);
-  const minutes = Math.floor((remaining % 3600) / 60);
-  const seconds = remaining % 60;
-  number.textContent = epoch;
-  document.getElementById("epoch-countdown").textContent = `${days}d ${String(hours).padStart(2, "0")}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
-  document.getElementById("epoch-progress").style.width = `${within / EPOCH_MS * 100}%`;
-}
-
-refreshButton.addEventListener("click", async () => {
-  await loadFeeds(true);
-  await renderRoute();
-  showToast("Public feeds refreshed");
-});
-window.addEventListener("touchstart", event => {
-  if (window.scrollY === 0 && event.touches.length === 1) {
-    pullStart = event.touches[0].clientY;
-    pullDistance = 0;
-  }
-}, { passive: true });
-window.addEventListener("touchmove", event => {
-  if (!pullStart || window.scrollY !== 0 || event.touches.length !== 1) return;
-  pullDistance = Math.max(0, Math.min(110, event.touches[0].clientY - pullStart));
-  if (!state.loading) refreshProgress.style.width = `${pullDistance / 110 * 100}%`;
-}, { passive: true });
-window.addEventListener("touchend", async () => {
-  const shouldRefresh = pullDistance >= 80 && !state.loading;
-  pullStart = 0;
-  pullDistance = 0;
-  if (shouldRefresh) {
-    await loadFeeds(true);
-    await renderRoute();
-    showToast("Public feeds refreshed");
-  } else if (!state.loading) {
-    refreshProgress.style.width = "0";
-  }
-}, { passive: true });
-window.addEventListener("hashchange", renderRoute);
-window.addEventListener("online", () => { connectionDot.className = "connection-dot online"; });
-window.addEventListener("offline", () => { connectionDot.className = "connection-dot offline"; });
-setInterval(updateEpochClock, 1000);
-setInterval(() => loadFeeds(true).then(renderRoute).catch(() => {}), 180000);
+boot();
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => navigator.serviceWorker.register("./sw.assessment.js").catch(() => {}));
 }
-if (!location.hash) history.replaceState(null, "", "#/home");
-renderRoute();

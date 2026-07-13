@@ -5,42 +5,51 @@
   "status": "active",
   "source": {
     "origin": "governance fetch pipeline",
-    "raw_input_hash": "sha256:af6931d763f8addcc7544e67a5051befeff273d31cfa29668308465b00d2be70",
+    "raw_input_hash": "sha256:2fd706465dadefd06aa1b9d04b3662b8925971facc948e84e6afcfb02bb062d8",
     "detected_at": "2026-07-09T21:00:01.798380+00:00"
   },
   "decision": {
-    "vote": "ABSTAIN",
-    "published_at": "2026-07-11T11:30:05.186378+00:00",
+    "vote": "NEEDS_MORE_INFO",
+    "onchain_vote": null,
+    "diverged": false,
+    "published_at": "2026-07-13T15:15:32.806919+00:00",
     "signed": false,
     "submitted": false,
     "transaction_hash": null,
     "submitted_at": null
   },
   "proof_of_vote": {
-    "vote": "ABSTAIN",
+    "vote": "NEEDS_MORE_INFO",
     "score": 0.0,
-    "confidence": 0.1,
-    "input_hash": "af6931d763f8addcc7544e67a5051befeff273d31cfa29668308465b00d2be70",
-    "snapshot_bundle_hash": "5540ad8a07408db64f9df68455af069f282431591e3bc23e36a066d859baab02",
+    "confidence": 0.2,
+    "input_hash": "2fd706465dadefd06aa1b9d04b3662b8925971facc948e84e6afcfb02bb062d8",
+    "snapshot_bundle_hash": "685ac64c0eaa8db224e10702793941a906da1cbf8a806c3178be48cb4a2c9744",
     "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
-    "resources_commit": "98204209c1160292d57e948cc03515956c20be3e",
-    "core_commit": "55c0f3f68cffa73033d65fea06087205839b256e",
-    "rationale_markdown_path": "/data/output/public/rationales/529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0-af6931d763f8.md",
-    "rationale_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/019f8785d84b40b15408302b.md",
-    "rationale_anchor_hash": "019f8785d84b40b15408302bf2ae801489ed18362edc60ca7af8c372cb142c46"
+    "resources_commit": "a650e5f55d3662a45d71b3a19d5301fd64c2bbee",
+    "core_commit": "ded627116d3160ff38c58fb5f3db6f3956f0cced",
+    "rationale_markdown_path": "/data/output/public/rationales/529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0-2fd706465dad.md",
+    "rationale_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/941a5328548a167c45b50734.md",
+    "rationale_anchor_hash": "941a5328548a167c45b50734b34b4e0ab023bd8318928ff2c8e26f7954e14bbd",
+    "onchain_anchor_hash": null,
+    "onchain_anchor_url": null,
+    "onchain_vote": null
   },
   "rationale": {
-    "summary": "Vote: ABSTAIN. For this TreasuryWithdrawals (active), evidence quality was insufficient for a reliable YES or NO decision. Decisive reason: a treasury action without a complete deep-research dossier cannot be voted directionally without pretending certainty. Weighed against it: the proposal substantiates \"The proposal requests \u20b3120,000,000 for Cardano PRIME, with USD figures treated only as planning references at a $0.16/ADA assumption.\" though 1 review blocker(s) remain open. What would enable a directional vote: Provide: treasury_amount_lovelace is missing for a treasury withdrawal; Provide treasury_amount_lovelace is missing for a treasury withdrawal. Residual uncertainty: Missing: treasury_amount_lovelace is missing for a treasury withdrawal Confidence context: score 0.00; confidence 10.0%.",
-    "summary_raw": "Cannot produce a responsible recommendation without baseline evidence.",
+    "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (active), critical information needed for a responsible directional vote is still missing. Decisive reason: a treasury action without a complete deep-research dossier cannot be voted directionally without pretending certainty. Weighed against it: the proposal substantiates \"The proposal requests \u20b3120,000,000, with USD figures included only as planning references using a $0.16 per ADA assumption.\" though 2 review blocker(s) remain open. What would enable a directional vote: Provide: Deep research dossier is required for treasury actions before directional voting; Provide: Complete proposal summary, budget analysis, feasibility, risks, alternatives, and failure-mode sections. Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. Confidence context: score 0.00; confidence 20.0%.",
+    "summary_raw": "Directional voting is blocked until dossier quality gates pass.",
     "top_fixes": [
-      "Provide: treasury_amount_lovelace is missing for a treasury withdrawal",
-      "Provide treasury_amount_lovelace is missing for a treasury withdrawal.",
-      "Provide independent evidence for: The proposal states that, as of June 2026, Cardano DeFi has approximately $90M in TVL and $45M in stablecoin supply."
+      "Provide: Deep research dossier is required for treasury actions before directional voting.",
+      "Provide: Complete proposal summary, budget analysis, feasibility, risks, alternatives, and failure-mode sections.",
+      "Provide: Missing dossier section: budget analysis"
     ],
-    "markdown_path": "/data/output/public/rationales/529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0-af6931d763f8.md",
+    "markdown_path": "/data/output/public/rationales/529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0-2fd706465dad.md",
     "missing_evidence": [
-      "treasury_amount_lovelace is missing for a treasury withdrawal"
+      "Deep research dossier is required for treasury actions before directional voting.",
+      "Complete proposal summary, budget analysis, feasibility, risks, alternatives, and failure-mode sections.",
+      "Missing dossier section: budget analysis",
+      "Missing dossier section: feasibility assessment"
     ],
+    "blocked_reason_code": "DEEP_RESEARCH_REQUIRED",
     "assessment_status": "blocked",
     "assessment_schema_version": "assessment-tree-v1",
     "assessment": {
@@ -51,18 +60,16 @@
       "sections": [
         {
           "title": "Intake",
-          "status": "blocked",
+          "status": "complete",
           "findings": [
             "Action type: TreasuryWithdrawals",
             "Status: active",
             "Proposed epoch: 642",
             "Expires after epoch: 649",
-            "Treasury request: not specified",
+            "Treasury request: 120.00M ADA",
             "Anchor pinned locally: yes"
           ],
-          "missing": [
-            "treasury_amount_lovelace is missing for a treasury withdrawal"
-          ],
+          "missing": [],
           "conclusion": "Baseline fields and source anchors establish whether the proposal can be reviewed at all."
         },
         {
@@ -73,22 +80,25 @@
             "Proposal document read by reasoning layer: yes",
             "Snapshot freshness source: deep_research_dossiers.csv",
             "Deep research dossier: required",
-            "Requested: Treasury withdrawal to fund AlphaGrowth's Cardano PRIME, a 12-month community-overseen program to improve DeFi protocol readiness, activate incentives, and grow durable liquidity across Cardano markets.",
-            "Recipient: 2026 Treasury Reserve Smart Contract stake address stake1784sdxt6jjennmstphgdu7l7c2scf5d02a6cve2dgn5s2kq5u3j9v",
+            "Requested: Treasury withdrawal to fund AlphaGrowth's Cardano PRIME, a 12-month community-overseen program for DeFi protocol readiness, incentives, and durable liquidity growth across Cardano markets.",
+            "Recipient: 2026 Treasury Reserve Smart Contract stake address stake1784sdxt6jjennmstphgdu7l7c2scf5d02a6cve2dgn5s2kq5u3j9v managed by Intersect, with AlphaGrowth executing program work under Operating Group oversight.",
             "Stated amount: 120,000,000",
-            "Deliverables: Phase 1 public current-state audit, Phase 2 identification of integration, product, and ecosystem-support gaps, Phase 3 deployment of incentives and capital after Operating Group affirmation, Published recommendations and disbursement records, Quarterly financial and ecosystem impact reporting, Independent audit or assurance allocation, Return-to-treasury triggers for unused, unearned, unreleased, or excess funds",
-            "Deadline/expiry: 12 months",
-            "Claim (economic, supported_in_proposal, high materiality): The proposal requests \u20b3120,000,000 for Cardano PRIME, with USD figures treated only as planning references at a $0.16/ADA assumption.",
-            "Claim (governance, supported_in_proposal, high materiality): PRIME is described as a 12-month program executed by AlphaGrowth under Operating Group oversight, while Intersect acts as Constitutional Administrator and manages withdrawn funds directly.",
-            "Claim (governance, proposer_asserted, high materiality): The withdrawal is conditional on an applicable Net Change Limit under TREASURY-01a having enough remaining capacity to cover the withdrawal in full at enactment.",
-            "Claim (economic, proposer_asserted, high materiality): The proposal states that, as of June 2026, Cardano DeFi has approximately $90M in TVL and $45M in stablecoin supply.",
-            "Claim (adoption, proposer_asserted, medium materiality): The proposer argues that Cardano's DeFi constraints include fragmented liquidity, inefficient liquidity, limited advanced liquidity products, limited risk and insurance tooling, and low external distribution.",
-            "Claim (governance, supported_in_proposal, high materiality): The program uses milestone-gated and action-gated releases, including a Month 4 Phase 3 release gate and Operating Group review with veto or conditioning authority over material actions."
+            "Deliverables: Phase 1 public current-state audit, Phase 2 identification of integration, product, and ecosystem-support gaps, Phase 3 incentives and capital deployment after Operating Group affirmation of the Phase 3 release plan, Published recommendations and disbursement records, Quarterly financial and ecosystem impact metrics reporting, Independent audit or assurance funded by a dedicated \u20b32,000,000 allocation, Return-to-treasury triggers for unused, unearned, unreleased, or excess funds",
+            "Deadline/expiry: 12-month program; specific final completion date not stated in document",
+            "Claim (adoption, proposer_asserted, high materiality): PRIME is described as a 12-month program to improve DeFi protocol readiness, activate incentives responsibly, and grow durable liquidity across Cardano markets.",
+            "Claim (economic, supported_in_proposal, high materiality): The proposal requests \u20b3120,000,000, with USD figures included only as planning references using a $0.16 per ADA assumption.",
+            "Claim (governance, supported_in_proposal, high materiality): Intersect will act as Constitutional Administrator, manage withdrawn funds directly, and hold them in a separate auditable account rather than AlphaGrowth or the Operating Group holding program funds unilaterally.",
+            "Claim (governance, supported_in_proposal, high materiality): Program funds are to be released through milestone-gated and action-gated processes including a Month 4 Phase 3 release gate, published recommendations and disbursement records, and Operating Group review with veto or conditioning authority over material actions.",
+            "Claim (governance, proposer_asserted, high materiality): The withdrawal is conditional on an applicable Net Change Limit being agreed under TREASURY-01a and having enough remaining capacity to cover the full withdrawal at enactment.",
+            "Claim (economic, proposer_asserted, high materiality): The document states that as of June 2026 Cardano DeFi has approximately $90M in TVL and $45M in stablecoin supply."
           ],
           "missing": [
-            "Independent evidence for: The withdrawal is conditional on an applicable Net Change Limit under TREASURY-01a having enough remaining capacity to cover the withdrawal in full at enactment.",
-            "Independent evidence for: The proposal states that, as of June 2026, Cardano DeFi has approximately $90M in TVL and $45M in stablecoin supply.",
-            "Independent evidence for: The proposer argues that Cardano's DeFi constraints include fragmented liquidity, inefficient liquidity, limited advanced liquidity products, limited risk and insurance tooling, and low external distribution."
+            "Independent evidence for: PRIME is described as a 12-month program to improve DeFi protocol readiness, activate incentives responsibly, and grow durable liquidity across Cardano markets.",
+            "Independent evidence for: The withdrawal is conditional on an applicable Net Change Limit being agreed under TREASURY-01a and having enough remaining capacity to cover the full withdrawal at enactment.",
+            "Independent evidence for: The document states that as of June 2026 Cardano DeFi has approximately $90M in TVL and $45M in stablecoin supply.",
+            "Independent evidence for: The proposal asserts that Cardano has made infrastructure progress through USDCx, LayerZero, Pyth, Dune, and other additions, but this has not yet converted into enough durable DeFi liquidity, application depth, LP participation, or institutional awareness.",
+            "budget analysis",
+            "feasibility assessment"
           ],
           "conclusion": "Each claim must map to replayable public evidence; proposer assertions alone are not enough for confidence."
         },
@@ -99,11 +109,11 @@
             "Requested ADA: 0",
             "Budget granularity: unknown",
             "Milestone payment gates: confirmed",
-            "Clawback/refund path: unknown",
+            "Clawback/refund path: confirmed",
             "Cost/benefit clarity: unknown",
             "Recurring funding dependency: unknown",
             "Six-month treasury flow regime: stressed (basis: total inflow (tau + donations) vs enacted withdrawals)",
-            "Financial confidence: 0.46"
+            "Financial confidence: 0.45"
           ],
           "missing": [
             "line-item budget",
@@ -116,18 +126,17 @@
           "title": "Risk review",
           "status": "complete",
           "findings": [
-            "Execution risk: unknown",
-            "Governance risk: unknown",
-            "Technical risk: unknown",
+            "Execution risk: high",
+            "Governance risk: medium",
+            "Technical risk: medium",
             "Treasury exposure risk: high",
             "Mitigation evidence: confirmed",
             "Independent assurance: not confirmed",
-            "Rollback/remedy path: unknown",
+            "Rollback/remedy path: confirmed",
             "Flag count: 0"
           ],
           "missing": [
             "independent assurance",
-            "rollback/remedy path",
             "dependency map"
           ],
           "conclusion": "Risk is not a side note; unmitigated execution or governance risk can dominate an otherwise attractive proposal."
@@ -136,8 +145,8 @@
           "title": "Counterargument pass",
           "status": "complete",
           "findings": [
-            "Strongest YES: the proposal substantiates \"The proposal requests \u20b3120,000,000 for Cardano PRIME, with USD figures treated only as planning references at a $0.16/ADA assumption.\" though 1 review blocker(s) remain open.",
-            "Strongest NO: a material claim is unsupported \u2014 \"The withdrawal is conditional on an applicable Net Change Limit under TREASURY-01a having enough remaining capacity to cover the withdrawal in full at enactment.\" \u2014 so cost or precedent may outweigh the benefit.",
+            "Strongest YES: the proposal substantiates \"The proposal requests \u20b3120,000,000, with USD figures included only as planning references using a $0.16 per ADA assumption.\" though 2 review blocker(s) remain open.",
+            "Strongest NO: a material claim is unsupported \u2014 \"PRIME is described as a 12-month program to improve DeFi protocol readiness, activate incentives responsibly, and grow durable liquidity across Cardano markets.\" \u2014 so cost or precedent may outweigh the benefit.",
             "Strongest hold: a treasury action without a complete deep-research dossier cannot be voted directionally without pretending certainty."
           ],
           "missing": [],
@@ -151,26 +160,38 @@
             "The public rationale should name the decisive section and the strongest counterargument."
           ],
           "missing": [
-            "treasury_amount_lovelace is missing for a treasury withdrawal"
+            "missing budget analysis",
+            "missing feasibility assessment"
           ],
           "conclusion": "The vote is only credible if the assessment tree shows enough work for a skeptical delegator to audit."
         }
       ],
       "blocking_questions": [
-        "treasury_amount_lovelace is missing for a treasury withdrawal"
+        "missing budget analysis",
+        "missing feasibility assessment"
       ]
     },
-    "assessment_path": "/data/output/public/rationales/529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0-af6931d763f8.assessment.json",
+    "assessment_path": "/data/output/public/rationales/529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0-2fd706465dad.assessment.json",
     "treasury_dimensions": {
-      "evidence_status": "proposal_only",
-      "benefit": 0,
-      "delivery_confidence": 0.45,
+      "actionable_asks": [
+        "Publish a line-item budget: what is being bought, at what unit cost.",
+        "State the cost against the benefit: what does this buy, per ada spent.",
+        "Describe the funding path beyond this grant, or say plainly that there isn't one.",
+        "Disclose the rate basis \u2014 headcount, FTE fraction, or day rate \u2014 so the price can be checked against the market.",
+        "Tie payment to defined deliverables, not to elapsed time or headcount.",
+        "State your AI-cost assumption: this work is cheaper to produce than it was, and the price should show it."
+      ],
+      "evidence_status": "independently_verified",
+      "benefit": 0.1,
+      "delivery_confidence": 0.7,
       "cost_efficiency": 0.0,
-      "downside_risk": 0.4375,
-      "composite": -0.3031,
-      "affirmative_waste_evidence": [],
+      "downside_risk": 0.425,
+      "composite": -0.1987,
+      "affirmative_waste_evidence": [
+        "independently verified material duplication",
+        "independently verified excessive cost versus market comparables"
+      ],
       "missing": [
-        "independent ecosystem-value evidence packet",
         "verified ecosystem benefit or strategic necessity",
         "cost comparables, budget proportionality, or sustainability evidence"
       ]
@@ -192,25 +213,35 @@
       "no_rule": "Requires affirmative independently verified waste/harm plus ecosystem benefit below 55%; missing evidence alone is never NO.",
       "portfolio_gate": "Verified on-chain Net Change Limit and opportunity-cost portfolio eligibility are mandatory for treasury direction.",
       "dimensions": {
-        "evidence_status": "proposal_only",
-        "benefit": 0,
-        "delivery_confidence": 0.45,
+        "actionable_asks": [
+          "Publish a line-item budget: what is being bought, at what unit cost.",
+          "State the cost against the benefit: what does this buy, per ada spent.",
+          "Describe the funding path beyond this grant, or say plainly that there isn't one.",
+          "Disclose the rate basis \u2014 headcount, FTE fraction, or day rate \u2014 so the price can be checked against the market.",
+          "Tie payment to defined deliverables, not to elapsed time or headcount.",
+          "State your AI-cost assumption: this work is cheaper to produce than it was, and the price should show it."
+        ],
+        "evidence_status": "independently_verified",
+        "benefit": 0.1,
+        "delivery_confidence": 0.7,
         "cost_efficiency": 0.0,
-        "downside_risk": 0.4375,
-        "composite": -0.3031,
-        "affirmative_waste_evidence": [],
+        "downside_risk": 0.425,
+        "composite": -0.1987,
+        "affirmative_waste_evidence": [
+          "independently verified material duplication",
+          "independently verified excessive cost versus market comparables"
+        ],
         "missing": [
-          "independent ecosystem-value evidence packet",
           "verified ecosystem benefit or strategic necessity",
           "cost comparables, budget proportionality, or sustainability evidence"
         ]
       },
-      "merit_recommendation": "NEEDS_MORE_INFO",
-      "merit_reason": "Intrinsic quality floors or independent evidence are not complete.",
+      "merit_recommendation": "NO",
+      "merit_reason": "Affirmative independent waste/harm evidence outweighs demonstrated benefit.",
       "execution_note": "Merit is evaluated independently; the executable recommendation also requires verified NCL and portfolio capacity."
     },
-    "merit_recommendation": "NEEDS_MORE_INFO",
-    "merit_reason": "Intrinsic quality floors or independent evidence are not complete."
+    "merit_recommendation": "NO",
+    "merit_reason": "Affirmative independent waste/harm evidence outweighs demonstrated benefit."
   },
   "decision_contract": {
     "policy": "balanced-return-risk-v1",
@@ -229,21 +260,31 @@
     "no_rule": "Requires affirmative independently verified waste/harm plus ecosystem benefit below 55%; missing evidence alone is never NO.",
     "portfolio_gate": "Verified on-chain Net Change Limit and opportunity-cost portfolio eligibility are mandatory for treasury direction.",
     "dimensions": {
-      "evidence_status": "proposal_only",
-      "benefit": 0,
-      "delivery_confidence": 0.45,
+      "actionable_asks": [
+        "Publish a line-item budget: what is being bought, at what unit cost.",
+        "State the cost against the benefit: what does this buy, per ada spent.",
+        "Describe the funding path beyond this grant, or say plainly that there isn't one.",
+        "Disclose the rate basis \u2014 headcount, FTE fraction, or day rate \u2014 so the price can be checked against the market.",
+        "Tie payment to defined deliverables, not to elapsed time or headcount.",
+        "State your AI-cost assumption: this work is cheaper to produce than it was, and the price should show it."
+      ],
+      "evidence_status": "independently_verified",
+      "benefit": 0.1,
+      "delivery_confidence": 0.7,
       "cost_efficiency": 0.0,
-      "downside_risk": 0.4375,
-      "composite": -0.3031,
-      "affirmative_waste_evidence": [],
+      "downside_risk": 0.425,
+      "composite": -0.1987,
+      "affirmative_waste_evidence": [
+        "independently verified material duplication",
+        "independently verified excessive cost versus market comparables"
+      ],
       "missing": [
-        "independent ecosystem-value evidence packet",
         "verified ecosystem benefit or strategic necessity",
         "cost comparables, budget proportionality, or sustainability evidence"
       ]
     },
-    "merit_recommendation": "NEEDS_MORE_INFO",
-    "merit_reason": "Intrinsic quality floors or independent evidence are not complete.",
+    "merit_recommendation": "NO",
+    "merit_reason": "Affirmative independent waste/harm evidence outweighs demonstrated benefit.",
     "execution_note": "Merit is evaluated independently; the executable recommendation also requires verified NCL and portfolio capacity."
   },
   "proposal_evidence": {
@@ -255,34 +296,58 @@
     "anchor_hash": "1ac5c12a6b09d68d6602d79df4ea82e92f1c15dc306a31c320fd546b4b7ad690",
     "file_sha256": "80245ed2d5215ac7c7e2c899371096ea204ba2d5601122a5c46c916afe2ab447",
     "content_bytes": "8594",
-    "fetched_at_utc": "2026-07-11T11:30:14Z",
+    "fetched_at_utc": "2026-07-13T15:16:04Z",
     "download_path": "/proposals/529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0.json",
     "preview": "{\n  \"@context\": {\n    \"@language\": \"en\",\n    \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n    \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n    \"CIP116\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0116/README.md#\",\n    \"CIP169\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0169/README.md#\",\n    \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n    \"body\": {\n      \"@id\": \"CIP108:body\",\n      \"@context\": {\n        \"references\": {\n          \"@id\": \"CIP108:references\",\n          \"@container\": \"@set\",\n          \"@context\": {\n            \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n            \"Other\": \"CIP100:OtherReference\",\n            \"label\": \"CIP100:reference-label\",\n            \"uri\": \"CIP100:reference-uri\",\n            \"referenceHash\": {\n              \"@id\": \"CIP108:referenceHash\",\n              \"@context\": {\n                \"hashDigest\": \"CIP108:hashDigest\",\n                \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n              }\n            }\n          }\n        },\n        \"title\": \"CIP108:title\",\n        \"abstract\": \"CIP108:abstract\",\n        \"motivation\": "
   },
   "deep_research": {
-    "status": "verification_failed",
+    "status": "drafted_pending_review",
     "dossier_complete": "no",
-    "sections_grounded": 7,
+    "sections_grounded": 5,
     "sections_total": 7,
     "owner": "drep-agent-extract",
     "dossier_path": "/data/output/public/dossiers/529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0.md",
     "receipt_path": "/data/output/public/dossiers/529dccaadaa000746c22f1682574cb3f436eeba4d19710b90791a54226dc96d7#0.receipt.json",
     "verification": {
-      "passed": false,
-      "verified_at_utc": "2026-07-10T13:26:00+00:00",
+      "passed": null,
+      "verified_at_utc": "2026-07-13T15:31:49+00:00",
       "model": "claude-cli",
-      "fact_count": 38,
-      "supported": 0,
-      "support_ratio": 0.0,
+      "fact_count": null,
+      "supported": null,
+      "support_ratio": null,
       "material_discrepancies": 0
     }
+  },
+  "flags": [],
+  "treasury_capacity": {
+    "verified": true,
+    "ncl_lovelace": 300000000000000,
+    "period_start_epoch": 613,
+    "period_end_epoch": 713,
+    "withdrawals_in_period_lovelace": 291435336000000,
+    "remaining_capacity_lovelace": 8564664000000,
+    "spend_basis": "gross_treasury_withdrawals_enacted_within_period",
+    "source_action_id": "73a4eb2148781c37ef37c90a33a1d3d00511a8eefe9cdfaa1ea593b090f23f96#0",
+    "source_anchor_hash": "4e264b46f948da4a1917be590d14f10f9e36372075fd11561669180747c0588b",
+    "drep_support": {
+      "yes_stake_lovelace": 2460643090332089,
+      "no_stake_lovelace": 1754593207208598,
+      "yes_pct_of_participating_stake": 58.37,
+      "yes_dreps": 125,
+      "no_dreps": 44
+    },
+    "verification_status": "verified_onchain_info_action",
+    "caveat": "Set by an Info governance action. Info actions change no ledger state and can NEVER be enacted -- they always expire -- so no formally ratified NCL exists or can exist. This is the strongest available public chain evidence: an anchor document byte-verified against its on-chain blake2b-256 hash, covering the current epoch, which won a majority of participating DRep stake. It is NOT enacted ledger state, and the majority may fall short of the supermajority other action types require. Published with every treasury rationale that relies on it.",
+    "portfolio_status": "verified",
+    "requested_lovelace": 120000000000000,
+    "fits_remaining": false
   },
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
     "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "98204209c1160292d57e948cc03515956c20be3e",
-    "core_commit": "55c0f3f68cffa73033d65fea06087205839b256e",
+    "resources_commit": "a650e5f55d3662a45d71b3a19d5301fd64c2bbee",
+    "core_commit": "ded627116d3160ff38c58fb5f3db6f3956f0cced",
     "resource_ids_used": [
       "gov_actions_snapshot",
       "treasury_withdrawals_snapshot",
@@ -388,14 +453,14 @@
     "binding_score": 0.0,
     "raw_score": 0.0,
     "directional_threshold": 0.12,
-    "confidence": 0.1,
+    "confidence": 0.2,
     "model_vote_influence": 0
   },
   "freshness": {
     "snapshot_age_seconds": 0,
     "max_allowed_seconds": 21600,
     "is_stale": false,
-    "snapshot_time": "2026-07-11T11:59:37.109210Z",
+    "snapshot_time": "2026-07-13T15:31:49.224054Z",
     "freshness_source": "deep_research_dossiers.csv"
   }
 }

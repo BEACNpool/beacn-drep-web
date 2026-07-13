@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-11T12:00:04Z",
+  "generated_at": "2026-07-13T15:31:54Z",
   "rolling_6m_fees": [
-    1500544309672
+    1494909667589
   ],
   "treasury": {
-    "inflows_6m": 300108861934,
+    "inflows_6m": 298981933517,
     "outflows_6m": 291435336000000,
     "outflow_inflow_ratio": 1.836518,
     "window_days": 180,

@@ -5,7 +5,7 @@
     "expires_after_epoch": "645",
     "metadata_title": "Withdraw 3,810,423 ada for Mithril Protocol",
     "proposed_epoch": "638",
-    "treasury_amount_lovelace": ""
+    "treasury_amount_lovelace": "3810423000000"
   },
   "anchor": {
     "action_id": "b3d452bff7769d7f557ec6b8974760ee6c5e496c276652b654032966621e0ccf#5",
@@ -23,41 +23,12 @@
     "values_hierarchy.md",
     "treasury_spending_doctrine.md"
   ],
-  "doctrine_sha256": "7178a8ad997fdddf922ee000bc8c4df1011eeadb6b757f24e6e4bc8cbb36a2c1",
-  "generated_at_utc": "2026-07-08T12:35:00+00:00",
+  "doctrine_sha256": "bf65b314428ab42deb53ca6befbb50400236e1a09cb69c45d5788cddfd3b4a4a",
+  "generated_at_utc": "2026-07-13T01:49:20+00:00",
   "model": "gpt-5.5",
-  "onchain_context": "onchain recipient history: stake address stake1784sdxt6jjennmstphgdu7l7c2scf5d02a6cve2dgn5s2kq5u3j9v appears in 14 withdrawal proposals totalling 57273260000000 lovelace (first 2026-06-23 16:14:33, last 2026-06-26 13:51:52)\nonchain DRep vote counts so far: yes=59 no=5 abstain=4 (explicit ballots, not stake-weighted)\ntreasury flow (36 epochs): inflow 158838297854652 lovelace, enacted withdrawals 361435336000000 lovelace, ratio 2.275492",
-  "output_sha256": "c702b88689c3163ce22fae2d30008c2b310453fdb69f96623746d2531fc9d6b6",
-  "prompt_sha256": "f2448a477928d6b85242cb9752039b392b02b0441672027e29751482eb5a7653",
-  "review_status": "verification_failed",
-  "treasury_doctrine_version": "1.3.0",
-  "verification": {
-    "backend": "claude",
-    "contradicted": 0,
-    "fact_count": 29,
-    "fact_verdicts": [],
-    "filtered_legacy_snapshot_items": [],
-    "gates": {
-      "anchor_sha256_matches_draft": true,
-      "different_model_from_drafter": true,
-      "dossier_and_receipt_present": true,
-      "financial_and_risk_rows_present": true,
-      "sections_grounded_7of7": true
-    },
-    "material_discrepancies": [],
-    "model": "claude-cli",
-    "not_found": 0,
-    "output_sha256": "ac5005020f8014b044f5094fa209d1c526f41fbed270bb710c6cc796ce041e7c",
-    "passed": false,
-    "prompt_sha256": "74da4b6143c54147aaef5b50ed9d7d38d40780a20e01517f0a5e2ffb8c2c3598",
-    "summary": "29/29 facts supported, 0 contradicted, 0 not_found. The dossier's factual layer is faithful to the anchor document, on-chain context, and doctrine; no invented figures, names, dates, or commitments detected.",
-    "support_ratio": 0.0,
-    "supported": 0,
-    "thresholds": {
-      "max_material_discrepancies": 0,
-      "min_fact_support_ratio": 0.9
-    },
-    "verdicts_returned": 0,
-    "verified_at_utc": "2026-07-10T13:18:57+00:00"
-  }
+  "onchain_context": "onchain recipient history: stake address stake1784sdxt6jjennmstphgdu7l7c2scf5d02a6cve2dgn5s2kq5u3j9v appears in 15 withdrawal proposals totalling 177273260000000 lovelace (first 2026-06-23 16:14:33, last 2026-07-09 16:30:25)\nonchain DRep vote counts so far: yes=75 no=6 abstain=5 (explicit ballots, not stake-weighted)\ntreasury flow (36 epochs): inflow 158689112947739 lovelace, enacted withdrawals 291435336000000 lovelace, ratio 1.836518",
+  "output_sha256": "f76b7c77f67b926968baeffcc21a8386c776f62bf70f27b066d23c58e6a9c691",
+  "prompt_sha256": "c93a8513e1e6d1b7c3d79a8c19eae07b262483bf254bb2d999c87044a84db9b8",
+  "review_status": "drafted_pending_review",
+  "treasury_doctrine_version": "1.5.0"
 }

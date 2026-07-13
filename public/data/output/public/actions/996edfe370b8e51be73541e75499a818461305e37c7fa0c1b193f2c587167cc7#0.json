@@ -5,12 +5,14 @@
   "status": "expired",
   "source": {
     "origin": "governance fetch pipeline",
-    "raw_input_hash": "sha256:299afa30cb97c895934a006a19f09e2365a427e5704f3bb52ecf7c07b0fd8b62",
+    "raw_input_hash": "sha256:12c54f9cbc6b5fb8e85b19714cb613f041784446c7ed5450b608d78da9188cd2",
     "detected_at": "2026-07-07T21:00:01.830677+00:00"
   },
   "decision": {
     "vote": "ABSTAIN",
-    "published_at": "2026-07-11T11:30:05.186378+00:00",
+    "onchain_vote": null,
+    "diverged": false,
+    "published_at": "2026-07-13T15:15:32.806919+00:00",
     "signed": false,
     "submitted": false,
     "transaction_hash": null,
@@ -20,14 +22,17 @@
     "vote": "ABSTAIN",
     "score": -0.02,
     "confidence": 0.425,
-    "input_hash": "299afa30cb97c895934a006a19f09e2365a427e5704f3bb52ecf7c07b0fd8b62",
-    "snapshot_bundle_hash": "441b0de6e503ea53f9d914618ce7a682b1c225b28a1446f528f0509ad88dc281",
+    "input_hash": "12c54f9cbc6b5fb8e85b19714cb613f041784446c7ed5450b608d78da9188cd2",
+    "snapshot_bundle_hash": "af772f79088eaeb936ea6444cf38a1d829572ea1847aad772b971ccc7bb17740",
     "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
-    "resources_commit": "98204209c1160292d57e948cc03515956c20be3e",
-    "core_commit": "55c0f3f68cffa73033d65fea06087205839b256e",
-    "rationale_markdown_path": "/data/output/public/rationales/996edfe370b8e51be73541e75499a818461305e37c7fa0c1b193f2c587167cc7#0-299afa30cb97.md",
+    "resources_commit": "a650e5f55d3662a45d71b3a19d5301fd64c2bbee",
+    "core_commit": "ded627116d3160ff38c58fb5f3db6f3956f0cced",
+    "rationale_markdown_path": "/data/output/public/rationales/996edfe370b8e51be73541e75499a818461305e37c7fa0c1b193f2c587167cc7#0-12c54f9cbc6b.md",
     "rationale_anchor_url": null,
-    "rationale_anchor_hash": null
+    "rationale_anchor_hash": null,
+    "onchain_anchor_hash": null,
+    "onchain_anchor_url": null,
+    "onchain_vote": null
   },
   "rationale": {
     "summary": "Vote: ABSTAIN. For this InfoAction (expired), evidence quality was insufficient for a reliable YES or NO decision. Primary blocker: evidence did not clear the directional decision threshold. Decisive reason: if claims cannot be tied to replayable evidence, abstaining avoids overclaiming certainty. Weighed against it: the proposal substantiates \"This Info Action calls for a vote by Cardano Delegate Representatives (DReps) on the proposed Cardano 2030 vision & strategy.\" and clears the evidence gates. What would enable a directional vote: Provide mitigation evidence; Provide independent assurance. Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score -0.02; confidence 42.5%.",
@@ -37,8 +42,9 @@
       "Provide independent assurance.",
       "Provide rollback/remedy path."
     ],
-    "markdown_path": "/data/output/public/rationales/996edfe370b8e51be73541e75499a818461305e37c7fa0c1b193f2c587167cc7#0-299afa30cb97.md",
+    "markdown_path": "/data/output/public/rationales/996edfe370b8e51be73541e75499a818461305e37c7fa0c1b193f2c587167cc7#0-12c54f9cbc6b.md",
     "missing_evidence": [],
+    "blocked_reason_code": "RULE_THRESHOLD_UNMET",
     "assessment_status": "incomplete",
     "assessment_schema_version": "assessment-tree-v1",
     "assessment": {
@@ -131,7 +137,7 @@
       ],
       "blocking_questions": []
     },
-    "assessment_path": "/data/output/public/rationales/996edfe370b8e51be73541e75499a818461305e37c7fa0c1b193f2c587167cc7#0-299afa30cb97.assessment.json",
+    "assessment_path": "/data/output/public/rationales/996edfe370b8e51be73541e75499a818461305e37c7fa0c1b193f2c587167cc7#0-12c54f9cbc6b.assessment.json",
     "treasury_dimensions": null,
     "decision_contract": {
       "policy": "balanced-return-risk-v1",
@@ -187,17 +193,25 @@
     "anchor_hash": "19581423957b0f155170d04e8654374e205ab0e95ffa3a05c84b55ccc5deac70",
     "file_sha256": "c2d568c398462d1d4a2bad1b99c19b78bb45438c52c22215602630fa1af3f2a9",
     "content_bytes": "3700",
-    "fetched_at_utc": "2026-07-11T11:30:14Z",
+    "fetched_at_utc": "2026-07-13T15:16:04Z",
     "download_path": "/proposals/996edfe370b8e51be73541e75499a818461305e37c7fa0c1b193f2c587167cc7#0.json",
     "preview": "{\n  \"@context\": {\n    \"@language\": \"en-us\",\n    \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n    \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n    \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n    \"body\": {\n      \"@id\": \"CIP108:body\",\n      \"@context\": {\n        \"references\": {\n          \"@id\": \"CIP108:references\",\n          \"@container\": \"@set\",\n          \"@context\": {\n            \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n            \"Other\": \"CIP100:OtherReference\",\n            \"label\": \"CIP100:reference-label\",\n            \"uri\": \"CIP100:reference-uri\",\n            \"referenceHash\": {\n              \"@id\": \"CIP108:referenceHash\",\n              \"@context\": {\n                \"hashDigest\": \"CIP108:hashDigest\",\n                \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n              }\n            }\n          }\n        },\n        \"title\": \"CIP108:title\",\n        \"abstract\": \"CIP108:abstract\",\n        \"motivation\": \"CIP108:motivation\",\n        \"rationale\": \"CIP108:rationale\"\n      }\n    },\n    \"authors\": {\n      \"@id\": \"CIP100:authors\",\n      \"@container\": \"@set\",\n      \"@context\": {\n        \""
   },
   "deep_research": null,
+  "flags": [
+    {
+      "flag": "\ud83d\udfe1 NO_DISCUSSION",
+      "severity": "yellow",
+      "detail": "No links to forum discussion or community feedback"
+    }
+  ],
+  "treasury_capacity": null,
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
     "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "98204209c1160292d57e948cc03515956c20be3e",
-    "core_commit": "55c0f3f68cffa73033d65fea06087205839b256e",
+    "resources_commit": "a650e5f55d3662a45d71b3a19d5301fd64c2bbee",
+    "core_commit": "ded627116d3160ff38c58fb5f3db6f3956f0cced",
     "resource_ids_used": [
       "gov_actions_snapshot",
       "drep_vote_history_snapshot",
@@ -271,10 +285,10 @@
     "model_vote_influence": 0
   },
   "freshness": {
-    "snapshot_age_seconds": 14,
+    "snapshot_age_seconds": 3,
     "max_allowed_seconds": 21600,
     "is_stale": false,
-    "snapshot_time": "2026-07-11T11:59:37.109210Z",
+    "snapshot_time": "2026-07-13T15:31:49.224054Z",
     "freshness_source": "deep_research_dossiers.csv"
   }
 }

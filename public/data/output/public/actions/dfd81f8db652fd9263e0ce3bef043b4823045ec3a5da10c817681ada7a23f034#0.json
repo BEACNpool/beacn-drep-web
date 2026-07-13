@@ -5,45 +5,46 @@
   "status": "active",
   "source": {
     "origin": "governance fetch pipeline",
-    "raw_input_hash": "sha256:dc704cb145bb64846290a079344191b4ff4697d87ce6985a6174cdf82a66b6d6",
+    "raw_input_hash": "sha256:2efb4ba188b906adbb70013e0e2dbb74ffd5e3e6a0283d2a7de9b6e6a897df01",
     "detected_at": "2026-07-07T21:00:01.830677+00:00"
   },
   "decision": {
-    "vote": "NEEDS_MORE_INFO",
-    "published_at": "2026-07-11T11:30:05.186378+00:00",
-    "signed": false,
-    "submitted": false,
-    "transaction_hash": null,
-    "submitted_at": null
+    "vote": "NO",
+    "onchain_vote": "NO",
+    "diverged": false,
+    "published_at": "2026-07-13T15:15:32.806919+00:00",
+    "signed": true,
+    "submitted": true,
+    "transaction_hash": "c64c7ff584539355c251e2eb8678c55334dfe4c912945dd19c84a03820c3c551",
+    "submitted_at": "2026-07-04T16:54:01+00:00"
   },
   "proof_of_vote": {
-    "vote": "NEEDS_MORE_INFO",
-    "score": -0.11,
-    "confidence": 0.7775,
-    "input_hash": "dc704cb145bb64846290a079344191b4ff4697d87ce6985a6174cdf82a66b6d6",
-    "snapshot_bundle_hash": "65b1866578f3b61ef914780b6547041bac4f044b126afd362e1526ccd75452fd",
+    "vote": "NO",
+    "score": -0.1475,
+    "confidence": 0.7569,
+    "input_hash": "2efb4ba188b906adbb70013e0e2dbb74ffd5e3e6a0283d2a7de9b6e6a897df01",
+    "snapshot_bundle_hash": "c42c76bc335e7252fde97512f2d2a179e0034a0085de7d455f1ac7b07e103b78",
     "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
-    "resources_commit": "98204209c1160292d57e948cc03515956c20be3e",
-    "core_commit": "55c0f3f68cffa73033d65fea06087205839b256e",
-    "rationale_markdown_path": "/data/output/public/rationales/dfd81f8db652fd9263e0ce3bef043b4823045ec3a5da10c817681ada7a23f034#0-dc704cb145bb.md",
-    "rationale_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/7385044475b004875dd62714.md",
-    "rationale_anchor_hash": "7385044475b004875dd6271412ae1867eae226fcf297341765f19566c99d76eb"
+    "resources_commit": "a650e5f55d3662a45d71b3a19d5301fd64c2bbee",
+    "core_commit": "ded627116d3160ff38c58fb5f3db6f3956f0cced",
+    "rationale_markdown_path": "/data/output/public/rationales/dfd81f8db652fd9263e0ce3bef043b4823045ec3a5da10c817681ada7a23f034#0-2efb4ba188b9.md",
+    "rationale_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/6872ac518cd55160c5b484dd.md",
+    "rationale_anchor_hash": "6872ac518cd55160c5b484dd8bdd1b9c5b148019787f3fa15a91666f28ce3949",
+    "onchain_anchor_hash": "ea66be6f21ecb082d87c236145b145c0c997575870a3e70b5c1d52abaad7a116",
+    "onchain_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/ea66be6f21ecb082d87c2361.md",
+    "onchain_vote": "No"
   },
   "rationale": {
-    "summary": "Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (active), critical information needed for a responsible directional vote is still missing. Decisive reason: if claims cannot be tied to replayable evidence, abstaining avoids overclaiming certainty. Weighed against it: the proposal substantiates \"Bifrost is designed as a permissionless Bitcoin-Cardano bridge that brings BTC onto Cardano as a native Cardano asset for DeFi use cases.\" and clears the evidence gates. What would enable a directional vote: Provide: independent ecosystem-value evidence packet; Provide: verified ecosystem benefit or strategic necessity. Residual uncertainty: Treasury flow signal is in stressed regime (total inflow (tau + donations) vs enacted withdrawals). Confidence context: score -0.11; confidence 77.8%.",
-    "summary_raw": "Advisory model lean was -0.030 (display cap \u00b10.05) and had zero influence on the binding score: The extracted claims describe potentially high public-benefit infrastructure, but the largest and most decision-critical assertions about SPO-threshold custody, fallback safety, audit readiness, adoption targets, and economic returns are mostly proposer-asserted rather than evidenced in the supplied document. Given the large treasury request and the deterministic assessment that claims and evidence are thin, a small cautionary nudge is justified without overriding the engine\u2019s incomplete-status handling.",
+    "summary": "Vote: NO. For this TreasuryWithdrawals (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Decisive reason: a material claim is unsupported \u2014 \"By the end of Phase 1, the proposers expect Bifrost to be an audited bridge running on Cardano mainnet in federated and SPO-threshold custody modes under controlled access.\" \u2014 so cost or precedent may outweigh the benefit. Weighed against it: the proposal substantiates \"Bifrost is designed as a permissionless Bitcoin-Cardano bridge secured by Cardano's existing SPO ecosystem that brings BTC onto Cardano as a native Cardano asset.\" and clears the evidence gates. What would change this vote to YES: Provide independent evidence for: The proposal targets 1,200 BTC in Cardano DeFi TVL, about 600,000 annual transactions, and 3,000 fBTC-holding wallets by Q2 2029; Provide milestone-gated disbursement. Residual uncertainty: Treasury flow signal is in stressed regime (total inflow (tau + donations) vs enacted withdrawals). Confidence context: score -0.15; confidence 75.7%.",
+    "summary_raw": "Advisory model lean was -0.030 (display cap \u00b10.05) and had zero influence on the binding score: The extracted claims show a large treasury request for security-critical bridge infrastructure with plausible public-benefit upside, but the strongest treasury-relevant points around mainnet readiness, SPO-secured custody, adoption targets, fee surplus, and independent stewardship are mostly proposer-asserted while the deterministic assessment already labels claims and evidence as thin. A small cautionary nudge is justified because evidence quality and treasury stewardship matter more than speed or projected ecosystem growth.",
     "top_fixes": [
-      "Provide: independent ecosystem-value evidence packet",
-      "Provide: verified ecosystem benefit or strategic necessity",
-      "Provide: cost comparables, budget proportionality, or sustainability evidence"
+      "Provide independent evidence for: The proposal targets 1,200 BTC in Cardano DeFi TVL, about 600,000 annual transactions, and 3,000 fBTC-holding wallets by Q2 2029.",
+      "Provide milestone-gated disbursement.",
+      "Provide sustainability path."
     ],
-    "markdown_path": "/data/output/public/rationales/dfd81f8db652fd9263e0ce3bef043b4823045ec3a5da10c817681ada7a23f034#0-dc704cb145bb.md",
-    "missing_evidence": [
-      "independent ecosystem-value evidence packet",
-      "verified ecosystem benefit or strategic necessity",
-      "cost comparables, budget proportionality, or sustainability evidence",
-      "delivery controls, milestones, assurance, or remedy path"
-    ],
+    "markdown_path": "/data/output/public/rationales/dfd81f8db652fd9263e0ce3bef043b4823045ec3a5da10c817681ada7a23f034#0-2efb4ba188b9.md",
+    "missing_evidence": [],
+    "blocked_reason_code": null,
     "assessment_status": "incomplete",
     "assessment_schema_version": "assessment-tree-v1",
     "assessment": {
@@ -74,23 +75,23 @@
             "Proposal document read by reasoning layer: yes",
             "Snapshot freshness source: deep_research_dossiers.csv",
             "Deep research dossier: complete",
-            "Requested: Phase 1 of 2 for Bifrost, taking a Bitcoin-Cardano bridge from working testnet to launch readiness through hardening, security audits, formal verification, ecosystem and partner readiness, and stewardship/economic foundations.",
+            "Requested: Fund Phase 1 of 2 for Bifrost, taking a Bitcoin-Cardano bridge from working testnet to launch readiness.",
             "Recipient: FluidTokens and Lantr Engineering",
             "Stated amount: 12332031",
-            "Deliverables: Audited bridge running on Cardano mainnet in federated and SPO threshold custody modes under controlled access, Security audits and formal verification, Hardened economic model, Stewardship structure determined for launch, SPO and dApp partner pipeline required for public launch",
+            "Deliverables: Hardening, security audits, formal verification, ecosystem and partner readiness, and stewardship and economic foundations for launch readiness., An audited bridge running on Cardano mainnet in both custody modes, federated and SPO threshold, under controlled access by the end of Phase 1., Stewardship structure, hardened economic model, and SPO/dApp partner pipeline required for public launch., Public rollout and 24 months of operations are deferred to a Phase 2 proposal in Q1 2027.",
             "Deadline/expiry: 9-month delivery period from July 2026 to March 2027",
-            "Claim (technical, supported_in_proposal, high materiality): Bifrost is designed as a permissionless Bitcoin-Cardano bridge that brings BTC onto Cardano as a native Cardano asset for DeFi use cases.",
-            "Claim (technical, independently_verifiable, high materiality): The bridge is on testnet under Catalyst Fund 14 and is intended to prove the architecture end-to-end on Bitcoin Testnet4 and Cardano Preprod by August 2026.",
-            "Claim (economic, supported_in_proposal, high materiality): FluidTokens and Lantr Engineering request \u20b312,332,031, approximately $1,973,125 at $0.16 per ADA including a 10% refundable contingency, for a 9-month Phase 1 delivery period.",
-            "Claim (technical, proposer_asserted, high materiality): By the end of Phase 1, Bifrost will be an audited bridge running on Cardano mainnet in federated and SPO threshold custody modes under controlled access.",
-            "Claim (technical, proposer_asserted, high materiality): Bifrost custody of locked BTC is intended to be distributed across 400+ Cardano SPOs weighted by delegation, with fund movement requiring a cryptographic threshold representing the majority of delegated stake.",
-            "Claim (technical, proposer_asserted, high materiality): If SPO coordination fails, Bifrost uses a federated mode as an operational fallback continuity layer."
+            "Claim (technical, supported_in_proposal, high materiality): Bifrost is designed as a permissionless Bitcoin-Cardano bridge secured by Cardano's existing SPO ecosystem that brings BTC onto Cardano as a native Cardano asset.",
+            "Claim (technical, independently_verifiable, high materiality): The proposal states that Bifrost is currently live on testnet under Catalyst Fund 14 with working peg-ins and peg-outs and participating SPOs.",
+            "Claim (economic, supported_in_proposal, high materiality): The proposers request \u20b312,332,031, approximately $1,973,125 at 0.16 USD/ADA and including a 10% refundable contingency, for a 9-month Phase 1 delivery period.",
+            "Claim (technical, proposer_asserted, high materiality): By the end of Phase 1, the proposers expect Bifrost to be an audited bridge running on Cardano mainnet in federated and SPO-threshold custody modes under controlled access.",
+            "Claim (technical, proposer_asserted, high materiality): The proposal claims custody of locked BTC will be distributed across 400+ Cardano SPOs weighted by delegation, rather than held by a company, foundation, or fixed signing committee.",
+            "Claim (technical, supported_in_proposal, high materiality): The proposal claims fBTC will be issued and burned in 1:1 correspondence with BTC locked in the Bifrost custody script on Bitcoin."
           ],
           "missing": [
-            "Independent evidence for: By the end of Phase 1, Bifrost will be an audited bridge running on Cardano mainnet in federated and SPO threshold custody modes under controlled access.",
-            "Independent evidence for: Bifrost custody of locked BTC is intended to be distributed across 400+ Cardano SPOs weighted by delegation, with fund movement requiring a cryptographic threshold representing the majority of delegated stake.",
-            "Independent evidence for: If SPO coordination fails, Bifrost uses a federated mode as an operational fallback continuity layer.",
-            "Independent evidence for: Bifrost will not have a separate bridge token, founder allocation, treasury share, or built-in founder revenue claim, and value flows through ADA and fBTC."
+            "Independent evidence for: By the end of Phase 1, the proposers expect Bifrost to be an audited bridge running on Cardano mainnet in federated and SPO-threshold custody modes under controlled access.",
+            "Independent evidence for: The proposal claims custody of locked BTC will be distributed across 400+ Cardano SPOs weighted by delegation, rather than held by a company, foundation, or fixed signing committee.",
+            "Independent evidence for: The proposal claims Bifrost will be public infrastructure with no bridge token, no founder allocation, Apache 2.0 open source components, public reporting, and independent stewardship to be determined in Phase 1.",
+            "Independent evidence for: The proposal targets 1,200 BTC in Cardano DeFi TVL, about 600,000 annual transactions, and 3,000 fBTC-holding wallets by Q2 2029."
           ],
           "conclusion": "Each claim must map to replayable public evidence; proposer assertions alone are not enough for confidence."
         },
@@ -125,7 +126,7 @@
             "Mitigation evidence: confirmed",
             "Independent assurance: not confirmed",
             "Rollback/remedy path: unknown",
-            "Flag count: 0"
+            "Flag count: 1"
           ],
           "missing": [
             "independent assurance",
@@ -138,8 +139,8 @@
           "title": "Counterargument pass",
           "status": "complete",
           "findings": [
-            "Strongest YES: the proposal substantiates \"Bifrost is designed as a permissionless Bitcoin-Cardano bridge that brings BTC onto Cardano as a native Cardano asset for DeFi use cases.\" and clears the evidence gates.",
-            "Strongest NO: a material claim is unsupported \u2014 \"By the end of Phase 1, Bifrost will be an audited bridge running on Cardano mainnet in federated and SPO threshold custody modes under controlled access.\" \u2014 so cost or precedent may outweigh the benefit.",
+            "Strongest YES: the proposal substantiates \"Bifrost is designed as a permissionless Bitcoin-Cardano bridge secured by Cardano's existing SPO ecosystem that brings BTC onto Cardano as a native Cardano asset.\" and clears the evidence gates.",
+            "Strongest NO: a material claim is unsupported \u2014 \"By the end of Phase 1, the proposers expect Bifrost to be an audited bridge running on Cardano mainnet in federated and SPO-threshold custody modes under controlled access.\" \u2014 so cost or precedent may outweigh the benefit.",
             "Strongest hold: if claims cannot be tied to replayable evidence, abstaining avoids overclaiming certainty."
           ],
           "missing": [],
@@ -158,20 +159,21 @@
       ],
       "blocking_questions": []
     },
-    "assessment_path": "/data/output/public/rationales/dfd81f8db652fd9263e0ce3bef043b4823045ec3a5da10c817681ada7a23f034#0-dc704cb145bb.assessment.json",
+    "assessment_path": "/data/output/public/rationales/dfd81f8db652fd9263e0ce3bef043b4823045ec3a5da10c817681ada7a23f034#0-2efb4ba188b9.assessment.json",
     "treasury_dimensions": {
-      "evidence_status": "missing",
-      "benefit": 0,
-      "delivery_confidence": 0.4,
-      "cost_efficiency": 0.25,
+      "actionable_asks": [],
+      "evidence_status": "independently_verified",
+      "benefit": 0.1,
+      "delivery_confidence": 0.5,
+      "cost_efficiency": 0.45,
       "downside_risk": 0.35,
-      "composite": -0.2525,
-      "affirmative_waste_evidence": [],
+      "composite": -0.1475,
+      "affirmative_waste_evidence": [
+        "independently verified material duplication",
+        "independently verified private-value capture"
+      ],
       "missing": [
-        "independent ecosystem-value evidence packet",
-        "verified ecosystem benefit or strategic necessity",
-        "cost comparables, budget proportionality, or sustainability evidence",
-        "delivery controls, milestones, assurance, or remedy path"
+        "verified ecosystem benefit or strategic necessity"
       ]
     },
     "decision_contract": {
@@ -191,26 +193,27 @@
       "no_rule": "Requires affirmative independently verified waste/harm plus ecosystem benefit below 55%; missing evidence alone is never NO.",
       "portfolio_gate": "Verified on-chain Net Change Limit and opportunity-cost portfolio eligibility are mandatory for treasury direction.",
       "dimensions": {
-        "evidence_status": "missing",
-        "benefit": 0,
-        "delivery_confidence": 0.4,
-        "cost_efficiency": 0.25,
+        "actionable_asks": [],
+        "evidence_status": "independently_verified",
+        "benefit": 0.1,
+        "delivery_confidence": 0.5,
+        "cost_efficiency": 0.45,
         "downside_risk": 0.35,
-        "composite": -0.2525,
-        "affirmative_waste_evidence": [],
+        "composite": -0.1475,
+        "affirmative_waste_evidence": [
+          "independently verified material duplication",
+          "independently verified private-value capture"
+        ],
         "missing": [
-          "independent ecosystem-value evidence packet",
-          "verified ecosystem benefit or strategic necessity",
-          "cost comparables, budget proportionality, or sustainability evidence",
-          "delivery controls, milestones, assurance, or remedy path"
+          "verified ecosystem benefit or strategic necessity"
         ]
       },
-      "merit_recommendation": "NEEDS_MORE_INFO",
-      "merit_reason": "Intrinsic quality floors or independent evidence are not complete.",
+      "merit_recommendation": "NO",
+      "merit_reason": "Affirmative independent waste/harm evidence outweighs demonstrated benefit.",
       "execution_note": "Merit is evaluated independently; the executable recommendation also requires verified NCL and portfolio capacity."
     },
-    "merit_recommendation": "NEEDS_MORE_INFO",
-    "merit_reason": "Intrinsic quality floors or independent evidence are not complete."
+    "merit_recommendation": "NO",
+    "merit_reason": "Affirmative independent waste/harm evidence outweighs demonstrated benefit."
   },
   "decision_contract": {
     "policy": "balanced-return-risk-v1",
@@ -229,22 +232,23 @@
     "no_rule": "Requires affirmative independently verified waste/harm plus ecosystem benefit below 55%; missing evidence alone is never NO.",
     "portfolio_gate": "Verified on-chain Net Change Limit and opportunity-cost portfolio eligibility are mandatory for treasury direction.",
     "dimensions": {
-      "evidence_status": "missing",
-      "benefit": 0,
-      "delivery_confidence": 0.4,
-      "cost_efficiency": 0.25,
+      "actionable_asks": [],
+      "evidence_status": "independently_verified",
+      "benefit": 0.1,
+      "delivery_confidence": 0.5,
+      "cost_efficiency": 0.45,
       "downside_risk": 0.35,
-      "composite": -0.2525,
-      "affirmative_waste_evidence": [],
+      "composite": -0.1475,
+      "affirmative_waste_evidence": [
+        "independently verified material duplication",
+        "independently verified private-value capture"
+      ],
       "missing": [
-        "independent ecosystem-value evidence packet",
-        "verified ecosystem benefit or strategic necessity",
-        "cost comparables, budget proportionality, or sustainability evidence",
-        "delivery controls, milestones, assurance, or remedy path"
+        "verified ecosystem benefit or strategic necessity"
       ]
     },
-    "merit_recommendation": "NEEDS_MORE_INFO",
-    "merit_reason": "Intrinsic quality floors or independent evidence are not complete.",
+    "merit_recommendation": "NO",
+    "merit_reason": "Affirmative independent waste/harm evidence outweighs demonstrated benefit.",
     "execution_note": "Merit is evaluated independently; the executable recommendation also requires verified NCL and portfolio capacity."
   },
   "proposal_evidence": {
@@ -256,7 +260,7 @@
     "anchor_hash": "f95bd74697b3499760bc768b7400d9c1f57d3ff447e1c51cb9f0ec24a94c782b",
     "file_sha256": "891884338278d5777ccde4c798a010f4b62b732b21d9cf9dd39503588d75ee36",
     "content_bytes": "72887",
-    "fetched_at_utc": "2026-07-11T11:30:14Z",
+    "fetched_at_utc": "2026-07-13T15:16:04Z",
     "download_path": "/proposals/dfd81f8db652fd9263e0ce3bef043b4823045ec3a5da10c817681ada7a23f034#0.json",
     "preview": "{\n  \"@context\": {\n    \"@language\": \"en-us\",\n    \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n    \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n    \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n    \"body\": {\n      \"@id\": \"CIP108:body\",\n      \"@context\": {\n        \"references\": {\n          \"@id\": \"CIP108:references\",\n          \"@container\": \"@set\",\n          \"@context\": {\n            \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n            \"Other\": \"CIP100:OtherReference\",\n            \"label\": \"CIP100:reference-label\",\n            \"uri\": \"CIP100:reference-uri\",\n            \"referenceHash\": {\n              \"@id\": \"CIP108:referenceHash\",\n              \"@context\": {\n                \"hashDigest\": \"CIP108:hashDigest\",\n                \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n              }\n            }\n          }\n        },\n        \"title\": \"CIP108:title\",\n        \"abstract\": \"CIP108:abstract\",\n        \"motivation\": \"CIP108:motivation\",\n        \"rationale\": \"CIP108:rationale\"\n      }\n    },\n    \"authors\": {\n      \"@id\": \"CIP100:authors\",\n      \"@container\": \"@set\",\n      \"@context\": {\n        \""
   },
@@ -278,12 +282,42 @@
       "material_discrepancies": 0
     }
   },
+  "flags": [
+    {
+      "flag": "\ud83d\udfe1 SINGLE_BENEFICIARY",
+      "severity": "yellow",
+      "detail": "Treasury withdrawal to a single address"
+    }
+  ],
+  "treasury_capacity": {
+    "verified": true,
+    "ncl_lovelace": 300000000000000,
+    "period_start_epoch": 613,
+    "period_end_epoch": 713,
+    "withdrawals_in_period_lovelace": 291435336000000,
+    "remaining_capacity_lovelace": 8564664000000,
+    "spend_basis": "gross_treasury_withdrawals_enacted_within_period",
+    "source_action_id": "73a4eb2148781c37ef37c90a33a1d3d00511a8eefe9cdfaa1ea593b090f23f96#0",
+    "source_anchor_hash": "4e264b46f948da4a1917be590d14f10f9e36372075fd11561669180747c0588b",
+    "drep_support": {
+      "yes_stake_lovelace": 2460643090332089,
+      "no_stake_lovelace": 1754593207208598,
+      "yes_pct_of_participating_stake": 58.37,
+      "yes_dreps": 125,
+      "no_dreps": 44
+    },
+    "verification_status": "verified_onchain_info_action",
+    "caveat": "Set by an Info governance action. Info actions change no ledger state and can NEVER be enacted -- they always expire -- so no formally ratified NCL exists or can exist. This is the strongest available public chain evidence: an anchor document byte-verified against its on-chain blake2b-256 hash, covering the current epoch, which won a majority of participating DRep stake. It is NOT enacted ledger state, and the majority may fall short of the supermajority other action types require. Published with every treasury rationale that relies on it.",
+    "portfolio_status": "verified",
+    "requested_lovelace": 12332031000000,
+    "fits_remaining": false
+  },
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
     "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "98204209c1160292d57e948cc03515956c20be3e",
-    "core_commit": "55c0f3f68cffa73033d65fea06087205839b256e",
+    "resources_commit": "a650e5f55d3662a45d71b3a19d5301fd64c2bbee",
+    "core_commit": "ded627116d3160ff38c58fb5f3db6f3956f0cced",
     "resource_ids_used": [
       "gov_actions_snapshot",
       "treasury_withdrawals_snapshot",
@@ -386,17 +420,17 @@
     }
   ],
   "scoring": {
-    "binding_score": -0.11,
-    "raw_score": -0.11,
+    "binding_score": -0.1475,
+    "raw_score": -0.56,
     "directional_threshold": 0.06,
-    "confidence": 0.7775,
+    "confidence": 0.7569,
     "model_vote_influence": 0
   },
   "freshness": {
     "snapshot_age_seconds": 0,
     "max_allowed_seconds": 21600,
     "is_stale": false,
-    "snapshot_time": "2026-07-11T11:59:37.109210Z",
+    "snapshot_time": "2026-07-13T15:31:49.224054Z",
     "freshness_source": "deep_research_dossiers.csv"
   }
 }
