@@ -835,6 +835,10 @@ async function viewDetail(id) {
   const conf = Number(sc.confidence || 0);
   const sections = Array.isArray(asmt.sections) ? asmt.sections : [];
   const missing = Array.isArray(rat.missing_evidence) ? rat.missing_evidence : [];
+  // The engine names the SPECIFIC things a proposer could publish to earn a re-score. Prefer those
+  // over the coarse dimension name — "publish a line-item budget" is actionable, "cost comparables,
+  // budget proportionality, or sustainability evidence" is not.
+  const asks = ((rat.treasury_dimensions || {}).actionable_asks) || [];
 
   view.innerHTML = `
   <a class="back" href="#/record">← Back to the record</a>
@@ -881,13 +885,17 @@ async function viewDetail(id) {
   ${flagsHTML(d.flags)}
   ${capacityHTML(d.treasury_capacity)}
 
-  ${missing.length ? `<div class="panel">
-    <h2>What is still missing</h2>
-    <p class="muted sm" style="margin-bottom:8px">BEACN is asking for these — it is not holding
-       them against the proposal.</p>
-    <ul style="list-style:none;display:grid;gap:6px">
-      ${missing.map(m => `<li class="sm" style="color:#e8c48a">! ${esc(m)}</li>`).join("")}
+  ${(asks.length || missing.length) ? `<div class="panel ask">
+    <h2>What would change this vote</h2>
+    <p class="muted sm" style="margin-bottom:12px">This is not a rejection. BEACN cannot certify the
+       price of this work on what has been published, and it will not turn that silence into a NO.
+       Publish the following and the engine re-scores it automatically on the next run — no appeal,
+       no lobbying, no relationship required.</p>
+    <ul class="asklist">
+      ${(asks.length ? asks : missing).map(m => `<li>${esc(m)}</li>`).join("")}
     </ul>
+    <p class="muted xs" style="margin-top:12px">Each of these is a public, checkable fact about the
+       proposal — not an opinion about the team.</p>
   </div>` : ""}
 
   ${sections.length ? `<div class="panel">
@@ -957,23 +965,50 @@ async function loadContract(id) {
   }
 }
 
+/* An open position is not one thing. Lumping them together hides the only question a reader
+   actually has: whose move is it? These four buckets have four different owners — BEACN, the
+   proposer, the treasury's own capacity limit, and the chain. */
+function groupDivergences(actions) {
+  const out = { revise: [], undisclosed: [], capacity: [], other: [] };
+  for (const a of actions) {
+    if (!a.diverged || a.status !== "active") continue;
+    const code = a.blocked_reason_code || "";
+    const missing = a.missing_evidence || [];
+    if (a.decision === "YES" || a.decision === "NO") out.revise.push(a);          // BEACN's move
+    else if (code === "PORTFOLIO_CAPACITY_NOT_CLEARED") out.capacity.push(a);     // nobody's fault
+    else if (missing.length) out.undisclosed.push(a);                             // the proposer's move
+    else out.other.push(a);
+  }
+  return out;
+}
+
 /* ---------- banner ---------- */
 function renderBanner() {
   const b = el("sysbanner");
   const diverged = state.actions.filter(a => a.diverged && a.status === "active").length;
   if (!diverged) { b.hidden = true; return; }
   b.hidden = false;
-  // Say what is actually true. This banner used to read "while the evidence pipeline is being
-  // repaired" — which was honest in the hour it was written and became a lie the moment the
-  // pipeline was fixed. The divergences that remain are not a malfunction: they are BEACN
-  // declining to convert a proposal's own missing disclosure into a NO, which is exactly what
-  // doctrine requires of it.
-  b.innerHTML = `<span aria-hidden="true">⚠</span><span><b>${diverged} open ${diverged === 1 ? "position" : "positions"}
-    where BEACN would not re-derive its cast vote today.</b> In each case the engine has verified
-    benefit and delivery but the proposal does not disclose enough of its own budget to certify the
-    price. BEACN will not turn that silence into a NO — missing evidence never becomes negative
-    evidence — so it holds at <em>needs more info</em> while the vote already on-chain stands.
-    Open any of them to see exactly which evidence is absent.</span>`;
+  // DERIVED, never narrated. Two hand-written versions of this banner have now gone stale within
+  // hours of being written — first "the evidence pipeline is being repaired" (it was fixed), then
+  // "the proposal does not disclose enough of its own budget" (true of 7 of them, not all, and two
+  // had flipped to YES). A sentence I type is a claim that rots. So the banner is computed from the
+  // decisions themselves, and it groups them by CAUSE — because "11 unresolved" tells a reader
+  // nothing, while "2 BEACN must fix, 7 the proposer must, 1 is scarcity" tells them everything.
+  const g = groupDivergences(state.actions);
+  const parts = [];
+  if (g.revise.length) parts.push(`<b>${g.revise.length}</b> where BEACN would now vote the other way
+    — it must revise its own vote, and the anti-churn policy makes it prove that twice first`);
+  if (g.undisclosed.length) parts.push(`<b>${g.undisclosed.length}</b> where the proposal will not
+    disclose enough of its own budget to certify the price. BEACN will not turn that silence into a
+    NO — missing evidence never becomes negative evidence — so it holds`);
+  if (g.capacity.length) parts.push(`<b>${g.capacity.length}</b> that clears every quality bar but
+    falls outside the treasury capacity left this period`);
+  if (g.other.length) parts.push(`<b>${g.other.length}</b> awaiting other evidence`);
+
+  b.innerHTML = `<span aria-hidden="true">⚠</span><span><b>${diverged} open
+    ${diverged === 1 ? "position" : "positions"} BEACN would not re-derive today.</b>
+    ${parts.join("; ")}. The votes already on-chain stand. Open any of them to see exactly which
+    evidence is absent and what would change the vote.</span>`;
 }
 
 /* ---------- router ---------- */

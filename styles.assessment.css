@@ -359,6 +359,21 @@ main { padding: var(--s6) var(--s4) var(--s9); }
 .hrow .v.match { color: var(--pass); }
 .hrow .v.mismatch { color: var(--fail); }
 
+/* "What would change this vote" — the most useful thing a DRep can publish. A proposer should be
+   able to read this, fix it, and earn the vote on the merits, without ever speaking to anyone. */
+.panel.ask { border-color: rgba(245, 158, 11, .32); background: linear-gradient(170deg, rgba(245,158,11,.05), var(--panel) 70%); }
+.panel.ask h2 { color: var(--amber); }
+.asklist { list-style: none; display: grid; gap: var(--s2); }
+.asklist li {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--s3); align-items: start;
+  font-size: var(--f-sm); color: var(--txt);
+  padding: var(--s3); border-radius: var(--r-sm);
+  background: var(--panel-2); border: 1px solid var(--line);
+}
+.asklist li::before {
+  content: "→"; color: var(--amber); font-weight: 700;
+}
+
 /* ---------- weights ---------- */
 .wgroup {
   display: flex; align-items: baseline; gap: var(--s3); flex-wrap: wrap;
