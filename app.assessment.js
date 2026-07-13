@@ -4,12 +4,29 @@
    RECOMMENDS today, `onchain_vote` is what BEACN actually CAST. They can differ, and the
    site must always show which is which. */
 
+import { blake2b256Hex, verifyManifest, verifyAnchor } from "./verify.js";
+
 const SRC = {
   status:    "./status.json",
   index:     "./data/output/public/index.json",
   actions:   "./data/output/public/actions.json",
+  weights:   "./data/output/public/scoring_weights.json",
   detail:    id => `./data/output/public/actions/${encodeURIComponent(id)}.json`,
 };
+
+const GH = {
+  soul:      c => `https://github.com/BEACNpool/beacn-drep-soul/tree/${c}`,
+  core:      c => `https://github.com/BEACNpool/beacn-drep-core/tree/${c}`,
+  resources: c => `https://github.com/BEACNpool/beacn-drep-resources/tree/${c}`,
+  weights:   c => `https://github.com/BEACNpool/beacn-drep-soul/blob/${c}/scoring_weights.json`,
+};
+
+/* Published artifact paths are recorded absolute ("/data/output/..."), but the site is served from
+   a subpath on GitHub Pages ("/beacn-drep-web/"), so they must be made relative or every fetch 404s.
+   They also contain a literal "#" — governance action ids are "<tx>#<index>", and that character is
+   baked into the run-id filenames. Left raw, the browser reads it as the start of a URL fragment and
+   silently requests the wrong file. Encode it. */
+const rel = p => "./" + String(p || "").replace(/^\/+/, "").replace(/#/g, "%23");
 
 const EXPLORER = h => `https://cardanoscan.io/transaction/${h}`;
 const PAGE_SIZE = 25;
@@ -24,7 +41,7 @@ const TYPE_LABEL = {
   InfoAction: "Info",
 };
 
-const state = { index: null, actions: [], status: null, byId: new Map() };
+const state = { index: null, actions: [], status: null, weights: null, verifyId: null, byId: new Map() };
 
 /* ---------- utils ---------- */
 const el = document.getElementById.bind(document);
@@ -194,11 +211,17 @@ function viewLive() {
 
   return `
   <section class="hero">
-    <h1>Cardano governance, decided in the open.</h1>
-    <p>BEACN is an autonomous DRep. Every vote is produced by deterministic, replayable rules
-       over public evidence — then published with its reasoning and its on-chain proof. Nothing
-       is decided in private, and nothing here is a claim you cannot check yourself.</p>
-    <span class="drepid">DRep <code>${esc(state.status?.drep_id || "—")}</code></span>
+    <span class="eyebrow">Live on Cardano mainnet</span>
+    <h1>An autonomous DRep voting <em>real money</em>, in the open.</h1>
+    <p class="hero-lead">BEACN decides Cardano governance with deterministic, open-source rules over
+       public evidence — then publishes the reasoning and the on-chain proof of every vote. The
+       weights are a versioned file you can read. The engine is a commit you can replay. Nothing
+       here is a claim you have to take on trust.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#/verify">Verify a decision yourself →</a>
+      <a class="btn" href="#/method">How the weighting works</a>
+    </div>
+    <p class="drepid" style="margin-top:var(--s5)">DRep <code>${esc(state.status?.drep_id || "—")}</code></p>
   </section>
 
   <div class="stats">
@@ -283,16 +306,113 @@ function viewRecord() {
   </section>`;
 }
 
+/* The weight labels below explain what each number DOES. The numbers themselves are never written
+   here — they are read from the published scoring_weights.json, which is the same file the engine
+   loads at runtime. If a weight changes, this page changes with it; it cannot flatter us. */
+const WEIGHT_COPY = {
+  anchor_present_bonus:               ["Proposal document is pinned and readable", "A proposal whose anchor document can be fetched and hash-verified is easier to hold to account."],
+  treasury_base_penalty:              ["Every treasury ask starts negative", "Spending public money must be argued for. The default answer to “give me ada” is no."],
+  treasury_flow_sustainable_bonus:    ["Treasury inflow is healthy", "Measured from real on-chain flow, not forecasts."],
+  treasury_flow_stressed_penalty:     ["Treasury inflow is stressed", "Tightens the bar for new spending when the treasury is under pressure."],
+  treasury_flow_unsustainable_penalty:["Treasury inflow is unsustainable", "The strongest flow-based brake on new spending."],
+  parameter_change_base_penalty:      ["Parameter changes start negative", "Live protocol parameters are load-bearing; changing them needs a positive case."],
+  hardfork_base_penalty:              ["Hard forks start strongly negative", "The highest-consequence, least-reversible action on Cardano."],
+  flag_score_divisor:                 ["Risk-flag divisor", "Automated risk flags (no discussion, no milestones, concentration…) are divided by this, so flags scale rather than dominate."],
+  flag_penalty_cap:                   ["Maximum total flag penalty", "Even a proposal covered in red flags cannot be sunk by flags alone — evidence still has to carry the call."],
+  drep_margin_cap:                    ["Maximum influence of other DReps", "How much the crowd can move BEACN. Deliberately capped BELOW the directional threshold, so consensus alone can never decide a vote."],
+};
+
+/* Not every number in the weights file is a directional weight. Three of them are BOUNDS — a
+   divisor and two caps that limit how far something can push the score. Rendering a cap as a green
+   "+0.35 toward YES" bar would badly misdescribe what it does: flag_penalty_cap is a ceiling on a
+   PENALTY, and drep_margin_cap is a ceiling on outside influence. They get their own group. */
+const WEIGHT_BOUNDS = { flag_score_divisor: "÷", flag_penalty_cap: "≤", drep_margin_cap: "≤" };
+
+function weightsHTML() {
+  const w = state.weights?.weights;
+  if (!w) return `<p class="muted sm">Weights file unavailable.</p>`;
+
+  const directional = Object.entries(w).filter(([k]) => !(k in WEIGHT_BOUNDS));
+  const bounds = Object.entries(w).filter(([k]) => k in WEIGHT_BOUNDS);
+  const max = Math.max(...directional.map(([, v]) => Math.abs(Number(v))));
+
+  const dirRow = ([k, v]) => {
+    const n = Number(v);
+    const pos = n >= 0;
+    const [name, why] = WEIGHT_COPY[k] || [k, ""];
+    const pct = max ? (Math.abs(n) / max) * 50 : 0;
+    return `<div class="wrow">
+      <span class="wname">${esc(name)}<small>${esc(why)}</small></span>
+      <div class="wtrack"><span class="wmid"></span>
+        <span class="wfill ${pos ? "pos" : "neg"}"
+              style="${pos ? `left:50%;width:${pct}%` : `right:50%;width:${pct}%`}"></span></div>
+      <span class="wval ${pos ? "pos" : "neg"}">${pos ? "+" : ""}${n}</span>
+    </div>`;
+  };
+  const boundRow = ([k, v]) => {
+    const [name, why] = WEIGHT_COPY[k] || [k, ""];
+    return `<div class="wrow">
+      <span class="wname">${esc(name)}<small>${esc(why)}</small></span>
+      <span></span>
+      <span class="wval">${WEIGHT_BOUNDS[k]} ${esc(String(v))}</span>
+    </div>`;
+  };
+
+  return `
+    <h3 class="wgroup">Directional weights <span>push the score toward YES or NO</span></h3>
+    <div class="wgrid">${directional.map(dirRow).join("")}</div>
+    <h3 class="wgroup">Limits <span>bound how far anything can push — they never add score</span></h3>
+    <div class="wgrid">${bounds.map(boundRow).join("")}</div>`;
+}
+
 function viewMethod() {
   // Read the live weighting contract off a real decision rather than restating it by hand,
   // so this page cannot drift from the engine that actually votes.
   const sample = state.actions.find(a => a.submitted) || state.actions[0];
+  const wm = state.weights || {};
+  const soul = state.index?.soul?.commit || "";
   return `
   <section class="hero">
-    <h1>How a vote is made.</h1>
-    <p>The binding decision is pure deterministic Python over declared inputs. A language model
-       helps read documents and explain outcomes in plain English — it can never set, change, or
-       veto a vote. That boundary is the whole design.</p>
+    <span class="eyebrow">Open weighting system</span>
+    <h1>How a vote is made — <em>and how you check it</em>.</h1>
+    <p class="hero-lead">The binding decision is pure deterministic Python over declared inputs. A
+       language model helps read documents and explain outcomes in plain English — it can never set,
+       change, or veto a vote. That boundary is the whole design, and it is enforced in code, not
+       promised in a blog post.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h">
+      <h2>The weighting system</h2>
+      <span class="count">v${esc(wm.version || "—")}</span>
+    </div>
+    <p class="sec-lead">These are not illustrative numbers. This page renders
+       <a href="${GH.weights(soul)}" rel="noopener">scoring_weights.json</a> — the same file the
+       engine loads when it scores a proposal. Change a weight and this page changes with it. A
+       change also requires a changelog entry and a doctrine commit, so it can never happen quietly.</p>
+    ${weightsHTML()}
+    <p class="muted sm" style="margin-top:var(--s4)">
+      Positive weights push toward YES, negative toward NO. Note the last one: the influence of other
+      DReps is capped at ${esc(String(wm.weights?.drep_margin_cap ?? "—"))} — deliberately
+      <em>below</em> the directional threshold — so BEACN cannot be carried across the line by
+      popularity alone. Its own evidence has to do the work.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>Merit scoring for treasury asks</h2></div>
+    <p class="sec-lead">Where money is being requested, four independently-evidenced dimensions
+       combine. The −0.50 is the standing burden of proof: a proposal that is merely average does not
+       clear it.</p>
+    <div class="formula">composite = <b>0.40</b>·benefit + <b>0.25</b>·delivery + <b>0.20</b>·cost + <b>0.15</b>·(1 − downside) <b>− 0.50</b></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>Tamper-evidence</h2></div>
+    <p class="sec-lead">Open weights are only meaningful if you can prove the engine actually used
+       them. Every decision is bound by hash to the doctrine commit, the doctrine's text, and every
+       evidence file read — and the written rationale is hashed into the vote transaction itself.
+       You can recompute all of it in your own browser.</p>
+    <a class="btn btn-primary" href="#/verify">Run the checks →</a>
   </section>
 
   <section class="sec">
@@ -380,6 +500,279 @@ function viewMethod() {
          vote; it is mathematically capped so it can never <em>determine</em> one.</p>
     </div>
   </section>`;
+}
+
+/* ---------- verify: tamper-evidence, run in the visitor's own browser ----------
+   This is the part of the site that matters most. Everything else asks you to believe BEACN's
+   published numbers; this proves them. The checks below run locally, on bytes fetched from this
+   site, using no third-party script — so a compromised BEACN cannot fake a pass. */
+
+const CHECKS = [
+  {
+    id: "anchor",
+    name: "Rationale matches the hash BEACN put on-chain",
+    what: `When BEACN votes, it writes a hash of its written reasoning into the vote transaction
+           itself. We fetch that published reasoning, hash it here in your browser (blake2b-256, the
+           hash Cardano uses), and compare. If BEACN ever edited a rationale after voting — softened
+           a criticism, rewrote a justification — this hash would no longer match, and the on-chain
+           anchor cannot be changed to cover it up.`,
+  },
+  {
+    id: "bundle",
+    name: "Evidence bundle and doctrine are unaltered",
+    what: `The decision is bound to a single hash covering the exact doctrine commit, the doctrine's
+           text hash, and the hash of every evidence file the engine read. We recompute that hash from
+           its parts. Swap in different evidence, or point the engine at different rules, and this
+           breaks.`,
+  },
+  {
+    id: "input",
+    name: "Scored the real on-chain proposal",
+    what: `The hash of the exact governance-action data the engine scored. Proves the decision was
+           made about this proposal, with these numbers — not a doctored copy.`,
+  },
+];
+
+function viewVerify() {
+  const votable = state.actions.filter(a => a.submitted && a.transaction_hash);
+  // Lead with a fully-anchored vote so the first thing a visitor sees is the complete chain, not
+  // the "not anchored" caveat of an early one. The early votes stay in the list — they are part of
+  // the record — they just aren't the opening argument.
+  const anchored = votable.filter(a => a.rationale_anchored);
+  votable.sort((a, b) => (b.rationale_anchored ? 1 : 0) - (a.rationale_anchored ? 1 : 0));
+  const sel = state.verifyId || (votable[0] && votable[0].action_id) || "";
+
+  return `
+  <section class="hero">
+    <span class="eyebrow">Tamper-evidence</span>
+    <h1>Don't trust BEACN. <em>Check it.</em></h1>
+    <p class="hero-lead">An autonomous agent that spends real treasury money is only as trustworthy as
+       its receipts. These checks run entirely in your browser, on files fetched from this site, with
+       no server and no third-party code. If this engine had been quietly re-tuned to force a
+       decision, or a rationale rewritten after the fact, the hashes below would not match.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>Verify a real decision</h2>
+      <span class="count">${anchored.length} of ${votable.length} anchored</span></div>
+    <p class="sec-lead">Pick any vote BEACN has cast on Cardano mainnet. ${anchored.length} of them
+       carry a hash of their written reasoning inside the vote transaction itself — a complete,
+       checkable chain from the on-chain tx back to the rules that produced it. The
+       ${votable.length - anchored.length} earliest votes predate rationale anchoring and say so.</p>
+
+    <div class="filters">
+      <select class="sel search" id="v-pick" aria-label="Choose a decision to verify">
+        ${votable.map(a => `<option value="${esc(a.action_id)}"${a.action_id === sel ? " selected" : ""}>
+          ${esc((a.title || a.action_id).slice(0, 78))}</option>`).join("")}
+      </select>
+      <button class="btn btn-primary" id="v-run">Run checks</button>
+    </div>
+
+    <div class="vpanel">
+      <div class="vpanel-head">
+        <div>
+          <h3>Integrity checks</h3>
+          <p id="v-sub">Computed locally — nothing is sent anywhere.</p>
+        </div>
+        <span class="vstatus idle" id="v-status">Ready</span>
+      </div>
+      <div class="vpanel-body">
+        <div class="checks" id="v-checks">
+          ${CHECKS.map(c => `
+            <div class="check" id="v-${c.id}">
+              <div class="check-top">
+                <span class="check-ico">${CHECKS.indexOf(c) + 1}</span>
+                <span class="check-name">${esc(c.name)}</span>
+                <span class="check-verdict">—</span>
+              </div>
+              <p class="check-what">${esc(c.what.replace(/\s+/g, " ").trim())}</p>
+              <div class="check-hashes" hidden></div>
+            </div>`).join("")}
+        </div>
+      </div>
+    </div>
+
+    <div id="v-prov"></div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>What this does and doesn't prove</h2></div>
+    <p class="sec-lead">Being straight about the limits is the point — a verification page that
+       overclaims is just marketing with a monospace font.</p>
+    <div class="kv">
+      <div class="kv-row">
+        <span class="k">It proves</span>
+        <span class="v">The published reasoning is byte-identical to what BEACN committed to on-chain
+          when it voted, and the decision is bound to a specific doctrine commit and a specific set of
+          evidence files. None of that can be changed after the fact without breaking a hash.</span>
+      </div>
+      <div class="kv-row">
+        <span class="k">It does not prove</span>
+        <span class="v">That the rules themselves are <em>good</em>. Hashes prove nothing was swapped;
+          they cannot tell you the weighting is wise. That judgement is yours — which is exactly why
+          the weights are published as a plain, versioned file rather than buried in code.</span>
+      </div>
+      <div class="kv-row">
+        <span class="k">Going further</span>
+        <span class="v">These checks confirm the artifacts are internally consistent and chain-pinned.
+          To prove the engine <em>produces</em> this decision from these inputs, clone the engine at the
+          commit below and replay it — the run is deterministic, so you should reproduce these hashes
+          exactly. If you don't, something is wrong and we want to hear about it.</span>
+      </div>
+    </div>
+  </section>`;
+}
+
+function hashRow(k, v, cls = "") {
+  return `<div class="hrow"><span class="k">${esc(k)}</span><span class="v ${cls}">${esc(v)}</span></div>`;
+}
+
+function setCheck(id, cls, verdict, rows) {
+  const node = el(`v-${id}`);
+  if (!node) return;
+  node.className = `check ${cls}`;
+  node.querySelector(".check-verdict").textContent = verdict;
+  node.querySelector(".check-ico").textContent =
+    cls === "pass" ? "✓" : cls === "fail" ? "✕" : cls === "na" ? "–"
+      : String(CHECKS.findIndex(c => c.id === id) + 1);
+  const box = node.querySelector(".check-hashes");
+  if (rows) { box.innerHTML = rows; box.hidden = false; } else { box.hidden = true; }
+}
+
+async function runVerification(actionId) {
+  const status = el("v-status");
+  const setStatus = (cls, txt) => { status.className = `vstatus ${cls}`; status.textContent = txt; };
+
+  CHECKS.forEach(c => setCheck(c.id, "running", "checking…", null));
+  setStatus("running", "Running");
+  el("v-sub").textContent = "Fetching artifacts and hashing them in your browser…";
+
+  let detail;
+  try {
+    detail = await getJSON(SRC.detail(actionId));
+  } catch {
+    setStatus("fail", "No data");
+    CHECKS.forEach(c => setCheck(c.id, "fail", "no data", null));
+    return;
+  }
+
+  const pov = detail.proof_of_vote || {};
+  const dec = detail.decision || {};
+  let allPass = true;
+  let notAnchored = false;
+  const fail = (id, msg) => { allPass = false; setCheck(id, "fail", "failed", hashRow("error", msg)); };
+
+  /* 1. ANCHOR — blake2b-256 of the published rationale vs the hash anchored in the vote tx.
+     BEACN's earliest votes were cast before rationale anchoring existed, so they carry no anchor
+     hash. That is a real gap in the record, not a tampering signal — say so plainly and leave the
+     other two checks to stand on their own. Marking it FAILED would cry wolf; hiding it would be
+     dishonest about the coverage. */
+  try {
+    const want = pov.rationale_anchor_hash;
+    if (!want) {
+      notAnchored = true;
+      setCheck("anchor", "na", "not anchored",
+        hashRow("status", "This vote predates on-chain rationale anchoring, so there is no anchor hash to check against.") +
+        (dec.transaction_hash ? hashRow("vote tx", dec.transaction_hash) : ""));
+      throw { handled: true };
+    }
+    // Anchored copies are served at /r/<first 24 hex of their own hash>.md — the filename is
+    // derived from the bytes, so it is itself a checksum.
+    const res = await fetch(`./data/output/public/r/${want.slice(0, 24)}.md`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`anchored rationale not reachable (${res.status})`);
+    const bytes = new Uint8Array(await res.arrayBuffer());
+    const r = await verifyAnchor(bytes, want);
+    allPass = allPass && r.ok;
+    setCheck("anchor", r.ok ? "pass" : "fail", r.ok ? "verified" : "MISMATCH",
+      hashRow("on-chain", r.want, r.ok ? "match" : "mismatch") +
+      hashRow("computed", r.got, r.ok ? "match" : "mismatch") +
+      hashRow("algorithm", "blake2b-256, computed in this browser") +
+      (dec.transaction_hash ? hashRow("vote tx", dec.transaction_hash) : ""));
+  } catch (e) {
+    if (!e || !e.handled) fail("anchor", e.message);
+  }
+
+  /* 2 + 3. BUNDLE and INPUT — recompute the manifest's own headline hashes from its contents. */
+  try {
+    const mdPath = pov.rationale_markdown_path;
+    if (!mdPath) throw new Error("no manifest recorded for this decision");
+    const manifest = await getJSON(rel(mdPath).replace(/\.md$/, ".manifest.json"));
+    const r = await verifyManifest(manifest);
+
+    allPass = allPass && r.bundle.ok;
+    const files = (manifest.resource_snapshots || []).length;
+    setCheck("bundle", r.bundle.ok ? "pass" : "fail", r.bundle.ok ? "verified" : "MISMATCH",
+      hashRow("published", r.bundle.want, r.bundle.ok ? "match" : "mismatch") +
+      hashRow("computed", r.bundle.got, r.bundle.ok ? "match" : "mismatch") +
+      hashRow("covers", `${files} evidence sources · doctrine ${short(manifest.soul_commit, 7)} · doctrine text ${short(manifest.soul_text_hash, 8)}`));
+
+    allPass = allPass && r.input.ok;
+    setCheck("input", r.input.ok ? "pass" : "fail", r.input.ok ? "verified" : "MISMATCH",
+      hashRow("published", r.input.want, r.input.ok ? "match" : "mismatch") +
+      hashRow("computed", r.input.got, r.input.ok ? "match" : "mismatch") +
+      hashRow("proposal", manifest.action?.metadata_title || manifest.action?.action_id || "—"));
+
+    renderProvenance(manifest, detail);
+  } catch (e) {
+    fail("bundle", e.message);
+    fail("input", e.message);
+  }
+
+  if (!allPass) {
+    setStatus("fail", "Check failed");
+    el("v-sub").textContent = "At least one hash did not match. Treat this decision as unverified.";
+  } else if (notAnchored) {
+    setStatus("pass", "Verified");
+    el("v-sub").textContent = "Evidence and inputs verified locally. This early vote carries no on-chain rationale anchor.";
+  } else {
+    setStatus("pass", "All checks passed");
+    el("v-sub").textContent = "Every hash was recomputed in your browser and matches. Nothing was taken on trust.";
+  }
+}
+
+function renderProvenance(manifest, detail) {
+  const box = el("v-prov");
+  if (!box) return;
+  const pov = detail.proof_of_vote || {};
+  const dec = detail.decision || {};
+  const core = pov.core_commit || "";
+  const soul = pov.soul_commit || "";
+  const res = pov.resources_commit || "";
+
+  box.innerHTML = `
+  <div class="sec-h" style="margin-top:var(--s6)"><h2>Chain of custody</h2></div>
+  <p class="sec-lead">The exact code, rules, and evidence behind this one decision. Every commit is
+     public — clone any of them and replay.</p>
+  <div class="kv">
+    <div class="kv-row"><span class="k">Engine (deterministic)</span>
+      <span class="v"><a class="hash" href="${GH.core(core)}" rel="noopener">${esc(core)}</a></span></div>
+    <div class="kv-row"><span class="k">Doctrine &amp; weights</span>
+      <span class="v"><a class="hash" href="${GH.soul(soul)}" rel="noopener">${esc(soul)}</a></span></div>
+    <div class="kv-row"><span class="k">Doctrine text hash</span>
+      <span class="v hash">${esc(manifest.soul_text_hash || "—")}</span></div>
+    <div class="kv-row"><span class="k">Evidence inputs</span>
+      <span class="v"><a class="hash" href="${GH.resources(res)}" rel="noopener">${esc(res)}</a></span></div>
+    <div class="kv-row"><span class="k">Evidence bundle</span>
+      <span class="v hash">${esc(manifest.snapshot_bundle_hash || "—")}</span></div>
+    ${dec.transaction_hash ? `<div class="kv-row"><span class="k">On-chain vote</span>
+      <span class="v"><a class="proof" href="${EXPLORER(dec.transaction_hash)}" rel="noopener">
+      ${linkIcon} ${esc(short(dec.transaction_hash, 12))}</a>
+      <span class="xs muted"> — open it and compare the anchor hash yourself</span></span></div>` : ""}
+  </div>`;
+}
+
+function wireVerify() {
+  const pick = el("v-pick");
+  const run = el("v-run");
+  if (!pick || !run) return;
+  const go = () => {
+    state.verifyId = pick.value;
+    run.disabled = true;
+    runVerification(pick.value).finally(() => { run.disabled = false; });
+  };
+  run.addEventListener("click", go);
+  pick.addEventListener("change", go);
+  if (pick.value) go();          // verify the first decision immediately — no empty state to click past
 }
 
 function viewDelegate() {
@@ -628,6 +1021,12 @@ async function route() {
     if (sample) loadContract(sample.action_id);
     return;
   }
+  if (path.startsWith("#/verify")) {
+    setNav("verify");
+    view.innerHTML = viewVerify();
+    wireVerify();
+    return;
+  }
   if (path.startsWith("#/delegate")) {
     setNav("delegate");
     view.innerHTML = viewDelegate();
@@ -641,13 +1040,15 @@ async function route() {
 /* ---------- boot ---------- */
 async function boot() {
   try {
-    const [index, actions, status] = await Promise.all([
+    const [index, actions, status, weights] = await Promise.all([
       getJSON(SRC.index).catch(() => null),
       getJSON(SRC.actions),
       getJSON(SRC.status).catch(() => null),
+      getJSON(SRC.weights).catch(() => null),
     ]);
     state.index = index;
     state.status = status;
+    state.weights = weights;
     state.actions = (actions.items || []).filter(a => a && a.action_id);
     state.actions.forEach(a => state.byId.set(a.action_id, a));
 

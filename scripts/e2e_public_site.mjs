@@ -58,6 +58,44 @@ await new Promise(r => setTimeout(r, 900));
 const contract = await page.$eval('#contract', e => e.textContent).catch(() => '');
 check('method page loads the live weighting contract', /ecosystem benefit|weights|YES requires/i.test(contract));
 
+// 6b. The weighting system renders the REAL published weights, grouped correctly.
+const wtext = await page.evaluate(() => document.body.innerText);
+check('method page renders directional weights and limits separately',
+  /DIRECTIONAL WEIGHTS/i.test(wtext) && /LIMITS/i.test(wtext));
+check('method page shows the real treasury base penalty (-0.1)', /-0\.1\b/.test(wtext));
+
+// 7. The verifier actually verifies. This is the load-bearing claim of the whole site: if these
+//    checks can go green on a broken hash — or red on a good one — the site is lying to people.
+await page.goto(BASE + '#/verify', { waitUntil: 'networkidle0' });
+await page.waitForFunction(
+  () => { const s = document.getElementById('v-status'); return s && !/running/i.test(s.className); },
+  { timeout: 20000 },
+).catch(() => {});
+const vstatus = await page.$eval('#v-status', e => e.textContent.trim()).catch(() => '');
+check('verify view runs its checks and passes on a real decision', /passed/i.test(vstatus), vstatus);
+
+const passed = await page.$$eval('.check.pass', els => els.length);
+check('all three integrity checks pass in-browser', passed === 3, `${passed}/3 green`);
+
+// The computed hash must equal the on-chain one AND be a real 64-hex digest — a verifier that
+// compares "" to "" would also show green.
+const anchorRows = await page.$$eval('#v-anchor .hrow', rows =>
+  rows.map(r => [r.querySelector('.k')?.textContent.trim(), r.querySelector('.v')?.textContent.trim()]));
+const onchain = (anchorRows.find(r => r[0] === 'on-chain') || [])[1] || '';
+const computed = (anchorRows.find(r => r[0] === 'computed') || [])[1] || '';
+check('anchor check compares real 64-hex hashes', /^[0-9a-f]{64}$/.test(computed) && computed === onchain,
+  `${computed.slice(0, 16)}… vs ${onchain.slice(0, 16)}…`);
+
+// Negative control: corrupt one byte of the rationale and the anchor check MUST go red.
+const flipped = await page.evaluate(async () => {
+  const { blake2b256Hex } = await import('./verify.js');
+  const bytes = new TextEncoder().encode('rationale');
+  const good = blake2b256Hex(bytes);
+  bytes[0] ^= 0x01;
+  return good !== blake2b256Hex(bytes);
+});
+check('a single flipped byte changes the hash (verifier is not a no-op)', flipped);
+
 // 7. No horizontal overflow anywhere
 for (const [w, h, label] of [[390, 844, 'mobile'], [1440, 900, 'desktop']]) {
   await page.setViewport({ width: w, height: h });
