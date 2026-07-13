@@ -82,9 +82,10 @@ function proofHTML(a) {
 /** Disclose, never hide, a drift between the cast vote and today's recommendation. */
 function divergeHTML(a) {
   if (!a.diverged) return "";
-  return `<span class="diverge"><b>Position under review.</b> BEACN voted
-    <b>${esc(a.onchain_vote)}</b> on-chain; on today's evidence the engine would say
-    <b>${esc(a.decision)}</b>. The cast vote stands until a revision clears the anti-churn policy.</span>`;
+  return `<span class="diverge"><b>Would not re-derive this vote today.</b> BEACN cast
+    <b>${esc(a.onchain_vote)}</b> on-chain; on today's evidence the engine reaches
+    <b>${esc(a.decision)}</b>. The cast vote stands until a revision clears the anti-churn policy —
+    a gap in evidence is never allowed to retract a vote that was made.</span>`;
 }
 
 const ADA = lov => {
@@ -957,10 +958,17 @@ function renderBanner() {
   const diverged = state.actions.filter(a => a.diverged && a.status === "active").length;
   if (!diverged) { b.hidden = true; return; }
   b.hidden = false;
-  b.innerHTML = `<span aria-hidden="true">⚠</span><span><b>${diverged} open ${diverged === 1 ? "position is" : "positions are"}
-    under review.</b> While the evidence pipeline is being repaired, the engine's current
-    recommendation differs from the vote already on-chain. The cast vote stands — missing evidence
-    never retracts a vote.</span>`;
+  // Say what is actually true. This banner used to read "while the evidence pipeline is being
+  // repaired" — which was honest in the hour it was written and became a lie the moment the
+  // pipeline was fixed. The divergences that remain are not a malfunction: they are BEACN
+  // declining to convert a proposal's own missing disclosure into a NO, which is exactly what
+  // doctrine requires of it.
+  b.innerHTML = `<span aria-hidden="true">⚠</span><span><b>${diverged} open ${diverged === 1 ? "position" : "positions"}
+    where BEACN would not re-derive its cast vote today.</b> In each case the engine has verified
+    benefit and delivery but the proposal does not disclose enough of its own budget to certify the
+    price. BEACN will not turn that silence into a NO — missing evidence never becomes negative
+    evidence — so it holds at <em>needs more info</em> while the vote already on-chain stands.
+    Open any of them to see exactly which evidence is absent.</span>`;
 }
 
 /* ---------- router ---------- */
