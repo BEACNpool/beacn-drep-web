@@ -31,7 +31,8 @@ check('proof links are well-formed tx URLs', badProof.length === 0,
 await page.click('.card');
 await new Promise(r => setTimeout(r, 700));
 const detailH1 = await page.$eval('.detail-head h1', e => e.textContent.trim()).catch(() => null);
-const hasPosition = await page.$$eval('.panel h2', hs => hs.some(h => /BEACN's position/i.test(h.textContent)));
+// The position panel leads with a human stance chip (Voted X / Recommends X / Holding…).
+const hasPosition = await page.$('.panel.position .stance-row .vote.big') !== null;
 check('card click opens the decision detail', !!detailH1, detailH1 ? detailH1.slice(0, 40) : 'no h1');
 check('detail shows BEACN\'s position panel', hasPosition);
 
@@ -46,10 +47,9 @@ check('record page height is sane (was 43,000px)', height < 12000, `${height}px`
 // 5. Filter by vote=YES returns only YES votes
 await page.select('#f-vote', 'YES');
 await new Promise(r => setTimeout(r, 400));
-const yesVotes = await page.$$eval('.stance-cell .vote', els =>
-  els.filter(e => e.closest('.stance-cell').querySelector('.lbl')?.textContent.includes('on-chain'))
-     .map(e => e.textContent.trim()));
-check('filter vote=YES yields only YES', yesVotes.length > 0 && yesVotes.every(v => v === 'YES'),
+// Cards render one human stance chip; a cast YES reads "Voted YES".
+const yesVotes = await page.$$eval('.card .stance-row .vote.big', els => els.map(e => e.textContent.trim()));
+check('filter vote=YES yields only YES', yesVotes.length > 0 && yesVotes.every(v => v === 'Voted YES'),
   `${yesVotes.length} cards: ${[...new Set(yesVotes)].join(',')}`);
 
 // 6. Method view loads the live scoring contract from a real decision

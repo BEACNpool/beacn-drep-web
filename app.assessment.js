@@ -11,7 +11,7 @@ const SRC = {
   index:       "./data/output/public/index.json",
   actions:     "./data/output/public/actions.json",
   weights:     "./data/output/public/scoring_weights.json",
-  corrections: "./corrections.json",
+  statements:  "./data/output/public/statements.json",
   detail:      id => `./data/output/public/actions/${encodeURIComponent(id)}.json`,
 };
 
@@ -69,6 +69,72 @@ async function getJSON(url) {
 }
 
 const linkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6v6M20 4l-8 8"/></svg>`;
+
+/* ---------- epoch arithmetic (chain constants, not data) ----------
+   Cardano mainnet epochs are exactly 432,000s; Shelley epoch 208 began at unix 1596059091.
+   Deterministic forever, so a countdown derived from it is chain fact, not a narrated claim. */
+const EPOCH_LEN_S = 432000, SHELLEY_EPOCH = 208, SHELLEY_START = 1596059091;
+const epochStartMs = e => (SHELLEY_START + (e - SHELLEY_EPOCH) * EPOCH_LEN_S) * 1000;
+const currentEpoch = () => Math.floor((Date.now() / 1000 - SHELLEY_START) / EPOCH_LEN_S) + SHELLEY_EPOCH;
+/** Voting stays open through the whole expires_after epoch. */
+function expiryHTML(expEpoch) {
+  const e = Number(expEpoch);
+  if (!Number.isFinite(e) || e <= 0) return "";
+  const days = Math.max(0, Math.round((epochStartMs(e + 1) - Date.now()) / 864e5));
+  const urgent = days <= 5 ? " urgent" : "";
+  return `<span class="meta-chip${urgent}" title="Voting closes when epoch ${e} ends">${days <= 0 ? "closing" : `~${days}d left`}</span>`;
+}
+
+/* Treasury titles carry their own ask ("Withdraw 120,000,000 ada for X"). Split it so the card
+   can show a clean name and a separate amount chip — display only, the raw title is always the
+   fallback and nothing downstream keys on this. */
+function splitAsk(title, type) {
+  const t = String(title || "");
+  if (type !== "TreasuryWithdrawals") return { name: t, ask: null };
+  const m = t.match(/^Withdraw\s+([\d,]+)\s+ada\s+for\s*(.*)$/i);
+  if (!m) return { name: t, ask: null };
+  const ada = Number(m[1].replace(/,/g, ""));
+  const name = (m[2] || "").replace(/^by\s+/i, "").trim();
+  return { name: name || t, ask: Number.isFinite(ada) ? ada * 1e6 : null };
+}
+
+/* One human line per card. These are labels for machine states the reader can open and check —
+   short renderings of decision + blocked_reason_code, not new claims. */
+function humanStance(a) {
+  if (a.submitted && a.onchain_vote) {
+    // on-chain vote spellings vary by source (YES vs VoteYes) — normalize for display only
+    const v = { VoteYes: "YES", VoteNo: "NO", Abstain: "ABSTAIN" }[a.onchain_vote] || a.onchain_vote;
+    return { chip: `Voted ${v}`, cls: v, line: null };
+  }
+  const d = a.decision || "";
+  if (d === "YES" || d === "NO") return { chip: `Recommends ${d}`, cls: d, line: "Not yet cast — the vote follows once the anti-churn policy is satisfied." };
+  if (d === "NEEDS_MORE_INFO") return { chip: "Holding", cls: "HOLD", line: "The proposal hasn't published enough for BEACN to certify it either way." };
+  if (d === "ABSTAIN") return { chip: "Abstaining", cls: "ABSTAIN", line: null };
+  return { chip: "Evaluating", cls: "HOLD", line: null };
+}
+function humanDiverge(a) {
+  if (!a.diverged) return null;
+  const d = a.decision || "";
+  if (d === "YES" || d === "NO") return `On today's evidence BEACN would now vote ${d} — a revision is pending the anti-churn check.`;
+  if (d === "NEEDS_MORE_INFO") return "The vote stands. BEACN now wants more disclosure than this proposal has published — open it to see exactly what.";
+  return "The vote stands; today's evidence reads differently. Open it to see why.";
+}
+
+/* Plain-language statements are generated per decision and verified to match the verdict before
+   we show them (a statement can lag one pipeline run behind a fresh vote — never show stale prose
+   under a new verdict). Loaded once, on demand. */
+let STATEMENTS = null;
+async function loadStatements() {
+  if (STATEMENTS) return STATEMENTS;
+  try { STATEMENTS = await getJSON(SRC.statements); } catch { STATEMENTS = {}; }
+  return STATEMENTS;
+}
+function matchedStatement(store, id, currentDecision) {
+  const e = store?.[id];
+  if (!e || !e.statement) return null;
+  if (String(e.decision) !== String(currentDecision)) return null;
+  return e.statement;
+}
 
 /* ---------- shared renderers ---------- */
 
@@ -165,31 +231,37 @@ function capacityHTML(tc) {
   </div>`;
 }
 
-function cardHTML(a) {
-  const openChip = a.status === "active"
-    ? `<span class="chip open">Open</span>`
-    : `<span class="chip closed">Closed</span>`;
+/* status.json is refreshed by the vote step itself, so it knows about a vote cast minutes ago;
+   actions.json lags one pipeline export behind. Overlay the fresher fact — a vote the chain has
+   must never render as "not yet cast". */
+function overlayLive(a) {
+  const live = state.status?.actions?.find?.(x => x.action_id === a.action_id) || {};
+  if (!a.submitted && live.our_vote) {
+    return { ...a, submitted: true, onchain_vote: live.our_vote, transaction_hash: a.transaction_hash, _live: live };
+  }
+  return { ...a, _live: live };
+}
+
+function cardHTML(raw) {
+  const a = overlayLive(raw);
+  const { name, ask } = splitAsk(a.title, a.type);
+  const st = humanStance(a);
+  const note = humanDiverge(a) || st.line;
+  const live = a._live;
   return `<button class="card" data-id="${esc(a.action_id)}">
     <div class="card-top">
       <span class="chip type">${esc(typeLabel(a.type))}</span>
-      ${openChip}
+      ${ask ? `<span class="meta-chip ask">${ADA(ask)} requested</span>` : ""}
+      ${a.status === "active" ? expiryHTML(live.expires_after_epoch) : `<span class="chip closed">Closed</span>`}
     </div>
-    <h3>${esc(a.title || a.action_id)}</h3>
-    <div class="stance">
-      <div class="stance-cell">
-        <div class="lbl">BEACN's vote on-chain</div>
-        <div class="val">${proofHTML(a)}</div>
-      </div>
-      <div class="stance-cell">
-        <div class="lbl">Engine recommendation today</div>
-        <div class="val"><span class="vote ${esc(a.decision || "NONE")}">${esc(a.decision || "—")}</span></div>
-      </div>
+    <h3>${esc(name || a.action_id)}</h3>
+    <div class="stance-row">
+      <span class="vote big ${esc(st.cls)}">${esc(st.chip)}</span>
+      ${a.submitted && a.transaction_hash ? `<a class="proof" href="${EXPLORER(esc(a.transaction_hash))}"
+        target="_blank" rel="noopener" onclick="event.stopPropagation()"
+        title="View the vote transaction on Cardanoscan">${linkIcon}<span class="hash">${esc(short(a.transaction_hash, 8))}</span></a>` : ""}
     </div>
-    ${divergeHTML(a)}
-    <div class="card-foot">
-      <span>Seen ${esc(fmtDate(a.detected_at))}</span>
-      <span>Published ${esc(fmtDate(a.published_at))}</span>
-    </div>
+    ${note ? `<p class="card-note">${esc(note)}</p>` : ""}
   </button>`;
 }
 
@@ -209,55 +281,58 @@ function wireCards(root) {
 function viewLive() {
   const s = state.index?.stats || {};
   const open = state.actions.filter(a => a.status === "active");
-  const voted = state.actions.filter(a => a.submitted);
-  const openVoted = open.filter(a => a.submitted).length;
+  // A vote cast minutes ago lives in status.json before it reaches the next actions.json export.
+  const isVoted = a => a.submitted || !!state.status?.actions?.find?.(x => x.action_id === a.action_id)?.our_vote;
+  const voted = state.actions.filter(isVoted);
+  const openVoted = open.filter(isVoted).length;
 
   // Sort: unvoted open actions first — those are the ones the community should look at.
   open.sort((a, b) => (a.submitted === b.submitted ? 0 : a.submitted ? 1 : -1));
+
+  const tc = state.index?.treasury_capacity || {};
+  const rem = Number(tc.remaining_capacity_lovelace || 0);
+  const ncl = Number(tc.ncl_lovelace || 0);
 
   return `
   <section class="hero">
     <span class="eyebrow">Live on Cardano mainnet</span>
     <h1>An autonomous DRep voting <em>real money</em>, in the open.</h1>
-    <p class="hero-lead">BEACN decides Cardano governance with deterministic, open-source rules over
-       public evidence — then publishes the reasoning and the on-chain proof of every vote. The
-       weights are a versioned file you can read. The engine is a commit you can replay. Nothing
-       here is a claim you have to take on trust.</p>
+    <p class="hero-lead">Open-source rules over public evidence, a plain-English reason for every
+       decision, and on-chain proof you can check yourself.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="#/verify">Verify a decision yourself →</a>
-      <a class="btn" href="#/method">How the weighting works</a>
+      <a class="btn btn-primary" href="#/record">See every vote →</a>
+      <a class="btn" href="#/verify">Verify one yourself</a>
     </div>
     <p class="drepid" style="margin-top:var(--s5)">DRep <code>${esc(state.status?.drep_id || "—")}</code></p>
   </section>
 
   <div class="stats">
+    <div class="stat">
+      <div class="n">${voted.length}</div>
+      <div class="k">Votes on-chain</div>
+      <div class="sub">every one links to its tx</div>
+    </div>
     <div class="stat accent">
       <div class="n">${open.length}</div>
       <div class="k">Open now</div>
       <div class="sub">${openVoted} with a vote cast</div>
     </div>
     <div class="stat">
-      <div class="n">${voted.length}</div>
-      <div class="k">Votes on-chain</div>
-      <div class="sub">every one links to its tx</div>
+      <div class="n">${ncl ? ADA(rem) : "—"}</div>
+      <div class="k">Treasury left</div>
+      <div class="sub">${ncl ? `of ${ADA(ncl)} this period` : "no limit pinned"}</div>
     </div>
     <div class="stat">
       <div class="n">${s.decisions_published ?? "—"}</div>
       <div class="k">Decisions published</div>
       <div class="sub">since inception</div>
     </div>
-    <div class="stat">
-      <div class="n">${s.anchor_fetch_coverage_pct != null ? s.anchor_fetch_coverage_pct + "%" : "—"}</div>
-      <div class="k">Anchor coverage</div>
-      <div class="sub">proposal docs pinned</div>
-    </div>
   </div>
 
   <section class="sec">
-    <div class="sec-h"><h2>Live governance actions</h2><span class="count">${open.length}</span></div>
-    <p class="sec-lead">Everything currently open for a vote on Cardano. Unvoted actions are listed
-       first. For each one you can see what BEACN cast on-chain, what the engine recommends on
-       today's evidence, and — where those differ — why.</p>
+    <div class="sec-h"><h2>Open proposals</h2><span class="count">${open.length}</span></div>
+    <p class="sec-lead">Everything currently up for a vote. Tap any proposal for the full
+       reasoning — in plain English, with the evidence and the on-chain proof.</p>
     ${listHTML(open)}
   </section>`;
 }
@@ -707,9 +782,12 @@ async function runVerification(actionId) {
     if (!e || !e.handled) fail("anchor", e.message);
   }
 
-  /* 2 + 3. BUNDLE and INPUT — recompute the manifest's own headline hashes from its contents. */
+  /* 2 + 3. BUNDLE and INPUT — recompute the manifest's own headline hashes from its contents.
+     These verify the CURRENT derivation, whose manifest lives beside its run rationale in
+     rationales/. A frozen proof_of_vote points its markdown at the immutable r/ copy instead —
+     the right bytes for check 1, but r/ carries no manifests. */
   try {
-    const mdPath = pov.rationale_markdown_path;
+    const mdPath = detail.current?.rationale_markdown_path || pov.rationale_markdown_path;
     if (!mdPath) throw new Error("no manifest recorded for this decision");
     const manifest = await getJSON(rel(mdPath).replace(/\.md$/, ".manifest.json"));
     const r = await verifyManifest(manifest);
@@ -824,85 +902,8 @@ function viewDelegate() {
   </section>`;
 }
 
-/* ---------- corrections: the mistakes, on the record, provably unedited ----------
-   The log is append-only and hash-chained: every entry carries the sha256 of the previous
-   entry's canonical JSON (same Python-parity serialiser the manifest checks use), so editing
-   or deleting a past admission breaks every entry after it. The chain is recomputed here, in
-   the visitor's browser — the intact badge is earned on every page view, not asserted. */
-
-function viewCorrections() {
-  return `
-  <section class="hero">
-    <span class="eyebrow">Permanent record</span>
-    <h1>When BEACN got it wrong — <em>on the record, unedited</em>.</h1>
-    <p class="hero-lead">An autonomous voter that claims it never errs is lying. This is the log of
-       every material mistake in BEACN's published record: what happened, what it touched, why, and
-       what fixed it. The log is hash-chained — each entry seals the one before it — so a past
-       admission cannot be quietly softened or removed. Your browser re-checks the chain right now.</p>
-  </section>
-
-  <section class="sec">
-    <div class="sec-h"><h2>Corrections log</h2><span class="count" id="c-count">—</span></div>
-    <div id="c-chain"></div>
-    <div id="c-list"><div class="loading"><span class="spin" aria-hidden="true"></span> Loading the corrections log…</div></div>
-    <p class="muted xs" style="margin-top:var(--s4)">Chain rule: each entry's <code>prev_sha256</code>
-       is the sha256 of the previous entry's canonical JSON (keys sorted, compact separators,
-       ASCII-escaped — Python <code>json.dumps(sort_keys=True, separators=(",", ":"))</code>).
-       Recomputed locally from <a href="./corrections.json" rel="noopener">corrections.json</a>;
-       nothing is sent anywhere.</p>
-  </section>`;
-}
-
-function correctionHTML(e) {
-  const permanent = e.fix === "permanent-record";
-  return `<div class="panel corr">
-    <div class="card-top">
-      <span class="chip type">${esc(e.id)}</span>
-      <span class="chip ${permanent ? "closed" : "open"}">${esc(e.status || "—")}</span>
-      <span class="muted xs">${esc(fmtDate(e.date))}</span>
-    </div>
-    <h2>${esc(e.title)}</h2>
-    <div class="kv" style="margin-top:var(--s3)">
-      <div class="kv-row"><span class="k">What happened</span><span class="v">${esc(e.what_happened)}</span></div>
-      <div class="kv-row"><span class="k">Blast radius</span><span class="v">${esc(e.blast_radius)}</span></div>
-      <div class="kv-row"><span class="k">Root cause</span><span class="v">${esc(e.root_cause)}</span></div>
-      <div class="kv-row"><span class="k">Fix</span><span class="v">${permanent
-        ? `Permanent record — the flawed artifact is hash-anchored on-chain and can never be edited; it stays, and this entry stands beside it.`
-        : esc(e.fix)}</span></div>
-    </div>
-  </div>`;
-}
-
-async function loadCorrections() {
-  const list = el("c-list");
-  if (!list) return;
-  let doc;
-  try {
-    doc = await getJSON(SRC.corrections);
-  } catch (e) {
-    list.innerHTML = `<div class="empty">The corrections log could not be loaded.<br><span class="xs">${esc(e.message)}</span></div>`;
-    return;
-  }
-  const entries = Array.isArray(doc.entries) ? doc.entries : [];
-  el("c-count").textContent = entries.length;
-
-  // Walk the chain oldest→newest: entry N must carry the hash of entry N−1 exactly as published.
-  let brokenAt = null;
-  let prev = null;
-  for (const e of entries) {
-    if ((e.prev_sha256 ?? null) !== prev) { brokenAt = e.id; break; }
-    prev = await sha256Hex(new TextEncoder().encode(pyJson(e, true)));
-  }
-  el("c-chain").innerHTML = brokenAt
-    ? `<div class="chainbadge broken">✕ Hash chain BROKEN at ${esc(brokenAt)} — a past entry has been
-         altered or removed. Treat this log as tampered and check the git history of corrections.json.</div>`
-    : `<div class="chainbadge intact">✓ Hash chain intact — all ${entries.length} entries verified in
-         this browser. No past admission has been edited or removed.</div>`;
-
-  // Newest first for reading; the chain above was verified in file (oldest-first) order.
-  list.innerHTML = entries.slice().reverse().map(correctionHTML).join("")
-    || `<div class="empty">No corrections recorded.</div>`;
-}
+/* corrections.json stays published (append-only, hash-chained) as a data artifact; the page that
+   rendered it was pulled from the pre-launch site 2026-07-15 at David's direction. */
 
 async function viewDetail(id) {
   const view = el("view");
@@ -933,36 +934,53 @@ async function viewDetail(id) {
   // budget proportionality, or sustainability evidence" is not.
   const asks = ((rat.treasury_dimensions || {}).actionable_asks) || [];
 
+  const { name, ask } = splitAsk(d.title || id, d.type);
+  const ov = overlayLive({ action_id: id, submitted: dec.submitted, onchain_vote: dec.onchain_vote, decision: dec.vote });
+  const st = humanStance(ov);
+  // The plain-English statement is only shown when it matches the CURRENT verdict — a fresh vote
+  // can be one pipeline run ahead of its regenerated prose, and stale prose under a new verdict
+  // is worse than none. Fallback: the deterministic one-line summary.
+  const statements = await loadStatements();
+  const why = matchedStatement(statements, id, dec.vote) || rat.summary || "";
+  const whyParas = String(why).split(/\n\n+/).filter(Boolean);
+  const live = state.status?.actions?.find?.(x => x.action_id === id) || {};
+
   view.innerHTML = `
   <a class="back" href="#/record">← Back to the record</a>
   <div class="detail-head">
     <div class="card-top">
       <span class="chip type">${esc(typeLabel(d.type))}</span>
-      <span class="chip ${d.status === "active" ? "open" : "closed"}">${d.status === "active" ? "Open" : "Closed"}</span>
+      ${ask ? `<span class="meta-chip ask">${ADA(ask)} requested</span>` : ""}
+      ${d.status === "active" ? expiryHTML(live.expires_after_epoch) : `<span class="chip closed">Closed</span>`}
     </div>
-    <h1>${esc(d.title || id)}</h1>
+    <h1>${esc(name || d.title || id)}</h1>
   </div>
 
-  <div class="panel">
-    <h2>BEACN's position</h2>
-    <div class="stance">
-      <div class="stance-cell">
-        <div class="lbl">Vote cast on-chain</div>
-        <div class="val">${proofHTML({
-          submitted: dec.submitted, transaction_hash: dec.transaction_hash, onchain_vote: dec.onchain_vote,
-        })}</div>
-      </div>
-      <div class="stance-cell">
-        <div class="lbl">Engine recommendation today</div>
-        <div class="val"><span class="vote ${esc(dec.vote || "NONE")}">${esc(dec.vote || "—")}</span></div>
-      </div>
+  <div class="panel position">
+    <div class="stance-row">
+      <span class="vote big ${esc(st.cls)}">${esc(st.chip)}</span>
+      ${dec.submitted && dec.transaction_hash ? `<a class="proof" href="${EXPLORER(esc(dec.transaction_hash))}"
+        target="_blank" rel="noopener" title="View the vote transaction on Cardanoscan">
+        ${linkIcon}<span class="hash">${esc(short(dec.transaction_hash, 10))}</span></a>` : ""}
     </div>
-    ${divergeHTML({ diverged: dec.diverged, onchain_vote: dec.onchain_vote, decision: dec.vote })}
-    ${rat.summary ? `<p class="muted sm" style="margin-top:12px">${esc(rat.summary)}</p>` : ""}
+    ${whyParas.length ? `<div class="why">${whyParas.map(p => `<p>${esc(p)}</p>`).join("")}</div>` : ""}
+    ${humanDiverge({ diverged: dec.diverged, decision: dec.vote }) ?
+      `<p class="card-note">${esc(humanDiverge({ diverged: dec.diverged, decision: dec.vote }))}</p>` : ""}
   </div>
 
-  <div class="panel">
-    <h2>Score &amp; confidence</h2>
+  ${(asks.length || missing.length) ? `<div class="panel ask">
+    <h2>What would change this vote</h2>
+    <p class="muted sm" style="margin-bottom:12px">Publish the following and the engine re-scores
+       this proposal automatically on the next run — no appeal, no lobbying, no relationship required.</p>
+    <ul class="asklist">
+      ${(asks.length ? asks : missing).map(m => `<li>${esc(m)}</li>`).join("")}
+    </ul>
+    <p class="muted xs" style="margin-top:12px">Each of these is a public, checkable fact about the
+       proposal — not an opinion about the team.</p>
+  </div>` : ""}
+
+  <details class="panel fold">
+  <summary><h2>Score &amp; confidence</h2></summary>
     <div class="kv">
       <div class="kv-row"><span class="k">Binding score</span><span class="v">${esc(sc.binding_score ?? "—")}</span></div>
       <div class="kv-row"><span class="k">Directional threshold</span><span class="v">±${esc(sc.directional_threshold ?? "—")}</span></div>
@@ -973,26 +991,13 @@ async function viewDetail(id) {
       <div class="bar"><i style="width:${Math.round(Math.min(conf, 1) * 100)}%"></i></div>
       <div class="xs muted" style="margin-top:4px">${(conf * 100).toFixed(1)}%</div>
     </div>
-  </div>
+  </details>
 
   ${flagsHTML(d.flags)}
   ${capacityHTML(d.treasury_capacity)}
 
-  ${(asks.length || missing.length) ? `<div class="panel ask">
-    <h2>What would change this vote</h2>
-    <p class="muted sm" style="margin-bottom:12px">This is not a rejection. BEACN cannot certify the
-       price of this work on what has been published, and it will not turn that silence into a NO.
-       Publish the following and the engine re-scores it automatically on the next run — no appeal,
-       no lobbying, no relationship required.</p>
-    <ul class="asklist">
-      ${(asks.length ? asks : missing).map(m => `<li>${esc(m)}</li>`).join("")}
-    </ul>
-    <p class="muted xs" style="margin-top:12px">Each of these is a public, checkable fact about the
-       proposal — not an opinion about the team.</p>
-  </div>` : ""}
-
-  ${sections.length ? `<div class="panel">
-    <h2>The assessment</h2>
+  ${sections.length ? `<details class="panel fold">
+    <summary><h2>The full assessment</h2></summary>
     ${sections.map(s => `
       <div class="asec ${esc(s.status === "complete" ? "complete" : "incomplete")}">
         <h3>${esc(s.title)} <span class="chip">${esc(s.status || "")}</span></h3>
@@ -1000,10 +1005,10 @@ async function viewDetail(id) {
         ${Array.isArray(s.missing) && s.missing.length ? `<ul>${s.missing.map(m => `<li class="miss">${esc(m)}</li>`).join("")}</ul>` : ""}
         ${s.conclusion ? `<p class="concl">${esc(s.conclusion)}</p>` : ""}
       </div>`).join("")}
-  </div>` : ""}
+  </details>` : ""}
 
-  ${dc.composite_formula || dc.yes_rule ? `<div class="panel">
-    <h2>The rule that decided this</h2>
+  ${dc.composite_formula || dc.yes_rule ? `<details class="panel fold">
+    <summary><h2>The rule that decided this</h2></summary>
     ${dc.composite_formula ? `<div class="formula">${esc(dc.composite_formula)}</div>` : ""}
     <div class="kv" style="margin-top:12px">
       ${dc.yes_rule ? `<div class="kv-row"><span class="k">YES requires</span><span class="v">${esc(dc.yes_rule)}</span></div>` : ""}
@@ -1012,10 +1017,10 @@ async function viewDetail(id) {
       ${dc.weights_version ? `<div class="kv-row"><span class="k">Weights version</span><span class="v">${esc(dc.weights_version)}</span></div>` : ""}
       ${dc.weights_hash ? `<div class="kv-row"><span class="k">Weights hash</span><span class="v">${esc(short(dc.weights_hash, 12))}</span></div>` : ""}
     </div>
-  </div>` : ""}
+  </details>` : ""}
 
-  <div class="panel">
-    <h2>Reproduce this decision</h2>
+  <details class="panel fold">
+    <summary><h2>Reproduce this decision</h2></summary>
     <p class="muted sm" style="margin-bottom:8px">These pin the exact doctrine, inputs and code that
        produced the verdict. Same commits + same inputs = same vote, byte for byte.</p>
     <div class="kv">
@@ -1028,7 +1033,7 @@ async function viewDetail(id) {
         <span class="v"><a href="${EXPLORER(esc(dec.transaction_hash))}" target="_blank" rel="noopener">${esc(short(dec.transaction_hash, 16))}</a></span></div>` : ""}
     </div>
     ${pov.rationale_anchor_url ? `<a class="cta" href="${esc(pov.rationale_anchor_url)}" target="_blank" rel="noopener">Read the full signed rationale →</a>` : ""}
-  </div>`;
+  </details>`;
 }
 
 /* ---------- contract panel (method page) ---------- */
@@ -1098,33 +1103,36 @@ function renderStaleness() {
   }
 }
 
-/* ---------- banner ---------- */
+/* ---------- status strip ---------- */
+/* DERIVED, never narrated — hand-written versions of this rotted within hours, twice. It is
+   computed from the decisions and grouped by CAUSE (whose move is it?), but rendered as a compact
+   strip: one short line + chips, with the full explanation one tap away instead of a wall of amber
+   text owning the first screen. */
 function renderBanner() {
   const b = el("sysbanner");
-  const diverged = state.actions.filter(a => a.diverged && a.status === "active").length;
+  const g = groupDivergences(state.actions);
+  const diverged = g.revise.length + g.undisclosed.length + g.capacity.length + g.other.length;
   if (!diverged) { b.hidden = true; return; }
   b.hidden = false;
-  // DERIVED, never narrated. Two hand-written versions of this banner have now gone stale within
-  // hours of being written — first "the evidence pipeline is being repaired" (it was fixed), then
-  // "the proposal does not disclose enough of its own budget" (true of 7 of them, not all, and two
-  // had flipped to YES). A sentence I type is a claim that rots. So the banner is computed from the
-  // decisions themselves, and it groups them by CAUSE — because "11 unresolved" tells a reader
-  // nothing, while "2 BEACN must fix, 7 the proposer must, 1 is scarcity" tells them everything.
-  const g = groupDivergences(state.actions);
-  const parts = [];
-  if (g.revise.length) parts.push(`<b>${g.revise.length}</b> where BEACN would now vote the other way
-    — it must revise its own vote, and the anti-churn policy makes it prove that twice first`);
-  if (g.undisclosed.length) parts.push(`<b>${g.undisclosed.length}</b> where the proposal will not
-    disclose enough of its own budget to certify the price. BEACN will not turn that silence into a
-    NO — missing evidence never becomes negative evidence — so it holds`);
-  if (g.capacity.length) parts.push(`<b>${g.capacity.length}</b> that clears every quality bar but
-    falls outside the treasury capacity left this period`);
-  if (g.other.length) parts.push(`<b>${g.other.length}</b> awaiting other evidence`);
-
-  b.innerHTML = `<span aria-hidden="true">⚠</span><span><b>${diverged} open
-    ${diverged === 1 ? "position" : "positions"} BEACN would not re-derive today.</b>
-    ${parts.join("; ")}. The votes already on-chain stand. Open any of them to see exactly which
-    evidence is absent and what would change the vote.</span>`;
+  const chips = [];
+  if (g.revise.length) chips.push(`<span class="sys-chip revise">${g.revise.length} revision pending</span>`);
+  if (g.undisclosed.length) chips.push(`<span class="sys-chip">${g.undisclosed.length} awaiting disclosure</span>`);
+  if (g.capacity.length) chips.push(`<span class="sys-chip">${g.capacity.length} over budget capacity</span>`);
+  if (g.other.length) chips.push(`<span class="sys-chip">${g.other.length} awaiting evidence</span>`);
+  b.innerHTML = `<details class="sys">
+    <summary>${chips.join("")}<span class="sys-more" aria-hidden="true">what's this?</span></summary>
+    <div class="sys-body">
+      ${g.revise.length ? `<p><b>${g.revise.length} revision pending</b> — on today's evidence BEACN
+        would vote the other way; the anti-churn policy requires the new verdict to hold across
+        consecutive runs before the on-chain vote is revised.</p>` : ""}
+      ${g.undisclosed.length ? `<p><b>${g.undisclosed.length} awaiting disclosure</b> — the cast votes
+        stand while these proposals haven't published enough of their own budget to be certified.
+        Each one lists exactly what to publish to be re-scored automatically.</p>` : ""}
+      ${g.capacity.length ? `<p><b>${g.capacity.length} over capacity</b> — clears the quality bar but
+        does not fit the treasury spend limit left this period.</p>` : ""}
+      ${g.other.length ? `<p><b>${g.other.length} awaiting evidence</b> — open them to see which.</p>` : ""}
+    </div>
+  </details>`;
 }
 
 /* ---------- router ---------- */
@@ -1189,12 +1197,6 @@ async function route() {
     setNav("verify");
     view.innerHTML = viewVerify();
     wireVerify();
-    return;
-  }
-  if (path.startsWith("#/corrections")) {
-    setNav("corrections");
-    view.innerHTML = viewCorrections();
-    await loadCorrections();
     return;
   }
   if (path.startsWith("#/delegate")) {
