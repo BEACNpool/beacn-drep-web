@@ -138,26 +138,10 @@ function matchedStatement(store, id, currentDecision) {
 
 /* ---------- shared renderers ---------- */
 
-/** The vote BEACN actually cast on-chain, with its proof link. Never the recommendation. */
-function proofHTML(a) {
-  if (!a.submitted || !a.transaction_hash) {
-    return `<span class="novote">No vote cast on-chain yet</span>`;
-  }
-  return `<span class="vote ${esc(a.onchain_vote || "NONE")}">${esc(a.onchain_vote || "—")}</span>
-    <a class="proof" href="${EXPLORER(esc(a.transaction_hash))}" target="_blank" rel="noopener"
-       onclick="event.stopPropagation()" title="View the vote transaction on Cardanoscan">
-      ${linkIcon}<span class="hash">${esc(short(a.transaction_hash, 10))}</span>
-    </a>`;
-}
-
-/** Disclose, never hide, a drift between the cast vote and today's recommendation. */
-function divergeHTML(a) {
-  if (!a.diverged) return "";
-  return `<span class="diverge"><b>Would not re-derive this vote today.</b> BEACN cast
-    <b>${esc(a.onchain_vote)}</b> on-chain; on today's evidence the engine reaches
-    <b>${esc(a.decision)}</b>. The cast vote stands until a revision clears the anti-churn policy —
-    a gap in evidence is never allowed to retract a vote that was made.</span>`;
-}
+/* The cast-vote-vs-recommendation contract now lives in humanStance()/humanDiverge():
+   a CAST vote renders as "Voted X" (from onchain_vote, never `decision`) with its tx proof
+   link; an uncast recommendation renders as "Recommends X" / "Holding" and can never be
+   mistaken for a vote. Divergence is disclosed by humanDiverge on every card and detail. */
 
 const ADA = lov => {
   const n = Number(lov || 0) / 1e6;
