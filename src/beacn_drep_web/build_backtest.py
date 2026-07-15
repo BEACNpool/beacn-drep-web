@@ -188,20 +188,27 @@ def main():
     summary_path = OUT / "backtest_summary.json"
     summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
 
+    # Paths publish workspace-relative: this manifest ships on the public site,
+    # and absolute paths leak the operator's home-directory layout.
+    def _rel(p):
+        try:
+            return str(Path(p).resolve().relative_to(_WS.resolve()))
+        except ValueError:
+            return Path(p).name
     manifest = {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "inputs": {
-            "core_output_dir": str(CORE_OUT),
-            "resources_governance_dir": str(RES_GOV),
-            "resources_drep_dir": str(RES_DREP),
+            "core_output_dir": _rel(CORE_OUT),
+            "resources_governance_dir": _rel(RES_GOV),
+            "resources_drep_dir": _rel(RES_DREP),
             "resources_actions_hash": _sha256_file(RES_GOV / "governance_actions_all.csv") if (RES_GOV / "governance_actions_all.csv").exists() else "",
             "resources_top_drep_hash": _sha256_file(RES_DREP / "top_drep_votes.csv") if (RES_DREP / "top_drep_votes.csv").exists() else "",
         },
         "summary": summary,
         "outputs": [
-            {"path": str(csv_path), "sha256": _sha256_file(csv_path)},
-            {"path": str(json_path), "sha256": _sha256_file(json_path)},
-            {"path": str(summary_path), "sha256": _sha256_file(summary_path)},
+            {"path": _rel(csv_path), "sha256": _sha256_file(csv_path)},
+            {"path": _rel(json_path), "sha256": _sha256_file(json_path)},
+            {"path": _rel(summary_path), "sha256": _sha256_file(summary_path)},
         ],
     }
     (OUT / "backtest_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

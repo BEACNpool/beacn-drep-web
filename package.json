@@ -2,21 +2,12 @@
   "name": "beacn-drep-web",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "^15.5.14",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "test:parity": "node scripts/test_verify_parity.mjs",
+    "test:e2e": "node scripts/e2e_public_site.mjs"
   },
   "devDependencies": {
-    "@types/node": "20.14.11",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
-    "typescript": "5.5.4"
+    "puppeteer-core": "^23.11.1"
   }
 }

@@ -1,0 +1,20 @@
+# Byte-parity guard: verify.js must reproduce the Python engine's hashes on every published
+# manifest and anchored rationale in the repo. If this fails, the public verifier would cry
+# TAMPER on honest data — block the push, don't ship it.
+name: verify-parity
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # The parity script has zero dependencies; npm ci just proves the lockfile is honest.
+      - run: npm ci
+      - run: node scripts/test_verify_parity.mjs

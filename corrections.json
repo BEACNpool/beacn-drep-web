@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "description": "BEACN DRep corrections log. Append-only and hash-chained: each entry's prev_sha256 is the sha256 of the previous entry's canonical JSON (keys sorted, separators ',' ':', ensure_ascii), so no past entry can be edited or removed without breaking the chain. Verified in-browser at #/corrections.",
+  "hash_rule": "prev_sha256 = sha256(json.dumps(previous_entry, sort_keys=True, separators=(\",\", \":\")))  # ensure_ascii; first entry: null",
+  "entries": [
+    {
+      "id": "COR-2026-001",
+      "date": "2026-06-19",
+      "title": "Tweag NO anchor is internally contradictory",
+      "what_happened": "The rationale anchored in the NO vote on 'Tweag Core Cardano Infrastructure: Treasury Withdrawal 2026\u20132027' (cast 2026-06-19, tx c330223646e70fff90998c00529617adf8851b37a1e67ca75d0ff5797abd8c42) contradicts itself: the header records 'Recommendation: NO \u2026 Confidence: 1.0' while the plain-language explanation in the same document says BEACN is recording ABSTAIN because its chain snapshot was about eight hours old.",
+      "blast_radius": "One anchored rationale. The NO vote itself was the engine's directional output and stands; a reader of the anchored document sees two different verdicts and a confidence figure that measured penalty weight, not evidence coverage.",
+      "root_cause": "The plain-language explanation was precomputed from an earlier ABSTAIN-recommending run and not regenerated when the deterministic decision moved to NO before submission. Confidence at the time reported penalty size rather than verified evidence coverage (semantics corrected in beacn-drep-soul values_hierarchy, 2026-07-04).",
+      "fix": "permanent-record",
+      "status": "permanent",
+      "prev_sha256": null
+    },
+    {
+      "id": "COR-2026-002",
+      "date": "2026-06-17",
+      "title": "HF v11 and committeeMinSize YES rationales anchored with template text",
+      "what_happened": "The YES votes on 'Hard Fork to Protocol Version 11 (van Rossem)' (tx 19e6c5452ae9e8e0fdffc47eeafe28452443ec3220800033772b221c3aaa65c3) and 'Reduce the committeeMinSize parameter from 7 to 5' (tx 980a4f93c991b76b01149330cf873ef41d2dbef4e4bb0de4fd5c6c86d7f5c1f8) were cast 2026-06-17 while the model reasoning layer was unavailable. The anchored rationales carry fixed template explanations ('deterministic-template' / offline-review boilerplate) instead of a model-written one, and the hard-fork rationale records 'Proposal claims not extracted (model layer unavailable)'.",
+      "blast_radius": "Two anchored rationales on two on-chain YES votes. The votes were produced by the deterministic engine and are unaffected; the anchored explanations are thinner than the standard the system holds itself to.",
+      "root_cause": "The vote path did not require the reasoning layer to be reachable before anchoring; with it down, the deterministic fallback explanation was anchored as-is.",
+      "fix": "permanent-record",
+      "status": "permanent",
+      "prev_sha256": "b018ec3802f0d9eb329042fa105dee04d27d88ea28274f50a863901ade00d343"
+    },
+    {
+      "id": "COR-2026-003",
+      "date": "2026-07-13",
+      "title": "Wrong live NO on 'Eternl: Path to Sustainability - v2' from dual id-spelling double-scoring",
+      "what_happened": "The same proposal arrived under both its CIP-129 '<tx>#<index>' id and its legacy bech32 'gov_action1\u2026' id, and the engine scored each spelling separately. The evidence packets were keyed to one spelling, so the other scored with no evidence; the vote path only resolved the evidence-less spelling and BEACN cast a live on-chain NO against a proposal the evidenced run scored YES.",
+      "blast_radius": "One live mainnet vote in the wrong direction for roughly three weeks, plus double-counted entries inflating the visible action set.",
+      "root_cause": "No canonical action-id form at ingestion: two spellings of one action were treated as two actions, and the vote adapter's id decoder understood only the bech32 spelling.",
+      "fix": "Corrected on-chain NO\u2192YES 2026-07-13, tx 53985b85c8fca6b413173642645bbda2c00c399aa86fd1ac78a8bfbfaf8e0957. Ids are now canonicalised at ingestion with field-wise merge in beacn-drep-core (src/beacn_drep/ids.py), regression-tested.",
+      "status": "resolved",
+      "prev_sha256": "f2925f4768f6a6f8cb925c9f86f0609898f7bdf89215f6d08f4446b615f8d1e1"
+    },
+    {
+      "id": "COR-2026-004",
+      "date": "2026-07-04",
+      "title": "Fee-only flow basis overstated the treasury outflow ratio (~1776)",
+      "what_happened": "Published treasury sustainability claims measured inflow from chain fees only, understating true treasury inflow by roughly 500x and pinning the withdrawal-to-inflow ratio near 1776 \u2014 which marked every treasury action 'unsustainable' on an untrue number.",
+      "blast_radius": "Every treasury rationale published on the fee-only basis carried the inflated ratio. Vote directions did not change on restatement: the honest ratio (~2.28) is still above the unchanged >2.0 threshold.",
+      "root_cause": "Inflow was derived from the fee pot alone instead of the full treasury credit (ada_pots treasury delta plus enacted withdrawals = tau share plus donations).",
+      "fix": "Restated to the true-inflow basis 2026-07-04: beacn-drep-soul treasury_spending_doctrine.json v1.2.0 (see the soul CHANGELOG entry of that date).",
+      "status": "resolved",
+      "prev_sha256": "68107ad6516861f76081bd3d1f288144465bd29ae836e11c078ecfe4420ae226"
+    },
+    {
+      "id": "COR-2026-005",
+      "date": "2026-07-15",
+      "title": "treasury_summary.json mixed unlabeled bases (~500x misread)",
+      "what_happened": "treasury_summary.json published a fee-derived 6-month inflow figure beside a withdrawal ratio computed on the total-inflow basis, with neither basis labeled. A reader combining the two numbers misreads treasury inflow by roughly 500x.",
+      "blast_radius": "One published summary artifact. Decisions were unaffected \u2014 the engine scored on the true-inflow basis \u2014 but the public artifact invited a false conclusion.",
+      "root_cause": "Two different measurement bases shared one file with no per-number basis labels.",
+      "fix": "Superseded 2026-07-15 by budget_state.json, which labels every number's basis; treasury_summary.json now carries an inline deprecation naming its fee-derived basis.",
+      "status": "resolved",
+      "prev_sha256": "49c84e4a58fe3df95c94830a6eee3a772fab306a1ec6ea1a9d19be03784ca0fa"
+    },
+    {
+      "id": "COR-2026-006",
+      "date": "2026-07-15",
+      "title": "Publish outage 2026-07-12..15: stale anchor host, no automated votes",
+      "what_happened": "Three stacked failures: a GitHub SSH timeout on 2026-07-12, then the publisher refusing to push after the repository diverged from concurrent manual work, then a git worktree leaked by a crashed run blocking every later publish. gh-pages \u2014 the host the on-chain rationale anchors resolve to \u2014 was stale 2026-07-13..15 and no automated votes were cast 2026-07-13..15. This site's main branch kept publishing daily throughout.",
+      "blast_radius": "Freshness only: stale anchor host for about two days and missed vote runs. No vote was cast on stale data \u2014 the pipeline failed closed \u2014 and every already-cast vote remained valid and verifiable on-chain.",
+      "root_cause": "Publish and vote submission shared one failure domain; a crashed run could leave a stale worktree behind; the publisher assumed its checkout was on the origin tip.",
+      "fix": "Fixed 2026-07-15 in the pipeline: worktrees pruned at start of run, publish builds on the origin tip, and vote submission decoupled from publish so a publish failure cannot block voting.",
+      "status": "resolved",
+      "prev_sha256": "ee9a84f6c2bda0edd32652c14f80e8635bc181b1364b4d7f4648f6a35c7d837f"
+    }
+  ]
+}
