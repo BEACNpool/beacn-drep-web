@@ -227,6 +227,11 @@ function capacityHTML(tc) {
       <div class="kv-row"><span class="k">Anchor hash</span><span class="v">${esc(short(tc.source_anchor_hash, 14))} ✓ verified</span></div>
       ${tc.drep_support ? `<div class="kv-row"><span class="k">DRep support</span><span class="v">${esc(tc.drep_support.yes_pct_of_participating_stake)}% of participating stake</span></div>` : ""}
     </div>
+    ${tc.pending_candidate ? `<p class="caveat">A later NCL proposal for this same period
+      (${ADA(Number(tc.pending_candidate.ncl_lovelace || 0))}, ${esc(short(tc.pending_candidate.source_action_id, 12))})
+      is still mid-vote at ${esc(tc.pending_candidate.interim_yes_pct_of_participating_stake)}% interim
+      support, open until epoch ${esc(tc.pending_candidate.voting_open_until_epoch)}. An open vote's
+      interim tally never sets the ceiling — it becomes the limit only if it closes with a majority.</p>` : ""}
     ${tc.caveat ? `<p class="caveat">${esc(tc.caveat)}</p>` : ""}
   </div>`;
 }
