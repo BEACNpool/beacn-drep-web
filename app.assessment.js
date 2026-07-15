@@ -138,26 +138,10 @@ function matchedStatement(store, id, currentDecision) {
 
 /* ---------- shared renderers ---------- */
 
-/** The vote BEACN actually cast on-chain, with its proof link. Never the recommendation. */
-function proofHTML(a) {
-  if (!a.submitted || !a.transaction_hash) {
-    return `<span class="novote">No vote cast on-chain yet</span>`;
-  }
-  return `<span class="vote ${esc(a.onchain_vote || "NONE")}">${esc(a.onchain_vote || "—")}</span>
-    <a class="proof" href="${EXPLORER(esc(a.transaction_hash))}" target="_blank" rel="noopener"
-       onclick="event.stopPropagation()" title="View the vote transaction on Cardanoscan">
-      ${linkIcon}<span class="hash">${esc(short(a.transaction_hash, 10))}</span>
-    </a>`;
-}
-
-/** Disclose, never hide, a drift between the cast vote and today's recommendation. */
-function divergeHTML(a) {
-  if (!a.diverged) return "";
-  return `<span class="diverge"><b>Would not re-derive this vote today.</b> BEACN cast
-    <b>${esc(a.onchain_vote)}</b> on-chain; on today's evidence the engine reaches
-    <b>${esc(a.decision)}</b>. The cast vote stands until a revision clears the anti-churn policy —
-    a gap in evidence is never allowed to retract a vote that was made.</span>`;
-}
+/* The cast-vote-vs-recommendation contract now lives in humanStance()/humanDiverge():
+   a CAST vote renders as "Voted X" (from onchain_vote, never `decision`) with its tx proof
+   link; an uncast recommendation renders as "Recommends X" / "Holding" and can never be
+   mistaken for a vote. Divergence is disclosed by humanDiverge on every card and detail. */
 
 const ADA = lov => {
   const n = Number(lov || 0) / 1e6;
@@ -227,6 +211,11 @@ function capacityHTML(tc) {
       <div class="kv-row"><span class="k">Anchor hash</span><span class="v">${esc(short(tc.source_anchor_hash, 14))} ✓ verified</span></div>
       ${tc.drep_support ? `<div class="kv-row"><span class="k">DRep support</span><span class="v">${esc(tc.drep_support.yes_pct_of_participating_stake)}% of participating stake</span></div>` : ""}
     </div>
+    ${tc.pending_candidate ? `<p class="caveat">A later NCL proposal for this same period
+      (${ADA(Number(tc.pending_candidate.ncl_lovelace || 0))}, ${esc(short(tc.pending_candidate.source_action_id, 12))})
+      is still mid-vote at ${esc(tc.pending_candidate.interim_yes_pct_of_participating_stake)}% interim
+      support, open until epoch ${esc(tc.pending_candidate.voting_open_until_epoch)}. An open vote's
+      interim tally never sets the ceiling — it becomes the limit only if it closes with a majority.</p>` : ""}
     ${tc.caveat ? `<p class="caveat">${esc(tc.caveat)}</p>` : ""}
   </div>`;
 }
