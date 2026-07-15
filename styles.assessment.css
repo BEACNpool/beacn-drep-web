@@ -104,11 +104,31 @@ a:hover { text-decoration: underline; }
 .nav a:hover { color: var(--txt); background: var(--panel-2); text-decoration: none; }
 .nav a[aria-current="page"] { color: var(--txt); background: var(--panel-2); border-color: var(--line-2); }
 
-.sysbanner {
-  margin: var(--s3) 0; padding: var(--s3) var(--s4);
-  border: 1px solid rgba(245, 158, 11, .3); background: rgba(245, 158, 11, .07);
-  border-radius: var(--r); color: #fcd34d; font-size: var(--f-sm);
+/* Status strip — compact chips, full text one tap away. Deliberately quiet: held positions are
+   normal operation for an evidence-gated voter, not an alarm. */
+.sysbanner { margin: var(--s2) 0; font-size: var(--f-sm); }
+.sys summary {
+  display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap;
+  cursor: pointer; list-style: none; padding: var(--s1) 0;
 }
+.sys summary::-webkit-details-marker { display: none; }
+.sys-chip {
+  display: inline-flex; align-items: center; gap: var(--s1);
+  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  padding: 3px var(--s2); border-radius: 999px;
+  color: var(--mut); border: 1px solid var(--line-2); background: var(--panel-2);
+  white-space: nowrap;
+}
+.sys-chip.revise { color: var(--cyan); border-color: rgba(34, 211, 238, .35); background: rgba(34, 211, 238, .08); }
+.sys-more { font-size: var(--f-xs); color: var(--dim); margin-left: auto; }
+.sys[open] .sys-more { display: none; }
+.sys-body {
+  padding: var(--s3) var(--s4); margin-top: var(--s2);
+  border: 1px solid var(--line); background: var(--panel); border-radius: var(--r);
+  color: var(--mut); font-size: var(--f-sm);
+}
+.sys-body p { margin: 0 0 var(--s2); }
+.sys-body p:last-child { margin-bottom: 0; }
 
 /* Staleness banner — full-bleed strip pinned above the nav (the topbar is sticky, so it stays at
    the top of the viewport). Derived client-side from status.json; hidden while data is fresh. */
@@ -224,7 +244,10 @@ main { padding: var(--s6) var(--s4) var(--s9); }
 }
 .card:hover { border-color: var(--line-3); background: var(--panel-2); text-decoration: none; transform: translateY(-1px); }
 .card-top { display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; margin-bottom: var(--s3); }
-.card h3 { font-size: var(--f-md); font-weight: 600; line-height: 1.4; margin-bottom: var(--s3); }
+/* Titles are proposer-controlled text and can be one unbroken 60-char id — they must never be
+   able to widen the page. */
+.card h3 { font-size: var(--f-md); font-weight: 600; line-height: 1.4; margin-bottom: var(--s3); overflow-wrap: anywhere; }
+.detail-head h1 { overflow-wrap: anywhere; }
 .card-foot {
   display: flex; align-items: center; gap: var(--s3);
   flex-wrap: wrap; font-size: var(--f-xs); color: var(--dim);
@@ -251,6 +274,42 @@ main { padding: var(--s6) var(--s4) var(--s9); }
 }
 .chip.open   { color: var(--cyan); border-color: rgba(34, 211, 238, .35); background: rgba(34, 211, 238, .08); }
 .chip.closed { color: var(--dim); }
+
+/* Human stance chips — the one thing a reader scans for on every card, so they get real size.
+   Class names match the machine values verbatim (YES/NO/ABSTAIN/HOLD). */
+.vote.YES     { color: var(--yes);     border-color: rgba(16, 185, 129, .38); background: rgba(16, 185, 129, .1); }
+.vote.NO      { color: var(--no);      border-color: rgba(244, 63, 94, .38);  background: rgba(244, 63, 94, .1); }
+.vote.ABSTAIN { color: var(--abstain); border-color: rgba(234, 179, 8, .38);  background: rgba(234, 179, 8, .1); }
+.vote.HOLD, .vote.NEEDS_MORE_INFO { color: var(--nmi); border-color: rgba(139, 92, 246, .38); background: rgba(139, 92, 246, .1); }
+.vote.big { font-size: 13px; padding: 6px 12px; border-radius: 7px; }
+.stance-row { display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap; margin: var(--s2) 0; }
+.card-note { color: var(--mut); font-size: var(--f-sm); line-height: 1.55; margin-top: var(--s2); }
+.meta-chip {
+  display: inline-flex; align-items: center; font-size: 11px; font-weight: 600;
+  letter-spacing: .03em; padding: 3px var(--s2); border-radius: 999px;
+  color: var(--mut); border: 1px solid var(--line-2); background: var(--panel-2); white-space: nowrap;
+}
+.meta-chip.ask { color: var(--txt); font-family: var(--mono); }
+.meta-chip.urgent { color: var(--abstain); border-color: rgba(234, 179, 8, .38); background: rgba(234, 179, 8, .08); }
+
+/* The plain-English why — generous measure and rhythm; this is the page's payload. */
+.why { max-width: 68ch; margin-top: var(--s3); }
+.why p { color: var(--txt); font-size: var(--f-md); line-height: 1.65; margin: 0 0 var(--s3); }
+.why p:last-child { margin-bottom: 0; }
+
+/* Collapsible technical panels: the numbers stay one tap away, never gone. */
+details.fold > summary {
+  cursor: pointer; list-style: none; display: flex; align-items: center; gap: var(--s2);
+  user-select: none;
+}
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary::after {
+  content: "▸"; margin-left: auto; color: var(--dim); font-size: 13px;
+  transition: transform .15s ease;
+}
+details.fold[open] > summary::after { transform: rotate(90deg); }
+details.fold > summary h2 { margin: 0; }
+details.fold[open] > summary { margin-bottom: var(--s3); }
 
 /* ---------- proof / hash ---------- */
 .proof {
@@ -554,7 +613,11 @@ main { padding: var(--s6) var(--s4) var(--s9); }
   .wrow { grid-template-columns: 1fr 64px; }
   .wtrack { display: none; }
   .topbar-in { min-height: 54px; flex-wrap: wrap; padding-bottom: var(--s2); }
-  .nav { width: 100%; overflow-x: auto; padding-bottom: 2px; }
+  /* One row, always: horizontal scroll beats a two-line nav on a phone. */
+  .nav { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { padding: 6px 10px; font-size: var(--f-sm); flex: 0 0 auto; }
+  .stats { grid-template-columns: 1fr 1fr; }
   .foot-in { flex-direction: column; gap: var(--s5); }
   .vpanel-head, .vpanel-body { padding: var(--s4); }
 }
