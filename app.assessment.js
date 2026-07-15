@@ -4,15 +4,20 @@
    RECOMMENDS today, `onchain_vote` is what BEACN actually CAST. They can differ, and the
    site must always show which is which. */
 
-import { blake2b256Hex, verifyManifest, verifyAnchor } from "./verify.js";
+import { blake2b256Hex, verifyManifest, verifyAnchor, pyJson, sha256Hex } from "./verify.js";
 
 const SRC = {
-  status:    "./status.json",
-  index:     "./data/output/public/index.json",
-  actions:   "./data/output/public/actions.json",
-  weights:   "./data/output/public/scoring_weights.json",
-  detail:    id => `./data/output/public/actions/${encodeURIComponent(id)}.json`,
+  status:      "./status.json",
+  index:       "./data/output/public/index.json",
+  actions:     "./data/output/public/actions.json",
+  weights:     "./data/output/public/scoring_weights.json",
+  corrections: "./corrections.json",
+  detail:      id => `./data/output/public/actions/${encodeURIComponent(id)}.json`,
 };
+
+/* The full statement of what can and cannot influence a decision — the contract
+   audit_status.json's integrity block points at. Linked, never restated, so it has one home. */
+const LIMITS_DOC = "https://github.com/BEACNpool/beacn-drep-web/blob/main/docs/PUBLIC_CONTEXT_AND_LIMITS.md";
 
 const GH = {
   soul:      c => `https://github.com/BEACNpool/beacn-drep-soul/tree/${c}`,
@@ -380,6 +385,10 @@ function viewMethod() {
        language model helps read documents and explain outcomes in plain English — it can never set,
        change, or veto a vote. That boundary is the whole design, and it is enforced in code, not
        promised in a blog post.</p>
+    <p class="muted sm" style="margin-top:var(--s3)">The full decision-boundary contract — every
+       input that can and cannot influence a vote, and the integrity constraints the published
+       <code>audit_status.json</code> attests to — is one versioned document:
+       <a href="${LIMITS_DOC}" rel="noopener">PUBLIC_CONTEXT_AND_LIMITS.md</a>.</p>
   </section>
 
   <section class="sec">
@@ -740,10 +749,14 @@ function renderProvenance(manifest, detail) {
   const box = el("v-prov");
   if (!box) return;
   const pov = detail.proof_of_vote || {};
+  // This panel describes the CURRENT derivation (the manifest shown beside it).
+  // proof_of_vote is frozen vote-time truth for cast votes and deliberately
+  // omits core_commit; today's commits live in the 'current' block.
+  const cur = detail.current || {};
   const dec = detail.decision || {};
-  const core = pov.core_commit || "";
-  const soul = pov.soul_commit || "";
-  const res = pov.resources_commit || "";
+  const core = cur.core_commit || pov.core_commit || "";
+  const soul = cur.soul_commit || pov.soul_commit || "";
+  const res = cur.resources_commit || pov.resources_commit || "";
 
   box.innerHTML = `
   <div class="sec-h" style="margin-top:var(--s6)"><h2>Chain of custody</h2></div>
@@ -809,6 +822,86 @@ function viewDelegate() {
       <a class="cta" href="#/record">Read the full voting record →</a>
     </div>
   </section>`;
+}
+
+/* ---------- corrections: the mistakes, on the record, provably unedited ----------
+   The log is append-only and hash-chained: every entry carries the sha256 of the previous
+   entry's canonical JSON (same Python-parity serialiser the manifest checks use), so editing
+   or deleting a past admission breaks every entry after it. The chain is recomputed here, in
+   the visitor's browser — the intact badge is earned on every page view, not asserted. */
+
+function viewCorrections() {
+  return `
+  <section class="hero">
+    <span class="eyebrow">Permanent record</span>
+    <h1>When BEACN got it wrong — <em>on the record, unedited</em>.</h1>
+    <p class="hero-lead">An autonomous voter that claims it never errs is lying. This is the log of
+       every material mistake in BEACN's published record: what happened, what it touched, why, and
+       what fixed it. The log is hash-chained — each entry seals the one before it — so a past
+       admission cannot be quietly softened or removed. Your browser re-checks the chain right now.</p>
+  </section>
+
+  <section class="sec">
+    <div class="sec-h"><h2>Corrections log</h2><span class="count" id="c-count">—</span></div>
+    <div id="c-chain"></div>
+    <div id="c-list"><div class="loading"><span class="spin" aria-hidden="true"></span> Loading the corrections log…</div></div>
+    <p class="muted xs" style="margin-top:var(--s4)">Chain rule: each entry's <code>prev_sha256</code>
+       is the sha256 of the previous entry's canonical JSON (keys sorted, compact separators,
+       ASCII-escaped — Python <code>json.dumps(sort_keys=True, separators=(",", ":"))</code>).
+       Recomputed locally from <a href="./corrections.json" rel="noopener">corrections.json</a>;
+       nothing is sent anywhere.</p>
+  </section>`;
+}
+
+function correctionHTML(e) {
+  const permanent = e.fix === "permanent-record";
+  return `<div class="panel corr">
+    <div class="card-top">
+      <span class="chip type">${esc(e.id)}</span>
+      <span class="chip ${permanent ? "closed" : "open"}">${esc(e.status || "—")}</span>
+      <span class="muted xs">${esc(fmtDate(e.date))}</span>
+    </div>
+    <h2>${esc(e.title)}</h2>
+    <div class="kv" style="margin-top:var(--s3)">
+      <div class="kv-row"><span class="k">What happened</span><span class="v">${esc(e.what_happened)}</span></div>
+      <div class="kv-row"><span class="k">Blast radius</span><span class="v">${esc(e.blast_radius)}</span></div>
+      <div class="kv-row"><span class="k">Root cause</span><span class="v">${esc(e.root_cause)}</span></div>
+      <div class="kv-row"><span class="k">Fix</span><span class="v">${permanent
+        ? `Permanent record — the flawed artifact is hash-anchored on-chain and can never be edited; it stays, and this entry stands beside it.`
+        : esc(e.fix)}</span></div>
+    </div>
+  </div>`;
+}
+
+async function loadCorrections() {
+  const list = el("c-list");
+  if (!list) return;
+  let doc;
+  try {
+    doc = await getJSON(SRC.corrections);
+  } catch (e) {
+    list.innerHTML = `<div class="empty">The corrections log could not be loaded.<br><span class="xs">${esc(e.message)}</span></div>`;
+    return;
+  }
+  const entries = Array.isArray(doc.entries) ? doc.entries : [];
+  el("c-count").textContent = entries.length;
+
+  // Walk the chain oldest→newest: entry N must carry the hash of entry N−1 exactly as published.
+  let brokenAt = null;
+  let prev = null;
+  for (const e of entries) {
+    if ((e.prev_sha256 ?? null) !== prev) { brokenAt = e.id; break; }
+    prev = await sha256Hex(new TextEncoder().encode(pyJson(e, true)));
+  }
+  el("c-chain").innerHTML = brokenAt
+    ? `<div class="chainbadge broken">✕ Hash chain BROKEN at ${esc(brokenAt)} — a past entry has been
+         altered or removed. Treat this log as tampered and check the git history of corrections.json.</div>`
+    : `<div class="chainbadge intact">✓ Hash chain intact — all ${entries.length} entries verified in
+         this browser. No past admission has been edited or removed.</div>`;
+
+  // Newest first for reading; the chain above was verified in file (oldest-first) order.
+  list.innerHTML = entries.slice().reverse().map(correctionHTML).join("")
+    || `<div class="empty">No corrections recorded.</div>`;
 }
 
 async function viewDetail(id) {
@@ -982,6 +1075,29 @@ function groupDivergences(actions) {
   return out;
 }
 
+/* ---------- staleness banner ---------- */
+/* Client-side on purpose: a dead publish pipeline cannot announce its own outage, so the site
+   derives staleness from status.json's generated_at against the visitor's clock on every load.
+   Thresholds: one missed daily publish (>26h) warns, two (>50h) — or no status.json at all —
+   declares the site stale. Under 26h nothing renders. Derived, never narrated. */
+function renderStaleness() {
+  const b = el("stalebanner");
+  if (!b) return;
+  const gen = Date.parse(state.status?.generated_at || "");
+  const hours = (Date.now() - gen) / 36e5;
+  if (Number.isFinite(hours) && hours < 26) { b.hidden = true; return; }
+  b.hidden = false;
+  if (Number.isFinite(hours) && hours <= 50) {
+    b.className = "stalebanner warn";
+    b.innerHTML = `Data is <b>${Math.round(hours)} hours</b> old — the daily publish may have been missed.`;
+  } else {
+    b.className = "stalebanner stale";
+    b.innerHTML = `This site is <b>STALE</b> — ${Number.isFinite(gen)
+      ? `no publish since <b>${esc(state.status.generated_at)}</b>`
+      : `its status file could not be loaded`}. Cast on-chain votes remain valid and independently verifiable.`;
+  }
+}
+
 /* ---------- banner ---------- */
 function renderBanner() {
   const b = el("sysbanner");
@@ -1075,6 +1191,12 @@ async function route() {
     wireVerify();
     return;
   }
+  if (path.startsWith("#/corrections")) {
+    setNav("corrections");
+    view.innerHTML = viewCorrections();
+    await loadCorrections();
+    return;
+  }
   if (path.startsWith("#/delegate")) {
     setNav("delegate");
     view.innerHTML = viewDelegate();
@@ -1100,6 +1222,7 @@ async function boot() {
     state.actions = (actions.items || []).filter(a => a && a.action_id);
     state.actions.forEach(a => state.byId.set(a.action_id, a));
 
+    renderStaleness();
     renderBanner();
     el("provenance").textContent =
       `Published ${index?.generated_at || "—"} · doctrine ${short(index?.soul?.commit, 7)} · ` +
@@ -1108,6 +1231,7 @@ async function boot() {
     await route();
     window.addEventListener("hashchange", route);
   } catch (e) {
+    renderStaleness();       // even with no record loaded, the outage itself must be visible
     el("view").innerHTML = `<div class="empty">Could not load the public record.<br>
       <span class="xs">${esc(e.message)}</span></div>`;
   }

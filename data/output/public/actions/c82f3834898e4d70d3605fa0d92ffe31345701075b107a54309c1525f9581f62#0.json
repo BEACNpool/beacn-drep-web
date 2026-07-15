@@ -5,34 +5,51 @@
   "status": "enacted",
   "source": {
     "origin": "governance fetch pipeline",
-    "raw_input_hash": "sha256:610a1200a3f54ba32efe7fbd8f7734dc2986bf681b21b862b1345c034798e714",
+    "raw_input_hash": "sha256:18f8830317f47a7a081a491d7c812917ef603e31421a53fd0cf7f94a1b17f14d",
     "detected_at": "2026-07-07T21:00:01.830677+00:00"
   },
   "decision": {
     "vote": "ABSTAIN",
     "onchain_vote": "ABSTAIN",
     "diverged": false,
-    "published_at": "2026-07-15T14:53:43.255161+00:00",
+    "published_at": "2026-07-15T16:31:07.807873+00:00",
     "signed": true,
     "submitted": true,
     "transaction_hash": "42fe2858ff4f1631b13aa16eb72f1af6736537fe702a0f679807c9e88b678355",
     "submitted_at": "2026-06-18T02:16:20+00:00"
   },
   "proof_of_vote": {
+    "frozen": true,
+    "reconstructed": true,
     "vote": "ABSTAIN",
-    "score": 0.0,
-    "confidence": 0.45,
-    "input_hash": "610a1200a3f54ba32efe7fbd8f7734dc2986bf681b21b862b1345c034798e714",
-    "snapshot_bundle_hash": "f6c95bf40babc1286a340a4555114fb691f69ceecbf2498c8af9f1e86754fb74",
-    "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
-    "resources_commit": "afd630a34be9d7440e2fac020ac552cde501098f",
-    "core_commit": "bbc95f787bad2603657870cfbb7e5106b6fddbdb",
-    "rationale_markdown_path": "/data/output/public/rationales/c82f3834898e4d70d3605fa0d92ffe31345701075b107a54309c1525f9581f62#0-610a1200a3f5.md",
-    "rationale_anchor_url": null,
-    "rationale_anchor_hash": null,
+    "recommendation": "ABSTAIN",
+    "score": 0.06,
+    "confidence": 0.61,
+    "transaction_hash": "42fe2858ff4f1631b13aa16eb72f1af6736537fe702a0f679807c9e88b678355",
+    "submitted_at": "2026-06-18T02:16:20+00:00",
+    "run_id": "gov_action1eqhnsdyf3exhp5mqt7sdjtl7xy69wqg8tvg854psns2jt72cra3qqrcnr8r-7f060f4783e2",
+    "input_hash": "7f060f4783e252bdf5a5e0ac4a1539358af48822d82b3140c5d549330df72c89",
+    "snapshot_bundle_hash": "de26422f0d31955dd55bfdb86af865bfd2fcdc9b6b1942c05cbe88f0eb102bce",
+    "soul_commit": "6bf4a7d7baa636417ad929e543cfb8be8fae1f03",
+    "resources_commit": "9888051c6d5ec763affe3e12d9a462e2556e458a",
+    "rationale_anchor_hash": "288c9add809d63261872ba76201f87808c5e8fe803c8e5fbcf43b28ea1676ad0",
+    "rationale_markdown_path": "/data/output/public/r/288c9add809d63261872ba76.md",
     "onchain_anchor_hash": "288c9add809d63261872ba76201f87808c5e8fe803c8e5fbcf43b28ea1676ad0",
     "onchain_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/288c9add809d63261872ba76.md",
     "onchain_vote": "Abstain"
+  },
+  "current": {
+    "vote": "ABSTAIN",
+    "score": 0.0,
+    "confidence": 0.45,
+    "input_hash": "18f8830317f47a7a081a491d7c812917ef603e31421a53fd0cf7f94a1b17f14d",
+    "snapshot_bundle_hash": "5e6535bacd5955ea8c1b56127cf7178484c9c89691882011294d709ffc7da115",
+    "soul_commit": "c813ed97f64dba61150d01964327553baf720d38",
+    "resources_commit": "d68b33ee7989803aaecd7edc03d77c134a98a7f1",
+    "core_commit": "c5935a26fd2a79bcb6ededa0d93f39d80b013de3",
+    "rationale_markdown_path": "/data/output/public/rationales/c82f3834898e4d70d3605fa0d92ffe31345701075b107a54309c1525f9581f62#0-18f8830317f4.md",
+    "rationale_anchor_url": null,
+    "rationale_anchor_hash": null
   },
   "rationale": {
     "summary": "Vote: ABSTAIN. For this ParameterChange (enacted), evidence quality was insufficient for a reliable YES or NO decision. Decisive reason: if claims cannot be tied to replayable evidence, abstaining avoids overclaiming certainty. Weighed against it: the proposal substantiates \"This governance action is motivated by three objectives: First, following the hard fork to Protocol Version 11, new Plutus primitives become available.\" and clears the evidence gates. What would enable a directional vote: Provide independent evidence for: However, the changes for existing primitives will happen immediately on enactment of this governance action; Provide mitigation evidence. Residual uncertainty: Protocol action lacks a complete independently pinned readiness packet: constitutional_alignment_pass, impact_analysis_complete, rollback_or_containment_plan, safety_margin_clear Confidence context: score 0.00; confidence 45.0%.",
@@ -42,7 +59,7 @@
       "Provide mitigation evidence.",
       "Provide independent assurance."
     ],
-    "markdown_path": "/data/output/public/rationales/c82f3834898e4d70d3605fa0d92ffe31345701075b107a54309c1525f9581f62#0-610a1200a3f5.md",
+    "markdown_path": "/data/output/public/rationales/c82f3834898e4d70d3605fa0d92ffe31345701075b107a54309c1525f9581f62#0-18f8830317f4.md",
     "missing_evidence": [],
     "blocked_reason_code": "MISSING_PROTOCOL_READINESS_EVIDENCE",
     "assessment_status": "incomplete",
@@ -139,7 +156,7 @@
       ],
       "blocking_questions": []
     },
-    "assessment_path": "/data/output/public/rationales/c82f3834898e4d70d3605fa0d92ffe31345701075b107a54309c1525f9581f62#0-610a1200a3f5.assessment.json",
+    "assessment_path": "/data/output/public/rationales/c82f3834898e4d70d3605fa0d92ffe31345701075b107a54309c1525f9581f62#0-18f8830317f4.assessment.json",
     "treasury_dimensions": null,
     "decision_contract": {
       "policy": "balanced-return-risk-v1",
@@ -195,7 +212,7 @@
     "anchor_hash": "828cf92b170812446820c9f393446a2daf7d7e47d5f87354fe9f9e21a2635fb4",
     "file_sha256": "9cc282157a297a21048a07a055b0eb11c9aaf6cd9c765cfbe9d2791a3a16a7c5",
     "content_bytes": "78709",
-    "fetched_at_utc": "2026-07-15T14:53:45Z",
+    "fetched_at_utc": "2026-07-15T16:31:10Z",
     "download_path": "/proposals/c82f3834898e4d70d3605fa0d92ffe31345701075b107a54309c1525f9581f62#0.json",
     "preview": "{\n  \"@context\": {\n    \"@language\": \"en\",\n    \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n    \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n    \"CIP116\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0116/README.md#\",\n    \"CIP169\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0169/README.md#\",\n    \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n    \"body\": {\n      \"@id\": \"CIP108:body\",\n      \"@context\": {\n        \"references\": {\n          \"@id\": \"CIP108:references\",\n          \"@container\": \"@set\",\n          \"@context\": {\n            \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n            \"Other\": \"CIP100:OtherReference\",\n            \"label\": \"CIP100:reference-label\",\n            \"uri\": \"CIP100:reference-uri\",\n            \"referenceHash\": {\n              \"@id\": \"CIP108:referenceHash\",\n              \"@context\": {\n                \"hashDigest\": \"CIP108:hashDigest\",\n                \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n              }\n            }\n          }\n        },\n        \"title\": \"CIP108:title\",\n        \"abstract\": \"CIP108:abstract\",\n        \"motivation\": "
   },
@@ -204,10 +221,10 @@
   "treasury_capacity": null,
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
-    "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
+    "soul_commit": "c813ed97f64dba61150d01964327553baf720d38",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "afd630a34be9d7440e2fac020ac552cde501098f",
-    "core_commit": "bbc95f787bad2603657870cfbb7e5106b6fddbdb",
+    "resources_commit": "d68b33ee7989803aaecd7edc03d77c134a98a7f1",
+    "core_commit": "c5935a26fd2a79bcb6ededa0d93f39d80b013de3",
     "resource_ids_used": [
       "gov_actions_snapshot",
       "drep_vote_history_snapshot",
@@ -284,7 +301,7 @@
     "snapshot_age_seconds": 1,
     "max_allowed_seconds": 21600,
     "is_stale": false,
-    "snapshot_time": "2026-07-15T15:08:41.987765Z",
+    "snapshot_time": "2026-07-15T16:49:18.786766Z",
     "freshness_source": "deep_research_dossiers.csv"
   }
 }

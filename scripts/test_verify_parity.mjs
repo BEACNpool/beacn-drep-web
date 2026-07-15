@@ -10,8 +10,8 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { blake2b256Hex, verifyManifest } from "../verify.js";
 
-const RAT = "public/data/output/public/rationales";
-const ANCHORED = "public/data/output/public/r";
+const RAT = "data/output/public/rationales";
+const ANCHORED = "data/output/public/r";
 
 let pass = 0, fail = 0;
 const failures = [];

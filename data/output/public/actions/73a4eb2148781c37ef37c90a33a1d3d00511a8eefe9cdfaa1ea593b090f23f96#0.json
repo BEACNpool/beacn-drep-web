@@ -5,14 +5,14 @@
   "status": "expired",
   "source": {
     "origin": "governance fetch pipeline",
-    "raw_input_hash": "sha256:01240f45769a19dafe182d19381e9dc0d59f9f7fef4e11748fe3527fc3997bb9",
+    "raw_input_hash": "sha256:9bd184b9548e80d60ebd9e7107678571bbe3545d6b078f42bcb60565d607035c",
     "detected_at": "2026-07-07T21:00:01.830677+00:00"
   },
   "decision": {
     "vote": "ABSTAIN",
     "onchain_vote": null,
     "diverged": false,
-    "published_at": "2026-07-15T14:53:43.255161+00:00",
+    "published_at": "2026-07-15T16:31:07.807873+00:00",
     "signed": false,
     "submitted": false,
     "transaction_hash": null,
@@ -22,17 +22,31 @@
     "vote": "ABSTAIN",
     "score": 0.01,
     "confidence": 0.4225,
-    "input_hash": "01240f45769a19dafe182d19381e9dc0d59f9f7fef4e11748fe3527fc3997bb9",
-    "snapshot_bundle_hash": "20dea1c130ee92ed4645f3410f93f2771136d6169adb217c0d2422f3d062180d",
-    "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
-    "resources_commit": "afd630a34be9d7440e2fac020ac552cde501098f",
-    "core_commit": "bbc95f787bad2603657870cfbb7e5106b6fddbdb",
-    "rationale_markdown_path": "/data/output/public/rationales/73a4eb2148781c37ef37c90a33a1d3d00511a8eefe9cdfaa1ea593b090f23f96#0-01240f45769a.md",
+    "input_hash": "9bd184b9548e80d60ebd9e7107678571bbe3545d6b078f42bcb60565d607035c",
+    "snapshot_bundle_hash": "0bb5f97b7bae760a91d6b83eac8c1a048ab36031aa2e7a6917a125e317fbae97",
+    "soul_commit": "c813ed97f64dba61150d01964327553baf720d38",
+    "resources_commit": "d68b33ee7989803aaecd7edc03d77c134a98a7f1",
+    "core_commit": "c5935a26fd2a79bcb6ededa0d93f39d80b013de3",
+    "rationale_markdown_path": "/data/output/public/rationales/73a4eb2148781c37ef37c90a33a1d3d00511a8eefe9cdfaa1ea593b090f23f96#0-9bd184b9548e.md",
     "rationale_anchor_url": null,
     "rationale_anchor_hash": null,
+    "frozen": false,
     "onchain_anchor_hash": null,
     "onchain_anchor_url": null,
     "onchain_vote": null
+  },
+  "current": {
+    "vote": "ABSTAIN",
+    "score": 0.01,
+    "confidence": 0.4225,
+    "input_hash": "9bd184b9548e80d60ebd9e7107678571bbe3545d6b078f42bcb60565d607035c",
+    "snapshot_bundle_hash": "0bb5f97b7bae760a91d6b83eac8c1a048ab36031aa2e7a6917a125e317fbae97",
+    "soul_commit": "c813ed97f64dba61150d01964327553baf720d38",
+    "resources_commit": "d68b33ee7989803aaecd7edc03d77c134a98a7f1",
+    "core_commit": "c5935a26fd2a79bcb6ededa0d93f39d80b013de3",
+    "rationale_markdown_path": "/data/output/public/rationales/73a4eb2148781c37ef37c90a33a1d3d00511a8eefe9cdfaa1ea593b090f23f96#0-9bd184b9548e.md",
+    "rationale_anchor_url": null,
+    "rationale_anchor_hash": null
   },
   "rationale": {
     "summary": "Vote: ABSTAIN. For this InfoAction (expired), evidence quality was insufficient for a reliable YES or NO decision. Primary blocker: evidence did not clear the directional decision threshold. Decisive reason: if claims cannot be tied to replayable evidence, abstaining avoids overclaiming certainty. Weighed against it: the proposal substantiates \"This governance action proposes a Net Change Limit of 300,000,000,000,000 lovelace (300 million ADA) for the period from the start of Epoch 613 (13 February 2026) to the end of Epoch 713 (3 July 2027).\" and clears the evidence gates. What would enable a directional vote: Provide independent evidence for: Total treasury inflows for 2025 are defined as the sum of inflows from Epoch 532 through Epoch 604; Provide mitigation evidence. Residual uncertainty: Rule-based system; does not infer unstated intent. Confidence context: score 0.01; confidence 42.2%.",
@@ -42,7 +56,7 @@
       "Provide mitigation evidence.",
       "Provide independent assurance."
     ],
-    "markdown_path": "/data/output/public/rationales/73a4eb2148781c37ef37c90a33a1d3d00511a8eefe9cdfaa1ea593b090f23f96#0-01240f45769a.md",
+    "markdown_path": "/data/output/public/rationales/73a4eb2148781c37ef37c90a33a1d3d00511a8eefe9cdfaa1ea593b090f23f96#0-9bd184b9548e.md",
     "missing_evidence": [],
     "blocked_reason_code": "RULE_THRESHOLD_UNMET",
     "assessment_status": "incomplete",
@@ -137,7 +151,7 @@
       ],
       "blocking_questions": []
     },
-    "assessment_path": "/data/output/public/rationales/73a4eb2148781c37ef37c90a33a1d3d00511a8eefe9cdfaa1ea593b090f23f96#0-01240f45769a.assessment.json",
+    "assessment_path": "/data/output/public/rationales/73a4eb2148781c37ef37c90a33a1d3d00511a8eefe9cdfaa1ea593b090f23f96#0-9bd184b9548e.assessment.json",
     "treasury_dimensions": null,
     "decision_contract": {
       "policy": "balanced-return-risk-v1",
@@ -193,7 +207,7 @@
     "anchor_hash": "4e264b46f948da4a1917be590d14f10f9e36372075fd11561669180747c0588b",
     "file_sha256": "7f9c7b474e3c0bf497f790fac2cebfa458da2a00ef8a7bb64b1e540c990b111d",
     "content_bytes": "2729",
-    "fetched_at_utc": "2026-07-15T14:53:45Z",
+    "fetched_at_utc": "2026-07-15T16:31:10Z",
     "download_path": "/proposals/73a4eb2148781c37ef37c90a33a1d3d00511a8eefe9cdfaa1ea593b090f23f96#0.json",
     "preview": "{\n  \"@context\": {\n    \"@language\": \"en-us\",\n    \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n    \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n    \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n    \"body\": {\n      \"@id\": \"CIP108:body\",\n      \"@context\": {\n        \"references\": {\n          \"@id\": \"CIP108:references\",\n          \"@container\": \"@set\",\n          \"@context\": {\n            \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n            \"Other\": \"CIP100:OtherReference\",\n            \"label\": \"CIP100:reference-label\",\n            \"uri\": \"CIP100:reference-uri\",\n            \"referenceHash\": {\n              \"@id\": \"CIP108:referenceHash\",\n              \"@context\": {\n                \"hashDigest\": \"CIP108:hashDigest\",\n                \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n              }\n            }\n          }\n        },\n        \"title\": \"CIP108:title\",\n        \"abstract\": \"CIP108:abstract\",\n        \"motivation\": \"CIP108:motivation\",\n        \"rationale\": \"CIP108:rationale\"\n      }\n    },\n    \"authors\": {\n      \"@id\": \"CIP100:authors\",\n      \"@container\": \"@set\",\n      \"@context\": {\n        \""
   },
@@ -208,10 +222,10 @@
   "treasury_capacity": null,
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
-    "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
+    "soul_commit": "c813ed97f64dba61150d01964327553baf720d38",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "afd630a34be9d7440e2fac020ac552cde501098f",
-    "core_commit": "bbc95f787bad2603657870cfbb7e5106b6fddbdb",
+    "resources_commit": "d68b33ee7989803aaecd7edc03d77c134a98a7f1",
+    "core_commit": "c5935a26fd2a79bcb6ededa0d93f39d80b013de3",
     "resource_ids_used": [
       "gov_actions_snapshot",
       "drep_vote_history_snapshot",
@@ -288,7 +302,7 @@
     "snapshot_age_seconds": 2,
     "max_allowed_seconds": 21600,
     "is_stale": false,
-    "snapshot_time": "2026-07-15T15:08:41.987765Z",
+    "snapshot_time": "2026-07-15T16:49:18.786766Z",
     "freshness_source": "deep_research_dossiers.csv"
   }
 }

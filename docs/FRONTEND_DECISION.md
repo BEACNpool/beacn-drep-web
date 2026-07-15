@@ -1,16 +1,14 @@
 # Frontend Decision
 
 ## Decision
-Use a static frontend (`site/index.html`) as the canonical public dashboard.
+Use a static frontend as the canonical public dashboard: root `index.html` +
+`app.assessment.js` + `styles.assessment.css` + `verify.js` (PWA, hash router, no build step).
 
 ## Why
 - Maximum transparency: anyone can inspect the exact shipped page.
 - No build/runtime drift risk from framework tooling.
-- Easier reproducibility for auditors.
+- Easier reproducibility for auditors — the in-browser verifier depends on it.
 
-## Status of Next.js files
-Historical scaffolding remains in-repo for now but is non-canonical and should not be used for production deployment.
-
-## Follow-up
-- Remove stale framework files after content parity checklist is complete.
-- Keep all critical transparency views in static HTML/JS.
+## History
+- The original static dashboard (`site/index.html`, later root `app.js`/`styles.css`/`sw.js`)
+  and the Next.js migration scaffold were removed 2026-07-15; they exist in git history only.

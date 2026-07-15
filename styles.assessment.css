@@ -110,6 +110,20 @@ a:hover { text-decoration: underline; }
   border-radius: var(--r); color: #fcd34d; font-size: var(--f-sm);
 }
 
+/* Staleness banner — full-bleed strip pinned above the nav (the topbar is sticky, so it stays at
+   the top of the viewport). Derived client-side from status.json; hidden while data is fresh. */
+.stalebanner {
+  padding: var(--s2) var(--s4); text-align: center; font-size: var(--f-sm);
+}
+.stalebanner.warn {
+  background: rgba(245, 158, 11, .12); border-bottom: 1px solid rgba(245, 158, 11, .35);
+  color: #fcd34d;
+}
+.stalebanner.stale {
+  background: rgba(244, 63, 94, .14); border-bottom: 1px solid rgba(244, 63, 94, .4);
+  color: #fda4af;
+}
+
 main { padding: var(--s6) var(--s4) var(--s9); }
 
 /* ---------- hero ---------- */
@@ -500,6 +514,22 @@ main { padding: var(--s6) var(--s4) var(--s9); }
   background: linear-gradient(170deg, var(--panel-2), var(--panel));
   text-align: center; justify-items: center;
 }
+
+/* ---------- corrections ---------- */
+.chainbadge {
+  margin-bottom: var(--s5); padding: var(--s3) var(--s4);
+  border-radius: var(--r); font-size: var(--f-sm); font-weight: 500;
+}
+.chainbadge.intact {
+  border: 1px solid rgba(16, 185, 129, .35); background: rgba(16, 185, 129, .08);
+  color: #6ee7b7;
+}
+.chainbadge.broken {
+  border: 1px solid rgba(244, 63, 94, .4); background: rgba(244, 63, 94, .1);
+  color: #fda4af;
+}
+.corr { margin-bottom: var(--s4); }
+.corr h2 { margin-top: var(--s3); }
 
 /* ---------- footer ---------- */
 .foot { border-top: 1px solid var(--line); padding: var(--s7) 0 var(--s6); background: var(--bg-2); }

@@ -5,14 +5,14 @@
   "status": "expired",
   "source": {
     "origin": "governance fetch pipeline",
-    "raw_input_hash": "sha256:fe853a2a28fede3ed62fb5d28e9034bfad81bce19c0e0f5981799520de4e2baf",
+    "raw_input_hash": "sha256:3497c533e587594cc1e013071cba3dc359948c23fe893ba2628bf19d95ec4dc9",
     "detected_at": "2026-07-07T21:00:01.830677+00:00"
   },
   "decision": {
     "vote": "ABSTAIN",
     "onchain_vote": null,
     "diverged": false,
-    "published_at": "2026-07-15T14:53:43.255161+00:00",
+    "published_at": "2026-07-15T16:31:07.807873+00:00",
     "signed": false,
     "submitted": false,
     "transaction_hash": null,
@@ -22,17 +22,31 @@
     "vote": "ABSTAIN",
     "score": -0.3833,
     "confidence": 0.4158,
-    "input_hash": "fe853a2a28fede3ed62fb5d28e9034bfad81bce19c0e0f5981799520de4e2baf",
-    "snapshot_bundle_hash": "7958e3c99bfaa3abce2b4d3f23bfb8456000bdde4bfa6436c033df5c4f0f61c4",
-    "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
-    "resources_commit": "afd630a34be9d7440e2fac020ac552cde501098f",
-    "core_commit": "bbc95f787bad2603657870cfbb7e5106b6fddbdb",
-    "rationale_markdown_path": "/data/output/public/rationales/51f495aa23f4b3b3aa90afde4a0e67823bb7ac4ac65f5ffbb138373b863f2f74#0-fe853a2a28fe.md",
+    "input_hash": "3497c533e587594cc1e013071cba3dc359948c23fe893ba2628bf19d95ec4dc9",
+    "snapshot_bundle_hash": "9b6762eb7841fc2f8802058e5a7ba06b5df5e54eab789ac43e8bdb7a26f803e2",
+    "soul_commit": "c813ed97f64dba61150d01964327553baf720d38",
+    "resources_commit": "d68b33ee7989803aaecd7edc03d77c134a98a7f1",
+    "core_commit": "c5935a26fd2a79bcb6ededa0d93f39d80b013de3",
+    "rationale_markdown_path": "/data/output/public/rationales/51f495aa23f4b3b3aa90afde4a0e67823bb7ac4ac65f5ffbb138373b863f2f74#0-3497c533e587.md",
     "rationale_anchor_url": null,
     "rationale_anchor_hash": null,
+    "frozen": false,
     "onchain_anchor_hash": null,
     "onchain_anchor_url": null,
     "onchain_vote": null
+  },
+  "current": {
+    "vote": "ABSTAIN",
+    "score": -0.3833,
+    "confidence": 0.4158,
+    "input_hash": "3497c533e587594cc1e013071cba3dc359948c23fe893ba2628bf19d95ec4dc9",
+    "snapshot_bundle_hash": "9b6762eb7841fc2f8802058e5a7ba06b5df5e54eab789ac43e8bdb7a26f803e2",
+    "soul_commit": "c813ed97f64dba61150d01964327553baf720d38",
+    "resources_commit": "d68b33ee7989803aaecd7edc03d77c134a98a7f1",
+    "core_commit": "c5935a26fd2a79bcb6ededa0d93f39d80b013de3",
+    "rationale_markdown_path": "/data/output/public/rationales/51f495aa23f4b3b3aa90afde4a0e67823bb7ac4ac65f5ffbb138373b863f2f74#0-3497c533e587.md",
+    "rationale_anchor_url": null,
+    "rationale_anchor_hash": null
   },
   "rationale": {
     "summary": "Vote: ABSTAIN. For this ParameterChange (expired), evidence quality was insufficient for a reliable YES or NO decision. Primary blocker: risk indicators remained elevated relative to confirmed mitigations. Decisive reason: if claims cannot be tied to replayable evidence, abstaining avoids overclaiming certainty. Weighed against it: ParameterChange advances a credible public benefit worth its risk if the evidence holds. What would enable a directional vote: Provide No structured claim/evidence extraction from the proposal document; Provide mitigation evidence. Residual uncertainty: Anchor document is not yet pinned locally for this action. Confidence context: score -0.38; confidence 41.6%.",
@@ -42,7 +56,7 @@
       "Provide mitigation evidence.",
       "Provide independent assurance."
     ],
-    "markdown_path": "/data/output/public/rationales/51f495aa23f4b3b3aa90afde4a0e67823bb7ac4ac65f5ffbb138373b863f2f74#0-fe853a2a28fe.md",
+    "markdown_path": "/data/output/public/rationales/51f495aa23f4b3b3aa90afde4a0e67823bb7ac4ac65f5ffbb138373b863f2f74#0-3497c533e587.md",
     "missing_evidence": [],
     "blocked_reason_code": "RISK_HIGH",
     "assessment_status": "incomplete",
@@ -127,7 +141,7 @@
       ],
       "blocking_questions": []
     },
-    "assessment_path": "/data/output/public/rationales/51f495aa23f4b3b3aa90afde4a0e67823bb7ac4ac65f5ffbb138373b863f2f74#0-fe853a2a28fe.assessment.json",
+    "assessment_path": "/data/output/public/rationales/51f495aa23f4b3b3aa90afde4a0e67823bb7ac4ac65f5ffbb138373b863f2f74#0-3497c533e587.assessment.json",
     "treasury_dimensions": null,
     "decision_contract": {
       "policy": "balanced-return-risk-v1",
@@ -190,10 +204,10 @@
   "treasury_capacity": null,
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
-    "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
+    "soul_commit": "c813ed97f64dba61150d01964327553baf720d38",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "afd630a34be9d7440e2fac020ac552cde501098f",
-    "core_commit": "bbc95f787bad2603657870cfbb7e5106b6fddbdb",
+    "resources_commit": "d68b33ee7989803aaecd7edc03d77c134a98a7f1",
+    "core_commit": "c5935a26fd2a79bcb6ededa0d93f39d80b013de3",
     "resource_ids_used": [
       "gov_actions_snapshot",
       "drep_vote_history_snapshot",
@@ -270,7 +284,7 @@
     "snapshot_age_seconds": 5,
     "max_allowed_seconds": 21600,
     "is_stale": false,
-    "snapshot_time": "2026-07-15T15:08:41.987765Z",
+    "snapshot_time": "2026-07-15T16:49:18.786766Z",
     "freshness_source": "deep_research_dossiers.csv"
   }
 }
