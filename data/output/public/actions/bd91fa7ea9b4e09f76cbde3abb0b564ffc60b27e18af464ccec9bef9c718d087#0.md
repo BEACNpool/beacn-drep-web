@@ -4,7 +4,7 @@
 - Decision: **NEEDS_MORE_INFO**
 - Action type: `TreasuryWithdrawals`
 - Status: `expired`
-- Published at: `2026-07-15T14:53:43.255161+00:00`
+- Published at: `2026-07-15T16:31:07.807873+00:00`
 
 ## Human-readable rationale
 Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (expired), critical information needed for a responsible directional vote is still missing. Decisive reason: a treasury action without a complete deep-research dossier cannot be voted directionally without pretending certainty. Weighed against it: the proposal substantiates "Treasury Withdrawal Proposal By: Cardano Foundation & EMURGO This Proposal as a PDF: https://ipnso-com.ipns.dweb.link/?cid=QmQc5zt319nHtseyj4vVKkm4PFCHS7To3WCs6pH3SGgrxq This proposal outlines a high-impact, effective, dual-event strategy to be executed in..." though 7 review blocker(s) remain open. What would enable a directional vote: Provide: Deep research dossier is required for treasury actions before directional voting; Provide: Complete proposal summary, budget analysis, feasibility, risks, alternatives, and failure-mode sections. Residual uncertainty: Dossier completeness not confirmed for this treasury proposal. Confidence context: score 0.00; confidence 20.0%.
@@ -48,11 +48,11 @@ Vote: NEEDS_MORE_INFO. For this TreasuryWithdrawals (expired), critical informat
 - Provide: Missing dossier section: complete proposal summary
 
 ## Proof of vote
-- input_hash: `51ddd34acfd8aea55e0735816a389c9453b2364bc9ed75e227141dc1883460b4`
-- snapshot_bundle_hash: `b97c725b3dfeef006f6320eadaead586c34aafa4f17f75bddbef8b94226d34d3`
-- soul_commit: `d866057afd0ecaf599eb0202220b1ec8339b9b09`
-- resources_commit: `afd630a34be9d7440e2fac020ac552cde501098f`
-- core_commit: `bbc95f787bad2603657870cfbb7e5106b6fddbdb`
+- input_hash: `f328fd883d36a8948603faffaccd231df1382a099d4aa33f6b8c29602654333a`
+- snapshot_bundle_hash: `094238b477c8bad5dcef00808899cdf31d4e9e75fb391bdfa3862fcc80bd7887`
+- soul_commit: `c813ed97f64dba61150d01964327553baf720d38`
+- resources_commit: `d68b33ee7989803aaecd7edc03d77c134a98a7f1`
+- core_commit: `c5935a26fd2a79bcb6ededa0d93f39d80b013de3`
 - score: `0.0`
 - confidence: `0.2`
 

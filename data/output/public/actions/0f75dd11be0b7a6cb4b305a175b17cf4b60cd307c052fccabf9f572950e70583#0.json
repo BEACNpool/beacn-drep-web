@@ -5,44 +5,61 @@
   "status": "active",
   "source": {
     "origin": "governance fetch pipeline",
-    "raw_input_hash": "sha256:a1842f3ec2616b50548a9330e61637a67cdeaef2ba1ca312ca81d010b1a7d06b",
+    "raw_input_hash": "sha256:fbde5b1e316197130f85da093ec3a8c73e941aa977f08e6825467fd7a2687580",
     "detected_at": "2026-07-07T21:00:01.830677+00:00"
   },
   "decision": {
     "vote": "NO",
     "onchain_vote": "NO",
     "diverged": false,
-    "published_at": "2026-07-15T14:53:43.255161+00:00",
+    "published_at": "2026-07-15T16:31:07.807873+00:00",
     "signed": true,
     "submitted": true,
     "transaction_hash": "5c7cb373016dcc4e93e16b4456754ce848c8230b6a9a031bc8878751fab3b447",
     "submitted_at": "2026-07-02T00:19:06+00:00"
   },
   "proof_of_vote": {
+    "frozen": true,
+    "reconstructed": true,
     "vote": "NO",
-    "score": -0.12,
-    "confidence": 0.72,
-    "input_hash": "a1842f3ec2616b50548a9330e61637a67cdeaef2ba1ca312ca81d010b1a7d06b",
-    "snapshot_bundle_hash": "7e7eaca5bb8d1070fe83cc8e435649b43fa2ef3c6665c5dd9d47f39f4a08e363",
-    "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
-    "resources_commit": "afd630a34be9d7440e2fac020ac552cde501098f",
-    "core_commit": "bbc95f787bad2603657870cfbb7e5106b6fddbdb",
-    "rationale_markdown_path": "/data/output/public/rationales/0f75dd11be0b7a6cb4b305a175b17cf4b60cd307c052fccabf9f572950e70583#0-a1842f3ec261.md",
-    "rationale_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/834c1c4b19a8453d4f675a23.md",
-    "rationale_anchor_hash": "834c1c4b19a8453d4f675a23acd2bb2112ea49d156186956fdfe468865a06481",
+    "recommendation": "NO",
+    "score": -0.4133,
+    "confidence": 0.9033,
+    "transaction_hash": "5c7cb373016dcc4e93e16b4456754ce848c8230b6a9a031bc8878751fab3b447",
+    "submitted_at": "2026-07-02T00:19:06+00:00",
+    "run_id": "gov_action1pa6a6yd7pdaxed9nqkshtvtu7jmqe5c8cpf0ej4lnatjj588qkpsq2x2sz2-b8654cc3b837",
+    "input_hash": "b8654cc3b837a3b7d7994b8529e4c6c8035502d5103993dc6df83b81507cc1ef",
+    "snapshot_bundle_hash": "0c692aac9d7bbd30965248026704627848a2c91d2b36186b615ceaa3380a560d",
+    "soul_commit": "8e5afeb10af64d4e1c9708d4029f95043c3f5354",
+    "resources_commit": "4fbc4829bb6142608e4d32087d1ed0565eaf5b12",
+    "rationale_anchor_hash": "4ff14cc6815834186c82c8a8478acb1d4b0cd753e332daf5fa9a94e2cff3814c",
+    "rationale_markdown_path": "/data/output/public/r/4ff14cc6815834186c82c8a8.md",
     "onchain_anchor_hash": "4ff14cc6815834186c82c8a8478acb1d4b0cd753e332daf5fa9a94e2cff3814c",
     "onchain_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/4ff14cc6815834186c82c8a8.md",
     "onchain_vote": "No"
   },
+  "current": {
+    "vote": "NO",
+    "score": -0.12,
+    "confidence": 0.72,
+    "input_hash": "fbde5b1e316197130f85da093ec3a8c73e941aa977f08e6825467fd7a2687580",
+    "snapshot_bundle_hash": "5f006fdfcb68d63d88f7e27d2508deed765cdc382f1bab4a8dee7f599ec49018",
+    "soul_commit": "c813ed97f64dba61150d01964327553baf720d38",
+    "resources_commit": "d68b33ee7989803aaecd7edc03d77c134a98a7f1",
+    "core_commit": "c5935a26fd2a79bcb6ededa0d93f39d80b013de3",
+    "rationale_markdown_path": "/data/output/public/rationales/0f75dd11be0b7a6cb4b305a175b17cf4b60cd307c052fccabf9f572950e70583#0-fbde5b1e3161.md",
+    "rationale_anchor_url": "https://beacnpool.github.io/beacn-drep-web/data/output/public/r/66d40f98e5c56ef72dad839b.md",
+    "rationale_anchor_hash": "66d40f98e5c56ef72dad839bb2c9a732864963f7afaf4fabc4be7cdd8ed92dc3"
+  },
   "rationale": {
-    "summary": "Vote: NO. For this TreasuryWithdrawals (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Decisive reason: a material claim is unsupported \u2014 \"The proposal asserts that Cardano currently lacks a production BTCfi infrastructure layer and risks Bitcoin-backed structured exposure consolidating on Ethereum, BNB, Solana, and off-chain markets if Alchemy is not funded.\" \u2014 so cost or precedent may outweigh the benefit. Weighed against it: the proposal substantiates \"The proposal requests 10,000,000 ada, using an approximate USD 0.20 per ada reference rate for an approximately USD 2.0 million planning budget split into two roughly USD 1.0 million pools.\" and clears the evidence gates. What would change this vote to YES: Provide sustainability path; Provide cost-benefit clarity. Residual uncertainty: Treasury flow signal is in stressed regime (total inflow (tau + donations) vs enacted withdrawals). Confidence context: score -0.12; confidence 72.0%.",
-    "summary_raw": "Directional NO is supported by affirmative independent evidence of waste, duplication, excessive cost, or failed delivery \u2014 not by missing information.",
+    "summary": "Vote: NO. For this TreasuryWithdrawals (active), downside risk and/or weak safeguards outweighed demonstrated benefit in the current evidence set. Decisive reason: a material claim is unsupported \u2014 \"The proposal asserts that Cardano currently lacks a serious production BTCfi infrastructure layer and that failure to fund Alchemy would leave Bitcoin-backed structured exposure to consolidate on other chains and off-chain markets.\" \u2014 so cost or precedent may outweigh the benefit. Weighed against it: the proposal substantiates \"The proposal requests 10,000,000 ada, using an approximate USD 0.20 per ada reference rate for an approximately USD 2.0 million planning budget split into two approximately USD 1.0 million pools.\" and clears the evidence gates. What would change this vote to YES: Provide sustainability path; Provide cost-benefit clarity. Residual uncertainty: Treasury flow signal is in stressed regime (total inflow (tau + donations) vs enacted withdrawals). Confidence context: score -0.12; confidence 72.0%.",
+    "summary_raw": "Advisory model lean was +0.020 (display cap \u00b10.05) and had zero influence on the binding score: A small positive nudge is justified because the claims show unusually explicit treasury-stewardship controls for a large withdrawal, including separated pools, staged deployment, administrator oversight, price protection, pause and refund conditions, and quarterly return of launch-liquidity proceeds; the nudge remains small because key market-demand and adoption claims are partly proposer-asserted or only externally checkable rather than verified within the document.",
     "top_fixes": [
       "Provide sustainability path.",
       "Provide cost-benefit clarity.",
       "Provide independent assurance."
     ],
-    "markdown_path": "/data/output/public/rationales/0f75dd11be0b7a6cb4b305a175b17cf4b60cd307c052fccabf9f572950e70583#0-a1842f3ec261.md",
+    "markdown_path": "/data/output/public/rationales/0f75dd11be0b7a6cb4b305a175b17cf4b60cd307c052fccabf9f572950e70583#0-fbde5b1e3161.md",
     "missing_evidence": [],
     "blocked_reason_code": null,
     "assessment_status": "incomplete",
@@ -75,20 +92,20 @@
             "Proposal document read by reasoning layer: yes",
             "Snapshot freshness source: deep_research_dossiers.csv",
             "Deep research dossier: complete",
-            "Requested: Fund Alchemy, a Cardano-native Bitcoin treasury protocol and BTCfi infrastructure layer with reserve architecture, FIRE and ICE assets, dashboards, integration adapters, monthly reporting, audits, legal/compliance work, go-to-market execution, and staged launch liquidity.",
-            "Recipient: Sundial Protocol and Charms, with Intersect proposed as interim fund administrator subject to confirmation and final agreement.",
-            "Stated amount: 10000000",
-            "Deliverables: Shared BTC reserve architecture with transparent reserve-ratio mechanics and safety zones, Composable Cardano-native FIRE and ICE assets, Open-source SDKs and adapters for wallets, DEXs, and DeFi protocols, Always-on dashboards for reserve ratio, supply, liquidity health, fee flows, and deployment status, Monthly governance reports and BTCfi reporting standards, Independent security review, audit, and economic modeling, Three-month staged launch liquidity deployment, Legal, compliance, disclosures, treasury reporting, and launch-readiness review, Ecosystem education, DRep communications, partner activation, and launch coordination",
-            "Deadline/expiry: Three-month staged liquidity deployment after enactment with monthly reporting; administrator confirmation expected within 30 days of enactment.",
-            "Claim (economic, supported_in_proposal, high materiality): The proposal requests 10,000,000 ada, using an approximate USD 0.20 per ada reference rate for an approximately USD 2.0 million planning budget split into two roughly USD 1.0 million pools.",
-            "Claim (economic, supported_in_proposal, high materiality): Pool 1 is intended for protocol infrastructure and staged treasury-supported launch liquidity, deployed in three monthly tranches of approximately USD 250,000, USD 250,000, and USD 500,000 after specified reviews and performance checks.",
-            "Claim (economic, supported_in_proposal, high materiality): Pool 2 is intended for delivery, audit, integrations, dashboards, governance reporting, legal/compliance work, administration, and go-to-market execution with itemized planning allocations.",
-            "Claim (technical, supported_in_proposal, high materiality): Alchemy will create a shared BTC reserve architecture for FIRE and ICE using a reserve-ratio formula, a 5.0x initial target reserve ratio, and safety zones above 4.0x, between 2.0x and 4.0x, and below 2.0x.",
-            "Claim (technical, supported_in_proposal, high materiality): FIRE is described as a volatility-absorbing residual BTC-upside asset, while ICE is described as a lower-volatility USD-denominated BTC-backed asset, both intended to be composable Cardano-native primitives.",
-            "Claim (economic, supported_in_proposal, high materiality): The proposal states that profits, yield, and returns from treasury-supported launch liquidity will be returned to the Cardano Treasury quarterly, while principal may be returned after Alchemy reaches a 30-day time-weighted average TVL of at least USD 60 million and governance approves a return action."
+            "Requested: Withdraw treasury funds to build and launch Alchemy, a Cardano-native Bitcoin treasury/BTCfi infrastructure layer with FIRE and ICE assets, reserve architecture, dashboards, integrations, reporting, audits, administration, and staged launch liquidity.",
+            "Recipient: Sundial Protocol and Charms, with Intersect proposed as interim fund administrator subject to confirmation and final agreement",
+            "Stated amount: 10,000,000 ada",
+            "Deliverables: Shared BTC reserve architecture with transparent reserve-ratio mechanics and safety zones, Composable Cardano-native FIRE and ICE assets, Open-source SDKs and adapters for wallets, DEXs, and DeFi protocols, Always-on public dashboards for reserve ratio, supply, liquidity health, fee flows, and deployment status, Monthly governance reports and reporting standards, Independent security review, audit, and economic modeling, Three-month staged treasury-supported launch liquidity deployment, Legal, compliance, disclosure, treasury reporting, and launch-readiness work, Go-to-market, ecosystem education, DRep communications, partner activation, and launch coordination",
+            "Deadline/expiry: Three-month liquidity deployment after enactment with monthly reporting; no overall final delivery date stated beyond staged deployment and milestone conditions",
+            "Claim (economic, supported_in_proposal, high materiality): The proposal requests 10,000,000 ada, using an approximate USD 0.20 per ada reference rate for an approximately USD 2.0 million planning budget split into two approximately USD 1.0 million pools.",
+            "Claim (economic, supported_in_proposal, high materiality): Pool 1 will support protocol infrastructure and staged launch liquidity, remain separate from operating expenses, deploy over three months, and return profits, yield, and returns generated by the launch liquidity position to the Cardano Treasury quarterly.",
+            "Claim (economic, supported_in_proposal, high materiality): Pool 2 will fund delivery, audit, integrations, dashboards, governance reporting, legal and compliance work, and go-to-market execution with itemized planning allocations totaling approximately USD 1.0 million.",
+            "Claim (technical, supported_in_proposal, high materiality): Alchemy will use a shared BTC reserve for FIRE and ICE with reserve-ratio formulas, a 5.0x initial target reserve ratio, and safety zones that constrain minting, redemption, and risky activity as reserve conditions weaken.",
+            "Claim (technical, supported_in_proposal, high materiality): FIRE is described as a residual, volatility-absorbing BTC exposure asset, while ICE is described as a lower-volatility USD-denominated BTC-backed exposure asset, and both are intended to be composable Cardano-native primitives.",
+            "Claim (adoption, proposer_asserted, high materiality): The proposal asserts that Cardano currently lacks a serious production BTCfi infrastructure layer and that failure to fund Alchemy would leave Bitcoin-backed structured exposure to consolidate on other chains and off-chain markets."
           ],
           "missing": [
-            "Independent evidence for: The proposal asserts that Cardano currently lacks a production BTCfi infrastructure layer and risks Bitcoin-backed structured exposure consolidating on Ethereum, BNB, Solana, and off-chain markets if Alchemy is not funded."
+            "Independent evidence for: The proposal asserts that Cardano currently lacks a serious production BTCfi infrastructure layer and that failure to fund Alchemy would leave Bitcoin-backed structured exposure to consolidate on other chains and off-chain markets."
           ],
           "conclusion": "Each claim must map to replayable public evidence; proposer assertions alone are not enough for confidence."
         },
@@ -134,8 +151,8 @@
           "title": "Counterargument pass",
           "status": "complete",
           "findings": [
-            "Strongest YES: the proposal substantiates \"The proposal requests 10,000,000 ada, using an approximate USD 0.20 per ada reference rate for an approximately USD 2.0 million planning budget split into two roughly USD 1.0 million pools.\" and clears the evidence gates.",
-            "Strongest NO: a material claim is unsupported \u2014 \"The proposal asserts that Cardano currently lacks a production BTCfi infrastructure layer and risks Bitcoin-backed structured exposure consolidating on Ethereum, BNB, Solana, and off-chain markets if Alchemy is not funded.\" \u2014 so cost or precedent may outweigh the benefit.",
+            "Strongest YES: the proposal substantiates \"The proposal requests 10,000,000 ada, using an approximate USD 0.20 per ada reference rate for an approximately USD 2.0 million planning budget split into two approximately USD 1.0 million pools.\" and clears the evidence gates.",
+            "Strongest NO: a material claim is unsupported \u2014 \"The proposal asserts that Cardano currently lacks a serious production BTCfi infrastructure layer and that failure to fund Alchemy would leave Bitcoin-backed structured exposure to consolidate on other chains and off-chain markets.\" \u2014 so cost or precedent may outweigh the benefit.",
             "Strongest hold: if claims cannot be tied to replayable evidence, abstaining avoids overclaiming certainty."
           ],
           "missing": [],
@@ -154,7 +171,7 @@
       ],
       "blocking_questions": []
     },
-    "assessment_path": "/data/output/public/rationales/0f75dd11be0b7a6cb4b305a175b17cf4b60cd307c052fccabf9f572950e70583#0-a1842f3ec261.assessment.json",
+    "assessment_path": "/data/output/public/rationales/0f75dd11be0b7a6cb4b305a175b17cf4b60cd307c052fccabf9f572950e70583#0-fbde5b1e3161.assessment.json",
     "treasury_dimensions": {
       "actionable_asks": [
         "State the cost against the benefit: what does this buy, per ada spent.",
@@ -276,7 +293,7 @@
     "anchor_hash": "c267ddd7a68d723104c27ab9e9101b9cdc2b767496fb3d7cbd6b947a1917214e",
     "file_sha256": "95b1c7b82fc16070198efa280db9312dc7aa0a42fc8eb5b91a64daedf8cbec57",
     "content_bytes": "23136",
-    "fetched_at_utc": "2026-07-15T14:53:45Z",
+    "fetched_at_utc": "2026-07-15T16:31:10Z",
     "download_path": "/proposals/0f75dd11be0b7a6cb4b305a175b17cf4b60cd307c052fccabf9f572950e70583#0.txt",
     "preview": "{\n  \"@context\": {\n    \"@language\": \"en-us\",\n    \"CIP100\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0100/README.md#\",\n    \"CIP108\": \"https://github.com/cardano-foundation/CIPs/blob/master/CIP-0108/README.md#\",\n    \"hashAlgorithm\": \"CIP100:hashAlgorithm\",\n    \"body\": {\n      \"@id\": \"CIP108:body\",\n      \"@context\": {\n        \"references\": {\n          \"@id\": \"CIP108:references\",\n          \"@container\": \"@set\",\n          \"@context\": {\n            \"GovernanceMetadata\": \"CIP100:GovernanceMetadataReference\",\n            \"Other\": \"CIP100:OtherReference\",\n            \"label\": \"CIP100:reference-label\",\n            \"uri\": \"CIP100:reference-uri\",\n            \"referenceHash\": {\n              \"@id\": \"CIP108:referenceHash\",\n              \"@context\": {\n                \"hashDigest\": \"CIP108:hashDigest\",\n                \"hashAlgorithm\": \"CIP100:hashAlgorithm\"\n              }\n            }\n          }\n        },\n        \"title\": \"CIP108:title\",\n        \"abstract\": \"CIP108:abstract\",\n        \"motivation\": \"CIP108:motivation\",\n        \"rationale\": \"CIP108:rationale\"\n      }\n    },\n    \"authors\": {\n      \"@id\": \"CIP100:authors\",\n      \"@container\": \"@set\",\n      \"@context\": {\n        \""
   },
@@ -335,10 +352,10 @@
   },
   "reproducibility": {
     "soul_repo": "beacn-drep-soul",
-    "soul_commit": "d866057afd0ecaf599eb0202220b1ec8339b9b09",
+    "soul_commit": "c813ed97f64dba61150d01964327553baf720d38",
     "resources_repo": "beacn-drep-resources",
-    "resources_commit": "afd630a34be9d7440e2fac020ac552cde501098f",
-    "core_commit": "bbc95f787bad2603657870cfbb7e5106b6fddbdb",
+    "resources_commit": "d68b33ee7989803aaecd7edc03d77c134a98a7f1",
+    "core_commit": "c5935a26fd2a79bcb6ededa0d93f39d80b013de3",
     "resource_ids_used": [
       "gov_actions_snapshot",
       "treasury_withdrawals_snapshot",
@@ -451,7 +468,7 @@
     "snapshot_age_seconds": 0,
     "max_allowed_seconds": 21600,
     "is_stale": false,
-    "snapshot_time": "2026-07-15T15:08:41.987765Z",
+    "snapshot_time": "2026-07-15T16:49:18.786766Z",
     "freshness_source": "deep_research_dossiers.csv"
   }
 }
