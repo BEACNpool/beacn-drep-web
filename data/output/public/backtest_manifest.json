@@ -1,10 +1,10 @@
 {
-  "generated_at_utc": "2026-07-18T11:34:37.255263+00:00",
+  "generated_at_utc": "2026-07-19T11:35:03.834549+00:00",
   "inputs": {
     "core_output_dir": "beacn-drep-core/data/output",
     "resources_governance_dir": "beacn-drep-resources/data/input/governance",
     "resources_drep_dir": "beacn-drep-resources/data/input/drep",
-    "resources_actions_hash": "091bbf2966e97c0b823a16fab16a972b093e5eda1e4f6129c3281bcf20300e7b",
+    "resources_actions_hash": "32c2f04938e20609b75eeacb70338348077a4e519b84e06b46e5aa61f950ab7d",
     "resources_top_drep_hash": "2897d2b484a054921e4b738b28f8e47a7190add3c0f18daace9edfcedc7214ab"
   },
   "summary": {
