@@ -1,15 +1,32 @@
 {
-  "generated_at": "2026-07-30T11:34:24+00:00",
+  "generated_at": "2026-07-31T11:34:21+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-07-30T11:34:24+00:00",
+    "at": "2026-07-31T11:34:21+00:00",
     "epoch": 646,
-    "open_actions": 7,
+    "open_actions": 8,
     "actions_with_our_vote": 12,
-    "summary": "Last checked at epoch 646. 7 open governance action(s); this DRep has voted on 12. Mode: live."
+    "summary": "Last checked at epoch 646. 8 open governance action(s); this DRep has voted on 12. Mode: live."
   },
   "actions": [
+    {
+      "action_id": "ab474223d40e2e3540555364be27e161a809c33651408f43d84acff10c0ba306#0",
+      "cip129_action_id": "ab474223d40e2e3540555364be27e161a809c33651408f43d84acff10c0ba306#0",
+      "title": "Reduce minPoolCost to 75 ada and increase Plutus Memory Limits (Part 2)",
+      "type": "ParameterChange",
+      "proposed_in_epoch": 646,
+      "expires_after_epoch": 652,
+      "status": "open",
+      "recommendation": "ABSTAIN",
+      "our_vote": null,
+      "score": 0.0,
+      "raw_score": 0.0,
+      "llm_score_adjustment": 0.02,
+      "directional_threshold": 0.12,
+      "confidence": 0.65,
+      "anchor_url": "ipfs://bafkreifc5ct5fpeu4ygx6k4cqzbyzny7xfmuljywgn7jge3zkf2tidacym"
+    },
     {
       "action_id": "48bab0ca71cc46f2ee421242b14f292b8c8382bda707d03ea662644bed22b893#0",
       "cip129_action_id": "48bab0ca71cc46f2ee421242b14f292b8c8382bda707d03ea662644bed22b893#0",
