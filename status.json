@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-06T11:34:11+00:00",
+  "generated_at": "2026-08-07T11:33:24+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-08-06T11:34:11+00:00",
+    "at": "2026-08-07T11:33:24+00:00",
     "epoch": 647,
     "open_actions": 5,
     "actions_with_our_vote": 9,
