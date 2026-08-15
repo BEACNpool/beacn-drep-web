@@ -1,15 +1,32 @@
 {
-  "generated_at": "2026-08-14T11:30:34+00:00",
+  "generated_at": "2026-08-15T11:30:41+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-08-14T11:30:34+00:00",
+    "at": "2026-08-15T11:30:41+00:00",
     "epoch": 649,
-    "open_actions": 3,
+    "open_actions": 4,
     "actions_with_our_vote": 4,
-    "summary": "Last checked at epoch 649. 3 open governance action(s); this DRep has voted on 4. Mode: live."
+    "summary": "Last checked at epoch 649. 4 open governance action(s); this DRep has voted on 4. Mode: live."
   },
   "actions": [
+    {
+      "action_id": "f57f8fcb4e83ad1b6f58bffd4a302aacbb5a90874c83c5f84a7f8b4bb43ce9bc#0",
+      "cip129_action_id": "f57f8fcb4e83ad1b6f58bffd4a302aacbb5a90874c83c5f84a7f8b4bb43ce9bc#0",
+      "title": "Governance Incentives Framework 2026",
+      "type": "TreasuryWithdrawals",
+      "proposed_in_epoch": 649,
+      "expires_after_epoch": 655,
+      "status": "open",
+      "recommendation": "ABSTAIN",
+      "our_vote": null,
+      "score": 0.0,
+      "raw_score": 0.0,
+      "llm_score_adjustment": 0.0,
+      "directional_threshold": 0.12,
+      "confidence": 0.1,
+      "anchor_url": "https://gray-top-unicorn-495.mypinata.cloud/ipfs/bafkreia4wvoh2oa4hb55kvsxt3adyrrl2lyn245huo4lkeyhus3yvijq2q"
+    },
     {
       "action_id": "ab474223d40e2e3540555364be27e161a809c33651408f43d84acff10c0ba306#0",
       "cip129_action_id": "ab474223d40e2e3540555364be27e161a809c33651408f43d84acff10c0ba306#0",
