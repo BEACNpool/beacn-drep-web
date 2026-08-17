@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-16T11:30:40+00:00",
+  "generated_at": "2026-08-17T11:30:47+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-08-16T11:30:40+00:00",
+    "at": "2026-08-17T11:30:47+00:00",
     "epoch": 649,
-    "open_actions": 4,
+    "open_actions": 5,
     "actions_with_our_vote": 5,
-    "summary": "Last checked at epoch 649. 4 open governance action(s); this DRep has voted on 5. Mode: live."
+    "summary": "Last checked at epoch 649. 5 open governance action(s); this DRep has voted on 5. Mode: live."
   },
   "actions": [
     {
@@ -26,6 +26,23 @@
       "directional_threshold": 0.12,
       "confidence": 0.1,
       "anchor_url": "https://gray-top-unicorn-495.mypinata.cloud/ipfs/bafkreia4wvoh2oa4hb55kvsxt3adyrrl2lyn245huo4lkeyhus3yvijq2q"
+    },
+    {
+      "action_id": "7d37220b71806410cc8adfbdafbad494e1ce3fdc674ab13c88a72b3b27de78d9#0",
+      "cip129_action_id": "7d37220b71806410cc8adfbdafbad494e1ce3fdc674ab13c88a72b3b27de78d9#0",
+      "title": "Reimburse Ikigai Info Governance Action Deposit.",
+      "type": "TreasuryWithdrawals",
+      "proposed_in_epoch": 649,
+      "expires_after_epoch": 655,
+      "status": "open",
+      "recommendation": "ABSTAIN",
+      "our_vote": null,
+      "score": 0.0,
+      "raw_score": 0.0,
+      "llm_score_adjustment": 0.0,
+      "directional_threshold": 0.12,
+      "confidence": 0.1,
+      "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmSy2CiQhPBzzNLKDFVvMQaDb1FQDbmn9bJf6fVntVAQ1t"
     },
     {
       "action_id": "ab474223d40e2e3540555364be27e161a809c33651408f43d84acff10c0ba306#0",
