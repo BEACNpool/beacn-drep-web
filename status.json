@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-24T11:30:46+00:00",
+  "generated_at": "2026-08-25T11:30:46+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-08-24T11:30:46+00:00",
+    "at": "2026-08-25T11:30:46+00:00",
     "epoch": 651,
     "open_actions": 4,
     "actions_with_our_vote": 5,
@@ -55,7 +55,7 @@
       "recommendation": "ABSTAIN",
       "our_vote": "Abstain",
       "score": 0.0,
-      "raw_score": -0.07,
+      "raw_score": 0.03,
       "llm_score_adjustment": 0.02,
       "directional_threshold": 0.12,
       "confidence": 0.62,
@@ -88,11 +88,11 @@
       "status": "closed",
       "recommendation": "ABSTAIN",
       "our_vote": "Abstain",
-      "score": -0.24,
-      "raw_score": -0.24,
+      "score": 0.01,
+      "raw_score": 0.01,
       "llm_score_adjustment": 0.03,
       "directional_threshold": 0.12,
-      "confidence": 0.65,
+      "confidence": 0.5925,
       "anchor_url": "https://str8pool.com/governance/2026-07-23-FabianvBergen.jsonld"
     }
   ],
