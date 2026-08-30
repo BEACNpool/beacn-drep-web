@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-29T11:30:46+00:00",
+  "generated_at": "2026-08-30T11:47:57+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-08-29T11:30:46+00:00",
+    "at": "2026-08-30T11:47:57+00:00",
     "epoch": 652,
     "open_actions": 4,
     "actions_with_our_vote": 4,
@@ -18,13 +18,13 @@
       "proposed_in_epoch": 649,
       "expires_after_epoch": 655,
       "status": "open",
-      "recommendation": "NEEDS_MORE_INFO",
+      "recommendation": "NO",
       "our_vote": "Abstain",
-      "score": 0.0,
-      "raw_score": 0.0,
+      "score": -0.15,
+      "raw_score": -0.15,
       "llm_score_adjustment": 0.0,
-      "directional_threshold": 0.12,
-      "confidence": 0.2,
+      "directional_threshold": 0.06,
+      "confidence": 0.7575,
       "anchor_url": "https://gray-top-unicorn-495.mypinata.cloud/ipfs/bafkreia4wvoh2oa4hb55kvsxt3adyrrl2lyn245huo4lkeyhus3yvijq2q"
     },
     {
@@ -35,13 +35,13 @@
       "proposed_in_epoch": 649,
       "expires_after_epoch": 655,
       "status": "open",
-      "recommendation": "NEEDS_MORE_INFO",
+      "recommendation": "NO",
       "our_vote": "Abstain",
-      "score": 0.0,
-      "raw_score": 0.0,
+      "score": -0.25,
+      "raw_score": -0.25,
       "llm_score_adjustment": 0.0,
-      "directional_threshold": 0.12,
-      "confidence": 0.2,
+      "directional_threshold": 0.06,
+      "confidence": 0.7525,
       "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmSy2CiQhPBzzNLKDFVvMQaDb1FQDbmn9bJf6fVntVAQ1t"
     },
     {
@@ -56,9 +56,9 @@
       "our_vote": "Abstain",
       "score": 0.0,
       "raw_score": 0.03,
-      "llm_score_adjustment": 0.02,
+      "llm_score_adjustment": -0.02,
       "directional_threshold": 0.12,
-      "confidence": 0.62,
+      "confidence": 0.47,
       "anchor_url": "ipfs://bafkreifc5ct5fpeu4ygx6k4cqzbyzny7xfmuljywgn7jge3zkf2tidacym"
     },
     {
@@ -73,9 +73,9 @@
       "our_vote": "Abstain",
       "score": 0.08,
       "raw_score": 0.08,
-      "llm_score_adjustment": 0.02,
+      "llm_score_adjustment": 0.0,
       "directional_threshold": 0.12,
-      "confidence": 0.67,
+      "confidence": 0.52,
       "anchor_url": "ipfs://bafkreif22553h3reaedrd376hzgkjng6kxnb3o7ycu3j4pzjbcjerv2bce"
     }
   ],
