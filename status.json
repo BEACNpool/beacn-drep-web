@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-31T11:35:28+00:00",
+  "generated_at": "2026-09-01T11:34:57+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-08-31T11:35:28+00:00",
+    "at": "2026-09-01T11:34:57+00:00",
     "epoch": 652,
     "open_actions": 4,
     "actions_with_our_vote": 4,
@@ -19,7 +19,7 @@
       "expires_after_epoch": 655,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": "Abstain",
+      "our_vote": "VoteNo",
       "score": -0.15,
       "raw_score": -0.15,
       "llm_score_adjustment": 0.0,
@@ -36,10 +36,10 @@
       "expires_after_epoch": 655,
       "status": "open",
       "recommendation": "NO",
-      "our_vote": "Abstain",
+      "our_vote": "VoteNo",
       "score": -0.25,
       "raw_score": -0.25,
-      "llm_score_adjustment": 0.0,
+      "llm_score_adjustment": -0.03,
       "directional_threshold": 0.06,
       "confidence": 0.7525,
       "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmSy2CiQhPBzzNLKDFVvMQaDb1FQDbmn9bJf6fVntVAQ1t"
