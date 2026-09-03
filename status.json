@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-02T11:38:36+00:00",
+  "generated_at": "2026-09-03T11:33:11+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-09-02T11:38:36+00:00",
+    "at": "2026-09-03T11:33:11+00:00",
     "epoch": 653,
     "open_actions": 2,
     "actions_with_our_vote": 4,
@@ -39,7 +39,7 @@
       "our_vote": "VoteNo",
       "score": -0.25,
       "raw_score": -0.25,
-      "llm_score_adjustment": -0.03,
+      "llm_score_adjustment": 0.0,
       "directional_threshold": 0.06,
       "confidence": 0.7525,
       "anchor_url": "https://most-brass-sun.quicknode-ipfs.com/ipfs/QmSy2CiQhPBzzNLKDFVvMQaDb1FQDbmn9bJf6fVntVAQ1t"
