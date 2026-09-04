@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-03T11:33:11+00:00",
+  "generated_at": "2026-09-04T11:32:39+00:00",
   "drep_id": "drep1yg3fzjm63hjg37k3rtdt7wx0mgmn303lwv2s50xxkjzsv5qfhynxg",
   "mode": "live",
   "last_check": {
-    "at": "2026-09-03T11:33:11+00:00",
+    "at": "2026-09-04T11:32:39+00:00",
     "epoch": 653,
     "open_actions": 2,
     "actions_with_our_vote": 4,
@@ -22,7 +22,7 @@
       "our_vote": "VoteNo",
       "score": -0.15,
       "raw_score": -0.15,
-      "llm_score_adjustment": -0.02,
+      "llm_score_adjustment": 0.02,
       "directional_threshold": 0.06,
       "confidence": 0.7575,
       "anchor_url": "https://gray-top-unicorn-495.mypinata.cloud/ipfs/bafkreia4wvoh2oa4hb55kvsxt3adyrrl2lyn245huo4lkeyhus3yvijq2q"
