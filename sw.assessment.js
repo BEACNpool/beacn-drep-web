@@ -1,4 +1,4 @@
-const CACHE = "beacn-drep-v12";
+const CACHE = "beacn-drep-v13-brand-20260904";
 const SHELL = [
   "./",
   "./index.html",
@@ -6,12 +6,12 @@ const SHELL = [
   "./app.assessment.js",
   "./verify.js",
   "./manifest.json",
-  "./assets/logo.png",
-  "./assets/icon-192.png",
-  "./assets/icon-512.png",
-  "./apple-touch-icon.png",
-  "./favicon-16.png",
-  "./favicon-32.png"
+  "./assets/logo.png?v=20260904",
+  "./assets/icon-192.png?v=20260904",
+  "./assets/icon-512.png?v=20260904",
+  "./apple-touch-icon.png?v=20260904",
+  "./favicon-16.png?v=20260904",
+  "./favicon-32.png?v=20260904"
 ];
 
 self.addEventListener("install", event => {
