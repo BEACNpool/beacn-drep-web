@@ -619,3 +619,6 @@ details.fold[open] > summary { margin-bottom: var(--s3); }
   .foot-in { flex-direction: column; gap: var(--s5); }
   .vpanel-head, .vpanel-body { padding: var(--s4); }
 }
+
+/* Paused archive: amber, still indicator rather than a live pulse. */
+.hero.paused .eyebrow::before { background: #f5c15b; box-shadow: none; animation: none; }

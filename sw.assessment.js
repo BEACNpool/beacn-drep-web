@@ -1,4 +1,4 @@
-const CACHE = "beacn-drep-v13-brand-20260904";
+const CACHE = "beacn-drep-v14-paused-20260912";
 const SHELL = [
   "./",
   "./index.html",

@@ -1,3 +1,5 @@
+// Operational sunset approved 2026-09-12; historical data is intentionally frozen.
+const OPERATIONS_PAUSED = true;
 /* BEACN DRep — public transparency platform.
    View-only. No decision logic lives here; every number is read from the machine-generated
    public artifacts. The one rule this file must never break: `decision` is what the engine
@@ -78,6 +80,7 @@ const epochStartMs = e => (SHELLEY_START + (e - SHELLEY_EPOCH) * EPOCH_LEN_S) * 
 const currentEpoch = () => Math.floor((Date.now() / 1000 - SHELLEY_START) / EPOCH_LEN_S) + SHELLEY_EPOCH;
 /** Voting stays open through the whole expires_after epoch. */
 function expiryHTML(expEpoch) {
+  if (OPERATIONS_PAUSED) return `<span class="chip closed">Historical snapshot</span>`;
   const e = Number(expEpoch);
   if (!Number.isFinite(e) || e <= 0) return "";
   const days = Math.max(0, Math.round((epochStartMs(e + 1) - Date.now()) / 864e5));
@@ -267,7 +270,28 @@ function wireCards(root) {
 
 /* ---------- views ---------- */
 
+function viewPaused() {
+  const at = state.status?.generated_at;
+  const snapshot = at && Number.isFinite(Date.parse(at))
+    ? new Date(at).toLocaleString("en-US", { month: "long", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "UTC" }) + " UTC"
+    : "unavailable";
+  return `<section class="hero paused">
+    <span class="eyebrow">Operations paused · September 12, 2026</span>
+    <h1>The DRep is paused.<br><em>The record stays open.</em></h1>
+    <p class="hero-lead">Automated proposal checks, analysis and voting are suspended.
+      Published votes, rationales and verification tools remain available as a historical record.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#/record">Browse the voting record →</a>
+      <a class="btn" href="#/verify">Verify a past vote</a>
+    </div>
+    <p class="muted sm" style="margin-top:var(--s5)">Last completed data snapshot:
+      <time datetime="${esc(at || "")}">${esc(snapshot)}</time>.
+      Proposal states and treasury figures are frozen at that snapshot.</p>
+  </section>`;
+}
+
 function viewLive() {
+  if (OPERATIONS_PAUSED) return viewPaused();
   const s = state.index?.stats || {};
   const open = state.actions.filter(a => a.status === "active");
   // A vote cast minutes ago lives in status.json before it reaches the next actions.json export.
@@ -862,6 +886,13 @@ function wireVerify() {
 }
 
 function viewDelegate() {
+  if (OPERATIONS_PAUSED) return `<section class="hero">
+    <span class="eyebrow">Operating status</span>
+    <h1>BEACN DRep is paused.</h1>
+    <p class="hero-lead">Automated governance checks, analysis and voting are suspended as of September 12, 2026.
+      This site is maintained as a public archive, and is not inviting new delegation while operations are paused.</p>
+    <a class="btn btn-primary" href="#/record">Browse the preserved voting record →</a>
+  </section>`;
   return `
   <section class="hero">
     <h1>Delegate to a DRep that shows its work.</h1>
@@ -1077,6 +1108,12 @@ function groupDivergences(actions) {
 function renderStaleness() {
   const b = el("stalebanner");
   if (!b) return;
+  if (OPERATIONS_PAUSED) {
+    b.hidden = false;
+    b.className = "stalebanner warn";
+    b.innerHTML = `<b>DRep paused since September 12, 2026.</b> Automated checks and voting are suspended. This site preserves the historical record.`;
+    return;
+  }
   const gen = Date.parse(state.status?.generated_at || "");
   const hours = (Date.now() - gen) / 36e5;
   if (Number.isFinite(hours) && hours < 26) { b.hidden = true; return; }
@@ -1099,6 +1136,7 @@ function renderStaleness() {
    text owning the first screen. */
 function renderBanner() {
   const b = el("sysbanner");
+  if (OPERATIONS_PAUSED) { b.hidden = true; return; }
   const g = groupDivergences(state.actions);
   const diverged = g.revise.length + g.undisclosed.length + g.capacity.length + g.other.length;
   if (!diverged) { b.hidden = true; return; }
