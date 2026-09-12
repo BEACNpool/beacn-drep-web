@@ -1,3 +1,5 @@
+> **Operations paused — September 12, 2026.** Automated checks, analysis and voting are suspended. The website and existing artifacts remain available as a historical record. This pause makes no on-chain registration or fund changes.
+
 # beacn-drep-web
 
 🌐 **Live site:** https://beacnpool.github.io/beacn-drep-web/
