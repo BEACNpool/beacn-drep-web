@@ -1,4 +1,4 @@
-> **Operations paused — September 12, 2026.** Automated checks, analysis and voting are suspended. The website and existing artifacts remain available as a historical record. This pause makes no on-chain registration or fund changes.
+> **Retired — September 2026.** The BEACN DRep deregistered on 13 September 2026 (UTC). Automated checks, analysis and voting have ended; this site and every published rationale remain as a permanent public record. [BEACN archive](https://beacnpool.github.io/ABCDE/pool/)
 
 # beacn-drep-web
 
